@@ -1,13 +1,18 @@
-import { LogoutButton } from '../LogoutButton';
 import { NavItem } from './NavItem';
+import styled from 'styled-components';
+
+const StyledNavBar = styled.div`
+    margin-top: 80px;
+    width: 100%;
+`
+
 
 export const Navbar = function (props) {
-    const { links } = props;
+    const { navItems } = props;
 
     return (
-        <div>
-            {links.map((link) => { return <NavItem link={link} /> })}
-            <LogoutButton />
-        </div>
+        <StyledNavBar>
+            {navItems.map((item) => { return <NavItem item={item} buttonColor="#75F099" /> })}
+        </StyledNavBar>
     )
 }

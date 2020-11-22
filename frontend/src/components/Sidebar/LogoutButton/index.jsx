@@ -1,15 +1,13 @@
-import { Button } from '../../Button'
+import { NavItem } from '../Navbar/NavItem/';
+import src from '../../../assets/icons/Exit.svg';
 
-const logout = {
-    image: "path-to-image",
-    name: "Sair"
+const item = {
+    text: "Sair",
+    src: src
 }
 
 export const LogoutButton = () => {
     return (
-        <div>
-            <img src={logout.image} alt="Sair" />
-            <Button name={logout.name} />
-        </div>
+        <NavItem buttonColor="#EB4783" item={item} />
     )
-}
+} 

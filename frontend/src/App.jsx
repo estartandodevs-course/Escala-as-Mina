@@ -1,9 +1,12 @@
-import './App.css';
-import { Sidebar } from './components/Sidebar'
+import { Sidebar } from './components/Sidebar';
+// import { SidebarButton } from './components/Button';
+
 function App() {
   return (
     <>
-      Escala as Mina
+
+      {/* <SidebarButton name="Dashboard" src={logo} /> */}
+      <Sidebar />
     </>
   );
 }
