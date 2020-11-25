@@ -8,29 +8,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/login">Login link</Link>
-            </li>
-            <li>
-              <Link to="/">Dashboard link</Link>
-            </li>
-            <li>
-              <Link to="/rodadas">Rodadas link</Link>
-            </li>
-            <li>
-              <Link to="/jogadoras">Jogadoras link</Link>
-            </li>
-            <li>
-              <Link to="/times">Times link</Link>
-            </li>
-            <li>
-              <Link to="/ranking">Ranking link</Link>
-            </li>
-          </ul>
-        </div>
-
         <Switch>
           <Route path="/login">
             <Login />
