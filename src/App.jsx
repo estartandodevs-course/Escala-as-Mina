@@ -1,12 +1,12 @@
 import { ThemeProvider } from "styled-components"; //https://www.npmjs.com/package/react-theme-provider
-import { theme, GlobalStyle } from "./styles";
+import { theme } from "./styles";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from "./pages";
+import { Sidebar } from "./components/Sidebar";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
       <Router>
         <div>
           <ul>
@@ -44,16 +44,16 @@ function App() {
             <Jogadoras />
           </Route>
 
+          <Route exact path="/">
+            <Dashboard />
+          </Route>
+
           <Route path="/times">
             <Times />
           </Route>
 
           <Route path="/ranking">
             <Ranking />
-          </Route>
-
-          <Route path="/">
-            <Dashboard />
           </Route>
         </Switch>
       </Router>
