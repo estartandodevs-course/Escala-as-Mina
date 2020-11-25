@@ -1,4 +1,4 @@
-import { ThemeProvider } from "styled-components"; //https://www.npmjs.com/package/react-theme-provider
+import { ThemeProvider } from "styled-components";
 import { theme } from "./styles";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from "./pages";
