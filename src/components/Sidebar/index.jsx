@@ -1,39 +1,6 @@
 import styled, { ThemeContext } from "styled-components";
 import { useContext } from "react";
 
-// provavelmente da pra reusar isso em algum outro lugar
-// import logo from '../../assets/images/Logo.png';
-// import { LogoutButton } from './LogoutButton';
-// import { Navbar } from './Navbar';
-// import dashboard from '../../assets/icons/Group-2.svg';
-// import sumula from '../../assets/icons/AdicionarSumula.svg';
-// import jogadoras from '../../assets/icons/AvaliarJogadoras.svg';
-// import times from '../../assets/icons/AvaliarTimesUsuarios.svg';
-// import group from '../../assets/icons/Group.svg';
-
-// const navItems = [
-//     {
-//         text: "Dashboard",
-//         src: dashboard
-//     },
-//     {
-//         text: "Adicionar Rodada",
-//         src: sumula
-//     },
-//     {
-//         text: "Times Cadastrados",
-//         src: jogadoras
-//     },
-//     {
-//         text: "Lorem ipsum",
-//         src: times
-//     },
-//     {
-//         text: "Lorem ipsum",
-//         src: group
-//     }
-// ]
-
 const Wrapper = styled.aside`
   position: absolute;
   display: flex;
