@@ -1,8 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from "./pages";
-import { Sidebar } from "./components/Sidebar";
 
 function App() {
   return (
