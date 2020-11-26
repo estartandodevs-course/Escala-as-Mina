@@ -7,7 +7,6 @@ const Wrapper = styled.aside`
   flex-direction: column;
   align-items: center;
   background-color: ${(props) => props.styling.backgroundColor};
-  //   background-color: ${(props) => props.theme.primaryColor};
   width: ${(props) => props.styling.width};
   height: 100vh;
   border-radius: ${(props) => props.styling.borderRadius};
