@@ -13,23 +13,30 @@ export const GlobalStyle = createGlobalStyle`
 export const theme = {
   pallete: {
     primary: {
-      first: "#100928",
-      second: "#75F099",
+      lighter: "#D1FAF6",
+      main: "#14B8A7",
+      darker: "#052E2A",
     },
     secondary: {
-      first: "#14B8A7",
-      second: "#D1FAF6",
+      lighter: "#CEFDDC",
+      main: "#75F099",
+      darker: "#023110",
     },
-    disabled: {
-      first: "#8E8E8E",
-      second: "#BFBFBF",
+    gray: {
+      black: "#100928",
+      firstGray: "#A0AEC0",
+      secondGray: "#E2E8F0",
+      white: "#FFFFFF",
     },
     alert: {
-      first: "#EB4783",
+      lighter: "#FAD1E0",
+      main: "#EB4783",
+      darker: "#2E0514",
     },
     gradient: {
-      first: "linear-gradient(270deg, #1BE6D1 0%, #75F099 100%)",
-      second: "linear-gradient(90deg, #0AC2AF 0%, #0DF250 100%)",
+      main: "linear-gradient(270deg, #1BE6D1 0%, #75F099 100%)",
+      hover: "linear-gradient(90deg, #0AC2AF 0%, #0DF250 100%)",
+      alert: "linear-gradient(270deg #EB4783 0%, #EB4747 100%)",
     },
   },
 

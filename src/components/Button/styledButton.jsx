@@ -1,40 +1,26 @@
-// import styled, { useTheme } from "styled-components";
+import styled, { css } from "styled-components";
 
-// const theme = useTheme();
-// const stylingObject = {
-//   small: {
-//     ...theme.dimensions.small,
-//   },
-// };
-
-// export const StyledButton = styled.button`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: ${({ styling }) => styling.width};
-//   height: ${({ styling }) => styling.height};
-//   background-color: ${({ styling }) => styling.backgroundColor};
-
-//   ${({ active }) =>
-//     active &&
-//     `
-//   backgrond-color: transparent;
-//   background-image: ${props.theme.pallete.gradient.first}`}
-//   }
-// `;
-
-import styled from "styled-components";
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 165px;
-  height: 32px;
-  background-color: blue;
   border: none;
   border-radius: 50px;
+  cursor: pointer;
 
-  &:focus {
-    outline: none;
-  }
+  width: ${({ styling }) => styling.width};
+  height: ${({ styling }) => styling.height};
+  background-color: ${({ styling }) => styling.backgroundColor};
+  outline: none;
+
+  ${(props) =>
+    props.active &&
+    css`
+      background-image: linear-gradient(270deg, #1be6d1 0%, #75f099 100%);
+    `}
 `;
+// &:hover {
+//   background-color: ${({ styling }) => styling.hoverBackgroundColor};
+// }
+
+export { StyledButton };

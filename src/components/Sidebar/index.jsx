@@ -7,13 +7,13 @@ export const Sidebar = (props) => {
     left: {
       variation: "left",
       borderRadius: "0 30px 30px 0",
-      backgroundColor: `${themeContext.pallete.primary.first}`,
+      backgroundColor: `${themeContext.pallete.gray.black}`,
       width: "18vw", //18% of 1440px ~ 264px,
     },
     right: {
       variation: "right",
       borderRadius: "30px 0 0 30px",
-      backgroundColor: `${themeContext.pallete.secondary.first}`,
+      backgroundColor: `${themeContext.pallete.primary.main}`,
       width: "25vw", //25% of 1440px ~ 356px
     },
   };
