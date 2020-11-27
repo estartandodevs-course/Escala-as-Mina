@@ -1,6 +1,23 @@
-import { Wrapper, stylingObject } from "./styledWrapper";
+import { Wrapper } from "./styledWrapper";
+import { useTheme } from "styled-components";
 
 export const Sidebar = (props) => {
+  const themeContext = useTheme();
+  const stylingObject = {
+    left: {
+      variation: "left",
+      borderRadius: "0 30px 30px 0",
+      backgroundColor: `${themeContext.pallete.primary.first}`,
+      width: "18vw", //18% of 1440px ~ 264px,
+    },
+    right: {
+      variation: "right",
+      borderRadius: "30px 0 0 30px",
+      backgroundColor: `${themeContext.pallete.secondary.first}`,
+      width: "25vw", //25% of 1440px ~ 356px
+    },
+  };
+
   const { variation = "left" } = props;
   const styling = stylingObject[variation];
 

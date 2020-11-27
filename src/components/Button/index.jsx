@@ -1,19 +1,14 @@
-import styled from "styled-components";
-
-const StyledButton = styled.button`
-  border: 1px solid ${(props) => props.theme.primaryColor};
-  border-radius: 30px;
-  color: ${(props) => props.theme.primaryColor};
-  background-color: transparent;
-  width: 64%;
-
-  &:focus {
-    outline: none;
-  }
-`;
+import { StyledButton } from "./styledButton";
 
 export const Button = (props) => {
-  const { name } = props;
+  const {
+    onClick = function () {
+      console.log("foi");
+    },
+    // size,
+    // variation,
+    children,
+  } = props;
 
-  return <StyledButton>{name}</StyledButton>;
+  return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };

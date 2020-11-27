@@ -2,10 +2,15 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./styles";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from "./pages";
+import { Sidebar, Button } from "./components";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <Sidebar variation="left">
+        <Button>oi</Button>
+      </Sidebar>
+      <Sidebar variation="right" />
       <Router>
         <Switch>
           <Route path="/login">

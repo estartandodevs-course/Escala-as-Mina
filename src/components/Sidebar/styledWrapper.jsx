@@ -1,8 +1,6 @@
-import { ThemeContext } from "styled-components";
-import { useContext } from "react";
 import styled from "styled-components";
 
-export const Wrapper = styled.aside`
+const Wrapper = styled.aside`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -14,21 +12,4 @@ export const Wrapper = styled.aside`
   ${(props) => props.styling.variation}: 0;
 `;
 
-const themeContext = useContext(ThemeContext);
-
-const stylingObject = {
-  left: {
-    variation: "left",
-    borderRadius: "0 30px 30px 0",
-    backgroundColor: `${themeContext.primaryColor}`,
-    width: "18vw", //18% of 1440px ~ 264px,
-  },
-  right: {
-    variation: "right",
-    borderRadius: "30px 0 0 30px",
-    backgroundColor: `${themeContext.tertiaryColor}`,
-    width: "25vw", //25% of 1440px ~ 356px
-  },
-};
-
-export { stylingObject, Wrapper };
+export { Wrapper };
