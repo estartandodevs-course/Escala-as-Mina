@@ -1,26 +1,56 @@
 import styled, { css } from "styled-components";
 
-const StyledButton = styled.button`
+const BaseButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 50px;
   cursor: pointer;
+`;
+
+const RectangularButton = styled(BaseButton)`
+  border-radius: 50px;
 
   width: ${({ styling }) => styling.width};
   height: ${({ styling }) => styling.height};
-  background-color: ${({ styling }) => styling.backgroundColor};
-  outline: none;
 
   ${(props) =>
-    props.active &&
-    css`
-      background-image: linear-gradient(270deg, #1be6d1 0%, #75f099 100%);
-    `}
+    props.type === "solid" //this ternary deals with solid/outlined types
+      ? css`
+          ${props.styling.variation === "active"
+            ? "background-image"
+            : "background-color"}: ${props.styling.background};
+          &:hover {
+            ${props.styling.variation === "active"
+              ? "background-image"
+              : "background-color"}: ${props.styling.hoverBackground};
+          }
+        `
+      : css`
+          background-color: transparent;
+          border: 1px solid ${props.styling.background};
+          &:hover {
+            ${props.styling.variation === "alert"
+              ? "background-image"
+              : "background-color"}: ${props.styling.hoverBackground};
+          }
+        `};
 `;
-// &:hover {
-//   background-color: ${({ styling }) => styling.hoverBackgroundColor};
-// }
 
-export { StyledButton };
+const IconButton = styled(BaseButton)`
+  border-radius: 50%;
+  width: ${(props) =>
+    props.rounded ? props.styling.normal : props.styling.small};
+  height: ${(props) =>
+    props.rounded ? props.styling.normal : props.styling.small};
+
+  ${(props) =>
+    props.rounded === true
+      ? css`
+          background-image: ${props.styling.background};
+        `
+      : css`
+          background-color: transparent;
+        `}
+`;
+export { RectangularButton, IconButton };

@@ -36,7 +36,7 @@ export const theme = {
     gradient: {
       main: "linear-gradient(270deg, #1BE6D1 0%, #75F099 100%)",
       hover: "linear-gradient(90deg, #0AC2AF 0%, #0DF250 100%)",
-      alert: "linear-gradient(270deg #EB4783 0%, #EB4747 100%)",
+      alert: "linear-gradient(270deg, #EB4783 0%, #EB4747 100%)",
     },
   },
 
@@ -53,6 +53,14 @@ export const theme = {
       large: {
         width: "1000px",
         height: "32px",
+      },
+      search: {
+        width: "107px",
+        height: "28px",
+      },
+      icon: {
+        small: "28px",
+        normal: "44px",
       },
     },
   },

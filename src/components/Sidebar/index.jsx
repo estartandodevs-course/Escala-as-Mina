@@ -2,6 +2,7 @@ import { Wrapper } from "./styledWrapper";
 import { useTheme } from "styled-components";
 
 export const Sidebar = (props) => {
+  const { variation = "left" } = props; //variation says which sidebar is
   const themeContext = useTheme();
   const stylingObject = {
     left: {
@@ -18,7 +19,6 @@ export const Sidebar = (props) => {
     },
   };
 
-  const { variation = "left" } = props;
   const styling = stylingObject[variation];
 
   return <Wrapper styling={styling}>{props.children}</Wrapper>;

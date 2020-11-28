@@ -1,35 +1,11 @@
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import { theme } from "./styles";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Login, Rodadas, Jogadoras, Times, Ranking } from "./pages";
-import { Sidebar, Button } from "./components";
-
-function mock() {
-  console.log("mockckckck");
-}
-
-const Wrapper = styled.div`
-  position: relative;
-  left: 20vw;
-`;
+import { Login, Rodadas, Jogadoras, Times, Ranking, Dashboard } from "./pages";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Sidebar variation="left"></Sidebar>
-      <Sidebar variation="right" />
-      <Wrapper>
-        <Button active oncClick={mock} size="small" variation="secondary">
-          oi
-        </Button>
-        <Button active oncClick={mock} size="normal" variation="primary">
-          primary
-        </Button>
-        <Button active oncClick={mock} size="large" variation="disabled">
-          disabled
-        </Button>
-      </Wrapper>
-
       <Router>
         <Switch>
           <Route path="/login">
@@ -45,7 +21,7 @@ function App() {
           </Route>
 
           <Route exact path="/">
-            {/* <Dashboard /> */}
+            <Dashboard />
           </Route>
 
           <Route path="/times">
