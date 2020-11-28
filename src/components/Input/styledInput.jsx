@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledInput = styled.input`
-  margin: 20px;
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -24,7 +23,6 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledDiv = styled.div`
-  margin: 20px;
   width: 1000px;
   background-color: #e2e8f0;
   border: 1px solid #a0aec0;
@@ -57,12 +55,63 @@ export const StyledInputSearch = styled.input`
   font-size: 24px;
   line-height: 28px;
   border: none;
-  border-radius: none;
   padding-left: 26px;
   margin: 0px;
 
   margin- ::-webkit-inline-placeholder {
     color: #e2e8f0;
+  }
+`;
+
+export const StyledInputOptions = styled.div`
+  width: 692px;
+  height: 40px;
+  border-radius: 30px;
+  background-color: #100928;
+  border: 1px solid #75f099;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around;
+
+  input {
+    height: 22px;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: #e2e8f0;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input.numberPlayer {
+    width: 88px;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    padding-left: 2px;
+  }
+
+  input.namePlayer {
+    width: 356px;
+    padding-left: 12px;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  img {
+    margin: 10px;
   }
 `;
 

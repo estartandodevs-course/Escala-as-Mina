@@ -1,4 +1,13 @@
-import { StyledInput, StyledInputSearch, StyledButton } from './styledInput';
+import {
+  StyledDiv,
+  StyledInput,
+  StyledInputSearch,
+  StyledInputOptions,
+  StyledButton,
+} from './styledInput';
+import LupaInput from '../../assets/icons/LupaInput.svg';
+import AcceptBtn from '../../assets/icons/AcceptBtn.svg';
+import DeclineBtn from '../../assets/icons/DeclineBtn.svg';
 
 export const Input = (props) => {
   const { label, type, placeholder, disabled = 'false' } = props;
@@ -11,8 +20,39 @@ export const Input = (props) => {
 };
 
 export const InputSearch = (props) => {
-  const { type, placeholder } = props;
-  return <StyledInputSearch type={type} placeholder={placeholder} />;
+  const { placeholder } = props;
+  return (
+    <StyledDiv>
+      <img src={LupaInput} alt={'Lupa'} />
+      <StyledInputSearch type={'text'} placeholder={placeholder} />
+      <BText type="submit" value="Pesquisar" />
+    </StyledDiv>
+  );
+};
+
+export const InputPlayer = (props) => {
+  return (
+    <StyledInputOptions>
+      <input
+        className="numberPlayer"
+        type="number"
+        placeholder="Nº da jogadora"
+      />
+      <input
+        className="namePlayer"
+        type="text"
+        placeholder="Nome da jogadora"
+      />
+      <div>
+        <a href="/">
+          <img src={AcceptBtn} alt="Accept"></img>
+        </a>
+        <a href="/">
+          <img src={DeclineBtn} alt="Decline"></img>
+        </a>
+      </div>
+    </StyledInputOptions>
+  );
 };
 
 export const BText = (props) => {

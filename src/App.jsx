@@ -2,9 +2,8 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from './pages';
-import { Input, InputSearch, BText } from './components/Input/index';
-import { StyledDiv } from './components/Input/styledInput';
-import src from './assets/icons/LupaInput.svg';
+import { Input, InputSearch, InputPlayer } from './components/Input/index';
+// import { StyledDiv } from './components/Input/styledInput';
 
 function App() {
   return (
@@ -16,14 +15,9 @@ function App() {
         disabled="false"
       />
 
-      <StyledDiv tabindex="0">
-        <img src={src} alt={'Lupa'} />
-        <InputSearch
-          placeholder="Pesquisa clubes pelo seu nome ou sigla"
-          type="text"
-        />
-        <BText type="submit" value="Pesquisar" />
-      </StyledDiv>
+      <InputSearch placeholder="Pesquisa clubes pelo seu nome ou sigla"></InputSearch>
+
+      <InputPlayer />
 
       <Router>
         <Switch>
