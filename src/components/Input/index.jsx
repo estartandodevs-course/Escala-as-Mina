@@ -1,4 +1,4 @@
-import { StyledInput, StyledInputSearch, DivSearch } from './styledInput';
+import { StyledInput, StyledInputSearch, StyledButton } from './styledInput';
 
 export const Input = (props) => {
   const { label, type, placeholder } = props;
@@ -11,16 +11,11 @@ export const Input = (props) => {
 };
 
 export const InputSearch = (props) => {
-  const { src, alt, type, placeholder } = props;
-  return (
-    <DivSearch>
-      <img src={src} alt={alt} />
-      <StyledInputSearch type={type} placeholder={placeholder} />
-    </DivSearch>
-  );
+  const { type, placeholder } = props;
+  return <StyledInputSearch type={type} placeholder={placeholder} />;
 };
 
 export const BText = (props) => {
-  const { type } = props;
-  return <input type={type}></input>;
+  const { type, value } = props;
+  return <StyledButton type={type} value={value} />;
 };

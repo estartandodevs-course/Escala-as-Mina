@@ -18,11 +18,10 @@ function App() {
       <DivSearch>
         <img src={src} alt={'Lupa'} />
         <InputSearch
-          label="Input Search"
           placeholder="Pesquisa clubes pelo seu nome ou sigla"
           type="text"
         />
-        <BText type="submit" />
+        <BText type="submit" value="Pesquisar" />
       </DivSearch>
 
       <Router>
