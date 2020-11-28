@@ -1,17 +1,9 @@
 import { StyledCard } from './styledCard';
 
-export const CardMin = (props) => {
-  const { text } = props;
+//props.size can be small or large
 
-  return <StyledCard>{text}</StyledCard>;
-};
+export const Card = (props) => {
+  const { children, size } = props;
 
-export const CardMax = (props) => {
-  const { text } = props;
-
-  return (
-    <StyledCard width="900px" height="652px">
-      {text}
-    </StyledCard>
-  );
+  return <StyledCard size={size}>{children}</StyledCard>;
 };
