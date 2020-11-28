@@ -3,7 +3,7 @@ import { theme } from './styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from './pages';
 import { Input, InputSearch, BText } from './components/Input/index';
-import { DivSearch } from './components/Input/styledInput';
+import { StyledDiv } from './components/Input/styledInput';
 import src from './assets/icons/LupaInput.svg';
 
 function App() {
@@ -15,14 +15,14 @@ function App() {
         type="text"
       />
 
-      <DivSearch>
+      <StyledDiv>
         <img src={src} alt={'Lupa'} />
         <InputSearch
           placeholder="Pesquisa clubes pelo seu nome ou sigla"
           type="text"
         />
         <BText type="submit" value="Pesquisar" />
-      </DivSearch>
+      </StyledDiv>
 
       <Router>
         <Switch>

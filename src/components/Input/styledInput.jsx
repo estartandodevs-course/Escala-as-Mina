@@ -23,7 +23,7 @@ export const StyledInput = styled.input`
   }
 `;
 
-export const DivSearch = styled.div`
+export const StyledDiv = styled.div`
   margin: 20px;
   width: 1000px;
   background-color: #e2e8f0;
@@ -44,7 +44,6 @@ export const DivSearch = styled.div`
   }
 
   &:focus {
-    outline: none;
     border: 1px solid #100928;
   }
 `;
