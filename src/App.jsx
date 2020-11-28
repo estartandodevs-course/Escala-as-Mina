@@ -13,9 +13,10 @@ function App() {
         label="Input Text com e sem Focus"
         placeholder="Placeholder"
         type="text"
+        disabled="false"
       />
 
-      <StyledDiv>
+      <StyledDiv tabindex="0">
         <img src={src} alt={'Lupa'} />
         <InputSearch
           placeholder="Pesquisa clubes pelo seu nome ou sigla"

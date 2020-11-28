@@ -1,11 +1,11 @@
 import { StyledInput, StyledInputSearch, StyledButton } from './styledInput';
 
 export const Input = (props) => {
-  const { label, type, placeholder } = props;
+  const { label, type, placeholder, disabled = 'false' } = props;
   return (
     <form>
       <label>{label}</label>
-      <StyledInput type={type} placeholder={placeholder} />
+      <StyledInput type={type} placeholder={placeholder} disabled={disabled} />
     </form>
   );
 };
