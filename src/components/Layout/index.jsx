@@ -39,39 +39,46 @@ const ContainerLogo = styled.div`
         margin-bottom: 60px;
     }
  `
- // verificar as margins da logo e o tamanho. Foi usado o mesmo do figma para o tamanho e as magins estão no olho.
+  // verificar as margins da logo e o tamanho. Foi usado o mesmo do figma para o tamanho e as magins estão no olho.
+
+ const ContainerLayout = styled.div`
+    display: flex;
+    flex-direction: row;
+ `
+
+ // esse styled é a div que vai englobar o sidebar e o container da page (containerpage)
 
 export const Layout = () => {
     return (
-        <Sidebar variation="left" >
-            <ContainerLogo>
-                <img src={imgLogo} alt="Logo DFF"/>
-            </ContainerLogo>
-            <Link>
-                <NavLink>
-                    <img src={Dashboard} alt="Icon Dashboard"/>
-                    <Button type="oulined" variation="secondary" size="small"> Dashboard</Button>
-                </NavLink>
-                <NavLink>
-                    <img src={AdicionarRodada} alt="Icon Adicionar Rodada"/>
-                    <Button type="oulined" variation="secondary" size="small">Adicionar Rodada</Button>
-                </NavLink>
-                <NavLink>
-                    <img src={TimesCadastrados} alt="Icon Times Cadastrados"/>
-                    <Button type="oulined" variation="secondary" size="small">Times Cadastrados</Button>
-                </NavLink>
-                <NavLink>
-                    <img src={AvaliarTimesUsuarios} alt=""/>
-                    <Button type="oulined" variation="secondary" size="small">Lorem ipsum</Button>
-                </NavLink>
-                <NavLink>
-                <img src={UnsetIcon} alt=""/>
-                    <Button type="oulined" variation="secondary" size="small">Lorem ipsum</Button>
-                </NavLink>
-
-            </Link>
-
-        </Sidebar>
+        <ContainerLayout>
+            <Sidebar variation="left" >
+                <ContainerLogo>
+                    <img src={imgLogo} alt="Logo DFF"/>
+                </ContainerLogo>
+                <Link>
+                    <NavLink>
+                        <img src={Dashboard} alt="Icon Dashboard"/>
+                        <Button type="oulined" variation="secondary" size="small"> Dashboard</Button>
+                    </NavLink>
+                    <NavLink>
+                        <img src={AdicionarRodada} alt="Icon Adicionar Rodada"/>
+                        <Button type="oulined" variation="secondary" size="small">Adicionar Rodada</Button>
+                    </NavLink>
+                    <NavLink>
+                        <img src={TimesCadastrados} alt="Icon Times Cadastrados"/>
+                        <Button type="oulined" variation="secondary" size="small">Times Cadastrados</Button>
+                    </NavLink>
+                    <NavLink>
+                        <img src={AvaliarTimesUsuarios} alt=""/>
+                        <Button type="oulined" variation="secondary" size="small">Lorem ipsum</Button>
+                    </NavLink>
+                    <NavLink>
+                    <img src={UnsetIcon} alt=""/>
+                        <Button type="oulined" variation="secondary" size="small">Lorem ipsum</Button>
+                    </NavLink>
+                </Link>
+            </Sidebar>
+        </ContainerLayout>
     )
 
 }
