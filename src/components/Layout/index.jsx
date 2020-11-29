@@ -54,6 +54,8 @@ const ContainerLogo = styled.div`
 const ExitContainer = styled.div`
     display: flex;
     flex-direction: row;
+    margin-top: auto;
+    margin-bottom: 32px;
     img {
         margin-right: 15px;
     }
