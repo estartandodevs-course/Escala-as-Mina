@@ -27,7 +27,7 @@ const NavLink = styled.div`
     flex-direction: row;
     justify-content: space-between;
     img {
-        margin-right: 12px;
+        margin-right: 15px;
     }
 `
 // Styled a div que contem o button e o icon.
@@ -55,7 +55,7 @@ const ExitContainer = styled.div`
     display: flex;
     flex-direction: row;
     img {
-        margin-right: 12px;
+        margin-right: 15px;
     }
 `
 // esse styledé a div que contem o botão e o icon de "Sair"
