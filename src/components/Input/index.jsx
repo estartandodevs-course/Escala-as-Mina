@@ -23,11 +23,19 @@ export const Input = (props) => {
 
 export const InputSearch = (props) => {
   const { placeholder } = props;
+
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('O link foi clicado.');
+  }
+
   return (
     <StyledDiv>
       <img src={LupaInput} alt={'Lupa'} />
       <StyledInputSearch type={'text'} placeholder={placeholder} />
-      <Button variation="search">Pesquisar</Button>
+      <Button variation="search" onClick={handleClick}>
+        Pesquisar
+      </Button>
     </StyledDiv>
   );
 };
