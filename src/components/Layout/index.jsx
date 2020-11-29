@@ -9,7 +9,7 @@ import AdicionarRodada from "../../assets/icons/AdicionarSumula.svg";
 import AvaliarTimesUsuarios from "../../assets/icons/AvaliarTimesUsuarios.svg";
 import TimesCadastrados from "../../assets/icons/AvaliarJogadoras.svg";
 import UnsetIcon from "../../assets/icons/Group.svg";
-
+import ExitIcon from "../../assets/icons/Exit.svg";
 // Estou usando algumas tamanhos do figma e outros estou fazendo de olho pois não tem. Precisamos decidir o que fazer sobre a resposividade.
 
 const Link = styled.div`
@@ -44,7 +44,22 @@ const ContainerLogo = styled.div`
  const ContainerLayout = styled.div`
     display: flex;
     flex-direction: row;
+
  `
+
+const ExitContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    img {
+        margin-right: 12px;
+    }
+`
+
+const ContainerNav = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+`
 
  // esse styled é a div que vai englobar o sidebar e o container da page (containerpage)
 
@@ -55,28 +70,35 @@ export const Layout = () => {
                 <ContainerLogo>
                     <img src={imgLogo} alt="Logo DFF"/>
                 </ContainerLogo>
-                <Link>
-                    <NavLink>
-                        <img src={Dashboard} alt="Icon Dashboard"/>
-                        <Button type="oulined" variation="secondary" size="small"> Dashboard</Button>
-                    </NavLink>
-                    <NavLink>
-                        <img src={AdicionarRodada} alt="Icon Adicionar Rodada"/>
-                        <Button type="oulined" variation="secondary" size="small">Adicionar Rodada</Button>
-                    </NavLink>
-                    <NavLink>
-                        <img src={TimesCadastrados} alt="Icon Times Cadastrados"/>
-                        <Button type="oulined" variation="secondary" size="small">Times Cadastrados</Button>
-                    </NavLink>
-                    <NavLink>
-                        <img src={AvaliarTimesUsuarios} alt=""/>
-                        <Button type="oulined" variation="secondary" size="small">Lorem ipsum</Button>
-                    </NavLink>
-                    <NavLink>
-                    <img src={UnsetIcon} alt=""/>
-                        <Button type="oulined" variation="secondary" size="small">Lorem ipsum</Button>
-                    </NavLink>
-                </Link>
+                <ContainerNav>
+                    <Link>
+                        <NavLink>
+                            <img src={Dashboard} alt="Icon Dashboard"/>
+                            <Button type="oulined" variation="secondary" size="small"> Dashboard</Button>
+                        </NavLink>
+                        <NavLink>
+                            <img src={AdicionarRodada} alt="Icon Adicionar Rodada"/>
+                            <Button type="oulined" variation="secondary" size="small">Adicionar Rodada</Button>
+                        </NavLink>
+                        <NavLink>
+                            <img src={TimesCadastrados} alt="Icon Times Cadastrados"/>
+                            <Button type="oulined" variation="secondary" size="small">Times Cadastrados</Button>
+                        </NavLink>
+                        <NavLink>
+                            <img src={AvaliarTimesUsuarios} alt=""/>
+                            <Button type="oulined" variation="secondary" size="small">Lorem ipsum</Button>
+                        </NavLink>
+                        <NavLink>
+                            <img src={UnsetIcon} alt=""/>
+                            <Button type="oulined" variation="secondary" size="small">Lorem ipsum</Button>
+                        </NavLink>
+                    </Link>
+                    <ExitContainer>
+                            <img src={ExitIcon} alt=""/>
+                            <Button type="outlined" variation="alert" size="small">Lorem ipsum</Button>
+                    </ExitContainer>
+                </ContainerNav>
+
             </Sidebar>
         </ContainerLayout>
     )
