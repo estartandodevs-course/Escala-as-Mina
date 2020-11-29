@@ -27,7 +27,7 @@ export const InputSearch = (props) => {
     <StyledDiv>
       <img src={LupaInput} alt={'Lupa'} />
       <StyledInputSearch type={'text'} placeholder={placeholder} />
-      <Button variation="search" />
+      <Button variation="search">Pesquisar</Button>
     </StyledDiv>
   );
 };

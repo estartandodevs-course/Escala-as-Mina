@@ -96,7 +96,7 @@ export const StyledInputOptions = styled.div`
     width: 88px;
     -moz-appearance: textfield;
     appearance: textfield;
-    padding-left: 2px;
+    padding-left: 5px;
   }
 
   input.namePlayer {
