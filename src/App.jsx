@@ -12,7 +12,6 @@ function App() {
         label="Input Text com e sem Focus"
         placeholder="Placeholder"
         type="text"
-        disabled="false"
       />
 
       <InputSearch placeholder="Pesquisa clubes pelo seu nome ou sigla"></InputSearch>

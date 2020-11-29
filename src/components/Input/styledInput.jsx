@@ -35,13 +35,13 @@ export const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 30px;
+  padding-right: 24px;
 
   ::-webkit-inline-placeholder {
     color: #a0aec0;
   }
 
-  &:focus {
+  &:focus-within {
     border: 1px solid #100928;
   }
 `;
@@ -70,9 +70,8 @@ export const StyledInputOptions = styled.div`
   background-color: #100928;
   border: 1px solid #75f099;
   display: flex;
-  justify-content: space-between;
+  justify-self: center;
   align-items: center;
-  justify-content: space-around;
 
   input {
     height: 22px;
@@ -86,6 +85,7 @@ export const StyledInputOptions = styled.div`
     border-radius: 2px;
     outline: none;
     border: none;
+    margin-left: 15px;
 
     &:focus {
       outline: none;
@@ -110,24 +110,12 @@ export const StyledInputOptions = styled.div`
     margin: 0;
   }
 
-  img {
-    margin: 10px;
+  div {
+    margin-left: auto;
+    margin-right: 25px;
+
+    img {
+      margin: 10px;
+    }
   }
 `;
-
-export const StyledButton = styled.input.attrs({ type: 'submit' })`
-  width: 107px;
-  height: 28px;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 19px;
-  text-align: center;
-  background: #100928;
-  border-radius: 30px;
-  color: rgba(27, 230, 209, 1);
-  margin-right: 24px;
-`;
-
-// export const StyledInputSearch = styled(StyledInput)`
-//   background-color: #e2e8f0;
-// `;

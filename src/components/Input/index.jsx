@@ -1,20 +1,22 @@
+import React from 'react';
 import {
   StyledDiv,
   StyledInput,
   StyledInputSearch,
   StyledInputOptions,
-  StyledButton,
 } from './styledInput';
 import LupaInput from '../../assets/icons/LupaInput.svg';
 import AcceptBtn from '../../assets/icons/AcceptBtn.svg';
 import DeclineBtn from '../../assets/icons/DeclineBtn.svg';
+import { Button } from '../Button';
 
 export const Input = (props) => {
-  const { label, type, placeholder, disabled = 'false' } = props;
+  const { label, type, placeholder } = props;
+
   return (
     <form>
       <label>{label}</label>
-      <StyledInput type={type} placeholder={placeholder} disabled={disabled} />
+      <StyledInput type={type} placeholder={placeholder} />
     </form>
   );
 };
@@ -25,12 +27,12 @@ export const InputSearch = (props) => {
     <StyledDiv>
       <img src={LupaInput} alt={'Lupa'} />
       <StyledInputSearch type={'text'} placeholder={placeholder} />
-      <BText type="submit" value="Pesquisar" />
+      <Button variation="search" />
     </StyledDiv>
   );
 };
 
-export const InputPlayer = (props) => {
+export const InputPlayer = () => {
   return (
     <StyledInputOptions>
       <input
@@ -55,7 +57,7 @@ export const InputPlayer = (props) => {
   );
 };
 
-export const BText = (props) => {
-  const { type, value } = props;
-  return <StyledButton type={type} value={value} />;
-};
+// export const BText = (props) => {
+//   const { type, value } = props;
+//   return <StyledButton type={type} value={value} />;
+// };
