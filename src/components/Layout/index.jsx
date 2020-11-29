@@ -10,6 +10,7 @@ import AvaliarTimesUsuarios from "../../assets/icons/AvaliarTimesUsuarios.svg";
 import TimesCadastrados from "../../assets/icons/AvaliarJogadoras.svg";
 import UnsetIcon from "../../assets/icons/Group.svg";
 import ExitIcon from "../../assets/icons/Exit.svg";
+import { Card } from "../Card"
 // Estou usando algumas tamanhos do figma e outros estou fazendo de olho pois não tem. Precisamos decidir o que fazer sobre a resposividade.
 
 const Link = styled.div`
@@ -20,6 +21,7 @@ const Link = styled.div`
     justify-content: space-evenly;
     height: 239px;
 `
+//styled da div que contém os NavLink agrupados.
 const NavLink = styled.div`
     display: flex;
     flex-direction: row;
@@ -28,7 +30,7 @@ const NavLink = styled.div`
         margin-right: 12px;
     }
 `
-
+// Styled a div que contem o button e o icon.
 // verificar o margin-right acima.
 
 const ContainerLogo = styled.div`
@@ -39,6 +41,7 @@ const ContainerLogo = styled.div`
         margin-bottom: 60px;
     }
  `
+  // Esse Container recebe a logo do DFF.
   // verificar as margins da logo e o tamanho. Foi usado o mesmo do figma para o tamanho e as magins estão no olho.
 
  const ContainerLayout = styled.div`
@@ -46,6 +49,7 @@ const ContainerLogo = styled.div`
     flex-direction: row;
 
  `
+ // esse styled é a div que vai englobar todo o Sidebar e o conteúdo da página da page (PageContents)
 
 const ExitContainer = styled.div`
     display: flex;
@@ -54,6 +58,8 @@ const ExitContainer = styled.div`
         margin-right: 12px;
     }
 `
+// esse styledé a div que contem o botão e o icon de "Sair"
+// preciso que esse botão fique no final do ContainerNav 
 
 const ContainerNav = styled.div`
     display: flex;
@@ -61,7 +67,17 @@ const ContainerNav = styled.div`
     height: 100%;
 `
 
- // esse styled é a div que vai englobar o sidebar e o container da page (containerpage)
+// esse styled a div que contém todos os botões (NavLink e ExitContainer) que vão receber o router.
+
+const PageContents = styled.div`
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: #f00;
+`
+// essa parte precisa ficar em row com o sidebar e não em cima dele e 100% da tela a partir do sidebar
+
+
 
 export const Layout = () => {
     return (
@@ -98,8 +114,10 @@ export const Layout = () => {
                             <Button type="outlined" variation="alert" size="small">Lorem ipsum</Button>
                     </ExitContainer>
                 </ContainerNav>
-
             </Sidebar>
+            <PageContents>
+                <Card></Card>
+            </PageContents>
         </ContainerLayout>
     )
 
