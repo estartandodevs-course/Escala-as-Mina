@@ -125,3 +125,4 @@ export const Layout = () => {
 
 
 //tenho que pensar como vou fazer o navLink augeee
+// preciso colocar o ExitContainer no fim do ContainerNav e arrumar um jeito para o Sidebar e o PageContents fique em row, sem ficar em cima do outro, e o PageContents pegar 100% da tela a partir do Sidebar
