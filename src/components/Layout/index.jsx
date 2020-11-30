@@ -61,7 +61,7 @@ const ExitContainer = styled.div`
     }
 `
 // esse styledé a div que contem o botão e o icon de "Sair"
-// preciso que esse botão fique no final do ContainerNav 
+
 
 const ContainerNav = styled.div`
     display: flex;
