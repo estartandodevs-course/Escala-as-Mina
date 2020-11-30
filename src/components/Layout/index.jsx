@@ -11,7 +11,9 @@ import TimesCadastrados from "../../assets/icons/AvaliarJogadoras.svg";
 import UnsetIcon from "../../assets/icons/Group.svg";
 import ExitIcon from "../../assets/icons/Exit.svg";
 import { Card } from "../Card"
+import { NavLink as NavLinkRouter } from "react-router-dom";
 // Estou usando algumas tamanhos do figma e outros estou fazendo de olho pois não tem. Precisamos decidir o que fazer sobre a resposividade.
+// NavLink
 
 const Link = styled.div`
     display: flex;
@@ -22,12 +24,15 @@ const Link = styled.div`
     height: 239px;
 `
 //styled da div que contém os NavLink agrupados.
-const NavLink = styled.div`
+const NavLink = styled(NavLinkRouter)`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     img {
         margin-right: 15px;
+    }
+    &.actived {
+        background-color: #f00;
     }
 `
 // Styled a div que contem o button e o icon.
@@ -92,23 +97,23 @@ export const Layout = () => {
                 </ContainerLogo>
                 <ContainerNav>
                     <Link>
-                        <NavLink>
+                        <NavLink to="/Maria" activeClassName="actived">
                             <img src={Dashboard} alt="Icon Dashboard"/>
                             <Button type="oulined" variation="secondary" size="small"> Dashboard</Button>
                         </NavLink>
-                        <NavLink>
+                        <NavLink to="/" activeClassName="actived">
                             <img src={AdicionarRodada} alt="Icon Adicionar Rodada"/>
                             <Button type="oulined" variation="secondary" size="small">Adicionar Rodada</Button>
                         </NavLink>
-                        <NavLink>
+                        <NavLink to="/" activeClassName="actived">
                             <img src={TimesCadastrados} alt="Icon Times Cadastrados"/>
                             <Button type="oulined" variation="secondary" size="small">Times Cadastrados</Button>
                         </NavLink>
-                        <NavLink>
+                        <NavLink to="/" activeClassName="actived">
                             <img src={AvaliarTimesUsuarios} alt=""/>
                             <Button type="oulined" variation="secondary" size="small">Lorem ipsum</Button>
                         </NavLink>
-                        <NavLink>
+                        <NavLink to="/" activeClassName="actived">
                             <img src={UnsetIcon} alt=""/>
                             <Button type="oulined" variation="secondary" size="small">Lorem ipsum</Button>
                         </NavLink>
