@@ -9,7 +9,7 @@ import TimesCadastrados from "../../assets/icons/AvaliarJogadoras.svg";
 import RankingIcon from "../../assets/icons/Group.svg";
 import ExitIcon from "../../assets/icons/Exit.svg";
 import { Card } from "../Card";
-import {Link, NavLink, ContainerLayout, ContainerLogo, PageContents, ContainerNav, ExitContainer, Svg} from "./StyledLayout";
+import {Link, NavLink, ContainerLayout, ContainerLogo, PageContents, ContainerNav, ExitContainer, SvgDashboard} from "./StyledLayout";
 
 
 
@@ -64,7 +64,7 @@ export const Layout = () => {
                     {navItems.map((item, index, array) => {
                         return (
                             <NavLink to={item.to} activeClassName="actived">
-                                <Svg src={item.src} />
+                                <SvgDashboard src={item.src} />
                                 {/* <img src={item.src} alt={item.alt} /> */}
                                 <Button type="oulined" variation={index === array.lenght-1 ? "alert" : "secondary"} size="small">{item.text}</Button>
                             </NavLink>
