@@ -3,32 +3,32 @@ import styled from 'styled-components';
 export const StyledInput = styled.input`
   display: flex;
   align-items: center;
-  font-size: 16px;
-  color: #100928;
+  font-size: 1.6rem;
+  color: ${props => props.theme.pallete.gray.black};
   font-weight: 500;
   line-height: 19px;
   padding-left: 16px;
   height: 48px;
-  border: 2px solid #a0aec0;
+  border: 2px solid ${props => props.theme.pallete.gray.firstGray};
   border-radius: 10px;
 
   ::-webkit-inline-placeholder {
-    color: #e2e8f0;
+    color: ${props => props.theme.pallete.gray.secondGray};
   }
 
   &:focus {
     outline: none;
-    border: 2px solid #75f099;
+    border: 2px solid ${props => props.theme.pallete.secondary.main};
   }
 `;
 
 export const StyledDiv = styled.div`
   width: 1000px;
-  background-color: #e2e8f0;
-  border: 1px solid #a0aec0;
+  background-color: ${props => props.theme.pallete.gray.secondGray};
+  border: 1px solid ${props => props.theme.pallete.gray.firstGray};
   box-sizing: border-box;
   border-radius: 30px;
-  color: #100928;
+  color: ${props => props.theme.pallete.gray.black};
   font-weight: 100;
   font-size: 24px;
   line-height: 28px;
@@ -38,11 +38,11 @@ export const StyledDiv = styled.div`
   padding-right: 24px;
 
   ::-webkit-inline-placeholder {
-    color: #a0aec0;
+    color: ${props => props.theme.pallete.gray.firstGray};
   }
 
   &:focus-within {
-    border: 1px solid #100928;
+    border: 1px solid ${props => props.theme.pallete.gray.black};
   }
 `;
 
@@ -59,7 +59,7 @@ export const StyledInputSearch = styled.input`
   margin: 0px;
 
   margin- ::-webkit-inline-placeholder {
-    color: #e2e8f0;
+    color: ${props => props.theme.pallete.gray.secondGray};
   }
 `;
 
@@ -67,8 +67,8 @@ export const StyledInputOptions = styled.div`
   width: 692px;
   height: 40px;
   border-radius: 30px;
-  background-color: #100928;
-  border: 1px solid #75f099;
+  background-color: ${props => props.theme.pallete.gray.black};
+  border: 1px solid ${props => props.theme.pallete.secondary.main};
   display: flex;
   justify-self: center;
   align-items: center;
@@ -81,7 +81,7 @@ export const StyledInputOptions = styled.div`
     display: flex;
     align-items: center;
     color: rgba(0, 0, 0, 0.5);
-    background-color: #e2e8f0;
+    background-color: ${props => props.theme.pallete.gray.secondGray};
     border-radius: 2px;
     outline: none;
     border: none;
