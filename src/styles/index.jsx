@@ -5,9 +5,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
   }
-  #root {
+  :root {
     font-size: 10px;
-    height:100%
+  }
+  #root {
+    height: 100%;
   }
   body, html {
     height:100%;
