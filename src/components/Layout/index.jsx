@@ -47,6 +47,8 @@ const ContainerLogo = styled.div`
  const ContainerLayout = styled.div`
     display: flex;
     flex-direction: row;
+    height: 100%;
+
 
  `
  // esse styled é a div que vai englobar todo o Sidebar e o conteúdo da página da page (PageContents)
@@ -60,7 +62,7 @@ const ExitContainer = styled.div`
         margin-right: 15px;
     }
 `
-// esse styledé a div que contem o botão e o icon de "Sair"
+// esse styled é a div que contem o botão e o icon de "Sair"
 
 
 const ContainerNav = styled.div`
@@ -128,3 +130,26 @@ export const Layout = () => {
 
 //tenho que pensar como vou fazer o navLink augeee
 // preciso colocar o ExitContainer no fim do ContainerNav e arrumar um jeito para o Sidebar e o PageContents fique em row, sem ficar em cima do outro, e o PageContents pegar 100% da tela a partir do Sidebar
+
+// // const navItems = [
+//     {
+//         text: "Dashboard",
+//         src: dashboard
+//     },
+//     {
+//         text: "Adicionar Rodada",
+//         src: sumula
+//     },
+//     {
+//         text: "Times Cadastrados",
+//         src: jogadoras
+//     },
+//     {
+//         text: "Lorem ipsum",
+//         src: times
+//     },
+//     {
+//         text: "Lorem ipsum",
+//         src: group
+//     }
+// ]
