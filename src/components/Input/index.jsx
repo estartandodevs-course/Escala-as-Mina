@@ -31,7 +31,7 @@ export const InputSearch = (props) => {
 
   return (
     <StyledDiv>
-      <img src={LupaInput} alt={'Lupa'} />
+      <img src={LupaInput} alt="Lupa" />
       <StyledInputSearch type={'text'} placeholder={placeholder} />
       <Button variation="search" onClick={handleClick}>
         Pesquisar
@@ -64,8 +64,3 @@ export const InputPlayer = () => {
     </StyledInputOptions>
   );
 };
-
-// export const BText = (props) => {
-//   const { type, value } = props;
-//   return <StyledButton type={type} value={value} />;
-// };
