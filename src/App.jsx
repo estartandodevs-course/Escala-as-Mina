@@ -5,6 +5,7 @@ import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from './pages';
 
 function App() {
   return (
+    <ThemeProvider theme={theme}>
       <Router>
         <Switch>
           <Route path="/login">
