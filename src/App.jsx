@@ -1,7 +1,7 @@
-import { ThemeProvider } from "styled-components";
-import { theme } from "./styles";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Login, Rodadas, Jogadoras, Times, Ranking, Dashboard } from "./pages";
+import { ThemeProvider } from 'styled-components';
+import { theme } from './styles';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from './pages';
 
 function App() {
   return (
