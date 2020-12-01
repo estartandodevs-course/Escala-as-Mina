@@ -1,22 +1,21 @@
 import { Sidebar } from "../Sidebar";
-import { useTheme } from "styled-components";
 import { Button } from "../Button";
 import imgLogo from "../../assets/images/Logo.png";
-import Dashboard from "../../assets/icons/Dashboard.svg";
+import Dashboard from "../../assets/icons/DashboardItem.svg";
 import AdicionarRodada from "../../assets/icons/AdicionarSumula.svg";
 import AvaliarTimesUsuarios from "../../assets/icons/AvaliarTimesUsuarios.svg";
 import TimesCadastrados from "../../assets/icons/AvaliarJogadoras.svg";
 import RankingIcon from "../../assets/icons/Group.svg";
 import ExitIcon from "../../assets/icons/Exit.svg";
-import { Card } from "../Card";
-import {Link, NavLink, ContainerLayout, ContainerLogo, PageContents, ContainerNav, ExitContainer, SvgDashboard} from "./StyledLayout";
+import {NavLink, ContainerLayout, ContainerLogo, PageContents, ContainerNav, ExitContainer} from "./StyledLayout";
+import "typeface-roboto";
 
 
 
 const navItems = [
     {
         text: "Dashboard",
-        src: "dashboard",
+        src: Dashboard,
         to: "/",
         alt: "Icon Dashboard",
     },
@@ -44,12 +43,6 @@ const navItems = [
         to: "/ranking",
         alt: "Ranking Dashboard",
     },
-    {
-        text: "Sair",
-        src: ExitIcon,
-        to: "/login",
-        alt: "Exit Dashboard",
-    },
  ]
 
 
@@ -64,16 +57,17 @@ export const Layout = () => {
                     {navItems.map((item, index, array) => {
                         return (
                             <NavLink to={item.to} activeClassName="actived">
-                                <SvgDashboard src={item.src} />
-                                {/* <img src={item.src} alt={item.alt} /> */}
+                                <img src={item.src} alt={item.alt} />
+                                {/* <SvgDashboard src={item.src} /> */}
                                 <Button type="oulined" variation={index === array.lenght-1 ? "alert" : "secondary"} size="small">{item.text}</Button>
                             </NavLink>
                         ) 
                         })
                     }
-                    <Button variation="active" size="small">
-                        Aparece pfv
-                    </Button>
+                    <ExitContainer to="/" activeClassName="actived">
+                            <img src={ExitIcon} alt=""/>
+                            <Button type="outlined" variation="alert" size="small">Sair</Button>
+                    </ExitContainer>
                 </ContainerNav>
             </Sidebar>
             <PageContents>
@@ -84,7 +78,5 @@ export const Layout = () => {
 
 }
 
-
-//tenho que pensar como vou fazer o navLink augeee
 
 
