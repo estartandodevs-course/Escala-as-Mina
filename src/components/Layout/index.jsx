@@ -33,20 +33,21 @@ const navItems = [
     },
     {
         text: "Lorem",
-        src: AvaliarTimesUsuarios,
+        src: AvaliarTimesUsuarios, //AvaliarTimesUsuarios.svg
         to: "/times",
         alt: "Icon Dashboard",
     },
     {
         text: "Ranking",
-        src: RankingIcon,
+        src: RankingIcon, //Group.svg
         to: "/ranking",
         alt: "Ranking Dashboard",
     },
  ]
 
 
-export const Layout = () => {
+export const Layout = (props) => {
+    const { children } = props;
     return (
         <ContainerLayout>
             <Sidebar variation="left" >
@@ -58,7 +59,6 @@ export const Layout = () => {
                         return (
                             <NavLink to={item.to} activeClassName="actived">
                                 <img src={item.src} alt={item.alt} />
-                                {/* <SvgDashboard src={item.src} /> */}
                                 <Button type="oulined" variation={index === array.lenght-1 ? "alert" : "secondary"} size="small">{item.text}</Button>
                             </NavLink>
                         ) 
@@ -71,7 +71,7 @@ export const Layout = () => {
                 </ContainerNav>
             </Sidebar>
             <PageContents>
-
+                { children }
             </PageContents>
         </ContainerLayout>
     )
