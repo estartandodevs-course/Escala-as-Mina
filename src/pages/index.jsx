@@ -2,7 +2,7 @@ function Login() {
   return <h2>Login</h2>;
 }
 function Dashboard() {
-  return <h2>Dashboard</h2>
+  return <h2>Dashboard</h2>;
 }
 function Rodadas() {
   return <h2>Rodadas</h2>;
