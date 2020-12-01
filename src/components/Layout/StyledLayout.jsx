@@ -7,6 +7,11 @@ const NavLink = styled(NavLinkRouter)`
     justify-content: space-between;
     margin-bottom:15px;
     text-decoration:none; 
+
+    @media(max-width: 1400px){
+        margin-left: 25px;
+        margin-right: 25px;
+    }
     button {
         color: #75F099;
         font-style: normal;
@@ -15,9 +20,25 @@ const NavLink = styled(NavLinkRouter)`
         line-height: 14px;
         align-items: center;
         text-align: center;
+
+        @media(max-width: 1400px){
+            width: 77px;
+            height: 22px;
+            font-size: 7px;
+            margin-right: auto;
+        }
+
+        @media(max-width: 800px){
+            display: none;
+        }
     }
+
     img {
         margin-right: 15px;
+        @media(max-width: 800px){
+            align-item: center;
+            margin: auto;
+        }
     }
 
     &.actived button {
@@ -33,10 +54,24 @@ const NavLink = styled(NavLinkRouter)`
 
 const ContainerLogo = styled.div`
     img {
-        width: 169px;
-        height: 164px;
-        margin-top: 18px;
-        margin-bottom: 60px;
+            width: 169px;
+            height: 164px;
+            margin-top: 18px;
+            margin-bottom: 60px;
+
+            @media(max-width: 1400px){
+                width: 129px;
+                height: 124px;
+                margin-top: 18px;
+            }
+
+            @media(max-width: 800px){
+            width: 39px;
+            height: 34px;
+            margin-top: 18px;
+            margin-left: auto;
+            margin-right: auto;
+            }
     }
  `
   // Esse Container recebe a logo do DFF.
@@ -47,6 +82,10 @@ const ContainerLogo = styled.div`
     margin-top: auto;
     margin-bottom: 32px;
     text-decoration:none; 
+
+    @media(max-width: 1400px){
+        margin: auto;
+
     button {
         color: #EB4783;
         font-style: normal;
@@ -56,9 +95,24 @@ const ContainerLogo = styled.div`
         line-height: 14px;
         align-items: center;
         text-align: center;
+
+        @media(max-width: 1400px){
+            width: 110px;
+            height: 22px;
+            font-size: 10px;
+        }
+
+        @media(max-width: 800px){
+            display: none;
+        }
     }
     img {
         margin-right: 15px;
+        @media(max-width: 1400px){
+            margin-right: 5px;
+            width: 17.55px;
+            height: 20.08px;
+        }
     }
 
     &.actived button {
