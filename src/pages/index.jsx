@@ -1,6 +1,3 @@
-import { Layout } from "../components/Layout";
-
-
 function Login() {
   return <h2>Login</h2>;
 }
