@@ -5,15 +5,15 @@ const NavLink = styled(NavLinkRouter)`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom:15px;
-    text-decoration:none; 
+    margin-bottom: 15px;
+    text-decoration: none; 
 
     @media(max-width: 1400px){
         margin-left: 25px;
         margin-right: 25px;
     }
     button {
-        color: #75F099;
+        color: ${props => props.theme.pallete.secondary.main};
         font-style: normal;
         font-weight: 900;
         font-size: 12px;
@@ -81,14 +81,14 @@ const ContainerLogo = styled.div`
     flex-direction: row;
     margin-top: auto;
     margin-bottom: 32px;
-    text-decoration:none; 
+    text-decoration: none; 
 
     @media(max-width: 1400px){
         margin: auto;
     }
 
     button {
-        color: #EB4783;
+        color: ${props => props.theme.pallete.alert.main};
         font-style: normal;
         font-weight: 900;
         font-size: 12px;
@@ -119,7 +119,7 @@ const ContainerLogo = styled.div`
 
     &.actived button {
         background-image: ${props => props.theme.pallete.gradient.alert};
-        color: black;
+        color: ${props => props.theme.pallete.gray.black};
     }
 `
 // esse styled é a div que contem o botão e o icon de "Sair"
