@@ -3,46 +3,46 @@ import styled from 'styled-components';
 export const StyledInput = styled.input`
   display: flex;
   align-items: center;
-  font-size: 16px;
-  color: #100928;
+  font-size: 1.6rem;
+  color: ${props => props.theme.pallete.gray.black};
   font-weight: 500;
   line-height: 19px;
   padding-left: 16px;
   height: 48px;
-  border: 2px solid #a0aec0;
+  border: 2px solid ${props => props.theme.pallete.gray.firstGray};
   border-radius: 10px;
 
   ::-webkit-inline-placeholder {
-    color: #e2e8f0;
+    color: ${props => props.theme.pallete.gray.secondGray};
   }
 
   &:focus {
     outline: none;
-    border: 2px solid #75f099;
+    border: 2px solid ${props => props.theme.pallete.secondary.main};
   }
 `;
 
 export const StyledDiv = styled.div`
   width: 1000px;
-  background-color: #e2e8f0;
-  border: 1px solid #a0aec0;
+  background-color: ${props => props.theme.pallete.gray.secondGray};
+  border: 1px solid ${props => props.theme.pallete.gray.firstGray};
   box-sizing: border-box;
   border-radius: 30px;
-  color: #100928;
+  color: ${props => props.theme.pallete.gray.black};
   font-weight: 100;
   font-size: 24px;
   line-height: 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 30px;
+  padding-right: 24px;
 
   ::-webkit-inline-placeholder {
-    color: #a0aec0;
+    color: ${props => props.theme.pallete.gray.firstGray};
   }
 
-  &:focus {
-    border: 1px solid #100928;
+  &:focus-within {
+    border: 1px solid ${props => props.theme.pallete.gray.black};
   }
 `;
 
@@ -59,7 +59,7 @@ export const StyledInputSearch = styled.input`
   margin: 0px;
 
   margin- ::-webkit-inline-placeholder {
-    color: #e2e8f0;
+    color: ${props => props.theme.pallete.gray.secondGray};
   }
 `;
 
@@ -67,12 +67,11 @@ export const StyledInputOptions = styled.div`
   width: 692px;
   height: 40px;
   border-radius: 30px;
-  background-color: #100928;
-  border: 1px solid #75f099;
+  background-color: ${props => props.theme.pallete.gray.black};
+  border: 1px solid ${props => props.theme.pallete.secondary.main};
   display: flex;
-  justify-content: space-between;
+  justify-self: center;
   align-items: center;
-  justify-content: space-around;
 
   input {
     height: 22px;
@@ -82,10 +81,11 @@ export const StyledInputOptions = styled.div`
     display: flex;
     align-items: center;
     color: rgba(0, 0, 0, 0.5);
-    background-color: #e2e8f0;
+    background-color: ${props => props.theme.pallete.gray.secondGray};
     border-radius: 2px;
     outline: none;
     border: none;
+    margin-left: 15px;
 
     &:focus {
       outline: none;
@@ -96,7 +96,7 @@ export const StyledInputOptions = styled.div`
     width: 88px;
     -moz-appearance: textfield;
     appearance: textfield;
-    padding-left: 2px;
+    padding-left: 5px;
   }
 
   input.namePlayer {
@@ -110,24 +110,12 @@ export const StyledInputOptions = styled.div`
     margin: 0;
   }
 
-  img {
-    margin: 10px;
+  div {
+    margin-left: auto;
+    margin-right: 25px;
+
+    img {
+      margin: 10px;
+    }
   }
 `;
-
-export const StyledButton = styled.input.attrs({ type: 'submit' })`
-  width: 107px;
-  height: 28px;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 19px;
-  text-align: center;
-  background: #100928;
-  border-radius: 30px;
-  color: rgba(27, 230, 209, 1);
-  margin-right: 24px;
-`;
-
-// export const StyledInputSearch = styled(StyledInput)`
-//   background-color: #e2e8f0;
-// `;
