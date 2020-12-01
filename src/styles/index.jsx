@@ -63,14 +63,6 @@ export const theme = {
         width: "1000px",
         height: "32px",
       },
-      search: {
-        width: "107px",
-        height: "28px",
-      },
-      icon: {
-        small: "28px",
-        normal: "44px",
-      },
     },
 
     card: {
@@ -85,6 +77,21 @@ export const theme = {
       large: {
         width: "907px",
         height: "652px",
+      },
+    },
+
+    list: {
+      ranking: {
+        width: "1048px",
+        height: "64px",
+      },
+      player: {
+        width: "692px",
+        height: "40px",
+      },
+      dashboard: {
+        width: "639px",
+        height: "32px",
       },
     },
   },

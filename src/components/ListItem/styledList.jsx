@@ -2,20 +2,14 @@ import styled, { css } from "styled-components";
 
 const stylingObject = {
   ranking: {
-    width: "1048px",
-    height: "64px",
     padding: "0 40px",
     columns: "80.1% 10.8% 1fr",
   },
   player: {
-    width: "692px",
-    height: "40px",
     padding: "0 15px",
     columns: "4.7% 6.9% 74.5% 4.7% 1fr",
   },
   dashboard: {
-    width: "639px",
-    height: "32px",
     padding: "0 13px",
     columns: "7.9% 38% 5.9% 37% 7.9%",
   },
@@ -37,6 +31,7 @@ export const StyledListItem = styled.li.attrs((props) => ({
 // deals with centering item and aplying styles to the container
 export const FlexContainer = styled.div.attrs((props) => ({
   ...stylingObject[props.type],
+  ...props.theme.dimensions.list[props.type],
 }))`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
