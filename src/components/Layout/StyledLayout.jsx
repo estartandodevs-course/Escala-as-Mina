@@ -85,6 +85,7 @@ const ContainerLogo = styled.div`
 
     @media(max-width: 1400px){
         margin: auto;
+    }
 
     button {
         color: #EB4783;
@@ -108,6 +109,7 @@ const ContainerLogo = styled.div`
     }
     img {
         margin-right: 15px;
+
         @media(max-width: 1400px){
             margin-right: 5px;
             width: 17.55px;
@@ -120,7 +122,7 @@ const ContainerLogo = styled.div`
         color: black;
     }
 `
-// esse styledé a div que contem o botão e o icon de "Sair"
+// esse styled é a div que contem o botão e o icon de "Sair"
 
 
  const ContainerLayout = styled.div`
