@@ -8,7 +8,7 @@ import TimesCadastrados from "../../assets/icons/AvaliarJogadoras.svg";
 import RankingIcon from "../../assets/icons/Group.svg";
 import ExitIcon from "../../assets/icons/Exit.svg";
 import {NavLink, ContainerLayout, ContainerLogo, PageContents, ContainerNav, ExitContainer} from "./StyledLayout";
-import "typeface-roboto";
+import 'fontsource-roboto/latin.css';
 
 
 
