@@ -63,6 +63,29 @@ export const theme = {
         width: "1000px",
         height: "32px",
       },
+      search: {
+        width: "107px",
+        height: "28px",
+      },
+      icon: {
+        small: "28px",
+        normal: "44px",
+      },
+    },
+
+    card: {
+      small: {
+        width: "327px",
+        height: "231px",
+      },
+      normal: {
+        width: "687px",
+        height: "494px",
+      },
+      large: {
+        width: "907px",
+        height: "652px",
+      },
     },
   },
 };
