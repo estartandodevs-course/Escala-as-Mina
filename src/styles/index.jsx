@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
   *, body {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
   }
   :root {
     font-size: 10px;
@@ -42,6 +43,14 @@ export const theme = {
 
   dimensions: {
     button: {
+      search: {
+        width: "107px",
+        height: "28px",
+      },
+      icon: {
+        small: "28px",
+        normal: "44px",
+      },
       small: {
         width: "165px",
         height: "32px",
@@ -53,14 +62,6 @@ export const theme = {
       large: {
         width: "1000px",
         height: "32px",
-      },
-      search: {
-        width: "107px",
-        height: "28px",
-      },
-      icon: {
-        small: "28px",
-        normal: "44px",
       },
     },
   },

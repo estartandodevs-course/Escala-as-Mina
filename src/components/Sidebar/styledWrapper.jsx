@@ -10,6 +10,7 @@ const Wrapper = styled.aside`
   height: 100vh;
   border-radius: ${(props) => props.styling.borderRadius};
   ${(props) => props.styling.variation}: 0;
+  color: white;
 `;
 
 export { Wrapper };
