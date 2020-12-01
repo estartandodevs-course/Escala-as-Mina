@@ -19,7 +19,6 @@ export const StyledListItem = styled.li.attrs((props) => ({
   ...stylingObject[props.type],
 }))`
   width: 100%;
-  color: white; //placeholder
   display: grid;
   grid-template-columns: ${(props) => props.columns};
   & * {

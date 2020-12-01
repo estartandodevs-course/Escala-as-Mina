@@ -24,7 +24,8 @@ export const Span = styled.span`
   color: ${(props) => props.color || props.theme.pallete.gray.white};
   font-size: ${(props) => props.size || "1rem"};
   font-weight: ${(props) => props.weight || "500"};
-  font-family: ${(props) => props.font || "Raleway"};
+  font-family: ${(props) =>
+    props.font || "Raleway"}; //this is broken. @Sarah, help
 
   ${(props) =>
     props.gradient &&

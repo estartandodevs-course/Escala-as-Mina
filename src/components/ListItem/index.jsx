@@ -4,6 +4,7 @@ import { Button, InputPlayer, Typography } from "../";
 import declineButton from "../../assets/icons/DeclineBtn.svg";
 import acceptButton from "../../assets/icons/AcceptBtn.svg";
 
+//placeholder functions
 function accept() {
   console.log("aceito");
 }
@@ -53,6 +54,7 @@ function handleList(item, index, type, theme) {
     return ranking(item, index, theme);
   }
 }
+
 function ranking(item, index, theme) {
   if (index === 0) {
     const elements = item.split("-");
@@ -102,9 +104,17 @@ function ranking(item, index, theme) {
 
 function player(item, index, theme) {
   if (index < 2) {
-    return <Typography color={theme.pallete.secondary.main}>{item}</Typography>;
+    return (
+      <Typography size="16px" weight="700" color={theme.pallete.secondary.main}>
+        {item}
+      </Typography>
+    );
   } else {
-    return <Typography color={theme.pallete.gray.white}>{item}</Typography>;
+    return (
+      <Typography size="16px" weight="700" color={theme.pallete.gray.white}>
+        {item}
+      </Typography>
+    );
   }
 }
 
@@ -113,6 +123,8 @@ function dashboard(item, index, theme) {
     case 0:
       return (
         <Typography
+          size="16px"
+          weight="700"
           color={
             Number(item.replace("%", "")) > 50
               ? theme.pallete.secondary.main
@@ -124,21 +136,32 @@ function dashboard(item, index, theme) {
       );
 
     case 1:
-      return <Typography>{item}</Typography>;
+      return <Typography size="16px">{item}</Typography>;
 
     case 2:
       return (
-        <Typography align="center" color={theme.pallete.secondary.main}>
+        <Typography
+          size="16px"
+          weight="700"
+          align="center"
+          color={theme.pallete.secondary.main}
+        >
           {item}
         </Typography>
       );
 
     case 3:
-      return <Typography align="right">{item}</Typography>;
+      return (
+        <Typography size="16px" align="right">
+          {item}
+        </Typography>
+      );
 
     case 4:
       return (
         <Typography
+          size="16px"
+          weight="700"
           color={
             Number(item.replace("%", "")) > 50
               ? theme.pallete.secondary.main
