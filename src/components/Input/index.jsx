@@ -1,68 +1,63 @@
-import React from 'react';
+import React from "react";
 import {
+  StyledLabel,
   StyledDiv,
   StyledInput,
   StyledInputSearch,
-  StyledInputOptions,
-  StyledInputNumber,
-  StyledInputName,
-} from './styledInput';
-import LupaInput from '../../assets/icons/LupaInput.svg';
-import AcceptBtn from '../../assets/icons/AcceptBtn.svg';
-import DeclineBtn from '../../assets/icons/DeclineBtn.svg';
-import { Button } from '../Button';
+  StyledInputPlayer,
+} from "./styledInput";
+import LupaInput from "../../assets/icons/LupaInput.svg";
+import { Button, Typography } from "../";
+import { useTheme } from "styled-components";
 
 export const Input = (props) => {
   const { label, type, placeholder } = props;
 
   return (
     <form>
-      <label>{label}</label>
+      <StyledLabel>{label}</StyledLabel>
       <StyledInput type={type} placeholder={placeholder} />
     </form>
   );
 };
 
-export const InputSearch = (props) => {
-  const { placeholder } = props;
+//placeholder function
+function handleClick(e) {
+  e.preventDefault();
+  console.log("O link foi clicado.");
+}
 
-  function handleClick(e) {
-    e.preventDefault();
-    console.log('O link foi clicado.');
-  }
+export const InputSearch = (props) => {
+  const { placeholder, onClick = handleClick } = props;
+  const theme = useTheme();
 
   return (
     <StyledDiv>
       <img src={LupaInput} alt="Lupa" />
-      <StyledInputSearch type={'text'} placeholder={placeholder} />
-      <Button variation="search" onClick={handleClick}>
-        Pesquisar
+      <StyledInputSearch type={"text"} placeholder={placeholder} />
+      <Button variation="search" onClick={onClick}>
+        <Typography type="span" color={theme.pallete.secondary.main}>
+          Pesquisar
+        </Typography>
       </Button>
     </StyledDiv>
   );
 };
 
-export const InputNumberPlayer = () => {
-  return <StyledInputNumber type="number" placeholder="Nº da jogadora" />;
+const playerObject = {
+  number: {
+    placeholder: "Nº da jogadora",
+    width: "140px",
+  },
+  name: {
+    placeholder: "Nome da jogadora",
+    width: "453px",
+  },
 };
+export const InputPlayer = (props) => {
+  const { type, placeholder } = props;
 
-export const InputNamePlayer = () => {
-  return <StyledInputName type="text" placeholder="Nome da jogadora" />;
-};
-
-export const InputPlayer = () => {
   return (
-    <StyledInputOptions>
-      <InputNumberPlayer />
-      <InputNamePlayer />
-      <div>
-        <a href="/">
-          <img src={AcceptBtn} alt="Accept"></img>
-        </a>
-        <a href="/">
-          <img src={DeclineBtn} alt="Decline"></img>
-        </a>
-      </div>
-    </StyledInputOptions>
+    <StyledInputPlayer placeholder={placeholder} {...playerObject[type]} />
   );
 };

@@ -1,4 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+export const StyledLabel = styled.label`
+  font-weight: 500;
+  font-size: 24px;
+  color: ${(props) => props.theme.pallete.secondary.lighter};
+  margin-bottom: 8px;
+`;
 
 export const StyledInput = styled.input`
   display: flex;
@@ -24,6 +31,7 @@ export const StyledInput = styled.input`
 
 export const StyledDiv = styled.div`
   width: 1000px;
+  height: 44px;
   background-color: ${(props) => props.theme.pallete.gray.secondGray};
   border: 1px solid ${(props) => props.theme.pallete.gray.firstGray};
   box-sizing: border-box;
@@ -44,6 +52,12 @@ export const StyledDiv = styled.div`
   &:focus-within {
     border: 1px solid ${(props) => props.theme.pallete.gray.black};
   }
+
+  img {
+    width: 20px;
+    height: 20px;
+    margin-left: 30px;
+  }
 `;
 
 export const StyledInputSearch = styled.input`
@@ -58,67 +72,32 @@ export const StyledInputSearch = styled.input`
   padding-left: 26px;
   margin: 0px;
 
-  margin- ::-webkit-inline-placeholder {
+  ::-webkit-inline-placeholder {
     color: ${(props) => props.theme.pallete.gray.secondGray};
   }
 `;
 
-export const StyledInputOptions = styled.div`
-  width: 692px;
+export const StyledInputPlayer = styled.input`
+  width: ${(props) => props.width};
   height: 40px;
   border-radius: 30px;
-  background-color: ${(props) => props.theme.pallete.gray.black};
+  background-color: ${(props) => props.theme.pallete.gray.white};
   border: 1px solid ${(props) => props.theme.pallete.secondary.main};
-  display: flex;
-  justify-self: center;
-  align-items: center;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: rgba(0, 0, 0, 0.5);
+  outline: none;
+  padding-left: 30px;
+  font-size: 1.2rem;
 
-  input {
-    height: 22px;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 14px;
-    display: flex;
-    align-items: center;
-    color: rgba(0, 0, 0, 0.5);
-    background-color: ${(props) => props.theme.pallete.gray.secondGray};
-    border-radius: 2px;
+  &:focus {
     outline: none;
-    border: none;
-    margin-left: 15px;
-    background:  ${(props) => props.theme.pallete.gray.white};
-    border: 1px solid ${(props) => props.theme.pallete.secondary.main};
-    box-sizing: border-box;
-    border-radius: 30px;
-
-    &:focus {
-      outline: none;
-    }
   }
 
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
-
-  div {
-    margin-left: auto;
-    margin-right: 15px;
-
-    img {
-      margin: 10px;
-    }
-  }
-`;
-
-export const StyledInputNumber = styled.input`
-  width: 140px;
-  text-align: center;
-  appearance: textfield;
-`;
-
-export const StyledInputName = styled.input`
-  width: 400px;
-  padding-left: 20px;
 `;
