@@ -4,6 +4,8 @@ import {
   StyledInput,
   StyledInputSearch,
   StyledInputOptions,
+  StyledInputNumber,
+  StyledInputName,
 } from './styledInput';
 import LupaInput from '../../assets/icons/LupaInput.svg';
 import AcceptBtn from '../../assets/icons/AcceptBtn.svg';
@@ -40,19 +42,19 @@ export const InputSearch = (props) => {
   );
 };
 
+export const InputNumberPlayer = () => {
+  return <StyledInputNumber type="number" placeholder="Nº da jogadora" />;
+};
+
+export const InputNamePlayer = () => {
+  return <StyledInputName type="text" placeholder="Nome da jogadora" />;
+};
+
 export const InputPlayer = () => {
   return (
     <StyledInputOptions>
-      <input
-        className="numberPlayer"
-        type="number"
-        placeholder="Nº da jogadora"
-      />
-      <input
-        className="namePlayer"
-        type="text"
-        placeholder="Nome da jogadora"
-      />
+      <InputNumberPlayer />
+      <InputNamePlayer />
       <div>
         <a href="/">
           <img src={AcceptBtn} alt="Accept"></img>

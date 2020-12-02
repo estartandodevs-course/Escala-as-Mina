@@ -4,31 +4,31 @@ export const StyledInput = styled.input`
   display: flex;
   align-items: center;
   font-size: 1.6rem;
-  color: ${props => props.theme.pallete.gray.black};
+  color: ${(props) => props.theme.pallete.gray.black};
   font-weight: 500;
   line-height: 19px;
   padding-left: 16px;
   height: 48px;
-  border: 2px solid ${props => props.theme.pallete.gray.firstGray};
+  border: 2px solid ${(props) => props.theme.pallete.gray.firstGray};
   border-radius: 10px;
 
   ::-webkit-inline-placeholder {
-    color: ${props => props.theme.pallete.gray.secondGray};
+    color: ${(props) => props.theme.pallete.gray.secondGray};
   }
 
   &:focus {
     outline: none;
-    border: 2px solid ${props => props.theme.pallete.secondary.main};
+    border: 2px solid ${(props) => props.theme.pallete.secondary.main};
   }
 `;
 
 export const StyledDiv = styled.div`
   width: 1000px;
-  background-color: ${props => props.theme.pallete.gray.secondGray};
-  border: 1px solid ${props => props.theme.pallete.gray.firstGray};
+  background-color: ${(props) => props.theme.pallete.gray.secondGray};
+  border: 1px solid ${(props) => props.theme.pallete.gray.firstGray};
   box-sizing: border-box;
   border-radius: 30px;
-  color: ${props => props.theme.pallete.gray.black};
+  color: ${(props) => props.theme.pallete.gray.black};
   font-weight: 100;
   font-size: 24px;
   line-height: 28px;
@@ -38,11 +38,11 @@ export const StyledDiv = styled.div`
   padding-right: 24px;
 
   ::-webkit-inline-placeholder {
-    color: ${props => props.theme.pallete.gray.firstGray};
+    color: ${(props) => props.theme.pallete.gray.firstGray};
   }
 
   &:focus-within {
-    border: 1px solid ${props => props.theme.pallete.gray.black};
+    border: 1px solid ${(props) => props.theme.pallete.gray.black};
   }
 `;
 
@@ -59,7 +59,7 @@ export const StyledInputSearch = styled.input`
   margin: 0px;
 
   margin- ::-webkit-inline-placeholder {
-    color: ${props => props.theme.pallete.gray.secondGray};
+    color: ${(props) => props.theme.pallete.gray.secondGray};
   }
 `;
 
@@ -67,8 +67,8 @@ export const StyledInputOptions = styled.div`
   width: 692px;
   height: 40px;
   border-radius: 30px;
-  background-color: ${props => props.theme.pallete.gray.black};
-  border: 1px solid ${props => props.theme.pallete.secondary.main};
+  background-color: ${(props) => props.theme.pallete.gray.black};
+  border: 1px solid ${(props) => props.theme.pallete.secondary.main};
   display: flex;
   justify-self: center;
   align-items: center;
@@ -81,27 +81,19 @@ export const StyledInputOptions = styled.div`
     display: flex;
     align-items: center;
     color: rgba(0, 0, 0, 0.5);
-    background-color: ${props => props.theme.pallete.gray.secondGray};
+    background-color: ${(props) => props.theme.pallete.gray.secondGray};
     border-radius: 2px;
     outline: none;
     border: none;
     margin-left: 15px;
+    background: #ffffff;
+    border: 1px solid ${(props) => props.theme.pallete.secondary.main};
+    box-sizing: border-box;
+    border-radius: 30px;
 
     &:focus {
       outline: none;
     }
-  }
-
-  input.numberPlayer {
-    width: 88px;
-    -moz-appearance: textfield;
-    appearance: textfield;
-    padding-left: 5px;
-  }
-
-  input.namePlayer {
-    width: 356px;
-    padding-left: 12px;
   }
 
   input[type='number']::-webkit-inner-spin-button,
@@ -112,10 +104,22 @@ export const StyledInputOptions = styled.div`
 
   div {
     margin-left: auto;
-    margin-right: 25px;
+    margin-right: 15px;
 
     img {
       margin: 10px;
     }
   }
+`;
+
+export const StyledInputNumber = styled.input`
+  width: 140px;
+  text-align: center;
+  -moz-appearance: textfield;
+  appearance: textfield;
+`;
+
+export const StyledInputName = styled.input`
+  width: 400px;
+  padding-left: 20px;
 `;
