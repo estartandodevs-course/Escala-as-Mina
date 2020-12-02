@@ -115,7 +115,6 @@ export const StyledInputOptions = styled.div`
 export const StyledInputNumber = styled.input`
   width: 140px;
   text-align: center;
-  -moz-appearance: textfield;
   appearance: textfield;
 `;
 
