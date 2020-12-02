@@ -8,7 +8,13 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 10px;
   }
-`;
+  #root {
+    height: 100%;
+  }
+  body, html {
+    height:100%;
+  }
+`
 
 export const theme = {
   pallete: {
