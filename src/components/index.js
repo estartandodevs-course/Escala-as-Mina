@@ -1,4 +1,6 @@
 import {Sidebar} from './Sidebar';
-import {Button} from './Button'
+import {Button} from './Button';
+import {Input, InputPlayer, InputSearch} from './Input';
+import {Layout} from './Layout';
 
-export {Sidebar, Button}
+export {Sidebar, Button, Input, InputPlayer, InputSearch}
