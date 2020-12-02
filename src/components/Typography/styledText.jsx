@@ -33,9 +33,6 @@ export const Span = styled.span`
       background-image: ${props.theme.pallete.gradient.main};
       background-size: 100%;
       background-repeat: repeat;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -moz-background-clip: text;
-      -moz-text-fill-color: trasparent;
+      text-fill-color: transparent;
     `}
 `;
