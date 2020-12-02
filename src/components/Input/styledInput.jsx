@@ -86,7 +86,7 @@ export const StyledInputOptions = styled.div`
     outline: none;
     border: none;
     margin-left: 15px;
-    background: #ffffff;
+    background:  ${(props) => props.theme.pallete.gray.white};
     border: 1px solid ${(props) => props.theme.pallete.secondary.main};
     box-sizing: border-box;
     border-radius: 30px;
