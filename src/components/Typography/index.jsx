@@ -1,33 +1,11 @@
 import { Paragraph, Span } from "./styledText";
 
 export const Typography = (props) => {
-  const { type, color, align, gradient, children, size, weight, font } = props;
+  const { type, children, ...restProps } = props;
 
   if (type === "span") {
-    return (
-      <Span
-        color={color}
-        align={align}
-        gradient={gradient}
-        size={size}
-        weight={weight}
-        font={font}
-      >
-        {children}
-      </Span>
-    );
+    return <Span {...restProps}>{children}</Span>;
   } else {
-    return (
-      <Paragraph
-        color={color}
-        align={align}
-        gradient={gradient}
-        size={size}
-        weight={weight}
-        font={font}
-      >
-        {children}
-      </Paragraph>
-    );
+    return <Paragraph {...restProps}>{children}</Paragraph>;
   }
 };
