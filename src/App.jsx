@@ -2,11 +2,15 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from './pages';
+import { LoginLayout } from './pages/login';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
+
+      <LoginLayout></LoginLayout>
+      
+      {/* <Router>
         <Switch>
           <Route path="/login">
             <Login />
@@ -32,7 +36,7 @@ function App() {
             <Ranking />
           </Route>
         </Switch>
-      </Router>
+      </Router> */}
     </ThemeProvider>
   );
 }
