@@ -123,7 +123,7 @@ function dashboard(item, index, theme) {
     case 0:
       return (
         <Typography
-          size="16px"
+          size="1.2rem"
           weight="700"
           color={
             Number(item.replace("%", "")) > 50
@@ -136,12 +136,12 @@ function dashboard(item, index, theme) {
       );
 
     case 1:
-      return <Typography size="16px">{item}</Typography>;
+      return <Typography size="1.2rem">{item}</Typography>;
 
     case 2:
       return (
         <Typography
-          size="16px"
+          size="1.2rem"
           weight="700"
           align="center"
           color={theme.pallete.secondary.main}
@@ -152,7 +152,7 @@ function dashboard(item, index, theme) {
 
     case 3:
       return (
-        <Typography size="16px" align="right">
+        <Typography size="1.2rem" align="right">
           {item}
         </Typography>
       );
@@ -160,7 +160,7 @@ function dashboard(item, index, theme) {
     case 4:
       return (
         <Typography
-          size="16px"
+          size="1.2rem"
           weight="700"
           color={
             Number(item.replace("%", "")) > 50

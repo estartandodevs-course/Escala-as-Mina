@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { getV } from "../../styles";
 
 const stylingObject = {
   ranking: {
@@ -11,7 +12,7 @@ const stylingObject = {
   },
   dashboard: {
     padding: "0 13px",
-    columns: "7.9% 38% 5.9% 37% 7.9%",
+    columns: "7.9% 38% 7% 37% 1fr",
   },
 };
 
@@ -32,8 +33,8 @@ export const FlexContainer = styled.div.attrs((props) => ({
   ...stylingObject[props.type],
   ...props.theme.dimensions.list[props.type],
 }))`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: ${(props) => getV(props.width, "w")};
+  height: ${(props) => getV(props.height, "h")};
   padding: ${(props) => props.padding};
   display: flex;
   align-items: center;
@@ -41,6 +42,7 @@ export const FlexContainer = styled.div.attrs((props) => ({
   border-radius: 30px;
   box-sizing: border-box;
   background-color: ${(props) => props.theme.pallete.gray.black};
+  margin-bottom: 8px;
   ${(props) =>
     props.type !== "dashboard" &&
     css`

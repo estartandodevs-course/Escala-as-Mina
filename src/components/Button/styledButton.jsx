@@ -6,6 +6,9 @@ const BaseButton = styled.button`
   justify-content: center;
   border: none;
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const RectangularButton = styled(BaseButton)`
@@ -14,9 +17,6 @@ const RectangularButton = styled(BaseButton)`
   width: ${({ styling }) => styling.width};
   height: ${({ styling }) => styling.height};
 
-  &:focus {
-    outline: none;
-  }
   ${(props) =>
     props.type === "solid" //this ternary deals with solid/outlined types
       ? css`
@@ -43,6 +43,7 @@ const RectangularButton = styled(BaseButton)`
 
 const IconButton = styled(BaseButton)`
   border-radius: 50%;
+  //I have to take this complexity out of here. styled component is for styling, logical stuff isn't supposed to be here
   width: ${(props) =>
     props.rounded ? props.styling.normal : props.styling.small};
   height: ${(props) =>
