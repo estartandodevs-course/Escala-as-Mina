@@ -16,7 +16,7 @@ export const Typography = (props) => {
         {children}
       </Tittle>
     );
-  } else (if type === 'h2' || type === 'h3') {
+  } else if (type === 'h2' || type === 'h3') {
     return (
       <Subtitle type={type} {...restProps}>
       {children}
