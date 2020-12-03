@@ -1,6 +1,7 @@
 import { Wrapper } from "./styledWrapper";
 import { useTheme } from "styled-components";
 
+
 export const Sidebar = (props) => {
   const { variation = "left" } = props; //variation says which sidebar is
   const themeContext = useTheme();
