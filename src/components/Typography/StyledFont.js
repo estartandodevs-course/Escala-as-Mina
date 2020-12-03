@@ -3,7 +3,7 @@ import 'fontsource-raleway';
 import 'fontsource-poppins';
 import 'fontsource-roboto';
 
-export const Tittle = styled.h1`
+export const Title = styled.h1`
   text-align: ${(props) => props.align || 'center'};
   color: ${(props) => props.color || props.theme.pallete.gray.white};
   font-size: ${(props) => props.size || '2.75rem'};
