@@ -44,6 +44,9 @@ export const theme = {
       hover: 'linear-gradient(90deg, #0AC2AF 0%, #0DF250 100%)',
       alert: 'linear-gradient(270deg, #EB4783 0%, #EB4747 100%)',
     },
+    background: {
+      blue: '#120E29',
+    }
   },
 
   dimensions: {
