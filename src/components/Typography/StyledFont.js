@@ -5,9 +5,17 @@ import 'fontsource-roboto';
 
 export const Title = styled.h1`
   text-align: ${(props) => props.align || 'center'};
-  color: ${(props) => props.color || props.theme.pallete.gray.white};
+  color: ${(props) => props.color || props.theme.pallete.gray.thirdGray};
   font-size: ${(props) => props.size || '2.75rem'};
-  font-weight: ${(props) => (props.type !== 'h2' ? '700' : '600')};
+  font-weight: '700';
+  font-family: 'Raleway';
+`;
+
+export const Title = styled.h2`
+  text-align: ${(props) => props.align || 'center'};
+  color: ${(props) => props.color || props.theme.pallete.gray.thirdGray};
+  font-size: ${(props) => props.size || '2.4rem'};
+  font-weight: ${(props) => (props.type !== 'h2' ? '600' : '500')};
   font-family: ${(props) => (props.type === 'h3' ? 'Poppins' : 'Raleway')};
 `;
 
