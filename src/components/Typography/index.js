@@ -1,35 +1,31 @@
-import { Tittle, Span, Paragraph } from './StyledFont';
+import { Title, Subtitle, Span, Paragraph } from './StyledFont';
 
 export const Typography = (props) => {
-  const { type, color, align, gradient, children, size, weight, font } = props;
+  const { type, children, ...restProps  } = props;
   if (type === 'span') {
     return (
       <Span
-        color={color}
-        align={align}
-        gradient={gradient}
-        size={size}
-        weight={weight}
-        font={font}
+      {...restProps}
       >
         {children}
       </Span>
     );
-  } else if (type === 'h1' || type === 'h2' || type === 'h3') {
+  } else if (type === 'h1') {
     return (
-      <Tittle type={type} color={color} align={align} size={size}>
+      <Title type={type} {...restProps}>
         {children}
       </Tittle>
     );
-  } else {
+  } else (if type === 'h2' || type === 'h3') {
+    return (
+      <Subtitle type={type} {...restProps}>
+      {children}
+      </Subtitle>
+    );
+  else {
     return (
       <Paragraph
-        color={color}
-        align={align}
-        gradient={gradient}
-        size={size}
-        weight={weight}
-        font={font}
+        {...restProps}
       >
         {children}
       </Paragraph>
