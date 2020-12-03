@@ -1,7 +1,8 @@
 import { Card, ListItem, Typography, Button } from "../../components";
-import { partidas } from "../../mocks";
-import styled from "styled-components";
+import { getItems } from "../../mocks";
+import styled, { useTheme } from "styled-components";
 import { getV } from "../../styles";
+import { useState } from "react";
 
 const Header = styled.header`
   max-height: 200px;
@@ -22,15 +23,35 @@ const FlexContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 `;
-// We'll use this function if backend returns all items
-// function divideList(sortedList, division, numberPerDivision = 8) {
-//   const totalDivisions = Math.ceil(sortedList.lenght / numberPerDivision);
-//   if (division > totalDivisions) division = totalDivisions;
-//   const startIndex = numberPerDivision * division;
-//   const stopIndex = numberPerDivision * (division + 1);
-//   return sortedList.slice(startIndex, stopIndex);
-// }
+function getButtons(page, totalPages) {
+  //   <Button
+  //   size={getV("32px", "h")}
+  //   type="icon"
+  //   variation="search"
+  //   rounded
+  // >
+  //   <Typography color={theme.pallete.secondary.main}>1</Typography>
+  // </Button>
+  // <Button
+  //   size={getV("32px", "h")}
+  //   type="icon"
+  //   variation="secondary"
+  //   rounded
+  // >
+  //   <Typography color={theme.pallete.gray.black}>2</Typography>
+  // </Button>
+  // <Button
+  //   size={getV("32px", "h")}
+  //   type="icon"
+  //   variation="search"
+  //   rounded
+  // >
+  //   3
+  // </Button>
+}
 function checkTeamsNameLenght(listOfTeams) {
   const checkTeamName = (listOfGame) => {
     return listOfGame.map((item) => {
@@ -44,15 +65,20 @@ function checkTeamsNameLenght(listOfTeams) {
   return listOfTeams.map((item) => checkTeamName(item));
 }
 
-const partidasCheckadas = checkTeamsNameLenght(partidas);
-
-console.log(partidasCheckadas);
 export const Dashboard = (props) => {
+  const theme = useTheme();
+  const [page, setPage] = useState(1);
+
+  let [totalPages, matches] = getItems(page);
+  const matchesChecked = checkTeamsNameLenght(matches);
+
+  console.log(page);
+
   return (
     <GlobalWrapper>
       <Header>
         <Typography
-          color={(props) => props.theme.pallete.gray.thirdGray}
+          color={theme.pallete.gray.thirdGray}
           size="44px"
           weight="bold"
           type="h1"
@@ -63,17 +89,42 @@ export const Dashboard = (props) => {
       <GridWrapper>
         <Card size="normal" area="a">
           <ul>
-            {partidasCheckadas.map((item) => (
-              <ListItem type="dashboard">{item}</ListItem>
+            {matchesChecked.map((item, index) => (
+              <ListItem key={("partida", index)} type="dashboard">
+                {item}
+              </ListItem>
             ))}
             <FlexContainer>
-              <p>-</p>
-              <p>Primeira Página</p>
-              <Button type="icon" variation="primary" rounded>
-                1
-              </Button>
-              <p>Última Página</p>
-              <p>-</p>
+              {page !== 0 ? (
+                <Button type="icon" onClick={() => setPage(page - 1)}>
+                  {"<"}
+                </Button>
+              ) : (
+                ""
+              )}
+              {page !== 0 ? (
+                <Button type="icon" onClick={() => setPage(0)}>
+                  Primeira Página
+                </Button>
+              ) : (
+                ""
+              )}
+              {page !== 0 ? <p>...</p> : ""}${getButtons(page, totalPages)}
+              {page !== totalPages ? <p>...</p> : ""}
+              {page !== totalPages ? (
+                <Button type="icon" onClick={() => setPage(totalPages)}>
+                  Última Página
+                </Button>
+              ) : (
+                ""
+              )}
+              {page !== totalPages ? (
+                <Button type="icon" onClick={() => setPage(page + 1)}>
+                  {">"}
+                </Button>
+              ) : (
+                ""
+              )}
             </FlexContainer>
           </ul>
         </Card>

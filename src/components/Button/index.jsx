@@ -1,5 +1,6 @@
 import { RectangularButton, IconButton } from "./styledButton";
 import { useTheme } from "styled-components";
+import { variationStyle } from "../../styles";
 
 export const Button = (props) => {
   // props.type can be solid, outlined or icon
@@ -8,48 +9,31 @@ export const Button = (props) => {
 
   const { onClick, variation, children, type = "solid" } = props;
   let { size } = props;
-  if (variation === "search") size = variation;
-  if (type === "icon") {
-    size = type;
-  }
+  let dimensions = {};
   const theme = useTheme();
-  const variationStyle = {
-    //this can't be outside Button because it depends on theme
-    primary: {
-      background: theme.pallete.primary.main,
-      hoverBackground: theme.pallete.primary.lighter,
-    },
-    secondary: {
-      background: theme.pallete.secondary.main,
-      hoverBackground: theme.pallete.secondary.main,
-    },
-    disabled: {
-      background: theme.pallete.gray.firstGray,
-      hoverBackground: theme.pallete.gray.secondGray,
-    },
-    search: {
-      background: theme.pallete.gray.black,
-      hoverBackground: theme.pallete.gray.firstGray,
-    },
-    active: {
-      background: theme.pallete.gradient.main,
-      hoverBackground: theme.pallete.gradient.hover,
-    },
-    alert: {
-      background: theme.pallete.alert.main,
-      hoverBackground: theme.pallete.gradient.alert,
-    },
-    forward: {
-      background: theme.pallete.gradient.main,
-    },
-    reverse: {
-      background: theme.pallete.gradient.hover,
-    },
-  };
+
+  //if we don't provide a keyword for size, there's some default configs
+  if (!size) {
+    if (variation === "search") {
+      size = variation;
+    } else if (type === "icon") {
+      size = type;
+    }
+  }
+
+  //if we provide a non-keyword size, then the button gonna have this size (width = height)
+  if (size.includes("vh") || size.includes("px") || size.includes("vw")) {
+    dimensions = {
+      width: size,
+      height: size,
+    };
+  } else {
+    dimensions = { ...theme.dimensions.button[size] };
+  }
 
   const styling = {
     //Styling object that StyledButton receives
-    ...theme.dimensions.button[size],
+    ...dimensions,
     ...variationStyle[variation],
     variation,
   };

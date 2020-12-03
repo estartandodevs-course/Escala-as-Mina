@@ -12,10 +12,12 @@ export const Paragraph = styled.p`
   ${(props) =>
     props.gradient &&
     css`
+      color: transparent;
       background-image: ${props.theme.pallete.gradient.main};
       background-size: 100%;
       background-clip: text;
-      text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-repeat: repeat;
     `}
 `;
 
@@ -30,9 +32,11 @@ export const Span = styled.span`
   ${(props) =>
     props.gradient &&
     css`
+      color: transparent;
       background-image: ${props.theme.pallete.gradient.main};
       background-size: 100%;
+      background-clip: text;
+      -webkit-background-clip: text;
       background-repeat: repeat;
-      text-fill-color: transparent;
     `}
 `;

@@ -13,13 +13,13 @@ function decline() {
 }
 
 const ListItem = (props) => {
-  const { children, variation, type = "ranking" } = props;
+  const { children, variation, id, type = "ranking" } = props;
   const theme = useTheme();
 
   if (type === "player" && variation === "edit") {
     return (
       <FlexContainer type={type}>
-        <StyledListItem type={type}>
+        <StyledListItem key={id} type={type}>
           {children.map((item, index) => handleList(item, index, type, theme))}
           <Button type="icon" onClick={accept}>
             <img src={acceptButton} alt="accept" />
@@ -35,10 +35,10 @@ const ListItem = (props) => {
     return <InputPlayer />;
   }
 
-  //this is the default return
+  //this is the default return, ranking
   return (
     <FlexContainer type={type}>
-      <StyledListItem type={type}>
+      <StyledListItem key={id} type={type}>
         {children.map((item, index) => handleList(item, index, type, theme))}
       </StyledListItem>
     </FlexContainer>
@@ -62,6 +62,7 @@ function ranking(item, index, theme) {
     return (
       <span>
         <Typography
+          key={index}
           size="24px"
           weight="700"
           color={theme.pallete.secondary.main}
@@ -70,6 +71,7 @@ function ranking(item, index, theme) {
           {elements[0]}
         </Typography>
         <Typography
+          key={index}
           size="24px"
           weight="700"
           color={theme.pallete.gray.firstGray}
@@ -78,6 +80,7 @@ function ranking(item, index, theme) {
           - {elements[1]} -
         </Typography>
         <Typography
+          key={index}
           size="24px"
           weight="700"
           color={theme.pallete.secondary.main}
@@ -89,13 +92,25 @@ function ranking(item, index, theme) {
     );
   } else if (index === 1) {
     return (
-      <Typography size="32px" weight="600" color={theme.pallete.gray.firstGray}>
+      <Typography
+        key={index}
+        size="32px"
+        weight="600"
+        color={theme.pallete.gray.firstGray}
+      >
         {item}
       </Typography>
     );
   } else {
     return (
-      <Typography size="32px" weight="600" font="Poppins" type="span" gradient>
+      <Typography
+        key={index}
+        size="32px"
+        weight="600"
+        font="Poppins"
+        type="span"
+        gradient
+      >
         {item}
       </Typography>
     );
@@ -105,13 +120,23 @@ function ranking(item, index, theme) {
 function player(item, index, theme) {
   if (index < 2) {
     return (
-      <Typography size="16px" weight="700" color={theme.pallete.secondary.main}>
+      <Typography
+        key={index}
+        size="16px"
+        weight="700"
+        color={theme.pallete.secondary.main}
+      >
         {item}
       </Typography>
     );
   } else {
     return (
-      <Typography size="16px" weight="700" color={theme.pallete.gray.white}>
+      <Typography
+        key={index}
+        size="16px"
+        weight="700"
+        color={theme.pallete.gray.white}
+      >
         {item}
       </Typography>
     );
@@ -123,6 +148,7 @@ function dashboard(item, index, theme) {
     case 0:
       return (
         <Typography
+          key={index}
           size="1.2rem"
           weight="700"
           color={
@@ -136,15 +162,21 @@ function dashboard(item, index, theme) {
       );
 
     case 1:
-      return <Typography size="1.2rem">{item}</Typography>;
+      return (
+        <Typography key={index} size="1.2rem">
+          {item}
+        </Typography>
+      );
 
     case 2:
       return (
         <Typography
+          key={index}
           size="1.2rem"
           weight="700"
           align="center"
           color={theme.pallete.secondary.main}
+          gradient
         >
           {item}
         </Typography>
@@ -152,7 +184,7 @@ function dashboard(item, index, theme) {
 
     case 3:
       return (
-        <Typography size="1.2rem" align="right">
+        <Typography key={index} size="1.2rem" align="right">
           {item}
         </Typography>
       );
@@ -160,6 +192,7 @@ function dashboard(item, index, theme) {
     case 4:
       return (
         <Typography
+          key={index}
           size="1.2rem"
           weight="700"
           color={
@@ -174,7 +207,7 @@ function dashboard(item, index, theme) {
       );
 
     default:
-      return <Typography>{item}</Typography>;
+      return <Typography key={index}>{item}</Typography>;
   }
 }
 

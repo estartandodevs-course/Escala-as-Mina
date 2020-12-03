@@ -43,6 +43,7 @@ export const FlexContainer = styled.div.attrs((props) => ({
   box-sizing: border-box;
   background-color: ${(props) => props.theme.pallete.gray.black};
   margin-bottom: 8px;
+
   ${(props) =>
     props.type !== "dashboard" &&
     css`

@@ -60,7 +60,7 @@ export const Layout = (props) => {
         <ContainerNav>
           {navItems.map((item, index, array) => {
             return (
-              <NavLink exact to={item.to} activeClassName="actived">
+              <NavLink key={index} exact to={item.to} activeClassName="actived">
                 <img src={item.src} alt={item.alt} />
                 <Button
                   type="oulined"
