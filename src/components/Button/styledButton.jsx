@@ -14,6 +14,9 @@ const RectangularButton = styled(BaseButton)`
   width: ${({ styling }) => styling.width};
   height: ${({ styling }) => styling.height};
 
+  &:focus {
+    outline: none;
+  }
   ${(props) =>
     props.type === "solid" //this ternary deals with solid/outlined types
       ? css`
@@ -33,6 +36,7 @@ const RectangularButton = styled(BaseButton)`
             ${props.styling.variation === "alert"
               ? "background-image"
               : "background-color"}: ${props.styling.hoverBackground};
+            color: ${(props) => props.theme.pallete.gray.black};
           }
         `};
 `;

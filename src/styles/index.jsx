@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   body, html {
     height:100%;
   }
-`
+`;
 
 export const theme = {
   pallete: {
@@ -33,6 +33,7 @@ export const theme = {
       black: "#100928",
       firstGray: "#A0AEC0",
       secondGray: "#E2E8F0",
+      thirdGray: "#5C5C5C",
       white: "#FFFFFF",
     },
     alert: {
@@ -102,3 +103,16 @@ export const theme = {
     },
   },
 };
+
+export function getV(px, heightOrWidth) {
+  const measure = Number(px.replace("px", ""));
+  let formattedMeasure = 0;
+  if (["h", "height"].includes(heightOrWidth)) {
+    const newMeasure = (measure / 1024) * 100;
+    formattedMeasure = newMeasure + "vh";
+  } else {
+    const newMeasure = (measure / 1440) * 100;
+    formattedMeasure = newMeasure + "vw";
+  }
+  return formattedMeasure;
+}
