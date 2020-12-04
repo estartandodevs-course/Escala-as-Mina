@@ -3,68 +3,77 @@ import { getItems } from "../../mocks";
 import { useTheme } from "styled-components";
 import { getV } from "../../styles";
 import { useState } from "react";
-import {
-  GlobalWrapper,
-  Header,
-  GridWrapper,
-  FlexContainer,
-} from "./styledPage";
+import * as S from "./styledPage";
 
 export const Dashboard = (props) => {
   const theme = useTheme();
   const [page, setPage] = useState(0);
+  const rodada = "10";
 
-  let [totalPages, matches] = getItems(page);
+  const [totalPages, matches] = getItems(page);
   const matchesChecked = checkTeamsNameLenght(matches);
+  const isntFirstPage = page !== 0;
+  const instLastPage = page !== totalPages;
+  const theresPagesLeft = page - 1 > 1;
+  const theresPagesRight = page + 1 < totalPages - 1;
+
   return (
-    <GlobalWrapper>
-      <Header>
+    <S.GlobalWrapper>
+      <S.Header>
         <Typography type="h1" align="left">
           Dashboard
         </Typography>
-      </Header>
-      <GridWrapper>
+      </S.Header>
+      <S.GridWrapper>
         <Card size="normal" area="a">
+          <S.FlexContainer justify="space-between">
+            <Typography type="h2" align="left">
+              {rodada}ª Rodada
+            </Typography>
+            <Button
+              size="small"
+              variation="active"
+              color={theme.pallete.gray.white}
+            >
+              Gerenciar Rodada
+            </Button>
+          </S.FlexContainer>
           <ul>
             {matchesChecked.map((item, index) => (
               <ListItem key={("partida", index)} type="dashboard">
                 {item}
               </ListItem>
             ))}
-            <FlexContainer>
-              {page !== 0 ? (
-                <Button type="icon" onClick={() => setPage(page - 1)}>
-                  {"<"}
-                </Button>
-              ) : (
-                ""
-              )}
-              {page !== 0 ? (
-                <Button type="icon" onClick={() => setPage(0)}>
-                  Primeira Página
-                </Button>
-              ) : (
-                ""
-              )}
-              {page !== 0 ? <p>...</p> : ""}
+            <S.FlexContainer marginLeft marginRight>
+              <>
+                {isntFirstPage && (
+                  <>
+                    <Button type="icon" onClick={() => setPage(page - 1)}>
+                      {"<"}
+                    </Button>
+                    <Button type="icon" onClick={() => setPage(0)}>
+                      Primeira Página
+                    </Button>
+                  </>
+                )}
+                {theresPagesLeft && <p>...</p>}
+              </>
               {/* this gets all numbered buttons */}
               {getButtons(page, totalPages, theme, setPage)}
-              {page !== totalPages ? <p>...</p> : ""}
-              {page !== totalPages ? (
-                <Button type="icon" onClick={() => setPage(totalPages)}>
-                  Última Página
-                </Button>
-              ) : (
-                ""
-              )}
-              {page !== totalPages ? (
-                <Button type="icon" onClick={() => setPage(page + 1)}>
-                  {">"}
-                </Button>
-              ) : (
-                ""
-              )}
-            </FlexContainer>
+              <>
+                {theresPagesRight && <p>...</p>}
+                {instLastPage && (
+                  <>
+                    <Button type="icon" onClick={() => setPage(totalPages)}>
+                      Última Página
+                    </Button>
+                    <Button type="icon" onClick={() => setPage(page + 1)}>
+                      {">"}
+                    </Button>
+                  </>
+                )}
+              </>
+            </S.FlexContainer>
           </ul>
         </Card>
         <Card area="b">
@@ -86,12 +95,28 @@ export const Dashboard = (props) => {
             10%
           </Typography>
         </Card>
-        <Card area="c">vai cacete</Card>
-        <Card area="d">eu acredito</Card>
-        <Card area="e">só aparece</Card>
-        <Card area="f">um do ladinho do outro</Card>
-      </GridWrapper>
-    </GlobalWrapper>
+        <Card area="c">
+          <Typography size={getV("24px", "w")} type="h2">
+            Clubes com avaliações pendentes
+          </Typography>
+        </Card>
+        <Card area="d">
+          <Typography size={getV("24px", "w")} type="h2">
+            Melhor Jogadora da Rodada
+          </Typography>
+        </Card>
+        <Card area="e">
+          <Typography size={getV("24px", "w")} type="h2">
+            Time que mais pontuou na rodada
+          </Typography>
+        </Card>
+        <Card area="f">
+          <Typography size={getV("24px", "w")} type="h2">
+            Usuários ativos nessa rodada
+          </Typography>
+        </Card>
+      </S.GridWrapper>
+    </S.GlobalWrapper>
   );
 };
 

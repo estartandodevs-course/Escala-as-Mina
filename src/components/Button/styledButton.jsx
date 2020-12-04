@@ -8,6 +8,8 @@ const BaseButton = styled.button`
   cursor: pointer;
   width: ${({ styling }) => styling.width};
   height: ${({ styling }) => styling.height};
+  color: ${({ color }) => (color ? color : "")};
+
   &:focus {
     outline: none;
   }

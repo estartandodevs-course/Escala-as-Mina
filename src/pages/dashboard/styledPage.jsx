@@ -1,25 +1,27 @@
 import styled from "styled-components";
 import { getV } from "../../styles";
 
-export const Header = styled.header`
+const Header = styled.header`
   max-height: 200px;
   height: ${getV("124px", "h")};
 `;
-export const GridWrapper = styled.div`
+const GridWrapper = styled.div`
   display: grid;
   grid-template-areas: "a a b" "a a c" "d e f";
   row-gap: ${getV("30px", "w")};
   column-gap: ${getV("30px", "h")};
   width: 100%;
 `;
-export const GlobalWrapper = styled.div`
+const GlobalWrapper = styled.div`
   width: 100%;
 `;
-export const FlexContainer = styled.div`
+const FlexContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: ${(props) => props.justify || "space-evenly"};
   align-items: center;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: ${(props) => props.marginLeft && "auto"};
+  margin-right: ${(props) => props.marginRight && "auto"};
 `;
+
+export { FlexContainer, GlobalWrapper, GridWrapper, Header };
