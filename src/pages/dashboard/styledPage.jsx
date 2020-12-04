@@ -20,8 +20,14 @@ const FlexContainer = styled.div`
   justify-content: ${(props) => props.justify || "space-evenly"};
   align-items: center;
   width: 100%;
+  height: 100%;
   margin-left: ${(props) => props.marginLeft && "auto"};
   margin-right: ${(props) => props.marginRight && "auto"};
+  flex-direction: ${(props) => props.direction || "row"};
+`;
+const GridColumnWrapper = styled.div`
+  display: grid;
+  grid-template-columns: ${(props) => props.column};
 `;
 
-export { FlexContainer, GlobalWrapper, GridWrapper, Header };
+export { FlexContainer, GlobalWrapper, GridWrapper, Header, GridColumnWrapper };

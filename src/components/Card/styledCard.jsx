@@ -14,6 +14,15 @@ export const StyledCard = styled.div.attrs((props) => ({
   grid-area: ${(props) => props.area || ""};
 
   ${(props) =>
+    props.flex &&
+    css`
+      display: flex;
+      justify-content: ${props.justify || "center"};
+      align-items: ${props.align || "center"};
+      flex-direction: ${props.direction || "row"};
+    `};
+
+  ${(props) =>
     props.size === "small" &&
     css`
       text-align: center;
