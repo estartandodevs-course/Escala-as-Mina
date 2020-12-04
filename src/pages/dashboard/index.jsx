@@ -1,88 +1,25 @@
 import { Card, ListItem, Typography, Button } from "../../components";
 import { getItems } from "../../mocks";
-import styled, { useTheme } from "styled-components";
+import { useTheme } from "styled-components";
 import { getV } from "../../styles";
 import { useState } from "react";
-
-const Header = styled.header`
-  max-height: 200px;
-  height: ${getV("124px", "h")};
-`;
-const GridWrapper = styled.div`
-  display: grid;
-  grid-template-areas: "a a b" "a a c" "d e f";
-  row-gap: ${getV("30px", "w")};
-  column-gap: ${getV("30px", "h")};
-  width: 100%;
-`;
-const GlobalWrapper = styled.div`
-  width: 100%;
-`;
-const FlexContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-`;
-function getButtons(page, totalPages) {
-  //   <Button
-  //   size={getV("32px", "h")}
-  //   type="icon"
-  //   variation="search"
-  //   rounded
-  // >
-  //   <Typography color={theme.pallete.secondary.main}>1</Typography>
-  // </Button>
-  // <Button
-  //   size={getV("32px", "h")}
-  //   type="icon"
-  //   variation="secondary"
-  //   rounded
-  // >
-  //   <Typography color={theme.pallete.gray.black}>2</Typography>
-  // </Button>
-  // <Button
-  //   size={getV("32px", "h")}
-  //   type="icon"
-  //   variation="search"
-  //   rounded
-  // >
-  //   3
-  // </Button>
-}
-function checkTeamsNameLenght(listOfTeams) {
-  const checkTeamName = (listOfGame) => {
-    return listOfGame.map((item) => {
-      if (item.length > 15) {
-        return item.slice(0, 18) + "...";
-      } else {
-        return item;
-      }
-    });
-  };
-  return listOfTeams.map((item) => checkTeamName(item));
-}
+import {
+  GlobalWrapper,
+  Header,
+  GridWrapper,
+  FlexContainer,
+} from "./styledPage";
 
 export const Dashboard = (props) => {
   const theme = useTheme();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
 
   let [totalPages, matches] = getItems(page);
   const matchesChecked = checkTeamsNameLenght(matches);
-
-  console.log(page);
-
   return (
     <GlobalWrapper>
       <Header>
-        <Typography
-          color={theme.pallete.gray.thirdGray}
-          size="44px"
-          weight="bold"
-          type="h1"
-        >
+        <Typography type="h1" align="left">
           Dashboard
         </Typography>
       </Header>
@@ -109,7 +46,9 @@ export const Dashboard = (props) => {
               ) : (
                 ""
               )}
-              {page !== 0 ? <p>...</p> : ""}${getButtons(page, totalPages)}
+              {page !== 0 ? <p>...</p> : ""}
+              {/* this gets all numbered buttons */}
+              {getButtons(page, totalPages, theme, setPage)}
               {page !== totalPages ? <p>...</p> : ""}
               {page !== totalPages ? (
                 <Button type="icon" onClick={() => setPage(totalPages)}>
@@ -128,7 +67,25 @@ export const Dashboard = (props) => {
             </FlexContainer>
           </ul>
         </Card>
-        <Card area="b">test</Card>
+        <Card area="b">
+          <Typography size={getV("24px", "w")} type="h2">
+            Jogadoras Avaliadas
+          </Typography>
+          <Typography
+            align="center"
+            color={theme.pallete.alert.main}
+            size="32px"
+          >
+            22/32
+          </Typography>
+          <Typography
+            color={theme.pallete.alert.lighter}
+            size={getV("32px", "w")}
+            align="center"
+          >
+            10%
+          </Typography>
+        </Card>
         <Card area="c">vai cacete</Card>
         <Card area="d">eu acredito</Card>
         <Card area="e">só aparece</Card>
@@ -137,3 +94,55 @@ export const Dashboard = (props) => {
     </GlobalWrapper>
   );
 };
+
+function range(start, stop) {
+  return [...Array(stop - start).keys()].map((i) => i + start);
+}
+function getButtons(page, totalPages, theme, setPage) {
+  const currentPage = page + 1;
+  let start = 0;
+  let stop = 0;
+  if (page === 0) {
+    start = 0;
+    stop = 3;
+  } else if (page === totalPages) {
+    start = -2;
+    stop = 1;
+  } else {
+    start = -1;
+    stop = 2;
+  }
+  const constructorArray = range(start, stop);
+
+  return constructorArray.map((item) => {
+    return (
+      <Button
+        size={getV("32px", "h")}
+        type="icon"
+        variation={item === 0 ? "secondary" : "search"}
+        rounded
+        onClick={() => setPage(item + page)}
+      >
+        <Typography
+          color={
+            item === 0 ? theme.pallete.gray.black : theme.pallete.secondary.main
+          }
+        >
+          {item + currentPage}
+        </Typography>
+      </Button>
+    );
+  });
+}
+function checkTeamsNameLenght(listOfTeams) {
+  const checkTeamName = (listOfGame) => {
+    return listOfGame.map((item) => {
+      if (item.length > 15) {
+        return item.slice(0, 18) + "...";
+      } else {
+        return item;
+      }
+    });
+  };
+  return listOfTeams.map((item) => checkTeamName(item));
+}

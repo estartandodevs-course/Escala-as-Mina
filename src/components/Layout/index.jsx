@@ -12,7 +12,6 @@ import {
   ContainerLogo,
   PageContents,
   ContainerNav,
-  ExitContainer,
 } from "./StyledLayout";
 import "fontsource-roboto/latin.css";
 
@@ -45,7 +44,13 @@ const navItems = [
     text: "Ranking",
     src: RankingIcon, //Group.svg
     to: "/ranking",
-    alt: "Ranking Dashboard",
+    alt: "Ranking",
+  },
+  {
+    text: "Sair",
+    src: ExitIcon,
+    to: "/login",
+    alt: "Logout",
   },
 ];
 
@@ -64,7 +69,7 @@ export const Layout = (props) => {
                 <img src={item.src} alt={item.alt} />
                 <Button
                   type="oulined"
-                  variation={index === array.lenght - 1 ? "alert" : "secondary"}
+                  variation={index === array.length - 1 ? "alert" : "secondary"}
                   size="small"
                 >
                   {item.text}
@@ -72,12 +77,6 @@ export const Layout = (props) => {
               </NavLink>
             );
           })}
-          <ExitContainer to="/" activeClassName="actived">
-            <img src={ExitIcon} alt="" />
-            <Button type="outlined" variation="alert" size="small">
-              Sair
-            </Button>
-          </ExitContainer>
         </ContainerNav>
       </Sidebar>
       <PageContents>{children}</PageContents>
