@@ -64,7 +64,7 @@ function getTotalMatches(){
 function getAthlete(key){
   const athletes = {
     best: {
-      name: "Ana",
+      name: "Ana Paula Cirilo dos Santos",
       score: "420 pts",
       team: "Bahia Futebol Clube"
     }
@@ -87,4 +87,7 @@ function getTotalTeams(round){
     "-1": (Math.random()*1000).toFixed(),  }
     return rounds[round]
   }
-export {getItems, getMissingMatches, getTotalMatches, getAthlete, getTeam, getTotalTeams}
+function getCurrentRound() {
+  return 10
+}
+export {getItems, getMissingMatches, getTotalMatches, getAthlete, getTeam, getTotalTeams, getCurrentRound}

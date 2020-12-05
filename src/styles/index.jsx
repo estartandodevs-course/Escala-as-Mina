@@ -34,6 +34,7 @@ const theme = {
       firstGray: "#A0AEC0",
       secondGray: "#E2E8F0",
       thirdGray: "#5C5C5C",
+      fourthGray: "#F1F5F9",
       white: "#FFFFFF",
     },
     alert: {
@@ -84,6 +85,10 @@ const theme = {
       large: {
         width: "907px",
         height: "652px",
+      },
+      extraLarge: {
+        width: "1124px",
+        height: "819px",
       },
     },
 

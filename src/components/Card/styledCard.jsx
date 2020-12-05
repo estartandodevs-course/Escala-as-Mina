@@ -27,4 +27,11 @@ export const StyledCard = styled.div.attrs((props) => ({
     css`
       text-align: center;
     `}
+  ${(props) =>
+    props.size === "extraLarge" &&
+    css`
+      margin: auto;
+      background-color: ${props.theme.pallete.gray.white};
+      padding: ${getV("64px", "h")} ${getV("64px", "w")};
+    `}
 `;

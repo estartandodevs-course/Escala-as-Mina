@@ -4,20 +4,22 @@ import { useTheme } from "styled-components";
 import { getV } from "../../styles";
 import { useState } from "react";
 import * as S from "./styledPage";
+import deletar from "../../assets/icons/Deletar.svg";
+import upload from "../../assets/icons/Upload.svg";
 
 export const Dashboard = (props) => {
   const theme = useTheme();
   const [page, setPage] = useState(0);
-  const rodada = "10";
+  const [show, setShow] = useState(false);
 
   const [totalPages, matches] = M.getItems(page);
   const missingMatches = M.getMissingMatches();
+  const currentRound = M.getCurrentRound();
   const totalMatches = M.getTotalMatches();
   const bestAthlete = M.getAthlete("best");
   const bestTeam = M.getTeam("best");
   const totalTeams = M.getTotalTeams("0");
   const lastTotalTeams = M.getTotalTeams("-1");
-  console.log(totalTeams, lastTotalTeams);
 
   const matchesChecked = checkTeamsNameLenght(matches);
   const isntFirstPage = page !== 0;
@@ -27,6 +29,7 @@ export const Dashboard = (props) => {
 
   return (
     <S.GlobalWrapper>
+      <Modal show={show} setShow={setShow} roundsInfo={[1, 1, 1, 1, 1]} />
       <S.Header>
         <Typography type="h1" align="left">
           Dashboard
@@ -34,15 +37,20 @@ export const Dashboard = (props) => {
       </S.Header>
       <S.GridWrapper>
         <Card size="normal" direction="column" area="a" flex>
-          <S.FlexContainer justify="space-between">
+          <S.FlexContainer
+            width="639px"
+            marginBottom="32px"
+            justify="space-between"
+          >
             <Typography type="h2" align="left">
-              {rodada}ª Rodada
+              {currentRound}ª Rodada
             </Typography>
             <Button
               size="small"
+              height="24px"
               variation="active"
               color={theme.pallete.gray.white}
-              onClick={gerenciarRodada}
+              onClick={() => setShow(true)}
             >
               Gerenciar Rodada
             </Button>
@@ -53,43 +61,43 @@ export const Dashboard = (props) => {
                 {item}
               </ListItem>
             ))}
-            <S.GridColumnWrapper column="2fr 1fr 2fr">
-              <>
-                {isntFirstPage && (
-                  <S.FlexContainer>
-                    <Button type="icon" onClick={() => setPage(page - 1)}>
-                      {"<"}
-                    </Button>
-                    <Button type="icon" onClick={() => setPage(0)}>
-                      Primeira Página
-                    </Button>
-                  </S.FlexContainer>
-                )}
-                {theresPagesLeft && <p>...</p>}
-                {/* //I have to
+          </ul>
+          <S.GridColumnWrapper column="2fr 1fr 2fr">
+            <>
+              {isntFirstPage && (
+                <S.FlexContainer>
+                  <Button type="icon" onClick={() => setPage(page - 1)}>
+                    {"<"}
+                  </Button>
+                  <Button type="icon" onClick={() => setPage(0)}>
+                    Primeira Página
+                  </Button>
+                  {theresPagesLeft && <p>...</p>}
+                </S.FlexContainer>
+              )}
+              {/* //I have to
                 return an empty div or else the buttons go to the wrowng column
                 in grid-template-columns */}
-                {!isntFirstPage && !theresPagesLeft && <div></div>}
-              </>
-              {/* this gets all numbered buttons */}
-              <S.FlexContainer>
-                {getButtons(page, totalPages, theme, setPage)}
-              </S.FlexContainer>
-              <S.FlexContainer>
-                {theresPagesRight && <p>...</p>}
-                {instLastPage && (
-                  <>
-                    <Button type="icon" onClick={() => setPage(totalPages)}>
-                      Última Página
-                    </Button>
-                    <Button type="icon" onClick={() => setPage(page + 1)}>
-                      {">"}
-                    </Button>
-                  </>
-                )}
-              </S.FlexContainer>
-            </S.GridColumnWrapper>
-          </ul>
+              {!isntFirstPage && !theresPagesLeft && <div></div>}
+            </>
+            {/* this gets all numbered buttons */}
+            <S.FlexContainer>
+              {getButtons(page, totalPages, theme, setPage)}
+            </S.FlexContainer>
+            <S.FlexContainer>
+              {theresPagesRight && <p>...</p>}
+              {instLastPage && (
+                <>
+                  <Button type="icon" onClick={() => setPage(totalPages)}>
+                    Última Página
+                  </Button>
+                  <Button type="icon" onClick={() => setPage(page + 1)}>
+                    {">"}
+                  </Button>
+                </>
+              )}
+            </S.FlexContainer>
+          </S.GridColumnWrapper>
         </Card>
 
         <Card flex direction="column" justify="flex-start" area="b">
@@ -219,9 +227,68 @@ export const Dashboard = (props) => {
   );
 };
 
-function gerenciarRodada() {
-  console.log("isso é um placeholder. O que gerenciar rodada deve fazer?");
-}
+const Modal = (props) => {
+  const { show, setShow, roundsInfo } = props;
+  const theme = useTheme();
+
+  return (
+    <S.ModalWrapper show={show}>
+      <Card size="extraLarge">
+        <S.FlexContainer
+          direction="column"
+          justify="flex-start"
+          marginLeft
+          marginRight
+        >
+          <S.FlexContainer marginBottom="32px" justify="space-between">
+            <Typography type="h2">Gerenciar Rodadas</Typography>
+            <Button type="icon" onClick={() => setShow(false)}>
+              X
+            </Button>
+          </S.FlexContainer>
+          <S.ModalList>
+            <S.ModalHeader />
+            <S.Form>
+              {roundsInfo.map(() => {
+                return (
+                  <S.ModalListItem column="1fr 2fr 2fr 2fr 2fr" as="li">
+                    <input type="radio" />
+                    <Typography
+                      color={theme.pallete.gray.black}
+                      weight="700"
+                      size={getV("32px", "h")}
+                      type="p"
+                    >
+                      Rodada1
+                    </Typography>
+                    <Typography
+                      size={getV("32px", "h")}
+                      color={theme.pallete.gray.firstGray}
+                      type="p"
+                    >
+                      455 Times
+                    </Typography>
+                    <S.ModalTag current>Rodada finalizada</S.ModalTag>
+                    <S.FlexContainer>
+                      <Button type="icon">
+                        <img src={upload} alt="upload" />
+                      </Button>
+                      <Button type="icon">
+                        <img src={deletar} alt="deletar" />
+                      </Button>
+                    </S.FlexContainer>
+                  </S.ModalListItem>
+                );
+              })}
+            </S.Form>
+          </S.ModalList>
+          <p>buttons</p>
+        </S.FlexContainer>
+      </Card>
+    </S.ModalWrapper>
+  );
+};
+
 function range(start, stop) {
   return [...Array(stop - start).keys()].map((i) => i + start);
 }
