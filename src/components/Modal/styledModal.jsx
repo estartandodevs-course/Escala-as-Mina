@@ -114,6 +114,7 @@ const FlexContainer = styled.div`
   margin-bottom: ${(props) =>
     props.marginBottom ? getV(props.marginBottom, "h") : ""};
   flex-direction: ${(props) => props.direction || "row"};
+  padding: ${(props) => props.padding};
 `;
 export {
   FlexContainer,
