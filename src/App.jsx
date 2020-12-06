@@ -16,25 +16,27 @@ function App() {
             <Login />
           </Route>
 
-          <Route path="/rodadas">
-            <Rodadas />
-          </Route>
+          <Layout>
+            <Route path="/rodadas">
+              <Rodadas />
+            </Route>
 
-          <Route path="/jogadoras">
-            <Jogadoras />
-          </Route>
+            <Route path="/jogadoras">
+              <Jogadoras />
+            </Route>
 
-          <Route exact path="/">
-            <Dashboard />
-          </Route>
+            <Route exact path="/">
+              <Dashboard />
+            </Route>
 
-          <Route path="/times">
-            <Times />
-          </Route>
+            <Route path="/times">
+              <Times />
+            </Route>
 
-          <Route path="/ranking">
-            <Ranking />
-          </Route>
+            <Route path="/ranking">
+              <Ranking />
+            </Route>
+          </Layout>
         </Switch>
       </Router> */}
     </ThemeProvider>
