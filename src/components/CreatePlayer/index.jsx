@@ -3,7 +3,7 @@ import { InputPlayer } from '../Input';
 import { Button } from '../Button';
 import AcceptBtn from '../../assets/icons/AcceptBtn.svg';
 import DeclineBtn from '../../assets/icons/DeclineBtn.svg';
-import { AddPlayerBtn, PlayerInfo } from './styledCreatePlayer';
+import { PlayerInfo } from './styledCreatePlayer';
 
 export const CreatePlayer = () => {
   const [showInput, setShowInput] = useState(false);
@@ -17,9 +17,14 @@ export const CreatePlayer = () => {
   return (
     <>
       {showBtn && (
-        <AddPlayerBtn type="icon" onClick={handleClick}>
+        <Button
+          size="large"
+          variation="secondary"
+          type="solid"
+          onClick={handleClick}
+        >
           Adicionar Jogadora
-        </AddPlayerBtn>
+        </Button>
       )}
 
       {showInput && (
