@@ -8,6 +8,9 @@ const BaseButton = styled.button`
   cursor: pointer;
   width: ${({ styling }) => styling.width};
   height: ${({ styling }) => styling.height};
+  margin-left: ${({ marginLeft }) => marginLeft && marginLeft};
+  margin-right: ${({ marginRight }) => marginRight && marginRight};
+
   ${(props) =>
     props.color &&
     css`

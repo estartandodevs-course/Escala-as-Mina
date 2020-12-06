@@ -44,6 +44,13 @@ const partidas = [ //56 items
     ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
     ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
 ]
+const totalRounds = getCurrentRound();
+const totalMatches= getTotalMatches();
+const howManyRounds = new Array(totalRounds).fill(0);
+const missingMatches = {}
+howManyRounds.forEach((item, index) => {
+missingMatches[index+1] = Math.round(Math.random(totalMatches))
+})
 
 //This mocks backend response
 function getItems(division, numberPerDivision = 8, sortedList = partidas) {
@@ -52,10 +59,9 @@ function getItems(division, numberPerDivision = 8, sortedList = partidas) {
   const stopIndex = numberPerDivision * (division + 1);
   return [totalDivisions, sortedList.slice(startIndex, stopIndex)]
 }
-function getMissingMatches(){
-  const totalMatches = partidas.length;
-  const missingMatches = Math.floor(Math.random()*totalMatches)
-  return missingMatches
+function getMissingMatches(shownRound){
+  return missingMatches[shownRound]
+
 }
 function getTotalMatches(){
   const totalMatches = partidas.length;
@@ -90,4 +96,14 @@ function getTotalTeams(round){
 function getCurrentRound() {
   return 10
 }
-export {getItems, getMissingMatches, getTotalMatches, getAthlete, getTeam, getTotalTeams, getCurrentRound}
+function getAllRoundsInfo(totalRounds=10) {
+  const allRounds = []
+  const howManyRounds = new Array(totalRounds).fill(0)
+  howManyRounds.forEach((item, index) => {allRounds.push({
+    roundNumber: index+1,
+    squadsTotal: Math.round(Math.random()*10000),
+  })})
+
+  return allRounds
+}
+export {getItems, getMissingMatches, getTotalMatches, getAthlete, getTeam, getTotalTeams, getCurrentRound, getAllRoundsInfo}

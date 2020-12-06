@@ -59,11 +59,28 @@ const ModalList = styled.ul`
   margin-left: auto;
   margin-right: auto;
   flex-direction: column;
+  overflow-y: scroll;
+  margin-bottom: ${getV("32px", "h")};
+
+  &::-webkit-scrollbar {
+    width: 16px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: ${(props) => props.theme.pallete.gray.firstGray};
+    border-radius: 30px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-image: ${(props) => props.theme.pallete.gradient.main};
+    border-radius: 30px;
+  }
 `;
 const ModalListItem = styled(GridColumnWrapper)`
   height: ${getV("64px", "h")};
   * {
     margin: auto;
+  }
+  &.active {
+    background-color: ${(props) => props.theme.pallete.secondary.lighter};
   }
 `;
 const Form = styled.form`
@@ -84,6 +101,34 @@ const ModalTag = styled.div`
   color: ${(props) => props.theme.pallete.gray.black}`}
 `;
 
+const Input = styled.input`
+  display: none;
+  &:checked ~ label div {
+    background-image: ${(props) => props.theme.pallete.gradient.main};
+    border: none;
+    z-index: 1;
+  }
+  &:checked ~ label div img {
+    display: block !important;
+    z-index: 2;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+`;
+const Label = styled.label`
+  div {
+    width: 20px;
+    height: 20px;
+    border: 1px solid ${(props) => props.theme.pallete.gray.firstGray};
+    border-radius: 50%;
+  }
+  div:hover {
+    cursor: pointer;
+  }
+`;
+const Img = styled.img`
+  display: none;
+`;
 export {
   FlexContainer,
   GlobalWrapper,
@@ -96,4 +141,7 @@ export {
   ModalListItem,
   Form,
   ModalTag,
+  Input,
+  Label,
+  Img,
 };

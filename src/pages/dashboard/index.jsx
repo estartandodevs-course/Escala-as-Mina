@@ -6,30 +6,39 @@ import { useState } from "react";
 import * as S from "./styledPage";
 import deletar from "../../assets/icons/Deletar.svg";
 import upload from "../../assets/icons/Upload.svg";
+import check from "../../assets/icons/AcceptBtn.svg";
 
-export const Dashboard = (props) => {
+export const Dashboard = () => {
   const theme = useTheme();
   const [page, setPage] = useState(0);
-  const [show, setShow] = useState(false);
+  const currentRound = M.getCurrentRound();
+  const [shownRound, setShownRound] = useState(currentRound);
 
   const [totalPages, matches] = M.getItems(page);
-  const missingMatches = M.getMissingMatches();
-  const currentRound = M.getCurrentRound();
+  const missingMatches = M.getMissingMatches(shownRound);
   const totalMatches = M.getTotalMatches();
   const bestAthlete = M.getAthlete("best");
   const bestTeam = M.getTeam("best");
   const totalTeams = M.getTotalTeams("0");
   const lastTotalTeams = M.getTotalTeams("-1");
-
+  const allRoundsInfo = M.getAllRoundsInfo();
   const matchesChecked = checkTeamsNameLenght(matches);
+
   const isntFirstPage = page !== 0;
   const instLastPage = page !== totalPages;
   const theresPagesLeft = page - 1 > 1;
   const theresPagesRight = page + 1 < totalPages - 1;
+  const [show, setShow] = useState(false);
 
   return (
     <S.GlobalWrapper>
-      <Modal show={show} setShow={setShow} roundsInfo={[1, 1, 1, 1, 1]} />
+      <Modal
+        show={show}
+        setShow={setShow}
+        roundsInfo={allRoundsInfo}
+        currentRound={currentRound}
+        setShownRound={setShownRound}
+      />
       <S.Header>
         <Typography type="h1" align="left">
           Dashboard
@@ -228,8 +237,14 @@ export const Dashboard = (props) => {
 };
 
 const Modal = (props) => {
-  const { show, setShow, roundsInfo } = props;
+  const { show, setShow, roundsInfo, currentRound, setShownRound } = props;
+  roundsInfo.sort((a, b) => {
+    if (a.roundNumber > b.roundNumber) return -1;
+    else return 1;
+  });
   const theme = useTheme();
+  const [bg, setBg] = useState();
+  const modalSetter = getRadioCheck(bg, setBg);
 
   return (
     <S.ModalWrapper show={show}>
@@ -247,28 +262,48 @@ const Modal = (props) => {
             </Button>
           </S.FlexContainer>
           <S.ModalList>
-            <S.ModalHeader />
             <S.Form>
-              {roundsInfo.map(() => {
+              <S.ModalHeader />
+              {roundsInfo.map((item, index) => {
                 return (
-                  <S.ModalListItem column="1fr 2fr 2fr 2fr 2fr" as="li">
-                    <input type="radio" />
+                  <S.ModalListItem
+                    key={("round", index)}
+                    column="1fr 3fr 3fr 3fr 3fr"
+                    as="li"
+                  >
+                    <div>
+                      <S.Input
+                        name="round"
+                        type="radio"
+                        id={`${item.roundNumber}`}
+                        onChange={modalSetter}
+                      />
+                      <S.Label htmlFor={`${item.roundNumber}`}>
+                        <div>
+                          <S.Img src={check} />
+                        </div>
+                      </S.Label>
+                    </div>
                     <Typography
                       color={theme.pallete.gray.black}
                       weight="700"
                       size={getV("32px", "h")}
                       type="p"
                     >
-                      Rodada1
+                      Rodada {item.roundNumber}
                     </Typography>
                     <Typography
                       size={getV("32px", "h")}
                       color={theme.pallete.gray.firstGray}
                       type="p"
                     >
-                      455 Times
+                      {item.squadsTotal} Times
                     </Typography>
-                    <S.ModalTag current>Rodada finalizada</S.ModalTag>
+                    <S.ModalTag current={item.roundNumber === currentRound}>
+                      {item.roundNumber === currentRound
+                        ? "Rodada atual"
+                        : "Rodada finalizada"}
+                    </S.ModalTag>
                     <S.FlexContainer>
                       <Button type="icon">
                         <img src={upload} alt="upload" />
@@ -282,13 +317,67 @@ const Modal = (props) => {
               })}
             </S.Form>
           </S.ModalList>
-          <p>buttons</p>
+          <S.FlexContainer justify="flex-start">
+            <Button
+              variation="disabled"
+              size="small"
+              onClick={() => setShow(false)}
+              marginRight={getV("32px", "w")}
+            >
+              <Typography
+                size={getV("21px", "h")}
+                weight="900"
+                font="Roboto"
+                color={theme.pallete.gray.white}
+                type="span"
+              >
+                Cancelar
+              </Typography>
+            </Button>
+            <Button
+              variation="active"
+              size="small"
+              onClick={() => changeRound(setShow)}
+            >
+              <Typography
+                size={getV("21px", "h")}
+                weight="900"
+                font="Roboto"
+                color={theme.pallete.gray.white}
+                type="span"
+                onClick={() => {
+                  setShownRound(bg);
+                }}
+              >
+                Selecionar
+              </Typography>
+            </Button>
+          </S.FlexContainer>
         </S.FlexContainer>
       </Card>
     </S.ModalWrapper>
   );
 };
+function getRadioCheck(value, set) {
+  const setValue = set;
+  function radioCheck(event) {
+    const liActive = event.target.parentElement.parentElement;
+    const allLi = liActive.parentElement.children;
+    setValue(event.target.id);
 
+    for (let i = 0; i < allLi.length; i++) {
+      allLi.item(i).classList.remove("active");
+    }
+    liActive.classList.add("active");
+  }
+  return radioCheck;
+}
+function changeRound(setShow) {
+  setShow(false);
+  console.log(
+    "ainda tenho que fazer isso, isso deve mudar o state round e consequentemente tudo que aparece na tela kkkj"
+  );
+}
 function range(start, stop) {
   return [...Array(stop - start).keys()].map((i) => i + start);
 }
@@ -308,9 +397,10 @@ function getButtons(page, totalPages, theme, setPage) {
   }
   const constructorArray = range(start, stop);
 
-  return constructorArray.map((item) => {
+  return constructorArray.map((item, index) => {
     return (
       <Button
+        key={index}
         size={getV("32px", "h")}
         type="icon"
         variation={item === 0 ? "secondary" : "search"}
