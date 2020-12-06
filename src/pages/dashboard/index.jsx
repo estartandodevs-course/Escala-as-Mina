@@ -1,14 +1,14 @@
-import { Card, ListItem, Typography, Button } from "../../components";
-import { getItems } from "../../mocks";
-import { useTheme } from "styled-components";
-import { getV } from "../../styles";
-import { useState } from "react";
+import { Card, ListItem, Typography, Button } from '../../components';
+import { getItems } from '../../mocks';
+import { useTheme } from 'styled-components';
+import { getV } from '../../styles';
+import { useState } from 'react';
 import {
   GlobalWrapper,
   Header,
   GridWrapper,
   FlexContainer,
-} from "./styledPage";
+} from './styledPage';
 
 export const Dashboard = (props) => {
   const theme = useTheme();
@@ -27,48 +27,40 @@ export const Dashboard = (props) => {
         <Card size="normal" area="a">
           <ul>
             {matchesChecked.map((item, index) => (
-              <ListItem key={("partida", index)} type="dashboard">
+              <ListItem key={('partida', index)} type="dashboard">
                 {item}
               </ListItem>
             ))}
             <FlexContainer>
-              {page !== 0 ? (
-                <Button type="icon" onClick={() => setPage(page - 1)}>
-                  {"<"}
-                </Button>
-              ) : (
-                ""
+              {page !== 0 && (
+                <>
+                  <Button type="icon" onClick={() => setPage(page - 1)}>
+                    {'<'}
+                  </Button>
+                  <Button type="icon" onClick={() => setPage(0)}>
+                    Primeira Página
+                  </Button>
+                </>
               )}
-              {page !== 0 ? (
-                <Button type="icon" onClick={() => setPage(0)}>
-                  Primeira Página
-                </Button>
-              ) : (
-                ""
-              )}
-              {page !== 0 ? <p>...</p> : ""}
+              {page !== 0 ? <p>...</p> : ''}
               {/* this gets all numbered buttons */}
               {getButtons(page, totalPages, theme, setPage)}
-              {page !== totalPages ? <p>...</p> : ""}
-              {page !== totalPages ? (
-                <Button type="icon" onClick={() => setPage(totalPages)}>
-                  Última Página
-                </Button>
-              ) : (
-                ""
-              )}
-              {page !== totalPages ? (
-                <Button type="icon" onClick={() => setPage(page + 1)}>
-                  {">"}
-                </Button>
-              ) : (
-                ""
+              {page !== totalPages ? <p>...</p> : ''}
+              {page !== totalPages && (
+                <>
+                  <Button type="icon" onClick={() => setPage(totalPages)}>
+                    Última Página
+                  </Button>
+                  <Button type="icon" onClick={() => setPage(page + 1)}>
+                    {'>'}
+                  </Button>
+                </>
               )}
             </FlexContainer>
           </ul>
         </Card>
         <Card area="b">
-          <Typography size={getV("24px", "w")} type="h2">
+          <Typography size={getV('24px', 'w')} type="h2">
             Jogadoras Avaliadas
           </Typography>
           <Typography
@@ -80,7 +72,7 @@ export const Dashboard = (props) => {
           </Typography>
           <Typography
             color={theme.pallete.alert.lighter}
-            size={getV("32px", "w")}
+            size={getV('32px', 'w')}
             align="center"
           >
             10%
@@ -117,9 +109,9 @@ function getButtons(page, totalPages, theme, setPage) {
   return constructorArray.map((item) => {
     return (
       <Button
-        size={getV("32px", "h")}
+        size={getV('32px', 'h')}
         type="icon"
-        variation={item === 0 ? "secondary" : "search"}
+        variation={item === 0 ? 'secondary' : 'search'}
         rounded
         onClick={() => setPage(item + page)}
       >
@@ -138,7 +130,7 @@ function checkTeamsNameLenght(listOfTeams) {
   const checkTeamName = (listOfGame) => {
     return listOfGame.map((item) => {
       if (item.length > 15) {
-        return item.slice(0, 18) + "...";
+        return item.slice(0, 18) + '...';
       } else {
         return item;
       }
