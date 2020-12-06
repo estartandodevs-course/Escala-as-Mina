@@ -5,7 +5,7 @@ import { getV } from "../../styles";
 import * as S from "./styledModal";
 import deletar from "../../assets/icons/Deletar.svg";
 import upload from "../../assets/icons/Upload.svg";
-import check from "../../assets/icons/AcceptBtn.svg";
+import check from "../../assets/icons/WhiteAcceptBtn.svg";
 
 const Modal = (props) => {
   const { show, setShow, roundsInfo, currentRound, setShownRound } = props;

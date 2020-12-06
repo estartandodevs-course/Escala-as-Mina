@@ -144,6 +144,8 @@ const variationStyle = {
 };
 
 function getV(px, heightOrWidth) {
+  if (px.includes("vw") || px.includes("vh")) return px;
+
   const measure = Number(px.replace("px", ""));
   let formattedMeasure = 0;
   if (["h", "height"].includes(heightOrWidth)) {

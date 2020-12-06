@@ -5,7 +5,12 @@ const BaseButton = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
-  cursor: pointer;
+  cursor: ${(props) => (props.cursor ? props.cursor : "pointer")};
+  position: ${(props) => props.position && props.position};
+  left: ${(props) => props.left && props.left};
+  right: ${(props) => props.right && props.right};
+  top: ${(props) => props.top && props.top};
+
   width: ${({ styling }) => styling.width};
   height: ${({ styling }) => styling.height};
   margin-left: ${({ marginLeft }) => marginLeft && marginLeft};

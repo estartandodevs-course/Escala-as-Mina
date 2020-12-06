@@ -1,9 +1,20 @@
-import { Card, ListItem, Typography, Button, Modal } from "../../components";
+import {
+  Card,
+  ListItem,
+  Typography,
+  Button,
+  Modal,
+  Notification,
+} from "../../components";
 import * as M from "../../mocks";
 import { useTheme } from "styled-components";
 import { getV } from "../../styles";
 import { useState, useEffect } from "react";
 import * as S from "./styledPage";
+
+const user = {
+  name: "Luize Abreu",
+};
 
 export const Dashboard = () => {
   const theme = useTheme();
@@ -69,6 +80,7 @@ export const Dashboard = () => {
         <Typography type="h1" align="left">
           Dashboard
         </Typography>
+        <Notification user={user} />
       </S.Header>
       <S.GridWrapper>
         <Card
