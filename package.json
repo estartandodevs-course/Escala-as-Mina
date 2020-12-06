@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "animate-css-styled-components": "^1.0.2",
     "fontsource-poppins": "^3.0.10",
     "fontsource-raleway": "^3.0.9",
     "fontsource-roboto": "^3.0.3",
@@ -14,7 +15,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "styled-components": "^5.2.1",
-    "fontsource-roboto": "^3.0.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

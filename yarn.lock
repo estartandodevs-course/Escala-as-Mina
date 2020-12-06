@@ -2141,6 +2141,11 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+animate-css-styled-components@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/animate-css-styled-components/-/animate-css-styled-components-1.0.2.tgz#0714fa22d9beac8fa09ab3d668851de6c01ad361"
+  integrity sha512-kIU1lNSJaz6kGQv5bdWGJeuBSdQsNhWV+54SXzf9CDF50lK7JwuvhrO0AJ5RjdOFwQC/rUV8oKlPznURs8xhOA==
+
 ansi-colors@^3.0.0:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
@@ -5027,6 +5032,16 @@ follow-redirects@^1.0.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
   integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
+
+fontsource-poppins@^3.0.10:
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/fontsource-poppins/-/fontsource-poppins-3.0.10.tgz#42b194661b4c43eb234f683ca1616286ddb2a18c"
+  integrity sha512-3+1xBgh/HPPwvP0M7I6BEoZOqiT+kH7IUSFlKCm9r1j/Mdm/AqyeU+PMOZYt+Kpqm0OLgpDH56mqEksaycpinQ==
+
+fontsource-raleway@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/fontsource-raleway/-/fontsource-raleway-3.0.9.tgz#c05a9af367d8016b9b1ff8c39deb5ae897673aa5"
+  integrity sha512-TtvH82FIK0SgNc/ynLUYozwiSk8IB6FgZ0ujZ0sgUhpdAvH+gKaCoopT9faBh9c59JGwicIej0x2fWz7NhsKSQ==
 
 fontsource-roboto@^3.0.3:
   version "3.0.3"
@@ -10866,11 +10881,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typeface-roboto@^1.1.13:
-  version "1.1.13"
-  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-1.1.13.tgz#9c4517cb91e311706c74823e857b4bac9a764ae5"
-  integrity sha512-YXvbd3a1QTREoD+FJoEkl0VQNJoEjewR2H11IjVv4bp6ahuIcw0yyw/3udC4vJkHw3T3cUh85FTg8eWef3pSaw==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"

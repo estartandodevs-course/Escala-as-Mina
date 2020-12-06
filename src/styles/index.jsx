@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   *, body {
     padding: 0;
     margin: 0;
@@ -15,9 +15,9 @@ export const GlobalStyle = createGlobalStyle`
   body, html {
     height:100%;
   }
-`
+`;
 
-export const theme = {
+const theme = {
   pallete: {
     primary: {
       lighter: "#D1FAF6",
@@ -33,6 +33,8 @@ export const theme = {
       black: "#100928",
       firstGray: "#A0AEC0",
       secondGray: "#E2E8F0",
+      thirdGray: "#5C5C5C",
+      fourthGray: "#F1F5F9",
       white: "#FFFFFF",
     },
     alert: {
@@ -54,8 +56,8 @@ export const theme = {
         height: "28px",
       },
       icon: {
-        small: "28px",
-        normal: "44px",
+        small: { width: "28px", height: "28px" },
+        normal: { width: "44px", height: "44px" },
       },
       small: {
         width: "165px",
@@ -84,6 +86,10 @@ export const theme = {
         width: "907px",
         height: "652px",
       },
+      extraLarge: {
+        width: "1124px",
+        height: "819px",
+      },
     },
 
     list: {
@@ -102,3 +108,54 @@ export const theme = {
     },
   },
 };
+
+const variationStyle = {
+  //this can't be outside Button because it depends on theme
+  primary: {
+    background: theme.pallete.primary.main,
+    hoverBackground: theme.pallete.primary.lighter,
+  },
+  secondary: {
+    background: theme.pallete.secondary.main,
+    hoverBackground: theme.pallete.secondary.main,
+  },
+  disabled: {
+    background: theme.pallete.gray.firstGray,
+    hoverBackground: theme.pallete.gray.secondGray,
+  },
+  search: {
+    background: theme.pallete.gray.black,
+    hoverBackground: theme.pallete.gray.firstGray,
+  },
+  active: {
+    background: theme.pallete.gradient.main,
+    hoverBackground: theme.pallete.gradient.hover,
+  },
+  alert: {
+    background: theme.pallete.alert.main,
+    hoverBackground: theme.pallete.gradient.alert,
+  },
+  forward: {
+    background: theme.pallete.gradient.main,
+  },
+  reverse: {
+    background: theme.pallete.gradient.hover,
+  },
+};
+
+function getV(px, heightOrWidth) {
+  if (px.includes("vw") || px.includes("vh")) return px;
+
+  const measure = Number(px.replace("px", ""));
+  let formattedMeasure = 0;
+  if (["h", "height"].includes(heightOrWidth)) {
+    const newMeasure = (measure / 1024) * 100;
+    formattedMeasure = newMeasure + "vh";
+  } else {
+    const newMeasure = (measure / 1440) * 100;
+    formattedMeasure = newMeasure + "vw";
+  }
+  return formattedMeasure;
+}
+export default variationStyle;
+export { getV, variationStyle, theme, GlobalStyle };
