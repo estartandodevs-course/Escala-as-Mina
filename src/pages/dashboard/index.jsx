@@ -13,17 +13,19 @@ export const Dashboard = () => {
   const [page, setPage] = useState(0);
   const currentRound = M.getCurrentRound();
   const [shownRound, setShownRound] = useState(currentRound);
+  const [totalPages, matches] = M.getItems(page, shownRound);
 
-  const [totalPages, matches] = M.getItems(page);
   const missingMatches = M.getMissingMatches(shownRound);
-  const totalMatches = M.getTotalMatches();
-  const bestAthlete = M.getAthlete("best");
-  const bestTeam = M.getTeam("best");
-  const totalTeams = M.getTotalTeams("0");
-  const lastTotalTeams = M.getTotalTeams("-1");
+  const totalMatches = M.getTotalMatches(shownRound);
+  const bestAthlete = M.getAthlete(shownRound, "best");
+  const bestSquad = M.getSquad(shownRound, "best");
+  const totalTeams = M.getTotalSquads(shownRound);
+  const lastTotalTeams =
+    shownRound === 1 ? M.getTotalSquads(shownRound - 1) : totalTeams;
   const allRoundsInfo = M.getAllRoundsInfo();
   const matchesChecked = checkTeamsNameLenght(matches);
 
+  console.log("requisição");
   const isntFirstPage = page !== 0;
   const instLastPage = page !== totalPages;
   const theresPagesLeft = page - 1 > 1;
@@ -188,7 +190,7 @@ export const Dashboard = () => {
               size={getV("24px", "w")}
               align="center"
             >
-              {bestTeam.team}
+              {bestSquad.team}
             </Typography>
             <Typography
               weight="700"
@@ -196,7 +198,7 @@ export const Dashboard = () => {
               align="center"
               gradient
             >
-              {bestTeam.score}
+              {bestSquad.score}
             </Typography>
             <Typography
               color={theme.pallete.gray.firstGray}
@@ -204,7 +206,7 @@ export const Dashboard = () => {
               size={getV("24px", "w")}
               align="center"
             >
-              {bestTeam.name}
+              {bestSquad.name}
             </Typography>
           </S.FlexContainer>
         </Card>
@@ -244,7 +246,7 @@ const Modal = (props) => {
   });
   const theme = useTheme();
   const [bg, setBg] = useState();
-  const modalSetter = getRadioCheck(bg, setBg);
+  const modalSetter = getRadioCheck(setBg);
 
   return (
     <S.ModalWrapper show={show}>
@@ -358,7 +360,7 @@ const Modal = (props) => {
     </S.ModalWrapper>
   );
 };
-function getRadioCheck(value, set) {
+function getRadioCheck(set) {
   const setValue = set;
   function radioCheck(event) {
     const liActive = event.target.parentElement.parentElement;
@@ -374,9 +376,6 @@ function getRadioCheck(value, set) {
 }
 function changeRound(setShow) {
   setShow(false);
-  console.log(
-    "ainda tenho que fazer isso, isso deve mudar o state round e consequentemente tudo que aparece na tela kkkj"
-  );
 }
 function range(start, stop) {
   return [...Array(stop - start).keys()].map((i) => i + start);
