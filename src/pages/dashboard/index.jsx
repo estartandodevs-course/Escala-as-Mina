@@ -1,12 +1,9 @@
-import { Card, ListItem, Typography, Button } from "../../components";
+import { Card, ListItem, Typography, Button, Modal } from "../../components";
 import * as M from "../../mocks";
 import { useTheme } from "styled-components";
 import { getV } from "../../styles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as S from "./styledPage";
-import deletar from "../../assets/icons/Deletar.svg";
-import upload from "../../assets/icons/Upload.svg";
-import check from "../../assets/icons/AcceptBtn.svg";
 
 export const Dashboard = () => {
   const theme = useTheme();
@@ -14,18 +11,45 @@ export const Dashboard = () => {
   const currentRound = M.getCurrentRound();
   const [shownRound, setShownRound] = useState(currentRound);
   const [totalPages, matches] = M.getItems(page, shownRound);
+  const [data, setData] = useState({
+    missingMatches: 0,
+    totalMatches: 0,
+    bestAthlete: {
+      best: {
+        name: "Gabriely Araújo",
+        score: "1 pts",
+        team: "Bahia Futebol Clube",
+      },
+    },
+    bestSquad: {
+      best: {
+        name: "Adriele Cristina Ribeiro",
+        score: "14 pts",
+        team: "estartando devs",
+      },
+    },
+    totalTeams: 2563,
+    lastTotalTeams: 10025,
+    allRoundsInfo: [],
+    matchesChecked: [],
+  });
 
-  const missingMatches = M.getMissingMatches(shownRound);
-  const totalMatches = M.getTotalMatches(shownRound);
-  const bestAthlete = M.getAthlete(shownRound, "best");
-  const bestSquad = M.getSquad(shownRound, "best");
-  const totalTeams = M.getTotalSquads(shownRound);
-  const lastTotalTeams =
-    shownRound === 1 ? M.getTotalSquads(shownRound - 1) : totalTeams;
-  const allRoundsInfo = M.getAllRoundsInfo();
+  useEffect(() => {
+    setData({
+      missingMatches: M.getMissingMatches(shownRound),
+      totalMatches: M.getTotalMatches(shownRound),
+      bestAthlete: M.getAthlete(shownRound, "best"),
+      bestSquad: M.getSquad(shownRound, "best"),
+      totalTeams: M.getTotalSquads(shownRound),
+      lastTotalTeams:
+        shownRound === 1
+          ? M.getTotalSquads(shownRound - 1)
+          : M.getTotalSquads(shownRound),
+      allRoundsInfo: M.getAllRoundsInfo(),
+    });
+  }, [shownRound]);
+
   const matchesChecked = checkTeamsNameLenght(matches);
-
-  console.log("requisição");
   const isntFirstPage = page !== 0;
   const instLastPage = page !== totalPages;
   const theresPagesLeft = page - 1 > 1;
@@ -37,7 +61,7 @@ export const Dashboard = () => {
       <Modal
         show={show}
         setShow={setShow}
-        roundsInfo={allRoundsInfo}
+        roundsInfo={data.allRoundsInfo}
         currentRound={currentRound}
         setShownRound={setShownRound}
       />
@@ -47,7 +71,13 @@ export const Dashboard = () => {
         </Typography>
       </S.Header>
       <S.GridWrapper>
-        <Card size="normal" direction="column" area="a" flex>
+        <Card
+          justify="flex-start"
+          size="normal"
+          direction="column"
+          area="a"
+          flex
+        >
           <S.FlexContainer
             width="639px"
             marginBottom="32px"
@@ -86,12 +116,10 @@ export const Dashboard = () => {
                   {theresPagesLeft && <p>...</p>}
                 </S.FlexContainer>
               )}
-              {/* //I have to
-                return an empty div or else the buttons go to the wrowng column
-                in grid-template-columns */}
+
               {!isntFirstPage && !theresPagesLeft && <div></div>}
             </>
-            {/* this gets all numbered buttons */}
+
             <S.FlexContainer>
               {getButtons(page, totalPages, theme, setPage)}
             </S.FlexContainer>
@@ -121,14 +149,14 @@ export const Dashboard = () => {
               color={theme.pallete.alert.main}
               size="32px"
             >
-              {missingMatches}/{totalMatches}
+              {data.missingMatches}/{data.totalMatches}
             </Typography>
             <Typography
               color={theme.pallete.alert.lighter}
               size={getV("32px", "w")}
               align="center"
             >
-              {((missingMatches / totalMatches) * 100).toFixed(1)}%
+              {((data.missingMatches / data.totalMatches) * 100).toFixed(1)}%
             </Typography>
           </S.FlexContainer>
         </Card>
@@ -144,7 +172,7 @@ export const Dashboard = () => {
               size={getV("32px", "w")}
               align="center"
             >
-              {missingMatches * 2}
+              {data.missingMatches * 2}
             </Typography>
           </S.FlexContainer>
         </Card>
@@ -159,7 +187,7 @@ export const Dashboard = () => {
               size={getV("24px", "w")}
               align="center"
             >
-              {bestAthlete.name}
+              {data.bestAthlete.name}
             </Typography>
             <Typography
               weight="700"
@@ -167,7 +195,7 @@ export const Dashboard = () => {
               align="center"
               gradient
             >
-              {bestAthlete.score}
+              {data.bestAthlete.score}
             </Typography>
             <Typography
               color={theme.pallete.gray.firstGray}
@@ -175,7 +203,7 @@ export const Dashboard = () => {
               size={getV("24px", "w")}
               align="center"
             >
-              {bestAthlete.team}
+              {data.bestAthlete.team}
             </Typography>
           </S.FlexContainer>
         </Card>
@@ -190,7 +218,7 @@ export const Dashboard = () => {
               size={getV("24px", "w")}
               align="center"
             >
-              {bestSquad.team}
+              {data.bestSquad.team}
             </Typography>
             <Typography
               weight="700"
@@ -198,7 +226,7 @@ export const Dashboard = () => {
               align="center"
               gradient
             >
-              {bestSquad.score}
+              {data.bestSquad.score}
             </Typography>
             <Typography
               color={theme.pallete.gray.firstGray}
@@ -206,7 +234,7 @@ export const Dashboard = () => {
               size={getV("24px", "w")}
               align="center"
             >
-              {bestSquad.name}
+              {data.bestSquad.name}
             </Typography>
           </S.FlexContainer>
         </Card>
@@ -221,7 +249,11 @@ export const Dashboard = () => {
               align="center"
               gradient
             >
-              {(((lastTotalTeams - totalTeams) / totalTeams) * 100).toFixed(1)}%
+              {(
+                ((data.lastTotalTeams - data.totalTeams) / data.totalTeams) *
+                100
+              ).toFixed(1)}
+              %
             </Typography>
             <Typography
               color={theme.pallete.gray.firstGray}
@@ -229,7 +261,7 @@ export const Dashboard = () => {
               size={getV("24px", "w")}
               align="center"
             >
-              {totalTeams}
+              {data.totalTeams}
             </Typography>
           </S.FlexContainer>
         </Card>
@@ -238,145 +270,6 @@ export const Dashboard = () => {
   );
 };
 
-const Modal = (props) => {
-  const { show, setShow, roundsInfo, currentRound, setShownRound } = props;
-  roundsInfo.sort((a, b) => {
-    if (a.roundNumber > b.roundNumber) return -1;
-    else return 1;
-  });
-  const theme = useTheme();
-  const [bg, setBg] = useState();
-  const modalSetter = getRadioCheck(setBg);
-
-  return (
-    <S.ModalWrapper show={show}>
-      <Card size="extraLarge">
-        <S.FlexContainer
-          direction="column"
-          justify="flex-start"
-          marginLeft
-          marginRight
-        >
-          <S.FlexContainer marginBottom="32px" justify="space-between">
-            <Typography type="h2">Gerenciar Rodadas</Typography>
-            <Button type="icon" onClick={() => setShow(false)}>
-              X
-            </Button>
-          </S.FlexContainer>
-          <S.ModalList>
-            <S.Form>
-              <S.ModalHeader />
-              {roundsInfo.map((item, index) => {
-                return (
-                  <S.ModalListItem
-                    key={("round", index)}
-                    column="1fr 3fr 3fr 3fr 3fr"
-                    as="li"
-                  >
-                    <div>
-                      <S.Input
-                        name="round"
-                        type="radio"
-                        id={`${item.roundNumber}`}
-                        onChange={modalSetter}
-                      />
-                      <S.Label htmlFor={`${item.roundNumber}`}>
-                        <div>
-                          <S.Img src={check} />
-                        </div>
-                      </S.Label>
-                    </div>
-                    <Typography
-                      color={theme.pallete.gray.black}
-                      weight="700"
-                      size={getV("32px", "h")}
-                      type="p"
-                    >
-                      Rodada {item.roundNumber}
-                    </Typography>
-                    <Typography
-                      size={getV("32px", "h")}
-                      color={theme.pallete.gray.firstGray}
-                      type="p"
-                    >
-                      {item.squadsTotal} Times
-                    </Typography>
-                    <S.ModalTag current={item.roundNumber === currentRound}>
-                      {item.roundNumber === currentRound
-                        ? "Rodada atual"
-                        : "Rodada finalizada"}
-                    </S.ModalTag>
-                    <S.FlexContainer>
-                      <Button type="icon">
-                        <img src={upload} alt="upload" />
-                      </Button>
-                      <Button type="icon">
-                        <img src={deletar} alt="deletar" />
-                      </Button>
-                    </S.FlexContainer>
-                  </S.ModalListItem>
-                );
-              })}
-            </S.Form>
-          </S.ModalList>
-          <S.FlexContainer justify="flex-start">
-            <Button
-              variation="disabled"
-              size="small"
-              onClick={() => setShow(false)}
-              marginRight={getV("32px", "w")}
-            >
-              <Typography
-                size={getV("21px", "h")}
-                weight="900"
-                font="Roboto"
-                color={theme.pallete.gray.white}
-                type="span"
-              >
-                Cancelar
-              </Typography>
-            </Button>
-            <Button
-              variation="active"
-              size="small"
-              onClick={() => changeRound(setShow)}
-            >
-              <Typography
-                size={getV("21px", "h")}
-                weight="900"
-                font="Roboto"
-                color={theme.pallete.gray.white}
-                type="span"
-                onClick={() => {
-                  setShownRound(bg);
-                }}
-              >
-                Selecionar
-              </Typography>
-            </Button>
-          </S.FlexContainer>
-        </S.FlexContainer>
-      </Card>
-    </S.ModalWrapper>
-  );
-};
-function getRadioCheck(set) {
-  const setValue = set;
-  function radioCheck(event) {
-    const liActive = event.target.parentElement.parentElement;
-    const allLi = liActive.parentElement.children;
-    setValue(event.target.id);
-
-    for (let i = 0; i < allLi.length; i++) {
-      allLi.item(i).classList.remove("active");
-    }
-    liActive.classList.add("active");
-  }
-  return radioCheck;
-}
-function changeRound(setShow) {
-  setShow(false);
-}
 function range(start, stop) {
   return [...Array(stop - start).keys()].map((i) => i + start);
 }

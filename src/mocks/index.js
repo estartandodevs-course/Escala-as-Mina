@@ -25,12 +25,12 @@ const athletes = {
     best: {
       name: "Breno Nunes",
       score: "112 pts",
-      team: "Brasilia"
+      team: "Flamengo"
     }
   },
   "6": {
     best: {
-      name: "Gabryela",
+      name: "Gabriely Araújo",
       score: "1 pts",
       team: "Bahia Futebol Clube"
     }
@@ -183,7 +183,8 @@ function getItems(division, round, numberPerDivision = 8) {
   const totalDivisions = Math.floor(sortedList.length / numberPerDivision);
   const startIndex = numberPerDivision * division;
   const stopIndex = numberPerDivision * (division + 1);
-  return [totalDivisions, sortedList.slice(startIndex, stopIndex)]
+  const matches = sortedList.slice(startIndex, stopIndex)
+  return [totalDivisions, matches]
 }
 function getMissingMatches(round){
   return missingMatches[round]
