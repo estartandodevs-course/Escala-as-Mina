@@ -1,89 +1,284 @@
-import { Card, ListItem, Typography, Button } from '../../components';
-import { getItems } from '../../mocks';
-import { useTheme } from 'styled-components';
-import { getV } from '../../styles';
-import { useState } from 'react';
 import {
-  GlobalWrapper,
-  Header,
-  GridWrapper,
-  FlexContainer,
-} from './styledPage';
+  Card,
+  ListItem,
+  Typography,
+  Button,
+  Modal,
+  Notification,
+} from "../../components";
+import * as M from "../../mocks";
+import { useTheme } from "styled-components";
+import { getV } from "../../styles";
+import { useState, useEffect } from "react";
+import * as S from "./styledPage";
 
-export const Dashboard = (props) => {
+const user = {
+  name: "Luize Abreu",
+};
+
+export const Dashboard = () => {
   const theme = useTheme();
   const [page, setPage] = useState(0);
+  const currentRound = M.getCurrentRound();
+  const [shownRound, setShownRound] = useState(currentRound);
+  const [totalPages, matches] = M.getItems(page, shownRound);
+  const [data, setData] = useState({
+    missingMatches: 0,
+    totalMatches: 0,
+    bestAthlete: {
+      best: {
+        name: "Gabriely Araújo",
+        score: "1 pts",
+        team: "Bahia Futebol Clube",
+      },
+    },
+    bestSquad: {
+      best: {
+        name: "Adriele Cristina Ribeiro",
+        score: "14 pts",
+        team: "estartando devs",
+      },
+    },
+    totalTeams: 2563,
+    lastTotalTeams: 10025,
+    allRoundsInfo: [],
+    matchesChecked: [],
+  });
 
-  let [totalPages, matches] = getItems(page);
+  useEffect(() => {
+    setData({
+      missingMatches: M.getMissingMatches(shownRound),
+      totalMatches: M.getTotalMatches(shownRound),
+      bestAthlete: M.getAthlete(shownRound, "best"),
+      bestSquad: M.getSquad(shownRound, "best"),
+      totalTeams: M.getTotalSquads(shownRound),
+      lastTotalTeams:
+        shownRound === 1
+          ? M.getTotalSquads(shownRound - 1)
+          : M.getTotalSquads(shownRound),
+      allRoundsInfo: M.getAllRoundsInfo(),
+    });
+  }, [shownRound]);
+
   const matchesChecked = checkTeamsNameLenght(matches);
+  const isntFirstPage = page !== 0;
+  const instLastPage = page !== totalPages;
+  const theresPagesLeft = page - 1 > 1;
+  const theresPagesRight = page + 1 < totalPages - 1;
+  const [show, setShow] = useState(false);
+
   return (
-    <GlobalWrapper>
-      <Header>
+    <S.GlobalWrapper>
+      <Modal
+        show={show}
+        setShow={setShow}
+        roundsInfo={data.allRoundsInfo}
+        currentRound={currentRound}
+        setShownRound={setShownRound}
+      />
+      <S.Header>
         <Typography type="h1" align="left">
           Dashboard
         </Typography>
-      </Header>
-      <GridWrapper>
-        <Card size="normal" area="a">
+        <Notification user={user} />
+      </S.Header>
+      <S.GridWrapper>
+        <Card
+          justify="flex-start"
+          size="normal"
+          direction="column"
+          area="a"
+          flex
+        >
+          <S.FlexContainer
+            width="639px"
+            marginBottom="32px"
+            justify="space-between"
+          >
+            <Typography type="h2" align="left">
+              {currentRound}ª Rodada
+            </Typography>
+            <Button
+              size="small"
+              height="24px"
+              variation="active"
+              color={theme.pallete.gray.white}
+              onClick={() => setShow(true)}
+            >
+              Gerenciar Rodada
+            </Button>
+          </S.FlexContainer>
           <ul>
             {matchesChecked.map((item, index) => (
-              <ListItem key={('partida', index)} type="dashboard">
+              <ListItem key={("partida", index)} type="dashboard">
                 {item}
               </ListItem>
             ))}
-            <FlexContainer>
-              {page !== 0 && (
-                <>
+          </ul>
+          <S.GridColumnWrapper column="2fr 1fr 2fr">
+            <>
+              {isntFirstPage && (
+                <S.FlexContainer>
                   <Button type="icon" onClick={() => setPage(page - 1)}>
-                    {'<'}
+                    {"<"}
                   </Button>
                   <Button type="icon" onClick={() => setPage(0)}>
                     Primeira Página
                   </Button>
-                </>
+                  {theresPagesLeft && <p>...</p>}
+                </S.FlexContainer>
               )}
-              {page !== 0 ? <p>...</p> : ''}
-              {/* this gets all numbered buttons */}
+
+              {!isntFirstPage && !theresPagesLeft && <div></div>}
+            </>
+
+            <S.FlexContainer>
               {getButtons(page, totalPages, theme, setPage)}
-              {page !== totalPages ? <p>...</p> : ''}
-              {page !== totalPages && (
+            </S.FlexContainer>
+            <S.FlexContainer>
+              {theresPagesRight && <p>...</p>}
+              {instLastPage && (
                 <>
                   <Button type="icon" onClick={() => setPage(totalPages)}>
                     Última Página
                   </Button>
                   <Button type="icon" onClick={() => setPage(page + 1)}>
-                    {'>'}
+                    {">"}
                   </Button>
                 </>
               )}
-            </FlexContainer>
-          </ul>
+            </S.FlexContainer>
+          </S.GridColumnWrapper>
         </Card>
-        <Card area="b">
-          <Typography size={getV('24px', 'w')} type="h2">
+
+        <Card flex direction="column" justify="flex-start" area="b">
+          <Typography size={getV("24px", "w")} type="h2">
             Jogadoras Avaliadas
           </Typography>
-          <Typography
-            align="center"
-            color={theme.pallete.alert.main}
-            size="32px"
-          >
-            22/32
-          </Typography>
-          <Typography
-            color={theme.pallete.alert.lighter}
-            size={getV('32px', 'w')}
-            align="center"
-          >
-            10%
-          </Typography>
+          <S.FlexContainer direction="column">
+            <Typography
+              align="center"
+              color={theme.pallete.alert.main}
+              size="32px"
+            >
+              {data.missingMatches}/{data.totalMatches}
+            </Typography>
+            <Typography
+              color={theme.pallete.alert.lighter}
+              size={getV("32px", "w")}
+              align="center"
+            >
+              {((data.missingMatches / data.totalMatches) * 100).toFixed(1)}%
+            </Typography>
+          </S.FlexContainer>
         </Card>
-        <Card area="c">vai cacete</Card>
-        <Card area="d">eu acredito</Card>
-        <Card area="e">só aparece</Card>
-        <Card area="f">um do ladinho do outro</Card>
-      </GridWrapper>
-    </GlobalWrapper>
+
+        <Card flex direction="column" justify="flex-start" area="c">
+          <Typography size={getV("24px", "w")} type="h2">
+            Clubes com avaliações pendentes
+          </Typography>
+          <S.FlexContainer direction="column">
+            <Typography
+              color={theme.pallete.gray.thirdGray}
+              weight="700"
+              size={getV("32px", "w")}
+              align="center"
+            >
+              {data.missingMatches * 2}
+            </Typography>
+          </S.FlexContainer>
+        </Card>
+        <Card flex direction="column" justify="flex-start" area="d">
+          <Typography size={getV("24px", "w")} type="h2">
+            Melhor Jogadora da Rodada
+          </Typography>
+          <S.FlexContainer direction="column">
+            <Typography
+              color={theme.pallete.alert.main}
+              weight="700"
+              size={getV("24px", "w")}
+              align="center"
+            >
+              {data.bestAthlete.name}
+            </Typography>
+            <Typography
+              weight="700"
+              size={getV("24px", "w")}
+              align="center"
+              gradient
+            >
+              {data.bestAthlete.score}
+            </Typography>
+            <Typography
+              color={theme.pallete.gray.firstGray}
+              weight="700"
+              size={getV("24px", "w")}
+              align="center"
+            >
+              {data.bestAthlete.team}
+            </Typography>
+          </S.FlexContainer>
+        </Card>
+        <Card flex direction="column" justify="flex-start" area="e">
+          <Typography size={getV("24px", "w")} type="h2">
+            Time que mais pontuou na rodada
+          </Typography>
+          <S.FlexContainer direction="column">
+            <Typography
+              color={theme.pallete.alert.main}
+              weight="700"
+              size={getV("24px", "w")}
+              align="center"
+            >
+              {data.bestSquad.team}
+            </Typography>
+            <Typography
+              weight="700"
+              size={getV("24px", "w")}
+              align="center"
+              gradient
+            >
+              {data.bestSquad.score}
+            </Typography>
+            <Typography
+              color={theme.pallete.gray.firstGray}
+              weight="700"
+              size={getV("24px", "w")}
+              align="center"
+            >
+              {data.bestSquad.name}
+            </Typography>
+          </S.FlexContainer>
+        </Card>
+        <Card flex direction="column" justify="flex-start" area="f">
+          <Typography size={getV("24px", "w")} type="h2">
+            Usuários ativos nessa rodada
+          </Typography>
+          <S.FlexContainer direction="column">
+            <Typography
+              weight="700"
+              size={getV("24px", "w")}
+              align="center"
+              gradient
+            >
+              {(
+                ((data.lastTotalTeams - data.totalTeams) / data.totalTeams) *
+                100
+              ).toFixed(1)}
+              %
+            </Typography>
+            <Typography
+              color={theme.pallete.gray.firstGray}
+              weight="700"
+              size={getV("24px", "w")}
+              align="center"
+            >
+              {data.totalTeams}
+            </Typography>
+          </S.FlexContainer>
+        </Card>
+      </S.GridWrapper>
+    </S.GlobalWrapper>
   );
 };
 
@@ -106,12 +301,13 @@ function getButtons(page, totalPages, theme, setPage) {
   }
   const constructorArray = range(start, stop);
 
-  return constructorArray.map((item) => {
+  return constructorArray.map((item, index) => {
     return (
       <Button
-        size={getV('32px', 'h')}
+        key={index}
+        size={getV("32px", "h")}
         type="icon"
-        variation={item === 0 ? 'secondary' : 'search'}
+        variation={item === 0 ? "secondary" : "search"}
         rounded
         onClick={() => setPage(item + page)}
       >
@@ -130,7 +326,7 @@ function checkTeamsNameLenght(listOfTeams) {
   const checkTeamName = (listOfGame) => {
     return listOfGame.map((item) => {
       if (item.length > 15) {
-        return item.slice(0, 18) + '...';
+        return item.slice(0, 18) + "...";
       } else {
         return item;
       }
