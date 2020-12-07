@@ -25,31 +25,11 @@ const LoginBox = styled.div`
 
 const Logo = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: center;`
+
+const LoginContainer = styled.form`
+
 `
-
-function EmailValidation (field) {
-  user = props.value.substring(0, field.value.indexOf("@"));
-  dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
-
-  if ((user.length >=1) &&
-      (dominio.length >=3) &&
-      (user.search("@")==-1) &&
-      (dominio.search("@")==-1) &&
-      (user.search(" ")==-1) &&
-      (dominio.search(" ")==-1) &&
-      (dominio.search(".")!=-1) &&
-      (dominio.indexOf(".") >=1) &&
-      (dominio.lastIndexOf(".") < dominio.length - 1)) {
-        document.getElementById ().innerHTML="Tudo OK com seu e-mail!";
-        alert("email valido");
-      }
-  else {
-    document.getElementById ().innerHTML="<font color ='red'> Seu e-mail é inválido </font>";
-    alert("email invalido");
-  }
-}
-
 
 
 export const LoginLayout = (props) => {
@@ -60,9 +40,11 @@ export const LoginLayout = (props) => {
             <GlobalStyle/>
             <LoginBox>
                 <Logo>
-                    <img src={LogoLogin} alt="DiarioFFemnino"/>
+                  <img src={LogoLogin} alt="DiarioFFemnino"/>
                 </Logo>
+                <LoginContainer>
 
+                </LoginContainer>
             </LoginBox>
         </React.Fragment>
 
