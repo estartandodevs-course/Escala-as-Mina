@@ -3,16 +3,13 @@ import { theme } from "./styles";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from "./pages";
 import { Layout } from "./components";
-import { CreatePlayer } from "./components/CreatePlayer"
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
 
-      <CreatePlayer />
-
       <Router>
-        {/* <Switch>
+        <Switch>
           <Route path="/login">
             <Login />
           </Route>
@@ -38,7 +35,7 @@ function App() {
               <Ranking />
             </Route>
           </Layout>
-        </Switch> */}
+        </Switch>
       </Router>
     </ThemeProvider>
   );
