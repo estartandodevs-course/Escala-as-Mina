@@ -10,8 +10,6 @@ export const Stepper = (props) => {
     { title: "Vincular jogadoras", subtitle: "Adicione jogadoras ao clube" },
     { title: "Concluir Cadastro", subtitle: "Revise as informações do time" },
   ];
-  let height = 104 * (steps.length - 1);
-  height = height + "px";
 
   return (
     <FlexContainer
