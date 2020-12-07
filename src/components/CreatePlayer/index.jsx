@@ -32,8 +32,10 @@ export const CreatePlayer = () => {
           <InputPlayer type="number" />
           <InputPlayer type="name" />
           <Button type="icon">
-            <img src={AcceptBtn} alt="Accept"></img>
-            <img src={DeclineBtn} alt="Accept"></img>
+            <img src={AcceptBtn} alt="Aceitar" />
+          </Button>
+          <Button type="icon">
+            <img src={DeclineBtn} alt="Deletar" />
           </Button>
         </PlayerInfo>
       )}
