@@ -7,6 +7,7 @@ import { Layout } from "./components";
 function App() {
   return (
     <ThemeProvider theme={theme}>
+
       <Router>
         <Switch>
           <Route path="/login">

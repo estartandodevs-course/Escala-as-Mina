@@ -1,7 +1,8 @@
-import styled, { css } from "styled-components";
-import { getV } from "../../styles";
+import styled, { css } from 'styled-components';
+import { getV } from '../../styles';
 
-export const StyledCard = styled.div`
+
+const StyledCard = styled.div`
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   padding: ${(props) => (props.padding ? props.padding : getV("16px", "h"))};
@@ -21,6 +22,7 @@ export const StyledCard = styled.div`
     css`
       display: none;
     `}
+
   ${(props) =>
     props.flex &&
     css`
@@ -31,7 +33,7 @@ export const StyledCard = styled.div`
     `};
 
   ${(props) =>
-    props.size === "small" &&
+    props.size === 'small' &&
     css`
       text-align: center;
     `}
@@ -44,3 +46,5 @@ export const StyledCard = styled.div`
       padding: ${getV("64px", "h")} ${getV("64px", "w")};
     `}
 `;
+
+export { StyledCard };
