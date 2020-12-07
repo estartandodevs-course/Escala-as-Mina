@@ -1,7 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Wrapper = styled.aside`
-  position: absolute;
+  ${(props) =>
+    props.styling.variation === "right" &&
+    css`
+      position: absolute;
+    `}
   display: flex;
   flex-direction: column;
   align-items: center;

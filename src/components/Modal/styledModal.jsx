@@ -104,6 +104,7 @@ const Img = styled.img`
   display: none;
 `;
 const FlexContainer = styled.div`
+  position: ${(props) => props.position};
   display: flex;
   justify-content: ${(props) => props.justify || "space-evenly"};
   align-items: center;

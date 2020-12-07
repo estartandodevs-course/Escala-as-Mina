@@ -17,16 +17,18 @@ export const Stepper = (props) => {
     <FlexContainer
       justify="flex-start"
       direction="column"
-      padding={`${getV("128px", "h")} ${getV("16px", "w")} 0 ${getV(
-        "16px",
-        "2"
-      )}`}
+      padding={`${getV("128px", "h")} 16px 0 ${getV("16px", "2")}`}
       height
     >
       {steps.map((item, index) => {
         const isActive = index === active;
         return (
-          <FlexContainer justify="flex-end" marginBottom="40px">
+          <FlexContainer
+            justify="flex-end"
+            marginBottom="40px"
+            marginBottomPx
+            position="relative"
+          >
             <FlexContainer justify="center" direction="column">
               <Typography
                 size={getV("24px", "h")}
@@ -42,10 +44,10 @@ export const Stepper = (props) => {
               </Typography>
             </FlexContainer>
             <Ball opacity={isActive ? "1" : "0.5"}></Ball>
+            {index !== steps.length - 1 && <VerticalBar />}
           </FlexContainer>
         );
       })}
-      <VerticalBar height={getV(height, "h")} />
     </FlexContainer>
   );
 };
