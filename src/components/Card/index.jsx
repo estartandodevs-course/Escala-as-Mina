@@ -13,7 +13,7 @@ export const Card = (props) => {
   if (height) styling["height"] = height;
   if (width) styling["width"] = width;
   return (
-    <StyledCard {...styling} {...restProps}>
+    <S.StyledCard {...styling} {...restProps}>
       {children}
     </S.StyledCard>
   );
