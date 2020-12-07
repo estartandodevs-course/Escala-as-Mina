@@ -7,7 +7,15 @@ export const Button = (props) => {
   // props.variation can be primary, secondary, disabled, search, active, alert, forward or reverse (the latter two are exclusive for type=icon) this determines component styling
   //props.size can be small, normal or large (consult styles/index.js for more info)
 
-  const { onClick, variation, children, type = "solid" } = props;
+  const {
+    width,
+    height,
+    onClick,
+    variation,
+    children,
+    type = "solid",
+    ...restProps
+  } = props;
   let { size } = props;
   let dimensions = {};
   const theme = useTheme();
@@ -21,16 +29,7 @@ export const Button = (props) => {
     }
   }
 
-  //if we provide a non-keyword size, then the button gonna have this size (width = height)
-  if (size.includes("vh") || size.includes("px") || size.includes("vw")) {
-    dimensions = {
-      width: size,
-      height: size,
-    };
-  } else {
-    dimensions = { ...theme.dimensions.button[size] };
-  }
-
+  dimensions = { ...theme.dimensions.button[size] };
   const styling = {
     //Styling object that StyledButton receives
     ...dimensions,
@@ -38,15 +37,41 @@ export const Button = (props) => {
     variation,
   };
 
+  //if we provide a non-keyword size or width/height, then the button gonna have it
+  if (
+    width ||
+    height ||
+    size.includes("vh") ||
+    size.includes("px") ||
+    size.includes("vw")
+  ) {
+    if (width) styling["width"] = width;
+    if (height) styling["height"] = height;
+    if (!width && !height) {
+      styling["width"] = size;
+      styling["height"] = size;
+    }
+  }
+
   if (type === "icon") {
     return (
-      <IconButton onClick={onClick} styling={styling} rounded={props.rounded}>
+      <IconButton
+        onClick={onClick}
+        styling={styling}
+        rounded={props.rounded}
+        {...restProps}
+      >
         {children}
       </IconButton>
     );
   } else {
     return (
-      <RectangularButton onClick={onClick} styling={styling} type={type}>
+      <RectangularButton
+        onClick={onClick}
+        styling={styling}
+        type={type}
+        {...restProps}
+      >
         {children}
       </RectangularButton>
     );

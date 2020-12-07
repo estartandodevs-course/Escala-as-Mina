@@ -2,7 +2,7 @@ import { Sidebar, Button } from "../";
 import imgLogo from "../../assets/images/Logo.png";
 import Dashboard from "../../assets/icons/DashboardItem.svg";
 import AdicionarRodada from "../../assets/icons/AdicionarSumula.svg";
-import AvaliarTimesUsuarios from "../../assets/icons/AvaliarTimesUsuarios.svg";
+// import AvaliarTimesUsuarios from "../../assets/icons/AvaliarTimesUsuarios.svg";
 import TimesCadastrados from "../../assets/icons/AvaliarJogadoras.svg";
 import RankingIcon from "../../assets/icons/Group.svg";
 import ExitIcon from "../../assets/icons/Exit.svg";
@@ -34,12 +34,12 @@ const navItems = [
     to: "/jogadoras",
     alt: "Icon Dashboard",
   },
-  {
-    text: "Lorem",
-    src: AvaliarTimesUsuarios, //AvaliarTimesUsuarios.svg
-    to: "/times",
-    alt: "Icon Dashboard",
-  },
+  // {
+  //   text: "Lorem",
+  //   src: AvaliarTimesUsuarios, //AvaliarTimesUsuarios.svg
+  //   to: "/times",
+  //   alt: "Icon Dashboard",
+  // },
   {
     text: "Ranking",
     src: RankingIcon, //Group.svg
