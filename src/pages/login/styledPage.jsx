@@ -20,11 +20,17 @@ const LoginBox = styled.div`
     flex-direction: column;
     width: 560px;
     height: 828px;
-    /* margin-top: 90px;
-    margin-left: 128px; */
     background: ${props => props.theme.pallete.background.blue};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
+    button {
+        font-family: "roboto";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 18px;
+        line-height: 21.09px;
+        margin: auto;
+    }
 `
 
 const Logo = styled.div`
@@ -36,16 +42,7 @@ const LoginContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  button {
-    margin-top: 60px;
-    font-family: "roboto";
-    font-style: normal;
-    font-weight: 900;
-    font-size: 18px;
-    line-height: 21.09px;
-  }
-
-
+  margin: auto;
 `
 const ContainerUser = styled.form`
   display: flex;
@@ -57,7 +54,6 @@ const ContainerUser = styled.form`
   font-size: 24px;
   line-height: 28px;
   justify-content: space-between;
-  margin-top: 50px;
 
   input{
     display: flex;
@@ -72,7 +68,7 @@ const ContainerUser = styled.form`
     border-radius: 10px;
     width: 432px;
     height: 47.4141px;
-    margin-top: 15px;
+    margin-top: 10px;
 
     ::-webkit-inline-placeholder {
       color: ${(props) => props.theme.pallete.gray.secondGray};
@@ -95,7 +91,7 @@ const ContainerPassword = styled.form`
   font-size: 24px;
   line-height: 28px;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 25px;
 
   input{
     display: flex;
@@ -110,7 +106,7 @@ const ContainerPassword = styled.form`
     border-radius: 10px;
     width: 432px;
     height: 47.4141px;
-    margin-top: 15px;
+    margin-top: 10px;
 
     ::-webkit-inline-placeholder {
       color: ${(props) => props.theme.pallete.gray.secondGray};

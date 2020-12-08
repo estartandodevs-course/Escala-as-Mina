@@ -38,14 +38,14 @@ export const LoginLayout = (props) => {
                     >
                     </input>
                   </ContainerPassword>
-                  <Button
-                    type="solid"
-                    variation="primary"
-                    size="normal"
-                  >
-                    Entrar
-                  </Button>
                 </LoginContainer>
+                <Button
+                  type="solid"
+                  variation="primary"
+                  size="normal"
+                >
+                  Entrar
+                </Button>
             </LoginBox>
         </React.Fragment>
     )
