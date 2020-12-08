@@ -104,6 +104,7 @@ const Img = styled.img`
   display: none;
 `;
 const FlexContainer = styled.div`
+  position: ${(props) => props.position};
   display: flex;
   justify-content: ${(props) => props.justify || "space-evenly"};
   align-items: center;
@@ -114,6 +115,7 @@ const FlexContainer = styled.div`
   margin-bottom: ${(props) =>
     props.marginBottom ? getV(props.marginBottom, "h") : ""};
   flex-direction: ${(props) => props.direction || "row"};
+  padding: ${(props) => props.padding};
 `;
 export {
   FlexContainer,

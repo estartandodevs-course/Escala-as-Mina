@@ -7,5 +7,6 @@ import {Typography} from './Typography'
 import {Layout} from './Layout';
 import {Modal} from './Modal';
 import {Notification} from './Notification';
+import {Stepper} from './Stepper'
 
-export {Sidebar, Button, Card, ListItem, Input, InputPlayer, InputSearch, Typography, Layout, Modal, Notification}
+export {Sidebar, Button, Card, ListItem, Input, InputPlayer, InputSearch, Typography, Layout, Modal, Notification, Stepper}
