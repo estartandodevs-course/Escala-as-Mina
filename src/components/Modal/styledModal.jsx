@@ -107,9 +107,8 @@ const FlexContainer = styled.div`
   position: ${(props) => props.position};
   display: flex;
   justify-content: ${(props) => props.justify || "space-evenly"};
-  align-items: center;
+  align-items: ${(props) => props.align || "center"};
   width: ${(props) => (props.width ? getV(props.width, "w") : "100%")};
-  height: ${(props) => props.height && "100%"};
   margin-left: ${(props) => props.marginLeft && "auto"};
   margin-right: ${(props) => props.marginRight && "auto"};
   margin-bottom: ${(props) =>

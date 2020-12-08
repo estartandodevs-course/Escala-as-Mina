@@ -10,15 +10,12 @@ export const Stepper = (props) => {
     { title: "Vincular jogadoras", subtitle: "Adicione jogadoras ao clube" },
     { title: "Concluir Cadastro", subtitle: "Revise as informações do time" },
   ];
-  let height = 104 * (steps.length - 1);
-  height = height + "px";
 
   return (
     <FlexContainer
       justify="flex-start"
       direction="column"
       padding={`${getV("128px", "h")} 16px 0 ${getV("16px", "2")}`}
-      height
     >
       {steps.map((item, index) => {
         const isActive = index === active;
@@ -28,6 +25,7 @@ export const Stepper = (props) => {
             marginBottom="40px"
             marginBottomPx
             position="relative"
+            key={index}
           >
             <FlexContainer justify="center" direction="column">
               <Typography
