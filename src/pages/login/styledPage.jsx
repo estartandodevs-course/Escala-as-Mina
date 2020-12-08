@@ -30,6 +30,7 @@ const LoginBox = styled.div`
         font-size: 18px;
         line-height: 21.09px;
         margin: auto;
+        margin-top: 0;
     }
 `
 
@@ -43,6 +44,7 @@ const LoginContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: auto;
+  margin-top: 20px;
 `
 const ContainerUser = styled.form`
   display: flex;
