@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking } from "./pages";
+import { Login, Dashboard, Rodadas, Times, Ranking } from "./pages";
 import { Layout } from "./components";
 
 function App() {
@@ -17,10 +17,6 @@ function App() {
           <Layout>
             <Route path="/rodadas">
               <Rodadas />
-            </Route>
-
-            <Route path="/jogadoras">
-              <Jogadoras />
             </Route>
 
             <Route exact path="/">

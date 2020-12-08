@@ -16,7 +16,6 @@ export const Stepper = (props) => {
       justify="flex-start"
       direction="column"
       padding={`${getV("128px", "h")} 16px 0 ${getV("16px", "2")}`}
-      height
     >
       {steps.map((item, index) => {
         const isActive = index === active;
@@ -26,6 +25,7 @@ export const Stepper = (props) => {
             marginBottom="40px"
             marginBottomPx
             position="relative"
+            key={index}
           >
             <FlexContainer justify="center" direction="column">
               <Typography
