@@ -104,16 +104,17 @@ const Img = styled.img`
   display: none;
 `;
 const FlexContainer = styled.div`
+  position: ${(props) => props.position};
   display: flex;
   justify-content: ${(props) => props.justify || "space-evenly"};
-  align-items: center;
+  align-items: ${(props) => props.align || "center"};
   width: ${(props) => (props.width ? getV(props.width, "w") : "100%")};
-  height: ${(props) => props.height && "100%"};
   margin-left: ${(props) => props.marginLeft && "auto"};
   margin-right: ${(props) => props.marginRight && "auto"};
   margin-bottom: ${(props) =>
     props.marginBottom ? getV(props.marginBottom, "h") : ""};
   flex-direction: ${(props) => props.direction || "row"};
+  padding: ${(props) => props.padding};
 `;
 export {
   FlexContainer,

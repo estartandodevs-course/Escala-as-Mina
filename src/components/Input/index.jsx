@@ -9,15 +9,34 @@ import {
 import LupaInput from "../../assets/icons/LupaInput.svg";
 import { Button, Typography } from "../";
 import { useTheme } from "styled-components";
+import { getV } from "../../styles";
 
 export const Input = (props) => {
-  const { label, type, placeholder } = props;
+  const { label, type, placeholder, onChange, team, ...restProps } = props;
+
+  if (team) {
+    restProps["type"] = "text";
+    restProps["font"] = "Roboto";
+    restProps["width"] = getV("648px", "w");
+    restProps["marginBottom"] = "32px";
+  }
 
   return (
-    <form>
-      <StyledLabel>{label}</StyledLabel>
-      <StyledInput type={type} placeholder={placeholder} />
-    </form>
+    <>
+      <StyledLabel team={team} {...restProps}>
+        {label}
+      </StyledLabel>
+      {team ? (
+        <StyledInput
+          type={type}
+          placeholder={placeholder}
+          onChange={(event) => onChange(event.target.value)}
+          {...restProps}
+        />
+      ) : (
+        <StyledInput type={type} placeholder={placeholder} {...restProps} />
+      )}
+    </>
   );
 };
 

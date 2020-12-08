@@ -1,10 +1,18 @@
 import styled from "styled-components";
+import { getV } from "../../styles";
+import "fontsource-raleway";
+import "fontsource-poppins";
+import "fontsource-roboto";
 
 export const StyledLabel = styled.label`
   font-weight: 500;
   font-size: 24px;
-  color: ${(props) => props.theme.pallete.secondary.lighter};
+  color: ${(props) =>
+    props.team
+      ? props.theme.pallete.primary.darker
+      : props.theme.pallete.secondary.lighter};
   margin-bottom: 8px;
+  font-family: ${(props) => props.font};
 `;
 
 export const StyledInput = styled.input`
@@ -15,9 +23,11 @@ export const StyledInput = styled.input`
   font-weight: 500;
   line-height: 19px;
   padding-left: 16px;
-  height: 48px;
+  height: ${getV("48px", "h")};
+  width: ${(props) => props.width};
   border: 2px solid ${(props) => props.theme.pallete.gray.firstGray};
   border-radius: 10px;
+  margin-bottom: ${(props) => props.marginBottom}
 
   ::-webkit-inline-placeholder {
     color: ${(props) => props.theme.pallete.gray.secondGray};

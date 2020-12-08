@@ -1,5 +1,6 @@
 import { LoginLayout } from "./login";
-
+import { Dashboard } from "./dashboard";
+import { Times } from "./times";
 
 function Login() {
   return <h2></h2>;
@@ -14,9 +15,7 @@ function Rodadas() {
 function Jogadoras() {
   return <h2>Jogadoras</h2>;
 }
-function Times() {
-  return <h2>Times</h2>;
-}
+
 function Ranking() {
   return <h2>Ranking</h2>;
 }

@@ -1,10 +1,12 @@
 import { createGlobalStyle } from "styled-components";
+import "fontsource-raleway";
 
 const GlobalStyle = createGlobalStyle`
   *, body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Raleway";
   }
   :root {
     font-size: 10px;
