@@ -16,6 +16,12 @@ const LoginBox = styled.div`
     right: 52.22%;
     top: 9.57%;
     bottom: 9.57%;
+    display: flex;
+    flex-direction: column;
+    width: 560px;
+    height: 828px;
+    /* margin-top: 90px;
+    margin-left: 128px; */
     background: ${props => props.theme.pallete.background.blue};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
