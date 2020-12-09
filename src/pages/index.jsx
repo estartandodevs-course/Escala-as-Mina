@@ -4,10 +4,6 @@ import { Rodadas } from './rodadas';
 import { LoginLayout } from "./login";
 
 
-function Dashboard() {
-  return <h2>Dashboard</h2>
-}
-
 function Jogadoras() {
   return <h2>Jogadoras</h2>;
 }
