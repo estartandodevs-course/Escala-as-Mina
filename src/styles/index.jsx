@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import "fontsource-raleway";
 
 const GlobalStyle = createGlobalStyle`
-  *, body {
+  * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -11,11 +11,8 @@ const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 10px;
   }
-  #root {
+  html, body, #root {
     height: 100%;
-  }
-  body, html {
-    height:100%;
   }
 `;
 
@@ -49,6 +46,9 @@ const theme = {
       hover: "linear-gradient(90deg, #0AC2AF 0%, #0DF250 100%)",
       alert: "linear-gradient(270deg, #EB4783 0%, #EB4747 100%)",
     },
+    background: {
+      blue: '#120E29',
+    }
   },
 
   dimensions: {

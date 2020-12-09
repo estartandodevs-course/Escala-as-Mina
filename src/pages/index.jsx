@@ -1,8 +1,8 @@
-import { Dashboard } from "./dashboard";
+import { LoginLayout } from "./login";
 import { Times } from "./times";
 
-function Login() {
-  return <h2>Login</h2>;
+function Dashboard() {
+  return <h2>Dashboard</h2>
 }
 
 function Rodadas() {
@@ -16,4 +16,4 @@ function Ranking() {
   return <h2>Ranking</h2>;
 }
 
-export { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking };
+export { LoginLayout, Dashboard, Rodadas, Jogadoras, Times, Ranking };
