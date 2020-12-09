@@ -1,8 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles';
-import { LoginLayout } from './pages/login';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Login, Dashboard, Rodadas, Times, Ranking } from "./pages";
+import { LoginLayout, Dashboard, Rodadas, Times, Ranking } from "./pages";
 import { Layout } from "./components";
 import { GlobalStyle } from "./styles";
 
@@ -16,23 +15,28 @@ function App() {
             <LoginLayout />
           </Route>
 
-          <Layout>
-            <Route path="/rodadas">
+
+          <Route path="/rodadas">
+            <Layout>
               <Rodadas />
-            </Route>
+            </Layout>
+          </Route>
 
-            <Route exact path="/">
+          <Route exact path="/">
+            <Layout>
               <Dashboard />
-            </Route>
+            </Layout>
+          </Route>
 
-            <Route path="/times">
-              <Times />
-            </Route>
+          <Route path="/times">
+            <Times />
+          </Route>
 
-            <Route path="/ranking">
+          <Route path="/ranking">
+            <Layout>
               <Ranking />
-            </Route>
-          </Layout>
+            </Layout>
+          </Route>
         </Switch>
       </Router>
     </ThemeProvider>

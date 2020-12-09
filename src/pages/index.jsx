@@ -1,9 +1,6 @@
 import { LoginLayout } from "./login";
 import { Times } from "./times";
 
-function Login() {
-  return <h2></h2>;
-}
 function Dashboard() {
   return <h2>Dashboard</h2>
 }
@@ -19,4 +16,4 @@ function Ranking() {
   return <h2>Ranking</h2>;
 }
 
-export { Login, Dashboard, Rodadas, Jogadoras, Times, Ranking };
+export { LoginLayout, Dashboard, Rodadas, Jogadoras, Times, Ranking };

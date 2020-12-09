@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import LogoLogin from "../../assets/images/LogoLogin.png";
-import { Button } from "../../components/Button";
 import "fontsource-roboto";
 import * as S from "./styledPage";
 
