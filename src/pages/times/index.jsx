@@ -178,7 +178,6 @@ export const Times = () => {
           direction="column"
         >
           {players.map((player) => {
-            console.log(player.show);
             if (player.show) {
               return (
                 <C.ListItem
@@ -192,6 +191,8 @@ export const Times = () => {
                   <>{player.name}</>
                 </C.ListItem>
               );
+            } else {
+              return '';
             }
           })}
 

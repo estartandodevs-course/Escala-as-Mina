@@ -55,6 +55,24 @@ const RectangularButton = styled(BaseButton)`
         `};
 `;
 
+const ScoutButton = styled(BaseButton)`
+  border-radius: 50px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  background-color: ${(props) => props.theme.pallete.gray.secondGray};
+  margin-right: ${getV('15px', 'w')};
+  ${(props) =>
+    props.info === 'yes' &&
+    props.state === true &&
+    css`
+      background-image: ${props.theme.pallete.gradient.main};
+    `}
+  ${(props) =>
+    props.info === 'no' &&
+    props.state === false &&
+    css`background-color: ${props.theme.pallete.alert.main}; border: 1px solid white}`};
+`;
+
 const IconButton = styled(BaseButton)`
   border-radius: 50%;
   //I have to take this complexity out of here. styled component is for styling, logical stuff isn't supposed to be here
@@ -70,4 +88,4 @@ const IconButton = styled(BaseButton)`
           background-color: transparent;
         `}
 `;
-export { RectangularButton, IconButton };
+export { RectangularButton, IconButton, ScoutButton };

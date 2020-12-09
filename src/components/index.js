@@ -10,7 +10,7 @@ import { FlexContainer } from './Modal/styledModal';
 import { Notification } from './Notification';
 import { Stepper } from './Stepper';
 import { CreatePlayer } from './CreatePlayer';
-
+import { Scout } from './Scout';
 const InputColor = (props) => {
   const { onChange, position } = props;
   return (
@@ -37,4 +37,5 @@ export {
   InputColor,
   FlexContainer,
   CreatePlayer,
+  Scout,
 };
