@@ -2,7 +2,6 @@ import { Dashboard } from './dashboard';
 import { Times } from './times';
 import { Rodadas } from './rodadas';
 import { LoginLayout } from "./login";
-import { Times } from "./times";
 
 
 function Dashboard() {
