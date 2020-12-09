@@ -11,10 +11,10 @@ function App() {
       <GlobalStyle />
       <Router>
         <Switch>
+
           <Route path="/login">
             <LoginLayout />
           </Route>
-
 
           <Route path="/rodadas">
             <Layout>
@@ -29,6 +29,9 @@ function App() {
           </Route>
 
           <Route path="/times">
+            <Layout>
+              <Times />
+            </Layout>
             <Times />
           </Route>
 
@@ -37,6 +40,7 @@ function App() {
               <Ranking />
             </Layout>
           </Route>
+
         </Switch>
       </Router>
     </ThemeProvider>
