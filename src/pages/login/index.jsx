@@ -1,52 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LogoLogin from "../../assets/images/LogoLogin.png";
 import { Button } from "../../components/Button";
 import "fontsource-roboto";
-import {
-  GlobalStyle,
-  LoginBox,
-  Logo,
-  LoginContainer,
-  ContainerUser,
-  ContainerPassword
-} from "./styledPage.jsx"
+import * as S from "./styledPage";
 
-export const LoginLayout = (props) => {
-    const { children } = props;
-    return (
+export const LoginLayout = () => {
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  });
 
-        <React.Fragment>
-            <GlobalStyle/>
-            <LoginBox>
-                <Logo>
-                  <img src={LogoLogin} alt="DiarioFFemnino"/>
-                </Logo>
-                <LoginContainer>
-                  <ContainerUser>
-                    Email 
-                    <input 
-                    type="email" 
-                    placeholder="E-mail"
-                    >
-                    </input>
-                  </ContainerUser>
-                  <ContainerPassword>
-                    Senha
-                    <input 
-                    type="password" 
-                    placeholder="Senha"
-                    >
-                    </input>
-                  </ContainerPassword>
-                </LoginContainer>
-                <Button
-                  type="solid"
-                  variation="primary"
-                  size="normal"
-                >
-                  Entrar
-                </Button>
-            </LoginBox>
-        </React.Fragment>
-    )
+  const handleChange = (event) => {
+    const { type, value } = event.target
+
+    const copyUser = {...user}
+
+    copyUser[type] = value
+    
+    setUser(copyUser)
+  }
+
+  const handleSubmit = async () => {
+    console.log(user)
+  } 
+
+  return (
+    <S.LoginWrapper>
+      <S.LoginBox>
+        <S.Logo>
+          <img src={LogoLogin} alt="DiarioFFeminino"/>
+        </S.Logo>
+        <S.LoginContainer>
+          <S.ContainerUser className="dados">
+            Email 
+            <input 
+              type="email" 
+              placeholder="E-mail"
+              onChange={(event)=> handleChange(event)}
+              value={user.email}
+            />
+          </S.ContainerUser>
+          <S.ContainerPassword className="dados">
+            Senha
+            <input
+              type="password" 
+              placeholder="Senha"
+              onChange={(event)=> handleChange(event)}
+              value={user.password}
+            />
+          </S.ContainerPassword>
+        </S.LoginContainer>
+        <S.SubmitButton
+          type="solid"
+          variation="primary"
+          size="normal"
+          onClick={handleSubmit}
+          loading="ana"
+        >
+          Entrar
+        </S.SubmitButton>
+      </S.LoginBox>
+    </S.LoginWrapper>
+  )
 }

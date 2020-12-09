@@ -1,5 +1,4 @@
 import { LoginLayout } from "./login";
-import { Dashboard } from "./dashboard";
 import { Times } from "./times";
 
 function Login() {

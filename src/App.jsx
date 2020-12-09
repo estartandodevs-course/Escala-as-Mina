@@ -4,17 +4,16 @@ import { LoginLayout } from './pages/login';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Login, Dashboard, Rodadas, Times, Ranking } from "./pages";
 import { Layout } from "./components";
+import { GlobalStyle } from "./styles";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-
-      <LoginLayout></LoginLayout>
-      
-      {/* <Router>
+      <GlobalStyle />
+      <Router>
         <Switch>
           <Route path="/login">
-            <Login />
+            <LoginLayout />
           </Route>
 
           <Layout>
@@ -35,7 +34,7 @@ function App() {
             </Route>
           </Layout>
         </Switch>
-      </Router> */}
+      </Router>
     </ThemeProvider>
   );
 }

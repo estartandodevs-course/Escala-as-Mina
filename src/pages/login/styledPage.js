@@ -1,42 +1,44 @@
 import styled from "styled-components";
 import imgBackground from "../../assets/images/LoginBackground.png";
-import { createGlobalStyle } from 'styled-components';
 import "fontsource-roboto";
+import { Button } from "../../components/Button";
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-image: url(${imgBackground});
-    background-size: cover;
-  }
-`
+const SubmitButton = styled(Button)`
+  font-family: "roboto";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 21.09px;
+  margin: auto;
+  margin-top: 0;
+`;
+
+const LoginWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  background-image: url(${imgBackground});
+  background-size: cover;
+`;
 
 const LoginBox = styled.div`
-    position: absolute;
-    left: 8.89%;
-    right: 52.22%;
-    top: 9.57%;
-    bottom: 9.57%;
-    display: flex;
-    flex-direction: column;
-    width: 560px;
-    height: 828px;
-    background: ${props => props.theme.pallete.background.blue};
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
-    button {
-        font-family: "roboto";
-        font-style: normal;
-        font-weight: 900;
-        font-size: 18px;
-        line-height: 21.09px;
-        margin: auto;
-        margin-top: 0;
-    }
+  position: absolute;
+  left: 8.89%;
+  right: 52.22%;
+  top: 9.57%;
+  bottom: 9.57%;
+  display: flex;
+  flex-direction: column;
+  width: 560px;
+  height: 828px;
+  background: ${props => props.theme.pallete.background.blue};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
 `
 
 const Logo = styled.div`
   display: flex;
-  justify-content: center;`
+  justify-content: center;
+`
 
 const LoginContainer = styled.div`
   display: flex;
@@ -57,7 +59,7 @@ const ContainerUser = styled.form`
   line-height: 28px;
   justify-content: space-between;
 
-  input{
+  input {
     display: flex;
     align-items: center;
     font-size: 1.6rem;
@@ -122,4 +124,12 @@ const ContainerPassword = styled.form`
 
 `
 
-export {GlobalStyle, LoginBox, Logo, LoginContainer, ContainerUser, ContainerPassword}
+export {
+  LoginBox,
+  Logo,
+  LoginContainer,
+  ContainerUser,
+  ContainerPassword,
+  LoginWrapper,
+  SubmitButton,
+};
