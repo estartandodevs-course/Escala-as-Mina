@@ -44,6 +44,7 @@ export const Rodadas = () => {
         set={setForms}
         whatItem="concededGoal"
       ></C.Scout>
+      <C.MatchScout />
     </>
   );
 };

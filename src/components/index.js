@@ -1,17 +1,4 @@
-import { Sidebar } from './Sidebar';
-import { Button } from './Button';
-import { Card } from './Card';
-import { ListItem } from './ListItem';
-import { Input, InputPlayer, InputSearch } from './Input';
-import { Typography } from './Typography';
-import { Layout } from './Layout';
-import { Modal } from './Modal';
-import { FlexContainer } from './Modal/styledModal';
-import { Notification } from './Notification';
-import { Stepper } from './Stepper';
-import { CreatePlayer } from './CreatePlayer';
-import { Scout } from './Scout';
-const InputColor = (props) => {
+export const InputColor = (props) => {
   const { onChange, position } = props;
   return (
     <input
@@ -21,21 +8,17 @@ const InputColor = (props) => {
   );
 };
 
-export {
-  Sidebar,
-  Button,
-  Card,
-  ListItem,
-  Input,
-  InputPlayer,
-  InputSearch,
-  Typography,
-  Layout,
-  Modal,
-  Notification,
-  Stepper,
-  InputColor,
-  FlexContainer,
-  CreatePlayer,
-  Scout,
-};
+export { Scout } from './Scout';
+export { CreatePlayer } from './CreatePlayer';
+export { Sidebar } from './Sidebar';
+export { Button } from './Button';
+export { Card } from './Card';
+export { ListItem } from './ListItem';
+export { Input, InputPlayer, InputSearch } from './Input';
+export { Typography } from './Typography';
+export { Layout } from './Layout';
+export { Modal } from './Modal';
+export { FlexContainer } from './Modal/styledModal';
+export { Notification } from './Notification';
+export { Stepper } from './Stepper';
+export { MatchScout } from './MatchScout';
