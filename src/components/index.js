@@ -5,6 +5,8 @@ export const InputColor = (props) => {
     )
 }
 
+export { Scout } from './Scout';
+export { CreatePlayer } from './CreatePlayer';
 export { Sidebar } from './Sidebar';
 export { Button } from './Button';
 export { Card } from './Card';

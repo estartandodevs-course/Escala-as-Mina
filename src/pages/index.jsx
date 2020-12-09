@@ -1,13 +1,9 @@
+import { Dashboard } from './dashboard';
+import { Times } from './times';
+import { Rodadas } from './rodadas';
 import { LoginLayout } from "./login";
-import { Times } from "./times";
 
-function Dashboard() {
-  return <h2>Dashboard</h2>
-}
 
-function Rodadas() {
-  return <h2>Rodadas</h2>;
-}
 function Jogadoras() {
   return <h2>Jogadoras</h2>;
 }

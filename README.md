@@ -8,4 +8,4 @@ O Escala as Mina é uma aplicação pensada para auxiliar o trabalho do Diario F
 
 > _Aplicação em desenvolvimento_
 
-Disponivel em: [Minha Despensa](https://escalaasmina.netlify.app/)
+Disponivel em: [Escala as Mina](https://escalaasmina.netlify.app/)

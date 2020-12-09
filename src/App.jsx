@@ -8,6 +8,7 @@ import { GlobalStyle } from "./styles";
 function App() {
   return (
     <ThemeProvider theme={theme}>
+
       <GlobalStyle />
       <Router>
         <Switch>

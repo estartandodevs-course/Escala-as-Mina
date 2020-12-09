@@ -1,44 +1,68 @@
-import { StyledListItem, FlexContainer } from "./styledList";
-import { useTheme } from "styled-components";
-import { Button, InputPlayer, Typography } from "../";
-import declineButton from "../../assets/icons/DeclineBtn.svg";
-import acceptButton from "../../assets/icons/AcceptBtn.svg";
+import { StyledListItem, FlexContainer, PlayerInfo } from './styledList';
+import { useTheme } from 'styled-components';
+import { Button, InputPlayer, Typography } from '../';
+import declineButton from '../../assets/icons/DeclineBtn.svg';
+import acceptButton from '../../assets/icons/AcceptBtn.svg';
+import deleteButton from '../../assets/icons/Deletar.svg';
+import editButton from '../../assets/icons/Editar.svg';
 
 //placeholder functions
-function accept() {
-  console.log("aceito");
+function editItem() {
+  console.log('aceito');
 }
-function decline() {
-  console.log("recusado");
-}
-
+//id and set are props for type='player' and variation='edit'
 const ListItem = (props) => {
-  const { children, variation, id, type = "ranking" } = props;
+  const { children, variation, set, id, key, type = 'ranking' } = props;
   const theme = useTheme();
 
-  if (type === "player" && variation === "edit") {
+  if (type === 'player' && variation === 'edit') {
+    function getDeleteItem(set, id) {
+      function deleteItem() {
+        set((players) => {
+          const temp = [...players];
+          console.log(id);
+          console.log(players);
+          temp.filter((player) => player.id !== id);
+          return temp;
+        });
+      }
+      return deleteItem;
+    }
+    const deleteItem = getDeleteItem(set, id);
+    // console.log(deleteItem);
     return (
       <FlexContainer type={type}>
-        <StyledListItem key={id} type={type}>
+        <StyledListItem key={key} type={type}>
           {children.map((item, index) => handleList(item, index, type, theme))}
-          <Button type="icon" onClick={accept}>
-            <img src={acceptButton} alt="accept" />
+          <Button type="icon" onClick={editItem}>
+            <img src={editButton} alt="edit" wkeyth="20px" height="24px" />
           </Button>
-          <Button type="icon" onClick={decline}>
-            <img src={declineButton} alt="decline" />
+          <Button type="icon" onClick={deleteItem}>
+            <img src={deleteButton} alt="delete" width="20px" height="24px" />
           </Button>
         </StyledListItem>
       </FlexContainer>
     );
-  } else if (type === "player" && variation === "add") {
+  } else if (type === 'player' && variation === 'add') {
     //ideally we redo this input so we call input 2 times here
-    return <InputPlayer />;
+    return (
+      <PlayerInfo>
+        <InputPlayer type="number" />
+        <InputPlayer type="name" />
+        <Button type="icon">
+          <img src={acceptButton} alt="Aceitar" />
+        </Button>
+        <Button type="icon">
+          <img src={declineButton} alt="Deletar" />
+        </Button>
+      </PlayerInfo>
+    );
   }
 
   //this is the default return, ranking
   return (
     <FlexContainer type={type}>
-      <StyledListItem key={id} type={type}>
+      <StyledListItem key={key} type={type}>
         {children.map((item, index) => handleList(item, index, type, theme))}
       </StyledListItem>
     </FlexContainer>
@@ -46,9 +70,9 @@ const ListItem = (props) => {
 };
 
 function handleList(item, index, type, theme) {
-  if (type === "dashboard") {
+  if (type === 'dashboard') {
     return dashboard(item, index, theme);
-  } else if (type === "player") {
+  } else if (type === 'player') {
     return player(item, index, theme);
   } else {
     return ranking(item, index, theme);
@@ -57,7 +81,7 @@ function handleList(item, index, type, theme) {
 
 function ranking(item, index, theme) {
   if (index === 0) {
-    const elements = item.split("-");
+    const elements = item.split('-');
 
     return (
       <span>
@@ -152,7 +176,7 @@ function dashboard(item, index, theme) {
           size="1.2rem"
           weight="700"
           color={
-            Number(item.replace("%", "")) > 50
+            Number(item.replace('%', '')) > 50
               ? theme.pallete.secondary.main
               : theme.pallete.alert.main
           }
@@ -196,7 +220,7 @@ function dashboard(item, index, theme) {
           size="1.2rem"
           weight="700"
           color={
-            Number(item.replace("%", "")) > 50
+            Number(item.replace('%', '')) > 50
               ? theme.pallete.secondary.main
               : theme.pallete.alert.main
           }
