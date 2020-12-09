@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import { InputPlayer } from '../Input';
-import { Button } from '../Button';
-import AcceptBtn from '../../assets/icons/AcceptBtn.svg';
-import DeclineBtn from '../../assets/icons/DeclineBtn.svg';
-import { PlayerInfo } from './styledCreatePlayer';
+import { Button, ListItem } from '../';
 
 export const CreatePlayer = () => {
   const [showInput, setShowInput] = useState(false);
@@ -27,18 +23,7 @@ export const CreatePlayer = () => {
         </Button>
       )}
 
-      {showInput && (
-        <PlayerInfo>
-          <InputPlayer type="number" />
-          <InputPlayer type="name" />
-          <Button type="icon">
-            <img src={AcceptBtn} alt="Aceitar" />
-          </Button>
-          <Button type="icon">
-            <img src={DeclineBtn} alt="Deletar" />
-          </Button>
-        </PlayerInfo>
-      )}
+      {showInput && <ListItem type="player" variation="add" />}
     </>
   );
 };
