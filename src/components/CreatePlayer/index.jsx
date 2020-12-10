@@ -23,6 +23,7 @@ export const CreatePlayer = () => {
         </Button>
       )}
 
+
       {showInput && <ListItem type="player" variation="add" />}
     </>
   );
