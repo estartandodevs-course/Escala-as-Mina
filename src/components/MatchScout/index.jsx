@@ -10,6 +10,8 @@ export const MatchScout = (props) => {
   const [victory, setVictory] = useState(true);
   const theme = useTheme();
 
+  useEffect(() => {}, []);
+
   useEffect(() => {}, [noGoal, victory]);
   return (
     <C.FlexContainer
@@ -24,31 +26,51 @@ export const MatchScout = (props) => {
       marginLeft
       marginBottom
     >
-      <C.Typography
-        weight="700"
-        size={getV('16px', 'h')}
-        color={theme.pallete.secondary.lighter}
-      >
-        Partida com vitória
-      </C.Typography>
-      <Switch
-        uncheckedIcon={false}
-        checkedIcon={false}
-        width="64px"
-        height="24px"
-        handleDiameter="22px"
-        onColor={theme.pallete.secondary.lighter}
-        onHandleColor={theme.pallete.secondary.main}
-        offColor={theme.pallete.gray.secondGray}
-        offHandleColor={theme.pallete.alert.main}
-      />
-      <C.Typography
-        weight="700"
-        size={getV('16px', 'h')}
-        color={theme.pallete.secondary.lighter}
-      >
-        Jogo sem sofrer gol
-      </C.Typography>
+      <label>
+        <C.Typography
+          weight="700"
+          size={getV('16px', 'h')}
+          color={theme.pallete.secondary.lighter}
+        >
+          Partida com vitória
+        </C.Typography>
+        <Switch
+          uncheckedIcon={false}
+          checkedIcon={false}
+          width={64}
+          height={24}
+          handleDiameter={22}
+          onColor={theme.pallete.secondary.lighter}
+          onHandleColor={theme.pallete.secondary.main}
+          offColor={theme.pallete.gray.secondGray}
+          offHandleColor={theme.pallete.alert.main}
+          onChange={(event) => setVictory(event)}
+          checked={victory}
+        />
+      </label>
+
+      <label>
+        <C.Typography
+          weight="700"
+          size={getV('16px', 'h')}
+          color={theme.pallete.secondary.lighter}
+        >
+          Jogo sem sofrer gol
+        </C.Typography>
+        <Switch
+          uncheckedIcon={false}
+          checkedIcon={false}
+          width={64}
+          height={24}
+          handleDiameter={22}
+          onColor={theme.pallete.secondary.lighter}
+          onHandleColor={theme.pallete.secondary.main}
+          offColor={theme.pallete.gray.secondGray}
+          offHandleColor={theme.pallete.alert.main}
+          onChange={(event) => setNoGoal(event)}
+          checked={noGoal}
+        />
+      </label>
     </C.FlexContainer>
   );
 };
