@@ -1,24 +1,24 @@
-import * as C from '../';
-import { getV } from '../../styles';
-import { useEffect, useState } from 'react';
-import { useTheme } from 'styled-components';
-import Switch from 'react-switch';
-import { Div } from './styledScout';
+import * as C from "../";
+import { getV } from "../../styles";
+import { useEffect, useState } from "react";
+import { useTheme } from "styled-components";
+import Switch from "react-switch";
+import { Div } from "./styledScout";
 
-const switchScouts = ['wasPlaying', 'isCaptain'];
+const switchScouts = ["wasPlaying", "isCaptain"];
 //you have to provide forms (array of objects, i.e., scouts)
 //a setForms (from useState)
 //and what item this is scounting
 const Scout = (props) => {
   const { ...restProps } = props;
   const { forms, whatItem, player } = restProps;
-  const players = forms['players'];
+  const players = forms["players"];
   const playerItem = players.filter((input) => input.name === player)[0];
-  const scout = playerItem['scouts'].filter(
-    (input) => input.key === whatItem,
+  const scout = playerItem["scouts"].filter(
+    (input) => input.key === whatItem
   )[0];
 
-  if (scout['value'] !== undefined) {
+  if (scout["value"] !== undefined) {
     return <ScoutNumber {...restProps} />;
   } else {
     return <ScoutBool {...restProps} />;
@@ -31,32 +31,32 @@ const ScoutBool = (props) => {
   const { forms, set, whatItem, player } = props;
   const theme = useTheme();
 
-  const players = forms['players'];
+  const players = forms["players"];
   const playerItem = players.filter((input) => input.name === player)[0];
   const indexPlayer = players.indexOf(playerItem);
   const scout = playerItem.scouts.filter((input) => input.key === whatItem)[0];
   const indexScout = playerItem.scouts.indexOf(scout);
-  const isSwitch = switchScouts.includes(scout['key']);
+  const isSwitch = switchScouts.includes(scout["key"]);
 
   const [localState, setLocalState] = useState(scout.state);
 
   useEffect(() => {
     set((forms) => {
       const temp = { ...forms };
-      temp['players'][indexPlayer]['scouts'][indexScout].state = localState;
+      temp["players"][indexPlayer]["scouts"][indexScout].state = localState;
       return temp;
     });
   }, [localState, indexScout, indexPlayer, set]);
   return (
     <C.FlexContainer
-      direction={isSwitch ? 'row' : 'column'}
+      direction={isSwitch ? "row" : "column"}
       justify="flex-start"
       align="flex-start"
     >
       <C.Typography
         font="Raleway"
         weight="700"
-        size={getV('16px', 'h')}
+        size={getV("16px", "h")}
         color={theme.pallete.secondary.lighter}
       >
         {scout.title}
@@ -88,7 +88,7 @@ const ScoutBool = (props) => {
             <C.Typography
               font="Raleway"
               weight="700"
-              size={getV('16px', 'h')}
+              size={getV("16px", "h")}
               color={
                 localState
                   ? theme.pallete.gray.white
@@ -107,7 +107,7 @@ const ScoutBool = (props) => {
             <C.Typography
               font="Raleway"
               weight="700"
-              size={getV('16px', 'h')}
+              size={getV("16px", "h")}
               color={
                 localState
                   ? theme.pallete.gray.firstGray
@@ -127,7 +127,7 @@ const ScoutNumber = (props) => {
   const { forms, set, whatItem, player } = props;
   const theme = useTheme();
 
-  const players = forms['players'];
+  const players = forms["players"];
   const playerItem = players.find((input) => input.name === player);
   const indexPlayer = players.indexOf(playerItem);
   const scout = playerItem.scouts.find((input) => input.key === whatItem);
@@ -152,14 +152,14 @@ const ScoutNumber = (props) => {
     set((forms) => {
       const temp = { ...forms };
 
-      temp['players'][indexPlayer]['scouts'][indexScout].value = localValue;
+      temp["players"][indexPlayer]["scouts"][indexScout].value = localValue;
       return temp;
     });
   }, [localValue, indexScout, indexPlayer, set]);
   useEffect(() => {
     set((forms) => {
       const temp = { ...forms };
-      temp['players'][indexPlayer]['scouts'][indexScout].state = localState;
+      temp["players"][indexPlayer]["scouts"][indexScout].state = localState;
       return temp;
     });
   }, [localState, indexScout, indexPlayer, set]);
@@ -169,7 +169,7 @@ const ScoutNumber = (props) => {
       <C.Typography
         font="Raleway"
         weight="700"
-        size={getV('16px', 'h')}
+        size={getV("16px", "h")}
         color={theme.pallete.secondary.lighter}
       >
         {scout.title}
@@ -184,7 +184,7 @@ const ScoutNumber = (props) => {
           <C.Typography
             font="Raleway"
             weight="700"
-            size={getV('16px', 'h')}
+            size={getV("16px", "h")}
             color={
               localState
                 ? theme.pallete.gray.white
@@ -203,7 +203,7 @@ const ScoutNumber = (props) => {
           <C.Typography
             font="Raleway"
             weight="700"
-            size={getV('16px', 'h')}
+            size={getV("16px", "h")}
             color={
               localState
                 ? theme.pallete.gray.firstGray
@@ -215,7 +215,7 @@ const ScoutNumber = (props) => {
         </C.Button>
         <C.FlexContainer
           justify="space-between"
-          width={getV('75px', 'w')}
+          width={getV("75px", "w")}
           marginLeft
         >
           <C.Button type="icon" onClick={handleLessValue}>
