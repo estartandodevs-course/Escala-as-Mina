@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { getV } from '../../styles';
+import styled, { css } from "styled-components";
+import { getV } from "../../styles";
 
 const GridColumnWrapper = styled.div`
   display: grid;
@@ -7,7 +7,7 @@ const GridColumnWrapper = styled.div`
   grid-template-columns: ${(props) => props.column};
 `;
 const ModalWrapper = styled.div`
-  display: ${(props) => (props.show ? 'flex' : 'none')};
+  display: ${(props) => (props.show ? "flex" : "none")};
   flex-direction: column;
   position: absolute;
   left: 0;
@@ -15,13 +15,13 @@ const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.36);
+  background-color: rgba(0, 0, 0, 0.36);
   backdrop-filter: blur(4px);
 `;
 const ModalHeader = styled.div`
   background-color: ${(props) => props.theme.pallete.gray.secondGray};
   width: 100%;
-  height: ${getV('64px', 'h')};
+  height: ${getV("64px", "h")};
   border-radius: 15px 15px 0 0;
 `;
 const ModalList = styled.ul`
@@ -29,13 +29,16 @@ const ModalList = styled.ul`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: ${getV('519px', 'h')};
+  height: ${getV("519px", "h")};
   margin-left: auto;
   margin-right: auto;
   flex-direction: column;
   overflow-y: scroll;
-  margin-bottom: ${getV('32px', 'h')};
+  margin-bottom: ${getV("32px", "h")};
 
+  scrollbar-color: ${(props) => props.theme.pallete.primary.main}
+    ${(props) => props.theme.pallete.gray.firstGray};
+  scrollbar-width: 16px;
   &::-webkit-scrollbar {
     width: 16px;
   }
@@ -49,13 +52,14 @@ const ModalList = styled.ul`
   }
 `;
 const ModalListItem = styled(GridColumnWrapper)`
-  height: ${getV('64px', 'h')};
+  height: ${getV("64px", "h")};
   * {
     margin: auto;
   }
   &.active {
     background-color: ${(props) => props.theme.pallete.secondary.lighter};
   }
+  border: 1px solid ${(props) => props.theme.pallete.gray.secondGray};
 `;
 const Form = styled.form`
   width: 100%;
@@ -65,8 +69,8 @@ const ModalTag = styled.div`
   color: ${(props) => props.theme.pallete.primary.main};
   text-align: center;
   border-radius: 30px;
-  width: ${getV('164px', 'w')};
-  padding: ${getV('4px', 'h')} 0;
+  width: ${getV("164px", "w")};
+  padding: ${getV("4px", "h")} 0;
 
   ${(props) =>
     props.current &&
@@ -106,19 +110,19 @@ const Img = styled.img`
 const FlexContainer = styled.div`
   position: ${(props) => props.position};
   display: flex;
-  justify-content: ${(props) => props.justify || 'space-evenly'};
-  align-items: ${(props) => props.align || 'center'};
-  flex-direction: ${(props) => props.direction || 'row'};
+  justify-content: ${(props) => props.justify || "space-evenly"};
+  align-items: ${(props) => props.align || "center"};
+  flex-direction: ${(props) => props.direction || "row"};
 
-  width: ${(props) => (props.width ? getV(props.width, 'w') : '100%')};
-  height: ${(props) => (props.height ? getV(props.height, 'h') : '')};
+  width: ${(props) => (props.width ? getV(props.width, "w") : "100%")};
+  height: ${(props) => (props.height ? getV(props.height, "h") : "")};
 
-  margin-left: ${(props) => props.marginLeft && 'auto'};
-  margin-right: ${(props) => props.marginRight && 'auto'};
+  margin-left: ${(props) => props.marginLeft && "auto"};
+  margin-right: ${(props) => props.marginRight && "auto"};
   margin-bottom: ${(props) =>
     props.marginBottom && typeof props.marginBottom === Boolean
-      ? getV(props.marginBottom, 'h')
-      : 'auto'};
+      ? getV(props.marginBottom, "h")
+      : "auto"};
 
   padding: ${(props) => props.padding};
   background-color: ${(props) => props.backgroundColor};

@@ -4,6 +4,7 @@ import "fontsource-roboto";
 import * as S from "./styledPage";
 import firebase from "firebase/app";
 import "firebase/auth";
+import { Head } from "../../components";
 
 export const LoginLayout = () => {
   const [user, setUser] = useState({
@@ -29,12 +30,13 @@ export const LoginLayout = () => {
 
   return (
     <S.LoginWrapper>
+      <Head title="login" />
       <S.LoginBox>
         <S.Logo>
           <img src={LogoLogin} alt="DiarioFFeminino" />
         </S.Logo>
         <S.LoginContainer>
-          <S.ContainerUser className="dados">
+          <S.ContainerInput className="dados">
             Email
             <input
               type="email"
@@ -43,8 +45,8 @@ export const LoginLayout = () => {
               onKeyDown={handleEnter}
               value={user.email}
             />
-          </S.ContainerUser>
-          <S.ContainerPassword className="dados">
+          </S.ContainerInput>
+          <S.ContainerInput className="dados">
             Senha
             <input
               type="password"
@@ -53,7 +55,7 @@ export const LoginLayout = () => {
               onKeyDown={handleEnter}
               value={user.password}
             />
-          </S.ContainerPassword>
+          </S.ContainerInput>
         </S.LoginContainer>
         <S.SubmitButton
           type="solid"

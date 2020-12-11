@@ -28,8 +28,8 @@ const LoginBox = styled.div`
   bottom: 5.57%;
   display: flex;
   flex-direction: column;
-  width: 560px;
-  height: 828px;
+  max-width: 560px;
+  max-height: 828px;
   background: ${(props) => props.theme.pallete.background.blue};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
@@ -39,9 +39,10 @@ const Logo = styled.div`
   display: flex;
   justify-content: center;
   img {
-    width: 73%;
+    max-width: 20vw;
+    max-height: 20vh;
   }
-`
+`;
 
 const LoginContainer = styled.form`
   display: flex;
@@ -51,49 +52,8 @@ const LoginContainer = styled.form`
   margin: auto;
   margin-top: 20px;
 `;
-const ContainerUser = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-family: "roboto";
-  color: ${(props) => props.theme.pallete.secondary.lighter};
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
-  justify-content: space-between;
-  @media(max-width:1500px){
-    text-align: center;
-  }
 
-  input {
-    display: flex;
-    align-items: center;
-    font-size: 1.6rem;
-    color: ${(props) => props.theme.pallete.gray.black};
-    font-weight: 500;
-    line-height: 19px;
-    padding-left: 16px;
-    height: 48px;
-    border: 2px solid ${(props) => props.theme.pallete.gray.firstGray};
-    border-radius: 10px;
-    width: 432px;
-    height: 47.4141px;
-    margin-top: 10px;
-
-    ::-webkit-inline-placeholder {
-      color: ${(props) => props.theme.pallete.gray.secondGray};
-    }
-
-    &:focus {
-      outline: none;
-      border: 2px solid ${(props) => props.theme.pallete.secondary.main};
-    }
-    @media(max-width:1500px){
-      width: 100%;
-    }
-  }
-`;
-const ContainerPassword = styled.div`
+const ContainerInput = styled.div`
   display: flex;
   flex-direction: column;
   font-family: "roboto";
@@ -141,8 +101,7 @@ export {
   LoginBox,
   Logo,
   LoginContainer,
-  ContainerUser,
-  ContainerPassword,
+  ContainerInput,
   LoginWrapper,
   SubmitButton,
 };

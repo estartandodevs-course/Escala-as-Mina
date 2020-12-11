@@ -1,9 +1,25 @@
 import * as C from "..";
 import { useTheme } from "styled-components";
+import { useState } from "react";
 
 export const ScoutsBox = (props) => {
-  const { activePlayer, set, forms } = props;
+  const { activePlayer, setActivePlayer, forms, setForms } = props;
   const theme = useTheme();
+  const scouts = [...activePlayer.scouts];
+
+  const [localScouts, setLocalScouts] = useState(...scouts);
+  const indexPlayer = forms.players.indexOf(activePlayer);
+
+  const submit = () => {
+    console.log(forms);
+    setForms((current) => {
+      const temp = { ...current };
+      temp.players[indexPlayer].scouts = localScouts;
+      return temp;
+    });
+    setActivePlayer(false);
+    console.log(forms);
+  };
   return (
     <C.FlexContainer
       direction="column"
@@ -11,7 +27,8 @@ export const ScoutsBox = (props) => {
       align="flex-start"
       border="30px"
       padding="24px 20px"
-      width="296px"
+      minWidth="296px"
+      maxWidth="300px"
       height="626px"
       backgroundColor={theme.pallete.primary.main}
     >
@@ -37,18 +54,42 @@ export const ScoutsBox = (props) => {
           {activePlayer.score} pontos
         </C.Typography>
       </C.Div>
-      {activePlayer["scouts"].map((scout, index) => {
-        return (
-          <C.FlexContainer key={index}>
-            <C.Scout
-              player={activePlayer.name}
-              forms={forms}
-              set={set}
-              whatItem={scout.key}
-            ></C.Scout>
-          </C.FlexContainer>
-        );
-      })}
+      <C.Div overflowY="scroll" height="60%" margin="0 0 3% 0">
+        {activePlayer["scouts"].map((scout, index) => {
+          return (
+            <C.FlexContainer key={index}>
+              <C.Scout
+                scout={scout}
+                set={setLocalScouts}
+                index={index}
+              ></C.Scout>
+            </C.FlexContainer>
+          );
+        })}
+      </C.Div>
+      <C.FlexContainer justify="space-between" align="center">
+        <C.Button
+          type="solid"
+          variation="disabled"
+          size="small"
+          onClick={() => setActivePlayer(false)}
+        >
+          <C.Typography size="16px" weight="500" font="Roboto" color="white">
+            Cancelar
+          </C.Typography>
+        </C.Button>
+        <C.Button
+          type="solid"
+          variation="active"
+          size="small"
+          border="1px solid white"
+          onClick={submit}
+        >
+          <C.Typography size="16px" weight="500" font="Roboto" color="white">
+            Confirmar
+          </C.Typography>
+        </C.Button>
+      </C.FlexContainer>
     </C.FlexContainer>
   );
 };
