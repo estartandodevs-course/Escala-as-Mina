@@ -1,21 +1,21 @@
-import { StyledListItem, FlexContainer, PlayerInfo } from './styledList';
-import { useTheme } from 'styled-components';
-import { Button, InputPlayer, Typography } from '../';
-import declineButton from '../../assets/icons/DeclineBtn.svg';
-import acceptButton from '../../assets/icons/AcceptBtn.svg';
-import deleteButton from '../../assets/icons/Deletar.svg';
-import editButton from '../../assets/icons/Editar.svg';
+import { StyledListItem, FlexContainer, PlayerInfo } from "./styledList";
+import { useTheme } from "styled-components";
+import { Button, InputPlayer, Typography } from "../";
+import declineButton from "../../assets/icons/DeclineBtn.svg";
+import acceptButton from "../../assets/icons/AcceptBtn.svg";
+import deleteButton from "../../assets/icons/Deletar.svg";
+import editButton from "../../assets/icons/Editar.svg";
 
 //placeholder functions
 function editItem() {
-  console.log('aceito');
+  console.log("aceito");
 }
 //id and set are props for type='player' and variation='edit'
 const ListItem = (props) => {
-  const { children, variation, set, id, key, type = 'ranking' } = props;
+  const { children, variation, set, id, type = "ranking" } = props;
   const theme = useTheme();
 
-  if (type === 'player' && variation === 'edit') {
+  if (type === "player" && variation === "edit") {
     function getDeleteItem(set, id) {
       function deleteItem() {
         set((players) => {
@@ -31,11 +31,13 @@ const ListItem = (props) => {
     const deleteItem = getDeleteItem(set, id);
     // console.log(deleteItem);
     return (
-      <FlexContainer type={type}>
-        <StyledListItem key={key} type={type}>
-          {children.map((item, index) => handleList(item, index, type, theme))}
+      <FlexContainer key={id} type={type}>
+        <StyledListItem type={type}>
+          {children.map((item, index) =>
+            handleList(item, index, type, theme, id)
+          )}
           <Button type="icon" onClick={editItem}>
-            <img src={editButton} alt="edit" wkeyth="20px" height="24px" />
+            <img src={editButton} alt="edit" width="20px" height="24px" />
           </Button>
           <Button type="icon" onClick={deleteItem}>
             <img src={deleteButton} alt="delete" width="20px" height="24px" />
@@ -43,7 +45,7 @@ const ListItem = (props) => {
         </StyledListItem>
       </FlexContainer>
     );
-  } else if (type === 'player' && variation === 'add') {
+  } else if (type === "player" && variation === "add") {
     //ideally we redo this input so we call input 2 times here
     return (
       <PlayerInfo>
@@ -62,31 +64,32 @@ const ListItem = (props) => {
   //this is the default return, ranking
   return (
     <FlexContainer type={type}>
-      <StyledListItem key={key} type={type}>
-        {children.map((item, index) => handleList(item, index, type, theme))}
+      <StyledListItem type={type}>
+        {children.map((item, index) =>
+          handleList(item, index, type, theme, id)
+        )}
       </StyledListItem>
     </FlexContainer>
   );
 };
 
-function handleList(item, index, type, theme) {
-  if (type === 'dashboard') {
+function handleList(item, index, type, theme, id) {
+  if (type === "dashboard") {
     return dashboard(item, index, theme);
-  } else if (type === 'player') {
+  } else if (type === "player") {
     return player(item, index, theme);
   } else {
     return ranking(item, index, theme);
   }
 }
 
-function ranking(item, index, theme) {
+function ranking(item, index, theme, id) {
   if (index === 0) {
-    const elements = item.split('-');
+    const elements = item.split("-");
 
     return (
       <span>
         <Typography
-          key={index}
           size="24px"
           weight="700"
           color={theme.pallete.secondary.main}
@@ -95,7 +98,6 @@ function ranking(item, index, theme) {
           {elements[0]}
         </Typography>
         <Typography
-          key={index}
           size="24px"
           weight="700"
           color={theme.pallete.gray.firstGray}
@@ -104,7 +106,6 @@ function ranking(item, index, theme) {
           - {elements[1]} -
         </Typography>
         <Typography
-          key={index}
           size="24px"
           weight="700"
           color={theme.pallete.secondary.main}
@@ -116,25 +117,13 @@ function ranking(item, index, theme) {
     );
   } else if (index === 1) {
     return (
-      <Typography
-        key={index}
-        size="32px"
-        weight="600"
-        color={theme.pallete.gray.firstGray}
-      >
+      <Typography size="32px" weight="600" color={theme.pallete.gray.firstGray}>
         {item}
       </Typography>
     );
   } else {
     return (
-      <Typography
-        key={index}
-        size="32px"
-        weight="600"
-        font="Poppins"
-        type="span"
-        gradient
-      >
+      <Typography size="32px" weight="600" font="Poppins" type="span" gradient>
         {item}
       </Typography>
     );
@@ -144,23 +133,13 @@ function ranking(item, index, theme) {
 function player(item, index, theme) {
   if (index < 2) {
     return (
-      <Typography
-        key={index}
-        size="16px"
-        weight="700"
-        color={theme.pallete.secondary.main}
-      >
+      <Typography size="16px" weight="700" color={theme.pallete.secondary.main}>
         {item}
       </Typography>
     );
   } else {
     return (
-      <Typography
-        key={index}
-        size="16px"
-        weight="700"
-        color={theme.pallete.gray.white}
-      >
+      <Typography size="16px" weight="700" color={theme.pallete.gray.white}>
         {item}
       </Typography>
     );
@@ -172,11 +151,10 @@ function dashboard(item, index, theme) {
     case 0:
       return (
         <Typography
-          key={index}
           size="1.2rem"
           weight="700"
           color={
-            Number(item.replace('%', '')) > 50
+            Number(item.replace("%", "")) > 50
               ? theme.pallete.secondary.main
               : theme.pallete.alert.main
           }
@@ -186,11 +164,7 @@ function dashboard(item, index, theme) {
       );
 
     case 1:
-      return (
-        <Typography key={index} size="1.2rem">
-          {item}
-        </Typography>
-      );
+      return <Typography size="1.2rem">{item}</Typography>;
 
     case 2:
       return (
@@ -208,7 +182,7 @@ function dashboard(item, index, theme) {
 
     case 3:
       return (
-        <Typography key={index} size="1.2rem" align="right">
+        <Typography size="1.2rem" align="right">
           {item}
         </Typography>
       );
@@ -216,11 +190,10 @@ function dashboard(item, index, theme) {
     case 4:
       return (
         <Typography
-          key={index}
           size="1.2rem"
           weight="700"
           color={
-            Number(item.replace('%', '')) > 50
+            Number(item.replace("%", "")) > 50
               ? theme.pallete.secondary.main
               : theme.pallete.alert.main
           }
@@ -231,7 +204,7 @@ function dashboard(item, index, theme) {
       );
 
     default:
-      return <Typography key={index}>{item}</Typography>;
+      return <Typography>{item}</Typography>;
   }
 }
 
