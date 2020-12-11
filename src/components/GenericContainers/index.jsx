@@ -12,6 +12,9 @@ const Div = styled.div`
     props.overflowY &&
     css`
       overflow-y: ${props.overflowY};
+      scrollbar-color: ${(props) => props.theme.pallete.primary.main}
+        ${(props) => props.theme.pallete.gray.firstGray};
+      scrollbar-width: 8px;
       &::-webkit-scrollbar {
         width: 8px;
       }

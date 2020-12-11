@@ -1,16 +1,16 @@
-import * as C from '../../components';
-import { useEffect, useState } from 'react';
-import { useTheme } from 'styled-components';
-import alert from '../../assets/icons/Alert.svg';
-import { getV } from '../../styles';
-import { Img, Div } from './styledPage';
+import * as C from "../../components";
+import { useEffect, useState } from "react";
+import { useTheme } from "styled-components";
+import alert from "../../assets/icons/Alert.svg";
+import { getV } from "../../styles";
+import { Img, Div } from "./styledPage";
 
 export const Times = () => {
   const [addTeam, setAddTeam] = useState(false);
   const [step, setStep] = useState(0);
-  const [teamName, setTeamName] = useState('');
-  const [teamInitials, setTeamInitials] = useState('');
-  const [teamState, setTeamState] = useState('');
+  const [teamName, setTeamName] = useState("");
+  const [teamInitials, setTeamInitials] = useState("");
+  const [teamState, setTeamState] = useState("");
   const [teamColors, setTeamColors] = useState(new Array(3));
   const colorConstructor = new Array(3).fill(0);
   const handleNewColor = getHandleColor(setTeamColors);
@@ -41,23 +41,23 @@ export const Times = () => {
     teamState,
     teamColors,
   };
-  const positionSection = 'GOL';
+  const positionSection = "GOL";
   const [players, setPlayers] = useState([
     {
-      number: '01',
-      name: 'Camile Perreira',
+      number: "01",
+      name: "Camile Perreira",
       id: 1,
       show: true,
     },
     {
-      number: '02',
-      name: 'Eduarda Jasmim',
+      number: "02",
+      name: "Eduarda Jasmim",
       id: 2,
       show: true,
     },
     {
-      number: '03',
-      name: 'Cristina Santos',
+      number: "03",
+      name: "Cristina Santos",
       id: 3,
       show: false,
     },
@@ -106,7 +106,7 @@ export const Times = () => {
               <C.FlexContainer justify="flex-start">
                 <Img src={alert} alt="alert" />
                 <C.Typography
-                  size={getV('24px', 'h')}
+                  size={getV("24px", "h")}
                   color={theme.pallete.gray.thirdGray}
                   weight="600"
                 >
@@ -118,7 +118,7 @@ export const Times = () => {
               <C.FlexContainer justify="flex-start">
                 <Img src={alert} alt="alert" />
                 <C.Typography
-                  size={getV('24px', 'h')}
+                  size={getV("24px", "h")}
                   color={theme.pallete.gray.thirdGray}
                   weight="600"
                 >
@@ -130,7 +130,7 @@ export const Times = () => {
               <C.FlexContainer justify="flex-start">
                 <Img src={alert} alt="alert" />
                 <C.Typography
-                  size={getV('24px', 'h')}
+                  size={getV("24px", "h")}
                   color={theme.pallete.gray.thirdGray}
                   weight="600"
                 >
@@ -142,7 +142,7 @@ export const Times = () => {
               <C.FlexContainer justify="flex-start">
                 <Img src={alert} alt="alert" />
                 <C.Typography
-                  size={getV('24px', 'h')}
+                  size={getV("24px", "h")}
                   color={theme.pallete.gray.thirdGray}
                   weight="600"
                 >
@@ -158,7 +158,7 @@ export const Times = () => {
               onClick={() => setStep(step + 1)}
             >
               <C.Typography
-                size={getV('24px', 'h')}
+                size={getV("24px", "h")}
                 font="Poppins"
                 color={theme.pallete.gray.black}
                 weight="700"
@@ -192,7 +192,7 @@ export const Times = () => {
                 </C.ListItem>
               );
             } else {
-              return '';
+              return "";
             }
           })}
 
@@ -204,6 +204,7 @@ export const Times = () => {
   console.log(teamObject); //this is just to not raise a warning
   return (
     <>
+      <C.Head title="times" />
       {addTeam ? (
         <>
           {addTeamPages[step]}

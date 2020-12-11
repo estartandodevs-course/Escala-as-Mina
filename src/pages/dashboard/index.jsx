@@ -94,7 +94,7 @@ export const Dashboard = () => {
             justify="space-between"
           >
             <Typography type="h2" align="left">
-              {currentRound}ª Rodada
+              {shownRound}ª Rodada
             </Typography>
             <Button
               size="small"

@@ -19,6 +19,7 @@ export const Rodadas = () => {
 
   return (
     <C.FlexContainer direction="column" justify="flex-start" align="flex-end">
+      <C.Head title="rodadas" />
       <C.MatchScout forms={formsTeam} set={setFormsTeam} />
       <C.Button
         size="small"
