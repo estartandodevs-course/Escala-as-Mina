@@ -1,13 +1,29 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { getV } from "../../styles";
 
 const Div = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
+  height: ${(props) => props.height};
   padding: ${(props) => props.padding};
   margin: ${(props) => props.margin};
   margin-left: ${(props) => props.marginLeft && "auto"};
+  ${(props) =>
+    props.overflowY &&
+    css`
+      overflow-y: ${props.overflowY};
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: ${(props) => props.theme.pallete.gray.firstGray};
+        border-radius: 30px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-image: ${(props) => props.theme.pallete.gradient.main};
+        border-radius: 30px;
+      }
+    `}
 `;
 
 const FlexContainer = styled.div`

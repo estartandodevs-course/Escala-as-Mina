@@ -15,16 +15,25 @@ export const Rodadas = () => {
       { key: "noGoal", state: true },
     ],
   });
+  const [activePlayer, setActivePlayer] = useState(false);
 
-  const activePlayer = formsTeam.players[0];
   return (
     <C.FlexContainer direction="column" justify="flex-start" align="flex-end">
       <C.MatchScout forms={formsTeam} set={setFormsTeam} />
-      <C.ScoutsBox
-        activePlayer={activePlayer}
-        set={setFormsTeam}
-        forms={formsTeam}
-      />
+      <C.Button
+        size="small"
+        onClick={() => setActivePlayer(formsTeam.players[0])}
+      >
+        click me
+      </C.Button>
+      {activePlayer && (
+        <C.ScoutsBox
+          activePlayer={activePlayer}
+          setActivePlayer={setActivePlayer}
+          forms={formsTeam}
+          setForms={setFormsTeam}
+        />
+      )}
     </C.FlexContainer>
   );
 };
