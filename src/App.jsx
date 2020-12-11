@@ -1,5 +1,5 @@
-import { ThemeProvider } from 'styled-components';
-import { theme } from './styles';
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { LoginLayout, Dashboard, Rodadas, Times, Ranking } from "./pages";
 import { Layout } from "./components";
@@ -8,14 +8,12 @@ import { GlobalStyle } from "./styles";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-
       <GlobalStyle />
       <Router>
         <Switch>
           <Route path="/login">
             <LoginLayout />
           </Route>
-
 
           <Route path="/rodadas">
             <Layout>
@@ -30,7 +28,9 @@ function App() {
           </Route>
 
           <Route path="/times">
-            <Times />
+            <Layout>
+              <Times />
+            </Layout>
           </Route>
 
           <Route path="/ranking">

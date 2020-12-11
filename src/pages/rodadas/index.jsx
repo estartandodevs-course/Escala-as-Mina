@@ -1,49 +1,30 @@
-import * as C from '../../components';
-import { useState } from 'react';
+import * as C from "../../components";
+import { useState } from "react";
+import { scoutPosition } from "./dataSctructure";
+
+import * as M from "../../mocks";
 
 export const Rodadas = () => {
-  const [formsGoalkeeper, setForms] = useState([
-    {
-      key: 'wasPlaying',
-      title: 'jogou',
-      state: false,
-    },
-    {
-      key: 'isCaptain',
-      title: 'capitão do time',
-      state: false,
-    },
-    {
-      key: 'penalty',
-      title: 'defendeu penalti',
-      state: false,
-      value: 0,
-    },
-    {
-      key: 'concededGoal',
-      title: 'Gol Sofrido',
-      state: false,
-      value: 0,
-    },
-    {
-      key: 'hasYellowCard',
-      title: 'gol sofrido',
-      state: false,
-      value: 0,
-    },
-    {
-      key: 'hasRedCard',
-      title: 'gol sofrido',
-      state: false,
-    },
-  ]);
+  const players = M.getPlayers();
+  const [formsTeam, setFormsTeam] = useState({
+    players: players.map((player) => {
+      return { ...player, score: 0, scouts: scoutPosition[player.position] };
+    }),
+    teamScout: [
+      { key: "victory", state: true },
+      { key: "noGoal", state: true },
+    ],
+  });
+
+  const activePlayer = formsTeam.players[0];
   return (
-    <>
-      <C.Scout
-        forms={formsGoalkeeper}
-        set={setForms}
-        whatItem="concededGoal"
-      ></C.Scout>
-    </>
+    <C.FlexContainer direction="column" justify="flex-start" align="flex-end">
+      <C.MatchScout forms={formsTeam} set={setFormsTeam} />
+      <C.ScoutsViewer
+        activePlayer={activePlayer}
+        set={setFormsTeam}
+        forms={formsTeam}
+      />
+    </C.FlexContainer>
   );
 };

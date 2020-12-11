@@ -108,14 +108,21 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: ${(props) => props.justify || 'space-evenly'};
   align-items: ${(props) => props.align || 'center'};
+  flex-direction: ${(props) => props.direction || 'row'};
+
   width: ${(props) => (props.width ? getV(props.width, 'w') : '100%')};
+  height: ${(props) => (props.height ? getV(props.height, 'h') : '')};
+
   margin-left: ${(props) => props.marginLeft && 'auto'};
   margin-right: ${(props) => props.marginRight && 'auto'};
   margin-bottom: ${(props) =>
-    props.marginBottom ? getV(props.marginBottom, 'h') : ''};
-  flex-direction: ${(props) => props.direction || 'row'};
+    props.marginBottom && typeof props.marginBottom === Boolean
+      ? getV(props.marginBottom, 'h')
+      : 'auto'};
+
   padding: ${(props) => props.padding};
   background-color: ${(props) => props.backgroundColor};
+  border-radius: ${(props) => props.border};
 `;
 export {
   FlexContainer,

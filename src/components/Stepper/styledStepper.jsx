@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { getV } from "../../styles";
 
 const Ball = styled.div`
-  height: ${getV("64px", "h")}; */
   width: ${getV("64px", "h")};
   height: ${getV("64px", "h")};
   border-radius: 50%;

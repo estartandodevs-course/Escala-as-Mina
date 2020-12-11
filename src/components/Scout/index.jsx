@@ -1,18 +1,140 @@
-import * as C from '../';
-import { getV } from '../../styles';
-import { useEffect, useState } from 'react';
-import { useTheme } from 'styled-components';
+import * as C from "../";
+import { getV } from "../../styles";
+import { useEffect, useState } from "react";
+import { useTheme } from "styled-components";
+import Switch from "react-switch";
+import { Div } from "./styledScout";
 
+const switchScouts = ["wasPlaying", "isCaptain"];
 //you have to provide forms (array of objects, i.e., scouts)
 //a setForms (from useState)
 //and what item this is scounting
 const Scout = (props) => {
-  const { forms, set, whatItem } = props;
-  const form = forms.filter((input) => input.key === whatItem)[0];
-  const indexForms = forms.indexOf(form);
+  const { ...restProps } = props;
+  const { forms, whatItem, player } = restProps;
+  const players = forms["players"];
+  const playerItem = players.filter((input) => input.name === player)[0];
+  const scout = playerItem["scouts"].filter(
+    (input) => input.key === whatItem
+  )[0];
+
+  if (scout["value"] !== undefined) {
+    return <ScoutNumber {...restProps} />;
+  } else {
+    return <ScoutBool {...restProps} />;
+  }
+};
+
+export { Scout };
+
+const ScoutBool = (props) => {
+  const { forms, set, whatItem, player } = props;
   const theme = useTheme();
-  const [localValue, setLocalValue] = useState(form.value);
-  const [localState, setLocalState] = useState(form.state);
+
+  const players = forms["players"];
+  const playerItem = players.filter((input) => input.name === player)[0];
+  const indexPlayer = players.indexOf(playerItem);
+  const scout = playerItem.scouts.filter((input) => input.key === whatItem)[0];
+  const indexScout = playerItem.scouts.indexOf(scout);
+  const isSwitch = switchScouts.includes(scout["key"]);
+
+  const [localState, setLocalState] = useState(scout.state);
+
+  useEffect(() => {
+    set((forms) => {
+      const temp = { ...forms };
+      temp["players"][indexPlayer]["scouts"][indexScout].state = localState;
+      return temp;
+    });
+  }, [localState, indexScout, indexPlayer, set]);
+  return (
+    <C.FlexContainer
+      direction={isSwitch ? "row" : "column"}
+      justify="flex-start"
+      align="flex-start"
+    >
+      <C.Typography
+        font="Raleway"
+        weight="700"
+        size={getV("16px", "h")}
+        color={theme.pallete.secondary.lighter}
+      >
+        {scout.title}
+      </C.Typography>
+      {isSwitch ? (
+        <Div marginLeft>
+          <Switch
+            uncheckedIcon={false}
+            checkedIcon={false}
+            width={62}
+            height={24}
+            handleDiameter={22}
+            onColor={theme.pallete.gray.secondGray}
+            offColor={theme.pallete.gray.secondGray}
+            onHandleColor={theme.pallete.secondary.main}
+            offHandleColor={theme.pallete.alert.main}
+            onChange={(event) => setLocalState(event)}
+            checked={localState}
+          />
+        </Div>
+      ) : (
+        <C.FlexContainer justify="flex-start">
+          <C.Button
+            variation="scout"
+            state={localState}
+            info="yes"
+            onClick={() => setLocalState(true)}
+          >
+            <C.Typography
+              font="Raleway"
+              weight="700"
+              size={getV("16px", "h")}
+              color={
+                localState
+                  ? theme.pallete.gray.white
+                  : theme.pallete.gray.firstGray
+              }
+            >
+              Sim
+            </C.Typography>
+          </C.Button>
+          <C.Button
+            variation="scout"
+            state={localState}
+            info="no"
+            onClick={() => setLocalState(false)}
+          >
+            <C.Typography
+              font="Raleway"
+              weight="700"
+              size={getV("16px", "h")}
+              color={
+                localState
+                  ? theme.pallete.gray.firstGray
+                  : theme.pallete.gray.white
+              }
+            >
+              Não
+            </C.Typography>
+          </C.Button>
+        </C.FlexContainer>
+      )}
+    </C.FlexContainer>
+  );
+};
+
+const ScoutNumber = (props) => {
+  const { forms, set, whatItem, player } = props;
+  const theme = useTheme();
+
+  const players = forms["players"];
+  const playerItem = players.find((input) => input.name === player);
+  const indexPlayer = players.indexOf(playerItem);
+  const scout = playerItem.scouts.find((input) => input.key === whatItem);
+  const indexScout = playerItem.scouts.indexOf(scout);
+
+  const [localValue, setLocalValue] = useState(scout.value);
+  const [localState, setLocalState] = useState(scout.state);
 
   function handleLessValue() {
     setLocalValue((current) => {
@@ -28,30 +150,29 @@ const Scout = (props) => {
     if (localValue > 0) setLocalState(true);
     else setLocalState(false);
     set((forms) => {
-      const temp = [...forms];
-      temp[indexForms].value = localValue;
-      console.log(temp);
-      console.log(localValue);
+      const temp = { ...forms };
+
+      temp["players"][indexPlayer]["scouts"][indexScout].value = localValue;
       return temp;
     });
-  }, [localValue, indexForms, set]);
+  }, [localValue, indexScout, indexPlayer, set]);
   useEffect(() => {
     set((forms) => {
-      const temp = [...forms];
-      temp[indexForms].state = localState;
+      const temp = { ...forms };
+      temp["players"][indexPlayer]["scouts"][indexScout].state = localState;
       return temp;
     });
-  }, [localState, indexForms, set, localValue]);
+  }, [localState, indexScout, indexPlayer, set]);
 
   return (
     <C.FlexContainer direction="column" justify="flex-start" align="flex-start">
       <C.Typography
         font="Raleway"
         weight="700"
-        size={getV('16px', 'h')}
+        size={getV("16px", "h")}
         color={theme.pallete.secondary.lighter}
       >
-        {form.title}
+        {scout.title}
       </C.Typography>
       <C.FlexContainer justify="flex-start">
         <C.Button
@@ -63,7 +184,7 @@ const Scout = (props) => {
           <C.Typography
             font="Raleway"
             weight="700"
-            size={getV('16px', 'h')}
+            size={getV("16px", "h")}
             color={
               localState
                 ? theme.pallete.gray.white
@@ -82,7 +203,7 @@ const Scout = (props) => {
           <C.Typography
             font="Raleway"
             weight="700"
-            size={getV('16px', 'h')}
+            size={getV("16px", "h")}
             color={
               localState
                 ? theme.pallete.gray.firstGray
@@ -94,7 +215,7 @@ const Scout = (props) => {
         </C.Button>
         <C.FlexContainer
           justify="space-between"
-          width={getV('75px', 'w')}
+          width={getV("75px", "w")}
           marginLeft
         >
           <C.Button type="icon" onClick={handleLessValue}>
@@ -112,7 +233,7 @@ const Scout = (props) => {
           </C.Typography>
           <C.Button
             type="icon"
-            onClick={() => setLocalValue((current) => Number(current) + 1)}
+            onClick={() => setLocalValue((current) => current + 1)}
           >
             <C.Typography font="Poppins" weight="700" size="24px" color="black">
               +
@@ -123,5 +244,3 @@ const Scout = (props) => {
     </C.FlexContainer>
   );
 };
-
-export { Scout };
