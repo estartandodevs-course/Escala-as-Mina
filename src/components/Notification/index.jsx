@@ -9,7 +9,8 @@ import { useState } from "react";
 export const Notification = (props) => {
   const theme = useTheme();
   const { user } = props;
-  const [show, setShow] = useState("show");
+  const [show, setShow] = useState(true);
+  // useEffect(() => {});
   return (
     <Animate
       Animation={[FadeIn, FadeOut]}
@@ -58,7 +59,7 @@ export const Notification = (props) => {
             right={getV("12px", "h")}
             top={getV("12px", "h")}
             type="icon"
-            onClick={() => setShow("dontShow")}
+            onClick={() => setShow(false)}
           >
             X
           </Button>

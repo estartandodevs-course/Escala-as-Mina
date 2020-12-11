@@ -1,219 +1,246 @@
-//colocar os mocks aqui
-const athletes = {
+const teamPlayers = {
+  flamengo: [
+    { name: "Luana Liberato", number: 1, position: "goleira" },
+    { name: "Danielle Barboza", number: 2, position: "goleira" },
+    { name: "Tania Maria", number: 4, position: "goleira" },
+    { name: "Diany Aparecida", number: 5, position: "zagueira" },
+    { name: "Roberta Emiliao", number: 6, position: "zagueira" },
+    { name: "Gabrielly Salgado", number: 7, position: "goleira" },
+    { name: "Beatriz Vaz", number: 8, position: "zagueira" },
+    { name: "Larissa Pereira", number: 9, position: "lateral" },
+    { name: "Maurine Dorneles", number: 10, position: "lateral" },
+    { name: "Barbara Chagas ", number: 11, position: "lateral" },
+    { name: "Karen de Freitas", number: 19, position: "zagueira" },
+    { name: "Camila Leticia ", number: 3, position: "lateral" },
+    { name: "Tatiane da Silva", number: 13, position: "atacante" },
+    { name: "Rebeca Lopes ", number: 14, position: "atacante" },
+    { name: "Juliana Ferreira ", number: 15, position: "atacante" },
+    { name: "Patricia de Jesus", number: 16, position: "atacante" },
+    { name: "Jane Tavares", number: 17, position: "atacante" },
+    { name: "Marcella Souza", number: 18, position: "atacante" },
+    { name: "Fernanda Palermo", number: 20, position: "lateral" },
+    { name: "Ana Carla", number: 21, position: "lateral" },
+    { name: "Renata Maria", number: 22, position: "goleira" },
+    { name: "Rayane Cristine", number: 23, position: "lateral" },
+    { name: "Bruna Zucolotto", number: 25, position: "lateral" },
+  ],
+};
+
+const bestAthletes = {
   10: {
     best: {
-      name: 'Ana Paula Cirilo dos Santos',
-      score: '420 pts',
-      team: 'Bahia Futebol Clube',
+      name: "Ana Paula Cirilo dos Santos",
+      score: "420 pts",
+      team: "Bahia Futebol Clube",
     },
   },
   9: {
     best: {
-      name: 'Glória Cordeiro Queiroz',
-      score: '82 pts',
-      team: 'Fluminense',
+      name: "Glória Cordeiro Queiroz",
+      score: "82 pts",
+      team: "Fluminense",
     },
   },
   8: {
     best: {
-      name: 'Alan Luiz Araújo',
-      score: '71 pts',
-      team: 'Bahia Futebol Clube',
+      name: "Alan Luiz Araújo",
+      score: "71 pts",
+      team: "Bahia Futebol Clube",
     },
   },
   7: {
     best: {
-      name: 'Breno Nunes',
-      score: '112 pts',
-      team: 'Flamengo',
+      name: "Breno Nunes",
+      score: "112 pts",
+      team: "Flamengo",
     },
   },
   6: {
     best: {
-      name: 'Gabriely Araújo',
-      score: '1 pts',
-      team: 'Bahia Futebol Clube',
+      name: "Gabriely Araújo",
+      score: "1 pts",
+      team: "Bahia Futebol Clube",
     },
   },
   5: {
     best: {
-      name: 'Frederico Bezerra',
-      score: '315 pts',
-      team: 'Bahia Futebol Clube',
+      name: "Frederico Bezerra",
+      score: "315 pts",
+      team: "Bahia Futebol Clube",
     },
   },
   4: {
     best: {
-      name: 'Adrielle Bittencourt',
-      score: '79 pts',
-      team: 'Internacional',
+      name: "Adrielle Bittencourt",
+      score: "79 pts",
+      team: "Internacional",
     },
   },
   3: {
     best: {
-      name: 'Leila Marcia Queiroz Yamagushi',
-      score: '970 pts',
-      team: 'Corinthians',
+      name: "Leila Marcia Queiroz Yamagushi",
+      score: "970 pts",
+      team: "Corinthians",
     },
   },
   2: {
     best: {
-      name: 'Marcos Lima',
-      score: '999 pts',
-      team: 'Goiania',
+      name: "Marcos Lima",
+      score: "999 pts",
+      team: "Goiania",
     },
   },
   1: {
     best: {
-      name: 'Ana Murdock',
-      score: '256 pts',
-      team: 'Bahia Futebol Clube',
+      name: "Ana Murdock",
+      score: "256 pts",
+      team: "Bahia Futebol Clube",
     },
   },
 };
 const partidas = [
   //56 items
-  ['90%', 'Marilia', '4 x 5', 'Flamengo', '33%'],
+  ["90%", "Marilia", "4 x 5", "Flamengo", "33%"],
   [
-    '55%',
-    'Corinthians futebol clube',
-    '0 x 6',
-    'Osasco união de futebol feminino',
-    '100%',
+    "55%",
+    "Corinthians futebol clube",
+    "0 x 6",
+    "Osasco união de futebol feminino",
+    "100%",
   ],
-  ['0%', 'Marilia', '1 x 3', 'Diadema FC', '61%'],
-  ['12%', 'Belo Horizonte', '4 x 5', 'Flamengo', '33%'],
-  ['90%', 'Brasilia', '4 x 5', 'Gabyzinha ajuda nois', '33%'],
-  ['0%', 'Macaé', '1 x 3', 'Diadema FC', '61%'],
-  ['12%', 'Santos', '4 x 5', 'Flamengo', '33%'],
-  ['90%', 'Palmeiras', '4 x 5', 'Gabyzinha ajuda nois', '33%'],
-  ['90%', 'Inter', '4 x 5', 'Flamengo', '33%'],
-  ['12%', 'Belo Horizonte', '4 x 5', 'Flamengo', '33%'],
-  ['90%', 'Brasilia', '4 x 5', 'Gabyzinha ajuda nois', '33%'],
-  ['0%', 'Macaé', '1 x 3', 'Diadema FC', '61%'],
-  ['12%', 'Santos', '4 x 5', 'Flamengo', '33%'],
-  ['90%', 'Palmeiras', '4 x 5', 'Gabyzinha ajuda nois', '33%'],
-  ['90%', 'Inter', '4 x 5', 'Flamengo', '33%'],
+  ["0%", "Marilia", "1 x 3", "Diadema FC", "61%"],
+  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
+  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
+  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
+  ["12%", "Santos", "4 x 5", "Flamengo", "33%"],
+  ["90%", "Palmeiras", "4 x 5", "Gabyzinha ajuda nois", "33%"],
+  ["90%", "Inter", "4 x 5", "Flamengo", "33%"],
+  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
+  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
+  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
+  ["12%", "Santos", "4 x 5", "Flamengo", "33%"],
+  ["90%", "Palmeiras", "4 x 5", "Gabyzinha ajuda nois", "33%"],
+  ["90%", "Inter", "4 x 5", "Flamengo", "33%"],
   [
-    '55%',
-    'Corinthians futebol clube',
-    '0 x 6',
-    'Osasco união de futebol feminino',
-    '100%',
+    "55%",
+    "Corinthians futebol clube",
+    "0 x 6",
+    "Osasco união de futebol feminino",
+    "100%",
   ],
-  ['0%', 'Marilia', '1 x 3', 'Diadema FC', '61%'],
-  ['12%', 'Belo Horizonte', '4 x 5', 'Flamengo', '33%'],
-  ['12%', 'Belo Horizonte', '4 x 5', 'Flamengo', '33%'],
-  ['90%', 'Brasilia', '4 x 5', 'Gabyzinha ajuda nois', '33%'],
-  ['0%', 'Macaé', '1 x 3', 'Diadema FC', '61%'],
-  ['90%', 'Marilia', '4 x 5', 'Flamengo', '33%'],
+  ["0%", "Marilia", "1 x 3", "Diadema FC", "61%"],
+  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
+  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
+  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
+  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
+  ["90%", "Marilia", "4 x 5", "Flamengo", "33%"],
   [
-    '55%',
-    'Corinthians futebol clube',
-    '0 x 6',
-    'Osasco união de futebol feminino',
-    '100%',
+    "55%",
+    "Corinthians futebol clube",
+    "0 x 6",
+    "Osasco união de futebol feminino",
+    "100%",
   ],
-  ['0%', 'Marilia', '1 x 3', 'Diadema FC', '61%'],
-  ['12%', 'Belo Horizonte', '4 x 5', 'Flamengo', '33%'],
-  ['90%', 'Brasilia', '4 x 5', 'Gabyzinha ajuda nois', '33%'],
-  ['0%', 'Macaé', '1 x 3', 'Diadema FC', '61%'],
-  ['12%', 'Santos', '4 x 5', 'Flamengo', '33%'],
-  ['90%', 'Palmeiras', '4 x 5', 'Gabyzinha ajuda nois', '33%'],
-  ['90%', 'Inter', '4 x 5', 'Flamengo', '33%'],
-  ['12%', 'Belo Horizonte', '4 x 5', 'Flamengo', '33%'],
-  ['90%', 'Brasilia', '4 x 5', 'Gabyzinha ajuda nois', '33%'],
-  ['0%', 'Macaé', '1 x 3', 'Diadema FC', '61%'],
-  ['12%', 'Santos', '4 x 5', 'Flamengo', '33%'],
-  ['90%', 'Palmeiras', '4 x 5', 'Gabyzinha ajuda nois', '33%'],
-  ['90%', 'Inter', '4 x 5', 'Flamengo', '33%'],
+  ["0%", "Marilia", "1 x 3", "Diadema FC", "61%"],
+  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
+  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
+  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
+  ["12%", "Santos", "4 x 5", "Flamengo", "33%"],
+  ["90%", "Palmeiras", "4 x 5", "Gabyzinha ajuda nois", "33%"],
+  ["90%", "Inter", "4 x 5", "Flamengo", "33%"],
+  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
+  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
+  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
+  ["12%", "Santos", "4 x 5", "Flamengo", "33%"],
+  ["90%", "Palmeiras", "4 x 5", "Gabyzinha ajuda nois", "33%"],
+  ["90%", "Inter", "4 x 5", "Flamengo", "33%"],
   [
-    '55%',
-    'Corinthians futebol clube',
-    '0 x 6',
-    'Osasco união de futebol feminino',
-    '100%',
+    "55%",
+    "Corinthians futebol clube",
+    "0 x 6",
+    "Osasco união de futebol feminino",
+    "100%",
   ],
-  ['0%', 'Marilia', '1 x 3', 'Diadema FC', '61%'],
-  ['12%', 'Belo Horizonte', '4 x 5', 'Flamengo', '33%'],
-  ['12%', 'Belo Horizonte', '4 x 5', 'Flamengo', '33%'],
-  ['90%', 'Brasilia', '4 x 5', 'Gabyzinha ajuda nois', '33%'],
-  ['0%', 'Macaé', '1 x 3', 'Diadema FC', '61%'],
+  ["0%", "Marilia", "1 x 3", "Diadema FC", "61%"],
+  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
+  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
+  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
+  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
 ];
 const player = {
   10: {
     best: {
-      name: 'Breno Natan Teodoro',
-      score: '69 pts',
-      team: 'estartando devs',
+      name: "Breno Natan Teodoro",
+      score: "69 pts",
+      team: "estartando devs",
     },
   },
   9: {
     best: {
-      name: 'Jonatas Altair Lima',
-      score: '210 pts',
-      team: 'estartando devs',
+      name: "Jonatas Altair Lima",
+      score: "210 pts",
+      team: "estartando devs",
     },
   },
   8: {
     best: {
-      name: 'Adriele Cristina Ribeiro',
-      score: '14 pts',
-      team: 'estartando devs',
+      name: "Adriele Cristina Ribeiro",
+      score: "14 pts",
+      team: "estartando devs",
     },
   },
   7: {
     best: {
-      name: 'Adriele Cristina Ribeiro',
-      score: '320 pts',
-      team: 'estartando devs',
+      name: "Adriele Cristina Ribeiro",
+      score: "320 pts",
+      team: "estartando devs",
     },
   },
   6: {
     best: {
-      name: 'Adriele Cristina Ribeiro',
-      score: '69 pts',
-      team: 'estartando devs',
+      name: "Adriele Cristina Ribeiro",
+      score: "69 pts",
+      team: "estartando devs",
     },
   },
   5: {
     best: {
-      name: 'Alan Ribeiro de Souza',
-      score: '114 pts',
-      team: 'estartando devs',
+      name: "Alan Ribeiro de Souza",
+      score: "114 pts",
+      team: "estartando devs",
     },
   },
   4: {
     best: {
-      name: 'Alan Ribeiro de Souza',
-      score: '87 pts',
-      team: 'estartando devs',
+      name: "Alan Ribeiro de Souza",
+      score: "87 pts",
+      team: "estartando devs",
     },
   },
   3: {
     best: {
-      name: 'Alan Ribeiro de Souza',
-      score: '69 pts',
-      team: 'estartando devs',
+      name: "Alan Ribeiro de Souza",
+      score: "69 pts",
+      team: "estartando devs",
     },
   },
   2: {
     best: {
-      name: 'Breno Natan Teodoro',
-      score: '112 pts',
-      team: 'estartando devs',
+      name: "Breno Natan Teodoro",
+      score: "112 pts",
+      team: "estartando devs",
     },
   },
   1: {
     best: {
-      name: 'Breno Natan Teodoro',
-      score: '81 pts',
-      team: 'estartando devs',
+      name: "Breno Natan Teodoro",
+      score: "81 pts",
+      team: "estartando devs",
     },
   },
 };
 const user = {
-  name: 'Luize Abreu',
+  name: "Luize Abreu",
 };
 const allMatches = {};
 const rounds = {};
@@ -224,10 +251,10 @@ const howManyRounds = new Array(totalRounds).fill(0);
 howManyRounds.forEach((item, index) => {
   allMatches[index + 1] = partidas.slice(
     0,
-    1 + Math.round(Math.random() * (partidas.length - 1)),
+    1 + Math.round(Math.random() * (partidas.length - 1))
   );
   missingMatches[index + 1] = Math.round(
-    Math.random() * allMatches[index + 1].length,
+    Math.random() * allMatches[index + 1].length
   );
   rounds[index + 1] = Math.round(Math.random() * 100000);
   allRounds.push({
@@ -253,7 +280,7 @@ function getTotalMatches(round) {
   return totalMatches;
 }
 function getAthlete(round, key) {
-  return athletes[round][key];
+  return bestAthletes[round][key];
 }
 function getSquad(round, key) {
   return player[round][key];
@@ -270,16 +297,19 @@ function getAllRoundsInfo(totalRounds = 10) {
 function getPlayers(team) {
   return [
     {
-      name: 'Roberta Camile Fonseca',
-      number: '01',
-      position: 'goleira',
+      name: "Roberta Camile Fonseca",
+      number: "01",
+      position: "goleira",
     },
     {
-      name: 'Eduarda Paixão Santos',
-      number: '02',
-      position: 'zagueira',
+      name: "Eduarda Paixão Santos",
+      number: "02",
+      position: "zagueira",
     },
   ];
+}
+function getTeamPlayers(team) {
+  return teamPlayers[team];
 }
 export {
   getItems,
@@ -292,4 +322,5 @@ export {
   getAllRoundsInfo,
   user,
   getPlayers,
+  getTeamPlayers,
 };

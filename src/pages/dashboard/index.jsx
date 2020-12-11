@@ -5,6 +5,7 @@ import {
   Button,
   Modal,
   Notification,
+  Head,
 } from "../../components";
 import * as M from "../../mocks";
 import { useTheme } from "styled-components";
@@ -65,6 +66,7 @@ export const Dashboard = () => {
 
   return (
     <S.GlobalWrapper>
+      <Head title="dashboard" />
       <Modal
         show={show}
         setShow={setShow}
@@ -92,7 +94,7 @@ export const Dashboard = () => {
             justify="space-between"
           >
             <Typography type="h2" align="left">
-              {currentRound}ª Rodada
+              {shownRound}ª Rodada
             </Typography>
             <Button
               size="small"
