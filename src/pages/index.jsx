@@ -1,9 +1,6 @@
 import { LoginLayout } from "./login";
 import { Times } from "./times";
-
-function Dashboard() {
-  return <h2>Dashboard</h2>
-}
+import { Dashboard } from "./dashboard"
 
 function Rodadas() {
   return <h2>Rodadas</h2>;
