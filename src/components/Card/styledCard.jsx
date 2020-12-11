@@ -16,7 +16,7 @@ const StyledCard = styled.div`
   top: ${(props) => props.top};
 
   ${(props) =>
-    props.show === "dontShow" &&
+    !props.show &&
     css`
       display: none;
     `}

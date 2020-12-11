@@ -177,10 +177,11 @@ export const Times = () => {
           justify="flex-start"
           direction="column"
         >
-          {players.map((player) => {
+          {players.map((player, index) => {
             if (player.show) {
               return (
                 <C.ListItem
+                  key={index}
                   variation="edit"
                   type="player"
                   set={setPlayers}

@@ -11,11 +11,14 @@ export const ScoutsBox = (props) => {
   const indexPlayer = forms.players.indexOf(activePlayer);
 
   const submit = () => {
+    console.log(forms);
     setForms((current) => {
       const temp = { ...current };
       temp.players[indexPlayer].scouts = localScouts;
       return temp;
     });
+    setActivePlayer(false);
+    console.log(forms);
   };
   return (
     <C.FlexContainer
