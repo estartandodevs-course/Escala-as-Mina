@@ -151,6 +151,7 @@ function dashboard(item, index, theme) {
     case 0:
       return (
         <Typography
+          key={index}
           size="1.2rem"
           weight="700"
           color={
@@ -164,7 +165,11 @@ function dashboard(item, index, theme) {
       );
 
     case 1:
-      return <Typography size="1.2rem">{item}</Typography>;
+      return (
+        <Typography key={index} size="1.2rem">
+          {item}
+        </Typography>
+      );
 
     case 2:
       return (
@@ -182,7 +187,7 @@ function dashboard(item, index, theme) {
 
     case 3:
       return (
-        <Typography size="1.2rem" align="right">
+        <Typography key={index} size="1.2rem" align="right">
           {item}
         </Typography>
       );
@@ -190,6 +195,7 @@ function dashboard(item, index, theme) {
     case 4:
       return (
         <Typography
+          key={index}
           size="1.2rem"
           weight="700"
           color={
@@ -204,7 +210,7 @@ function dashboard(item, index, theme) {
       );
 
     default:
-      return <Typography>{item}</Typography>;
+      return <Typography key={index}>{item}</Typography>;
   }
 }
 
