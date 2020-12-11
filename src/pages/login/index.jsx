@@ -1,50 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import LogoLogin from "../../assets/images/LogoLogin.png";
 import "fontsource-roboto";
 import * as S from "./styledPage";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export const LoginLayout = () => {
   const [user, setUser] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const handleChange = (event) => {
-    const { type, value } = event.target
+    const { type, value } = event.target;
 
-    const copyUser = {...user}
+    const copyUser = { ...user };
 
-    copyUser[type] = value
-    
-    setUser(copyUser)
-  }
+    copyUser[type] = value;
 
+    setUser(copyUser);
+  };
+  const handleEnter = (event) => {
+    if (event.keyCode === 13) handleSubmit();
+  };
   const handleSubmit = async () => {
-    console.log(user)
-  } 
+    firebase.auth().signInWithEmailAndPassword(user.email, user.password);
+  };
 
   return (
     <S.LoginWrapper>
       <S.LoginBox>
         <S.Logo>
-          <img src={LogoLogin} alt="DiarioFFeminino"/>
+          <img src={LogoLogin} alt="DiarioFFeminino" />
         </S.Logo>
         <S.LoginContainer>
           <S.ContainerUser className="dados">
-            Email 
-            <input 
-              type="email" 
+            Email
+            <input
+              type="email"
               placeholder="E-mail"
-              onChange={(event)=> handleChange(event)}
+              onChange={(event) => handleChange(event)}
+              onKeyDown={handleEnter}
               value={user.email}
             />
           </S.ContainerUser>
           <S.ContainerPassword className="dados">
             Senha
             <input
-              type="password" 
+              type="password"
               placeholder="Senha"
-              onChange={(event)=> handleChange(event)}
+              onChange={(event) => handleChange(event)}
+              onKeyDown={handleEnter}
               value={user.password}
             />
           </S.ContainerPassword>
@@ -60,5 +66,5 @@ export const LoginLayout = () => {
         </S.SubmitButton>
       </S.LoginBox>
     </S.LoginWrapper>
-  )
-}
+  );
+};

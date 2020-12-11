@@ -1,7 +1,7 @@
-import * as C from "../";
+import * as C from "..";
 import { useTheme } from "styled-components";
 
-export const ScoutsViewer = (props) => {
+export const ScoutsBox = (props) => {
   const { activePlayer, set, forms } = props;
   const theme = useTheme();
   return (

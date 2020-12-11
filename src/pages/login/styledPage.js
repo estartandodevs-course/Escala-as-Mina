@@ -28,10 +28,12 @@ const LoginBox = styled.div`
   bottom: 5.57%;
   display: flex;
   flex-direction: column;
-  background: ${props => props.theme.pallete.background.blue};
+  width: 560px;
+  height: 828px;
+  background: ${(props) => props.theme.pallete.background.blue};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
-`
+`;
 
 const Logo = styled.div`
   display: flex;
@@ -48,8 +50,7 @@ const LoginContainer = styled.form`
   align-items: center;
   margin: auto;
   margin-top: 20px;
-  width: 100%;
-`
+`;
 const ContainerUser = styled.div`
   display: flex;
   flex-direction: column;
@@ -91,8 +92,7 @@ const ContainerUser = styled.div`
       width: 100%;
     }
   }
-
-`
+`;
 const ContainerPassword = styled.div`
   display: flex;
   flex-direction: column;
@@ -108,7 +108,7 @@ const ContainerPassword = styled.div`
     text-align: center;
   }
 
-  input{
+  input {
     display: flex;
     align-items: center;
     font-size: 1.6rem;
@@ -135,9 +135,7 @@ const ContainerPassword = styled.div`
       width: 100%;
     } 
   }
-
-
-`
+`;
 
 export {
   LoginBox,

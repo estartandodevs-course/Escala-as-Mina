@@ -14,6 +14,8 @@ import {
   ContainerNav,
 } from "./StyledLayout";
 import "fontsource-roboto/latin.css";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const navItems = [
   {
@@ -34,12 +36,6 @@ const navItems = [
     to: "/times",
     alt: "Icon Dashboard",
   },
-  // {
-  //   text: "Lorem",
-  //   src: AvaliarTimesUsuarios, //AvaliarTimesUsuarios.svg
-  //   to: "/times",
-  //   alt: "Icon Dashboard",
-  // },
   {
     text: "Ranking",
     src: RankingIcon, //Group.svg
@@ -55,6 +51,9 @@ const navItems = [
 ];
 
 export const Layout = (props) => {
+  const handleClick = (index, array) => {
+    if (index === array.length - 1) firebase.auth().signOut();
+  };
   const { children } = props;
   return (
     <ContainerLayout>
@@ -71,6 +70,7 @@ export const Layout = (props) => {
                   type="oulined"
                   variation={index === array.length - 1 ? "alert" : "secondary"}
                   size="small"
+                  onClick={() => handleClick(index, array)}
                 >
                   {item.text}
                 </Button>
