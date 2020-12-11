@@ -36,7 +36,9 @@ const FlexContainer = styled.div`
   align-items: ${(props) => props.align || "center"};
   flex-direction: ${(props) => props.direction || "row"};
 
+  min-width: ${(props) => props.minWidth};
   width: ${(props) => (props.width ? getV(props.width, "w") : "100%")};
+  max-width: ${(props) => props.maxWidth};
   height: ${(props) => (props.height ? getV(props.height, "h") : "")};
 
   margin-left: ${(props) => props.marginLeft && "auto"};

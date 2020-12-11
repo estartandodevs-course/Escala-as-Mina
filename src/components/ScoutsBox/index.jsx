@@ -24,7 +24,8 @@ export const ScoutsBox = (props) => {
       align="flex-start"
       border="30px"
       padding="24px 20px"
-      width="296px"
+      minWidth="296px"
+      maxWidth="300px"
       height="626px"
       backgroundColor={theme.pallete.primary.main}
     >
