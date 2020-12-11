@@ -5,6 +5,7 @@ import {
   Button,
   Modal,
   Notification,
+  Head,
 } from "../../components";
 import * as M from "../../mocks";
 import { useTheme } from "styled-components";
@@ -65,6 +66,7 @@ export const Dashboard = () => {
 
   return (
     <S.GlobalWrapper>
+      <Head title="dashboard" />
       <Modal
         show={show}
         setShow={setShow}

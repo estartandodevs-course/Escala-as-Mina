@@ -5,8 +5,9 @@ import { useState } from "react";
 export const ScoutsBox = (props) => {
   const { activePlayer, setActivePlayer, forms, setForms } = props;
   const theme = useTheme();
+  const scouts = [...activePlayer.scouts];
 
-  const [localScouts, setLocalScouts] = useState([...activePlayer.scouts]);
+  const [localScouts, setLocalScouts] = useState(...scouts);
   const indexPlayer = forms.players.indexOf(activePlayer);
 
   const submit = () => {

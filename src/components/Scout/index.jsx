@@ -34,8 +34,8 @@ const Scout = (props) => {
     set((forms) => {
       const temp = { ...forms };
 
-      temp[index].state = localState;
-      temp[index].value = localValue;
+      temp.state = localState;
+      temp.value = localValue;
       return temp;
     });
   }, [localValue, localState, index, set]);
