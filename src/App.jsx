@@ -1,5 +1,5 @@
-import { ThemeProvider } from 'styled-components';
-import { theme } from './styles';
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { LoginLayout, Dashboard, Rodadas, Times, Ranking } from "./pages";
 import { Layout } from "./components";
@@ -32,7 +32,6 @@ function App() {
             <Layout>
               <Times />
             </Layout>
-            <Times />
           </Route>
 
           <Route path="/ranking">
