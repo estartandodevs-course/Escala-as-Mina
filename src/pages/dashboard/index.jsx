@@ -5,12 +5,12 @@ import {
   Button,
   Modal,
   Notification,
-} from '../../components';
-import * as M from '../../mocks';
-import { useTheme } from 'styled-components';
-import { getV } from '../../styles';
-import { useState, useEffect } from 'react';
-import * as S from './styledPage';
+} from "../../components";
+import * as M from "../../mocks";
+import { useTheme } from "styled-components";
+import { getV } from "../../styles";
+import { useState, useEffect } from "react";
+import * as S from "./styledPage";
 
 export const Dashboard = () => {
   const theme = useTheme();
@@ -23,16 +23,16 @@ export const Dashboard = () => {
     totalMatches: 0,
     bestAthlete: {
       best: {
-        name: '',
-        score: '',
-        team: '',
+        name: "",
+        score: "",
+        team: "",
       },
     },
     bestSquad: {
       best: {
-        name: '',
-        score: '',
-        team: '',
+        name: "",
+        score: "",
+        team: "",
       },
     },
     totalTeams: 2563,
@@ -45,8 +45,8 @@ export const Dashboard = () => {
     setData({
       missingMatches: M.getMissingMatches(shownRound),
       totalMatches: M.getTotalMatches(shownRound),
-      bestAthlete: M.getAthlete(shownRound, 'best'),
-      bestSquad: M.getSquad(shownRound, 'best'),
+      bestAthlete: M.getAthlete(shownRound, "best"),
+      bestSquad: M.getSquad(shownRound, "best"),
       totalTeams: M.getTotalSquads(shownRound),
       lastTotalTeams:
         shownRound === 1
@@ -106,7 +106,7 @@ export const Dashboard = () => {
           </S.FlexContainer>
           <ul>
             {matchesChecked.map((item, index) => (
-              <ListItem key={('partida', index)} type="dashboard">
+              <ListItem key={`partida-${index}`} type="dashboard">
                 {item}
               </ListItem>
             ))}
@@ -116,7 +116,7 @@ export const Dashboard = () => {
               {isntFirstPage && (
                 <S.FlexContainer>
                   <Button type="icon" onClick={() => setPage(page - 1)}>
-                    {'<'}
+                    {"<"}
                   </Button>
                   <Button type="icon" onClick={() => setPage(0)}>
                     Primeira Página
@@ -139,7 +139,7 @@ export const Dashboard = () => {
                     Última Página
                   </Button>
                   <Button type="icon" onClick={() => setPage(page + 1)}>
-                    {'>'}
+                    {">"}
                   </Button>
                 </>
               )}
@@ -148,7 +148,7 @@ export const Dashboard = () => {
         </Card>
 
         <Card flex direction="column" justify="flex-start" area="b">
-          <Typography size={getV('24px', 'w')} type="h2">
+          <Typography size={getV("24px", "w")} type="h2">
             Jogadoras Avaliadas
           </Typography>
           <S.FlexContainer direction="column">
@@ -161,7 +161,7 @@ export const Dashboard = () => {
             </Typography>
             <Typography
               color={theme.pallete.alert.lighter}
-              size={getV('32px', 'w')}
+              size={getV("32px", "w")}
               align="center"
             >
               {((data.missingMatches / data.totalMatches) * 100).toFixed(1)}%
@@ -170,14 +170,14 @@ export const Dashboard = () => {
         </Card>
 
         <Card flex direction="column" justify="flex-start" area="c">
-          <Typography size={getV('24px', 'w')} type="h2">
+          <Typography size={getV("24px", "w")} type="h2">
             Clubes com avaliações pendentes
           </Typography>
           <S.FlexContainer direction="column">
             <Typography
               color={theme.pallete.gray.thirdGray}
               weight="700"
-              size={getV('32px', 'w')}
+              size={getV("32px", "w")}
               align="center"
             >
               {data.missingMatches * 2}
@@ -185,21 +185,21 @@ export const Dashboard = () => {
           </S.FlexContainer>
         </Card>
         <Card flex direction="column" justify="flex-start" area="d">
-          <Typography size={getV('24px', 'w')} type="h2">
+          <Typography size={getV("24px", "w")} type="h2">
             Melhor Jogadora da Rodada
           </Typography>
           <S.FlexContainer direction="column">
             <Typography
               color={theme.pallete.alert.main}
               weight="700"
-              size={getV('24px', 'w')}
+              size={getV("24px", "w")}
               align="center"
             >
               {data.bestAthlete.name}
             </Typography>
             <Typography
               weight="700"
-              size={getV('24px', 'w')}
+              size={getV("24px", "w")}
               align="center"
               gradient
             >
@@ -208,7 +208,7 @@ export const Dashboard = () => {
             <Typography
               color={theme.pallete.gray.firstGray}
               weight="700"
-              size={getV('24px', 'w')}
+              size={getV("24px", "w")}
               align="center"
             >
               {data.bestAthlete.team}
@@ -216,21 +216,21 @@ export const Dashboard = () => {
           </S.FlexContainer>
         </Card>
         <Card flex direction="column" justify="flex-start" area="e">
-          <Typography size={getV('24px', 'w')} type="h2">
+          <Typography size={getV("24px", "w")} type="h2">
             Time que mais pontuou na rodada
           </Typography>
           <S.FlexContainer direction="column">
             <Typography
               color={theme.pallete.alert.main}
               weight="700"
-              size={getV('24px', 'w')}
+              size={getV("24px", "w")}
               align="center"
             >
               {data.bestSquad.team}
             </Typography>
             <Typography
               weight="700"
-              size={getV('24px', 'w')}
+              size={getV("24px", "w")}
               align="center"
               gradient
             >
@@ -239,7 +239,7 @@ export const Dashboard = () => {
             <Typography
               color={theme.pallete.gray.firstGray}
               weight="700"
-              size={getV('24px', 'w')}
+              size={getV("24px", "w")}
               align="center"
             >
               {data.bestSquad.name}
@@ -247,13 +247,13 @@ export const Dashboard = () => {
           </S.FlexContainer>
         </Card>
         <Card flex direction="column" justify="flex-start" area="f">
-          <Typography size={getV('24px', 'w')} type="h2">
+          <Typography size={getV("24px", "w")} type="h2">
             Usuários ativos nessa rodada
           </Typography>
           <S.FlexContainer direction="column">
             <Typography
               weight="700"
-              size={getV('24px', 'w')}
+              size={getV("24px", "w")}
               align="center"
               gradient
             >
@@ -266,7 +266,7 @@ export const Dashboard = () => {
             <Typography
               color={theme.pallete.gray.firstGray}
               weight="700"
-              size={getV('24px', 'w')}
+              size={getV("24px", "w")}
               align="center"
             >
               {data.totalTeams}
@@ -301,9 +301,9 @@ function getButtons(page, totalPages, theme, setPage) {
     return (
       <Button
         key={index}
-        size={getV('32px', 'h')}
+        size={getV("32px", "h")}
         type="icon"
-        variation={item === 0 ? 'secondary' : 'search'}
+        variation={item === 0 ? "secondary" : "search"}
         rounded
         onClick={() => setPage(item + page)}
       >
@@ -322,7 +322,7 @@ function checkTeamsNameLenght(listOfTeams) {
   const checkTeamName = (listOfGame) => {
     return listOfGame.map((item) => {
       if (item.length > 15) {
-        return item.slice(0, 18) + '...';
+        return item.slice(0, 18) + "...";
       } else {
         return item;
       }

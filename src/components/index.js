@@ -22,4 +22,4 @@ export { Notification } from "./Notification";
 export { Stepper } from "./Stepper";
 export { MatchScout } from "./MatchScout";
 export { Div, FlexContainer } from "./GenericContainers";
-export { ScoutsViewer } from "./ScoutsViewer";
+export { ScoutsBox } from "./ScoutsBox";
