@@ -38,7 +38,18 @@ const Scout = (props) => {
       temp.value = localValue;
       return temp;
     });
-  }, [localValue, localState, index, set]);
+  }, [localValue, index, set]);
+
+  useEffect(() => {
+    if (localState === false) setLocalValue(0);
+    set((forms) => {
+      const temp = { ...forms };
+
+      temp.state = localState;
+      temp.value = localValue;
+      return temp;
+    });
+  }, [localState, index, set]);
 
   const items = {
     bool: (
