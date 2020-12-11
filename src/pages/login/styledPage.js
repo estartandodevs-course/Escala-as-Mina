@@ -36,17 +36,21 @@ const LoginBox = styled.div`
 const Logo = styled.div`
   display: flex;
   justify-content: center;
+  img {
+    width: 73%;
+  }
 `
 
-const LoginContainer = styled.div`
+const LoginContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin: auto;
   margin-top: 20px;
+  width: 100%;
 `
-const ContainerUser = styled.form`
+const ContainerUser = styled.div`
   display: flex;
   flex-direction: column;
   font-family: "roboto";
@@ -56,6 +60,9 @@ const ContainerUser = styled.form`
   font-size: 24px;
   line-height: 28px;
   justify-content: space-between;
+  @media(max-width:1500px){
+    text-align: center;
+  }
 
   input {
     display: flex;
@@ -80,10 +87,13 @@ const ContainerUser = styled.form`
       outline: none;
       border: 2px solid ${(props) => props.theme.pallete.secondary.main};
     }
+    @media(max-width:1500px){
+      width: 100%;
+    }
   }
 
 `
-const ContainerPassword = styled.form`
+const ContainerPassword = styled.div`
   display: flex;
   flex-direction: column;
   font-family: "roboto";
@@ -94,6 +104,9 @@ const ContainerPassword = styled.form`
   line-height: 28px;
   justify-content: space-between;
   margin-top: 25px;
+  @media(max-width:1500px){
+    text-align: center;
+  }
 
   input{
     display: flex;
@@ -118,7 +131,11 @@ const ContainerPassword = styled.form`
       outline: none;
       border: 2px solid ${(props) => props.theme.pallete.secondary.main};
     }
+    @media(max-width:1500px){
+      width: 100%;
+    } 
   }
+
 
 `
 
