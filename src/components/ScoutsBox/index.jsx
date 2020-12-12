@@ -2,27 +2,32 @@ import * as C from "..";
 import { useTheme } from "styled-components";
 
 export const ScoutsBox = (props) => {
-  const { activePlayer, setActivePlayer, forms, setForms } = props;
+  const { activePlayer, setActivePlayer, setForms } = props;
   const { scouts } = activePlayer;
   const theme = useTheme();
-  console.log(activePlayer);
-  const indexPlayer = forms.players.findIndex(
-    (item) => item.number === activePlayer.number
-  );
 
-  function setScout(index) {
-    function set(scout) {
-      const modifiedPlayer = { ...activePlayer };
-      modifiedPlayer.scouts[index] = scout;
+  const setScout = (key) => {
+    function set(newScout) {
+      const modifiedPlayer = {
+        ...activePlayer,
+        scouts: activePlayer.scouts.map((_scout) =>
+          _scout.key === key ? newScout : _scout
+        ),
+      };
       setActivePlayer(modifiedPlayer);
     }
     return set;
-  }
+  };
   const submit = () => {
     setForms((current) => {
-      const temp = { ...current };
-      temp.players[indexPlayer] = activePlayer;
-      return temp;
+      const modifiedForms = {
+        ...current,
+        players: current.players.map((player) =>
+          player.number === activePlayer.number ? activePlayer : player
+        ),
+      };
+
+      return modifiedForms;
     });
     setActivePlayer(false);
   };
@@ -63,7 +68,7 @@ export const ScoutsBox = (props) => {
         {scouts.map((scout, index) => {
           return (
             <C.FlexContainer key={index}>
-              <C.Scout scout={scout} set={setScout(index)}></C.Scout>
+              <C.Scout scout={scout} set={setScout(scout.key)}></C.Scout>
             </C.FlexContainer>
           );
         })}
