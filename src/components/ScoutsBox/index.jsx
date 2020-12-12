@@ -1,19 +1,27 @@
 import * as C from "..";
 import { useTheme } from "styled-components";
-import { useState } from "react";
 
 export const ScoutsBox = (props) => {
   const { activePlayer, setActivePlayer, forms, setForms } = props;
+  const { scouts } = activePlayer;
   const theme = useTheme();
-  const scouts = [...activePlayer.scouts];
+  console.log(activePlayer);
+  const indexPlayer = forms.players.findIndex(
+    (item) => item.number === activePlayer.number
+  );
 
-  const [localScouts, setLocalScouts] = useState([...scouts]);
-  const indexPlayer = forms.players.indexOf(activePlayer);
-
+  function setScout(index) {
+    function set(scout) {
+      const modifiedPlayer = { ...activePlayer };
+      modifiedPlayer.scouts[index] = scout;
+      setActivePlayer(modifiedPlayer);
+    }
+    return set;
+  }
   const submit = () => {
     setForms((current) => {
       const temp = { ...current };
-      temp.players[indexPlayer].scouts = localScouts;
+      temp.players[indexPlayer] = activePlayer;
       return temp;
     });
     setActivePlayer(false);
@@ -25,8 +33,7 @@ export const ScoutsBox = (props) => {
       align="flex-start"
       border="30px"
       padding="24px 20px"
-      minWidth="296px"
-      maxWidth="300px"
+      width="296px"
       height="626px"
       backgroundColor={theme.pallete.primary.main}
     >
@@ -53,14 +60,10 @@ export const ScoutsBox = (props) => {
         </C.Typography>
       </C.Div>
       <C.Div overflowY="scroll" height="60%" margin="0 0 3% 0">
-        {activePlayer["scouts"].map((scout, index) => {
+        {scouts.map((scout, index) => {
           return (
             <C.FlexContainer key={index}>
-              <C.Scout
-                scout={scout}
-                set={setLocalScouts}
-                index={index}
-              ></C.Scout>
+              <C.Scout scout={scout} set={setScout(index)}></C.Scout>
             </C.FlexContainer>
           );
         })}

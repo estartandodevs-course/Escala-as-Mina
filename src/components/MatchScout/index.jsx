@@ -36,8 +36,8 @@ export const MatchScout = (props) => {
       width="296px"
       padding={`${getV("8px", "h")} ${getV("24px", "w")}`}
       border="30px"
-      marginLeft
       marginBottomPx="16px"
+      marginLeft
     >
       <label>
         <C.Typography

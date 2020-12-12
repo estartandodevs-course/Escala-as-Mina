@@ -35,6 +35,7 @@ const FlexContainer = styled.div`
   justify-content: ${(props) => props.justify || "space-evenly"};
   align-items: ${(props) => props.align || "center"};
   flex-direction: ${(props) => props.direction || "row"};
+  flex-grow: ${(props) => props.flexGrow};
 
   min-width: ${(props) => props.minWidth};
   width: ${(props) => (props.width ? getV(props.width, "w") : "100%")};

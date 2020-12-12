@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import 'fontsource-raleway';
+import { createGlobalStyle } from "styled-components";
+import "fontsource-raleway";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -19,97 +19,97 @@ const GlobalStyle = createGlobalStyle`
 const theme = {
   pallete: {
     primary: {
-      lighter: '#D1FAF6',
-      main: '#14B8A7',
-      darker: '#052E2A',
+      lighter: "#D1FAF6",
+      main: "#14B8A7",
+      darker: "#052E2A",
     },
     secondary: {
-      lighter: '#CEFDDC',
-      main: '#75F099',
-      darker: '#023110',
+      lighter: "#CEFDDC",
+      main: "#75F099",
+      darker: "#023110",
     },
     gray: {
-      black: '#100928',
-      firstGray: '#A0AEC0',
-      secondGray: '#E2E8F0',
-      thirdGray: '#5C5C5C',
-      fourthGray: '#F1F5F9',
-      white: '#FFFFFF',
+      black: "#100928",
+      firstGray: "#A0AEC0",
+      secondGray: "#E2E8F0",
+      thirdGray: "#5C5C5C",
+      fourthGray: "#F1F5F9",
+      white: "#FFFFFF",
     },
     alert: {
-      lighter: '#FAD1E0',
-      main: '#EB4783',
-      darker: '#2E0514',
+      lighter: "#FAD1E0",
+      main: "#EB4783",
+      darker: "#2E0514",
     },
     gradient: {
-      main: 'linear-gradient(270deg, #1BE6D1 0%, #75F099 100%)',
-      hover: 'linear-gradient(90deg, #0AC2AF 0%, #0DF250 100%)',
-      alert: 'linear-gradient(270deg, #EB4783 0%, #EB4747 100%)',
+      main: "linear-gradient(270deg, #1BE6D1 0%, #75F099 100%)",
+      hover: "linear-gradient(90deg, #0AC2AF 0%, #0DF250 100%)",
+      alert: "linear-gradient(270deg, #EB4783 0%, #EB4747 100%)",
     },
     background: {
-      blue: '#120E29',
-    }
+      blue: "#120E29",
+    },
   },
 
   dimensions: {
     button: {
       search: {
-        width: '107px',
-        height: '28px',
+        width: "107px",
+        height: "28px",
       },
       icon: {
-        small: { width: '28px', height: '28px' },
-        normal: { width: '44px', height: '44px' },
+        small: { width: "28px", height: "28px" },
+        normal: { width: "44px", height: "44px" },
       },
       small: {
-        width: '165px',
-        height: '32px',
+        width: "165px",
+        height: "32px",
       },
       normal: {
-        width: '186px',
-        height: '44px',
+        width: "186px",
+        height: "44px",
       },
       large: {
-        width: '692px',
-        height: '32px',
+        width: "692px",
+        height: "32px",
       },
       extraLarge: {
-        width: '1000px',
-        height: '32px',
+        width: "1000px",
+        height: "32px",
       },
     },
 
     card: {
       small: {
-        width: '327px',
-        height: '231px',
+        width: "327px",
+        height: "231px",
       },
       normal: {
-        width: '687px',
-        height: '494px',
+        width: "687px",
+        height: "494px",
       },
       large: {
-        width: '907px',
-        height: '652px',
+        width: "907px",
+        height: "652px",
       },
       extraLarge: {
-        width: '1124px',
-        height: '819px',
+        width: "1124px",
+        height: "819px",
       },
     },
 
     list: {
       ranking: {
-        width: '1048px',
-        height: '64px',
+        width: "1048px",
+        height: "64px",
       },
       player: {
-        width: '692px',
-        height: '40px',
+        width: "692px",
+        height: "40px",
       },
       dashboard: {
-        width: '639px',
-        height: '32px',
+        width: "639px",
+        height: "32px",
       },
     },
   },
@@ -150,16 +150,17 @@ const variationStyle = {
 };
 
 function getV(px, heightOrWidth) {
-  if (px.includes('vw') || px.includes('vh')) return px;
+  if (px.includes("vw") || px.includes("vh")) return px;
+  if (px.includes("%") || px.includes("auto")) return px;
 
-  const measure = Number(px.replace('px', ''));
+  const measure = Number(px.replace("px", ""));
   let formattedMeasure = 0;
-  if (['h', 'height'].includes(heightOrWidth)) {
+  if (["h", "height"].includes(heightOrWidth)) {
     const newMeasure = (measure / 1024) * 100;
-    formattedMeasure = newMeasure + 'vh';
+    formattedMeasure = newMeasure + "vh";
   } else {
     const newMeasure = (measure / 1440) * 100;
-    formattedMeasure = newMeasure + 'vw';
+    formattedMeasure = newMeasure + "vw";
   }
   return formattedMeasure;
 }

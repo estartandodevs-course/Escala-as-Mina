@@ -11,6 +11,7 @@ export const Title = styled.h1`
   font-family: "Raleway";
   line-height: ${(props) => props.lineHeight};
   padding: ${(props) => props.padding};
+  height: ${(props) => props.height};
   ${(props) =>
     props.textOverflow &&
     css`
@@ -48,6 +49,8 @@ export const Paragraph = styled.p`
     `};
   text-overflow: ${(props) => props.textOverflow};
   text-transform: ${(props) => props.textTransform};
+  margin-top: ${(props) => props.marginTop};
+  margin-bottom: ${(props) => props.marginBottom};
 `;
 
 export const Span = styled.span`
