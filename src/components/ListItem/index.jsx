@@ -71,7 +71,7 @@ const ListItem = (props) => {
 
   //this is the default return, ranking, dashboard or player (no variation)
   return (
-    <FlexContainer type={type}>
+    <FlexContainer type={type} padding="0 5% 0 0">
       <StyledListItem type={type}>
         {children.map((item, index) =>
           handleList(item, index, type, theme, id)

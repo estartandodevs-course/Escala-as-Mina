@@ -40,7 +40,6 @@ export const Rodadas = () => {
           color={theme.pallete.gray.black}
           textOverflow="ellipsis"
           size="38px"
-          height="60px"
         >
           Adicionar pontuação - 10ª Rodada {/*AQUI VAI TER A RODADA*/}
         </C.Typography>
@@ -50,7 +49,6 @@ export const Rodadas = () => {
           color={theme.pallete.gray.firstGray}
           textOverflow="ellipsis"
           size="38px"
-          height="60px"
         >
           Flamengo {/*AQUI VAI TER O NOME DO TIME"*/}
         </C.Typography>
@@ -59,7 +57,8 @@ export const Rodadas = () => {
           direction="column"
           justify="flex-start"
           align="flex-start"
-          maxHeight="60%"
+          maxHeight="70%"
+          padding="0 5% 0 0 "
         >
           {positions.map((position, indexOuter) => {
             return (
