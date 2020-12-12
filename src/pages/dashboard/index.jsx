@@ -93,17 +93,26 @@ export const Dashboard = () => {
             marginBottom="32px"
             justify="space-between"
           >
-            <Typography type="h2" align="left">
+            <Typography size="38px" weight="700" type="h2" align="left">
               {shownRound}ª Rodada
             </Typography>
             <Button
               size="small"
               height="24px"
+              width="40%"
               variation="active"
               color={theme.pallete.gray.white}
               onClick={() => setShow(true)}
             >
-              Gerenciar Rodada
+              <Typography
+                size="12px"
+                weight="800"
+                font="Roboto"
+                color={theme.pallete.gray.white}
+                type="span"
+              >
+                Gerenciar Rodada
+              </Typography>
             </Button>
           </S.FlexContainer>
           <ul>
@@ -157,13 +166,17 @@ export const Dashboard = () => {
             <Typography
               align="center"
               color={theme.pallete.alert.main}
-              size="32px"
+              size="26px"
+              weight="700"
+              font="poppins"
             >
               {data.missingMatches}/{data.totalMatches}
             </Typography>
             <Typography
               color={theme.pallete.alert.lighter}
-              size={getV("32px", "w")}
+              size="26px"
+              weight="700"
+              font="poppins"
               align="center"
             >
               {((data.missingMatches / data.totalMatches) * 100).toFixed(1)}%
@@ -172,37 +185,46 @@ export const Dashboard = () => {
         </Card>
 
         <Card flex direction="column" justify="flex-start" area="c">
-          <Typography size={getV("24px", "w")} type="h2">
+          <Typography size="20px" weight="700" font="poppins" type="h2">
             Clubes com avaliações pendentes
           </Typography>
-          <S.FlexContainer direction="column">
+          <S.FlexContainer direction="column" justify="center" height="100%">
             <Typography
-              color={theme.pallete.gray.thirdGray}
+              size="20px"
               weight="700"
-              size={getV("32px", "w")}
+              font="poppins"
               align="center"
+              color={theme.pallete.gray.firstGray}
             >
               {data.missingMatches * 2}
             </Typography>
           </S.FlexContainer>
         </Card>
-        <Card flex direction="column" justify="flex-start" area="d">
-          <Typography size={getV("24px", "w")} type="h2">
+        <Card
+          flex
+          direction="column"
+          justify="flex-start"
+          area="d"
+          height="100%"
+        >
+          <Typography size="1.5em" weight="700" font="poppins" type="h2">
             Melhor Jogadora da Rodada
           </Typography>
-          <S.FlexContainer direction="column">
+          <S.FlexContainer direction="column" height="100%">
             <Typography
               color={theme.pallete.alert.main}
               weight="700"
-              size={getV("24px", "w")}
+              size="1.5em"
               align="center"
+              font="poppins"
             >
               {data.bestAthlete.name}
             </Typography>
             <Typography
               weight="700"
-              size={getV("24px", "w")}
+              size="1.5em"
               align="center"
+              font="poppins"
               gradient
             >
               {data.bestAthlete.score}
@@ -210,29 +232,32 @@ export const Dashboard = () => {
             <Typography
               color={theme.pallete.gray.firstGray}
               weight="700"
-              size={getV("24px", "w")}
+              size="1.5em"
               align="center"
+              font="poppins"
             >
               {data.bestAthlete.team}
             </Typography>
           </S.FlexContainer>
         </Card>
         <Card flex direction="column" justify="flex-start" area="e">
-          <Typography size={getV("24px", "w")} type="h2">
+          <Typography size="1.5em" weight="700" font="poppins" type="h2">
             Time que mais pontuou na rodada
           </Typography>
           <S.FlexContainer direction="column">
             <Typography
               color={theme.pallete.alert.main}
               weight="700"
-              size={getV("24px", "w")}
+              size="1.5em"
+              font="poppins"
               align="center"
             >
               {data.bestSquad.team}
             </Typography>
             <Typography
               weight="700"
-              size={getV("24px", "w")}
+              size="1.5em"
+              font="poppins"
               align="center"
               gradient
             >
@@ -240,8 +265,9 @@ export const Dashboard = () => {
             </Typography>
             <Typography
               color={theme.pallete.gray.firstGray}
+              size="1.5em"
               weight="700"
-              size={getV("24px", "w")}
+              font="poppins"
               align="center"
             >
               {data.bestSquad.name}
@@ -249,13 +275,14 @@ export const Dashboard = () => {
           </S.FlexContainer>
         </Card>
         <Card flex direction="column" justify="flex-start" area="f">
-          <Typography size={getV("24px", "w")} type="h2">
+          <Typography size="20px" weight="700" font="poppins" type="h2">
             Usuários ativos nessa rodada
           </Typography>
-          <S.FlexContainer direction="column">
+          <S.FlexContainer direction="column" height="100%" justify="center">
             <Typography
+              size="20px"
               weight="700"
-              size={getV("24px", "w")}
+              font="poppins"
               align="center"
               gradient
             >
@@ -267,8 +294,9 @@ export const Dashboard = () => {
             </Typography>
             <Typography
               color={theme.pallete.gray.firstGray}
+              size="20px"
               weight="700"
-              size={getV("24px", "w")}
+              font="poppins"
               align="center"
             >
               {data.totalTeams}
