@@ -7,18 +7,16 @@ export const ScoutsBox = (props) => {
   const theme = useTheme();
   const scouts = [...activePlayer.scouts];
 
-  const [localScouts, setLocalScouts] = useState(...scouts);
+  const [localScouts, setLocalScouts] = useState([...scouts]);
   const indexPlayer = forms.players.indexOf(activePlayer);
 
   const submit = () => {
-    console.log(forms);
     setForms((current) => {
       const temp = { ...current };
       temp.players[indexPlayer].scouts = localScouts;
       return temp;
     });
     setActivePlayer(false);
-    console.log(forms);
   };
   return (
     <C.FlexContainer

@@ -1,4 +1,5 @@
 import { StyledListItem, FlexContainer, PlayerInfo } from "./styledList";
+import * as G from "../";
 import { useTheme } from "styled-components";
 import { Button, InputPlayer, Typography } from "../";
 import declineButton from "../../assets/icons/DeclineBtn.svg";
@@ -20,8 +21,6 @@ const ListItem = (props) => {
       function deleteItem() {
         set((players) => {
           const temp = [...players];
-          console.log(id);
-          console.log(players);
           temp.filter((player) => player.id !== id);
           return temp;
         });
@@ -29,7 +28,6 @@ const ListItem = (props) => {
       return deleteItem;
     }
     const deleteItem = getDeleteItem(set, id);
-    // console.log(deleteItem);
     return (
       <FlexContainer key={id} type={type}>
         <StyledListItem type={type}>
@@ -59,9 +57,19 @@ const ListItem = (props) => {
         </Button>
       </PlayerInfo>
     );
+  } else if (type === "player") {
+    return (
+      <G.FlexContainer type={type}>
+        <StyledListItem type={type}>
+          {children.map((item, index) =>
+            handleList(item, index, type, theme, id)
+          )}
+        </StyledListItem>
+      </G.FlexContainer>
+    );
   }
 
-  //this is the default return, ranking
+  //this is the default return, ranking, dashboard or player (no variation)
   return (
     <FlexContainer type={type}>
       <StyledListItem type={type}>
@@ -131,7 +139,18 @@ function ranking(item, index, theme, id) {
 }
 
 function player(item, index, theme) {
-  if (index < 2) {
+  if (index === 1) {
+    return (
+      <Typography
+        textTransform="uppercase"
+        size="16px"
+        weight="700"
+        color={theme.pallete.secondary.main}
+      >
+        {item}
+      </Typography>
+    );
+  } else if (index < 2) {
     return (
       <Typography size="16px" weight="700" color={theme.pallete.secondary.main}>
         {item}

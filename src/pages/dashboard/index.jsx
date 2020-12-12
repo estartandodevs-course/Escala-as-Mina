@@ -75,7 +75,7 @@ export const Dashboard = () => {
         setShownRound={setShownRound}
       />
       <S.Header>
-        <Typography type="h1" align="left">
+        <Typography type="h1" align="left" color={theme.pallete.gray.black}>
           Dashboard
         </Typography>
         <Notification user={M.user} />

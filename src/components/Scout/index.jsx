@@ -32,9 +32,9 @@ const Scout = (props) => {
     if (localValue > 0) setLocalState(true);
     else setLocalState(false);
     set((forms) => {
-      const temp = { ...forms };
+      const temp = [...forms];
 
-      temp.value = localValue;
+      temp[index].value = localValue;
       return temp;
     });
   }, [localValue, index, set]);
@@ -42,9 +42,9 @@ const Scout = (props) => {
   useEffect(() => {
     if (localState === false) setLocalValue(0);
     set((forms) => {
-      const temp = { ...forms };
+      const temp = [...forms];
 
-      temp.state = localState;
+      temp[index].state = localState;
       return temp;
     });
   }, [localState, index, set]);
