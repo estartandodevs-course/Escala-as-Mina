@@ -44,7 +44,7 @@ const FlexContainer = styled.div.attrs((props) => ({
   justify-content: center;
   border-radius: 30px;
   box-sizing: border-box;
-  background-color: ${(props) => props.theme.pallete.gray.black};
+  background-color: ${(props) => props.color || props.theme.pallete.gray.black};
   margin-bottom: 8px;
 
   ${(props) =>

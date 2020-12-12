@@ -44,125 +44,149 @@ export const Rodadas = () => {
   }, [formsTeam]);
 
   return (
-    <C.FlexContainer justify="flex-start" align="flex-start">
-      <C.Head title="rodadas" />
-      <C.FlexContainer
-        justify="flex-start"
-        align="flex-start"
-        direction="column"
-        maxWidth="727px"
-        height="100%"
-        flexGrow="1"
-      >
-        <C.Typography
-          type="h1"
-          align="left"
-          color={theme.pallete.gray.black}
-          textOverflow="ellipsis"
-          size="38px"
-        >
-          Adicionar pontuação - 10ª Rodada {/*AQUI VAI TER A RODADA*/}
-        </C.Typography>
-        <C.Typography
-          type="h1"
-          align="left"
-          color={theme.pallete.gray.firstGray}
-          textOverflow="ellipsis"
-          size="38px"
-        >
-          Flamengo {/*AQUI VAI TER O NOME DO TIME"*/}
-        </C.Typography>
+    <C.FlexContainer direction="column" justify="flex-start" height="100%">
+      <C.FlexContainer justify="flex-start" align="flex-start" height="100%">
+        <C.Head title="rodadas" />
         <C.FlexContainer
-          overflowY="scroll"
-          direction="column"
           justify="flex-start"
           align="flex-start"
-          maxHeight="70%"
-          padding="0 5% 0 0 "
+          direction="column"
+          maxWidth="727px"
+          height="100%"
+          flexGrow="1"
         >
-          {positions.map((position, indexOuter) => {
-            return (
-              <>
-                <C.Typography
-                  key={(position, indexOuter)}
-                  color={theme.pallete.gray.black}
-                  size="30px"
-                  weight="600"
-                  textTransform="capitalize"
-                  marginTop="32px"
-                  marginBottom="16px"
-                >
-                  {position}
-                </C.Typography>
-                {formsTeam.players
-                  .filter((player) => player.position === position)
-                  .sort((a, b) => {
-                    return a.number > b.number;
-                  })
-                  .map((player, indexInner) => {
-                    return (
-                      <>
-                        <C.ListItem
-                          type="player"
-                          key={(position, indexInner)}
-                          onClick={() => {
-                            setActivePlayer(player);
-                          }}
-                        >
-                          <>{player.number}</>
-                          <>{player.position.slice(0, 3)}</>
-                          <>{player.name}</>
-                        </C.ListItem>
-                      </>
-                    );
-                  })}
-              </>
-            );
-          })}
+          <C.Typography
+            type="h1"
+            align="left"
+            color={theme.pallete.gray.black}
+            textOverflow="ellipsis"
+            size="38px"
+          >
+            Adicionar pontuação - 10ª Rodada {/*AQUI VAI TER A RODADA*/}
+          </C.Typography>
+          <C.Typography
+            type="h1"
+            align="left"
+            color={theme.pallete.gray.firstGray}
+            textOverflow="ellipsis"
+            size="38px"
+          >
+            Flamengo {/*AQUI VAI TER O NOME DO TIME"*/}
+          </C.Typography>
+          <C.FlexContainer
+            overflowY="scroll"
+            direction="column"
+            justify="flex-start"
+            align="flex-start"
+            maxHeight="70%"
+            padding="0 5% 0 0 "
+          >
+            {positions.map((position, indexOuter) => {
+              return (
+                <>
+                  <C.Typography
+                    key={(position, indexOuter)}
+                    color={theme.pallete.gray.black}
+                    size="30px"
+                    weight="600"
+                    textTransform="capitalize"
+                    marginTop="18px"
+                    marginBottom="8px"
+                  >
+                    {position}
+                  </C.Typography>
+                  {formsTeam.players
+                    .filter((player) => player.position === position)
+                    .sort((a, b) => {
+                      return a.number > b.number;
+                    })
+                    .map((player, indexInner) => {
+                      return (
+                        <>
+                          <C.ListItem
+                            type="player"
+                            color="green"
+                            key={(position, indexInner)}
+                            onClick={() => {
+                              setActivePlayer(player);
+                            }}
+                          >
+                            <>{player.number}</>
+                            <>{player.position.slice(0, 3)}</>
+                            <>{player.name}</>
+                          </C.ListItem>
+                        </>
+                      );
+                    })}
+                </>
+              );
+            })}
+          </C.FlexContainer>
+          {alertMissingCaptain && (
+            <C.FlexContainer justify="flex-start" marginTop="1%">
+              <Img src={alert} alt="alert" />
+              <C.Typography
+                size={getV("24px", "h")}
+                color={theme.pallete.gray.thirdGray}
+                weight="600"
+              >
+                Você deve escolher uma capitã.
+              </C.Typography>
+            </C.FlexContainer>
+          )}
+          {alertMissingPlayers && (
+            <C.FlexContainer justify="flex-start" marginTop="1%">
+              <Img src={alert} alt="alert" />
+              <C.Typography
+                size={getV("24px", "h")}
+                color={theme.pallete.gray.thirdGray}
+                weight="600"
+              >
+                Jogadoras com ponturação
+                {` ${alertMissingPlayers[0]}/${alertMissingPlayers[1]}`}.
+              </C.Typography>
+            </C.FlexContainer>
+          )}
         </C.FlexContainer>
-        {alertMissingCaptain && (
-          <C.FlexContainer justify="flex-start">
-            <Img src={alert} alt="alert" />
-            <C.Typography
-              size={getV("24px", "h")}
-              color={theme.pallete.gray.thirdGray}
-              weight="600"
-            >
-              Você deve escolher uma capitã.
-            </C.Typography>
-          </C.FlexContainer>
-        )}
-        {alertMissingPlayers && (
-          <C.FlexContainer justify="flex-start">
-            <Img src={alert} alt="alert" />
-            <C.Typography
-              size={getV("24px", "h")}
-              color={theme.pallete.gray.thirdGray}
-              weight="600"
-            >
-              Jogadoras com ponturação
-              {` ${alertMissingPlayers[0]}/${alertMissingPlayers[1]}`}.
-            </C.Typography>
-          </C.FlexContainer>
-        )}
+        <S.FlexContainer
+          direction="column"
+          justify="flex-start"
+          align="flex-end"
+          width="auto"
+          marginLeft="10px"
+          height="100%"
+        >
+          <C.MatchScout forms={formsTeam} set={setFormsTeam} />
+          {activePlayer && (
+            <C.ScoutsBox
+              activePlayer={activePlayer}
+              setActivePlayer={setActivePlayer}
+              forms={formsTeam}
+              setForms={setFormsTeam}
+            />
+          )}
+        </S.FlexContainer>
       </C.FlexContainer>
-      <S.FlexContainer
-        direction="column"
-        justify="flex-start"
-        align="flex-end"
-        width="auto"
-        marginLeft="10px"
-      >
-        <C.MatchScout forms={formsTeam} set={setFormsTeam} />
-        {activePlayer && (
-          <C.ScoutsBox
-            activePlayer={activePlayer}
-            setActivePlayer={setActivePlayer}
-            forms={formsTeam}
-            setForms={setFormsTeam}
-          />
-        )}
-      </S.FlexContainer>
+      <C.FlexContainer justify="flex-end" marginTop="auto">
+        <C.Button size="small" variation="disabled" marginRight="10px">
+          <C.Typography
+            size="14px"
+            weight="700"
+            color={theme.pallete.gray.black}
+          >
+            Voltar
+          </C.Typography>
+        </C.Button>
+        <C.Button size="small" variation="active">
+          <C.Typography
+            size="14px"
+            weight="700"
+            color={theme.pallete.gray.black}
+          >
+            Continuar
+          </C.Typography>
+        </C.Button>
+      </C.FlexContainer>
     </C.FlexContainer>
   );
 };
