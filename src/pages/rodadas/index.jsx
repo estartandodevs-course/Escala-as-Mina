@@ -1,27 +1,47 @@
-import * as C from "../../components";
-import { useState } from "react";
-import { scoutPosition } from "./dataSctructure";
+import { useState, useEffect } from "react";
 import { useTheme } from "styled-components";
+import * as C from "../../components";
 import * as M from "../../mocks";
 import * as S from "./styledRounds";
+import { scoutPosition } from "./dataSctructure";
+import { getV } from "../../styles";
+import { Img } from "../times/styledPage";
+import alert from "../../assets/icons/Alert.svg";
+
+const selectedTeam = "flamengo";
 
 export const Rodadas = () => {
   const theme = useTheme();
-  const players = M.getTeamPlayers("flamengo");
+  const players = M.getTeamPlayers(selectedTeam);
+
   let positions = players.map((player) => player.position);
   positions = [...new Set(positions)];
 
+  const [activePlayer, setActivePlayer] = useState(false);
   const [formsTeam, setFormsTeam] = useState({
     players: players.map((player) => {
-      return { ...player, score: 0, scouts: scoutPosition[player.position] };
+      return {
+        ...player,
+        pointsAttributed: false,
+        score: 0,
+        scouts: scoutPosition[player.position],
+      };
     }),
     teamScout: [
       { key: "victory", state: true },
       { key: "noGoal", state: true },
     ],
   });
-  const [activePlayer, setActivePlayer] = useState(false);
-  console.log(formsTeam, "rodadas");
+
+  const [alertMissingCaptain, setAlertMissingCaptain] = useState(true);
+  const [alertMissingPlayers, setAlertMissingPlayers] = useState(
+    isThereMissingAttributedPlayers(formsTeam)
+  );
+
+  useEffect(() => {
+    setAlertMissingCaptain(!isThereCaptain(formsTeam));
+    setAlertMissingPlayers(isThereMissingAttributedPlayers(formsTeam));
+  }, [formsTeam]);
 
   return (
     <C.FlexContainer justify="flex-start" align="flex-start">
@@ -64,7 +84,7 @@ export const Rodadas = () => {
             return (
               <>
                 <C.Typography
-                  key={indexOuter}
+                  key={(position, indexOuter)}
                   color={theme.pallete.gray.black}
                   size="30px"
                   weight="600"
@@ -100,6 +120,31 @@ export const Rodadas = () => {
             );
           })}
         </C.FlexContainer>
+        {alertMissingCaptain && (
+          <C.FlexContainer justify="flex-start">
+            <Img src={alert} alt="alert" />
+            <C.Typography
+              size={getV("24px", "h")}
+              color={theme.pallete.gray.thirdGray}
+              weight="600"
+            >
+              Você deve escolher uma capitã.
+            </C.Typography>
+          </C.FlexContainer>
+        )}
+        {alertMissingPlayers && (
+          <C.FlexContainer justify="flex-start">
+            <Img src={alert} alt="alert" />
+            <C.Typography
+              size={getV("24px", "h")}
+              color={theme.pallete.gray.thirdGray}
+              weight="600"
+            >
+              Jogadoras com ponturação
+              {` ${alertMissingPlayers[0]}/${alertMissingPlayers[1]}`}.
+            </C.Typography>
+          </C.FlexContainer>
+        )}
       </C.FlexContainer>
       <S.FlexContainer
         direction="column"
@@ -121,3 +166,21 @@ export const Rodadas = () => {
     </C.FlexContainer>
   );
 };
+
+function isThereCaptain({ players }) {
+  const captainScout = players.map((player) => {
+    const scout = player.scouts.find((scout) => scout.key === "isCaptain");
+    return scout.state;
+  });
+  return captainScout.some((scout) => scout);
+}
+
+function isThereMissingAttributedPlayers({ players }) {
+  const totalPlayers = players.length;
+  const attributedPlayers = players.filter(
+    (player) => player.pointsAttributed === true
+  ).length;
+  return totalPlayers === attributedPlayers
+    ? false
+    : [attributedPlayers, totalPlayers];
+}

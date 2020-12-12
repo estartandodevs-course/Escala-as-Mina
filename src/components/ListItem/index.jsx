@@ -83,11 +83,11 @@ const ListItem = (props) => {
 
 function handleList(item, index, type, theme, id) {
   if (type === "dashboard") {
-    return dashboard(item, index, theme);
+    return dashboard(item, index, theme, id);
   } else if (type === "player") {
-    return player(item, index, theme);
+    return player(item, index, theme, id);
   } else {
-    return ranking(item, index, theme);
+    return ranking(item, index, theme, id);
   }
 }
 
@@ -96,7 +96,7 @@ function ranking(item, index, theme, id) {
     const elements = item.split("-");
 
     return (
-      <span>
+      <span key={(id, index)}>
         <Typography
           size="24px"
           weight="700"
@@ -125,13 +125,25 @@ function ranking(item, index, theme, id) {
     );
   } else if (index === 1) {
     return (
-      <Typography size="32px" weight="600" color={theme.pallete.gray.firstGray}>
+      <Typography
+        key={(id, index)}
+        size="32px"
+        weight="600"
+        color={theme.pallete.gray.firstGray}
+      >
         {item}
       </Typography>
     );
   } else {
     return (
-      <Typography size="32px" weight="600" font="Poppins" type="span" gradient>
+      <Typography
+        key={(id, index)}
+        size="32px"
+        weight="600"
+        font="Poppins"
+        type="span"
+        gradient
+      >
         {item}
       </Typography>
     );

@@ -13,17 +13,19 @@ export const ScoutsBox = (props) => {
         scouts: activePlayer.scouts.map((_scout) =>
           _scout.key === key ? newScout : _scout
         ),
+        pointsAttributed: true,
       };
       setActivePlayer(modifiedPlayer);
     }
     return set;
   };
   const submit = () => {
+    const modifiedPlayer = { ...activePlayer, pointsAttributed: true };
     setForms((current) => {
       const modifiedForms = {
         ...current,
         players: current.players.map((player) =>
-          player.number === activePlayer.number ? activePlayer : player
+          player.number === modifiedPlayer.number ? modifiedPlayer : player
         ),
       };
 

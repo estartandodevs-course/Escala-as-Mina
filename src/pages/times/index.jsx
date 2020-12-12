@@ -6,7 +6,7 @@ import { getV } from "../../styles";
 import { Img, Div } from "./styledPage";
 
 export const Times = () => {
-  const [addTeam, setAddTeam] = useState(false);
+  // const [addTeam, setAddTeam] = useState(false);
   const [step, setStep] = useState(0);
   const [teamName, setTeamName] = useState("");
   const [teamInitials, setTeamInitials] = useState("");
@@ -206,18 +206,10 @@ export const Times = () => {
   return (
     <>
       <C.Head title="times" />
-      {addTeam ? (
-        <>
-          {addTeamPages[step]}
-          <C.Sidebar variation="right">
-            <C.Stepper active={step} />
-          </C.Sidebar>
-        </>
-      ) : (
-        <C.Button type="icon" onClick={() => setAddTeam(true)}>
-          X
-        </C.Button>
-      )}
+      {addTeamPages[step]}
+      <C.Sidebar variation="right">
+        <C.Stepper active={step} />
+      </C.Sidebar>
     </>
   );
 };
