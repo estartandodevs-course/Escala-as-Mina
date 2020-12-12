@@ -46,6 +46,7 @@ const FlexContainer = styled.div`
 
   margin-left: ${(props) => props.marginLeft && "auto"};
   margin-right: ${(props) => props.marginRight && "auto"};
+  margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};
   margin-bottom: ${(props) => props.marginBottomPx};
 

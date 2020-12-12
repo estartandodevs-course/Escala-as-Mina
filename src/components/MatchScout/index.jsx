@@ -34,7 +34,7 @@ export const MatchScout = (props) => {
       backgroundColor={theme.pallete.primary.main}
       height={getV("150px", "h")}
       width="296px"
-      padding={`${getV("8px", "h")} ${getV("24px", "w")}`}
+      padding="8px 8px 8px 16px"
       border="30px"
       marginBottomPx="16px"
       marginLeft

@@ -1,4 +1,4 @@
-import * as C from "..";
+import * as C from "../";
 import { useTheme } from "styled-components";
 
 export const ScoutsBox = (props) => {
@@ -37,7 +37,7 @@ export const ScoutsBox = (props) => {
       justify="flex-start"
       align="flex-start"
       border="30px"
-      padding="24px 20px"
+      padding="16px 8px 16px 8px"
       width="296px"
       height="626px"
       backgroundColor={theme.pallete.primary.main}
@@ -64,7 +64,7 @@ export const ScoutsBox = (props) => {
           {activePlayer.score} pontos
         </C.Typography>
       </C.Div>
-      <C.Div overflowY="scroll" height="60%" margin="0 0 3% 0">
+      <C.Div overflowY="scroll" height="70%" padding="0 3% 0  0">
         {scouts.map((scout, index) => {
           return (
             <C.FlexContainer key={index}>
@@ -73,11 +73,12 @@ export const ScoutsBox = (props) => {
           );
         })}
       </C.Div>
-      <C.FlexContainer justify="space-between" align="center">
+      <C.FlexContainer justify="space-between" align="center" marginTop="auto">
         <C.Button
           type="solid"
           variation="disabled"
           size="small"
+          width="45%"
           onClick={() => setActivePlayer(false)}
         >
           <C.Typography size="16px" weight="500" font="Roboto" color="white">
@@ -86,6 +87,7 @@ export const ScoutsBox = (props) => {
         </C.Button>
         <C.Button
           type="solid"
+          width="45%"
           variation="active"
           size="small"
           border="1px solid white"
