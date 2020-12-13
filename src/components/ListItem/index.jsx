@@ -19,8 +19,7 @@ const ListItem = (props) => {
     set,
     id,
     onClick,
-    type = "ranking",
-    ...restProps
+    type = "ranking"
   } = props;
   const theme = useTheme();
 
