@@ -16,12 +16,6 @@ const StyledCard = styled.div`
   top: ${(props) => props.top};
 
   ${(props) =>
-    !props.show &&
-    css`
-      display: none;
-    `}
-
-  ${(props) =>
     props.flex &&
     css`
       display: flex;

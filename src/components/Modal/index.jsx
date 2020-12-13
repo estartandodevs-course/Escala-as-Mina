@@ -27,7 +27,9 @@ const Modal = (props) => {
           marginRight
         >
           <S.FlexContainer marginBottom="32px" justify="space-between">
-            <Typography type="h2">Gerenciar Rodadas</Typography>
+            <Typography marginBottom="10px" weight="700" size="40px" type="h2">
+              Gerenciar Rodadas
+            </Typography>
             <Button type="icon" onClick={() => setShow(false)}>
               X
             </Button>
@@ -50,9 +52,9 @@ const Modal = (props) => {
                         onChange={modalSetter}
                       />
                       <S.Label htmlFor={`${item.roundNumber}`}>
-                        <div>
+                        <S.FlexContainer justify="center">
                           <S.Img src={check} />
-                        </div>
+                        </S.FlexContainer>
                       </S.Label>
                     </div>
                     <Typography
@@ -97,7 +99,7 @@ const Modal = (props) => {
             >
               <Typography
                 size={getV("21px", "h")}
-                weight="900"
+                weight="600"
                 font="Roboto"
                 color={theme.pallete.gray.white}
                 type="span"
@@ -108,17 +110,17 @@ const Modal = (props) => {
             <Button
               variation="active"
               size="small"
-              onClick={() => changeRound(setShow)}
+              onClick={() => {
+                setShow(false);
+                setShownRound(bg);
+              }}
             >
               <Typography
                 size={getV("21px", "h")}
-                weight="900"
+                weight="600"
                 font="Roboto"
                 color={theme.pallete.gray.white}
                 type="span"
-                onClick={() => {
-                  setShownRound(bg);
-                }}
               >
                 Selecionar
               </Typography>
@@ -143,9 +145,6 @@ function getRadioCheck(set) {
     liActive.classList.add("active");
   }
   return radioCheck;
-}
-function changeRound(setShow) {
-  setShow(false);
 }
 
 export { Modal };

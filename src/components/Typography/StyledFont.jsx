@@ -26,9 +26,10 @@ export const Subtitle = styled.h2`
   text-align: ${(props) => props.align || "center"};
   color: ${(props) => props.color || props.theme.pallete.gray.thirdGray};
   font-size: ${(props) => props.size || "2.4rem"};
-  font-weight: ${(props) => (props.type !== "h2" ? "600" : "500")};
-  font-family: ${(props) => (props.type === "h3" ? "Poppins" : "Raleway")};
-  text-overflow: ${(props) => props.textOverflow};
+  font-weight: ${(props) => props.weight || "500"};
+  font-family: ${(props) => props.font || "Raleway"};
+
+  margin-bottom: ${(props) => props.marginBottom};
 `;
 
 export const Paragraph = styled.p`
