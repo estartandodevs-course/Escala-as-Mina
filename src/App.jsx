@@ -54,13 +54,13 @@ function App() {
               <Redirect to="/"></Redirect>
             </>
           ) : (
-            <>
-              <Route path="/login">
-                <LoginLayout />
-              </Route>
-              <Redirect to="/login"></Redirect>
-            </>
-          )}
+              <>
+                <Route path="/login">
+                  <LoginLayout />
+                </Route>
+                <Redirect to="/login"></Redirect>
+              </>
+            )}
         </Switch>
       </Router>
     </ThemeProvider>

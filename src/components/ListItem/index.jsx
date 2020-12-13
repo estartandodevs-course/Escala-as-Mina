@@ -13,7 +13,14 @@ function editItem() {
 }
 //id and set are props for type='player' and variation='edit'
 const ListItem = (props) => {
-  const { children, variation, set, id, onClick, type = "ranking" } = props;
+  const {
+    children,
+    variation,
+    set,
+    id,
+    onClick,
+    type = "ranking"
+  } = props;
   const theme = useTheme();
 
   if (type === "player" && variation === "edit") {

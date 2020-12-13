@@ -3,7 +3,6 @@ import { Times } from './times';
 import { Rodadas } from './rodadas';
 import { LoginLayout } from "./login";
 
-
 function Jogadoras() {
   return <h2>Jogadoras</h2>;
 }
