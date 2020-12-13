@@ -14,8 +14,8 @@ const BaseButton = styled.button`
 
   width: ${({ styling }) => styling.width && getV(styling.width, "w")};
   height: ${({ styling }) => styling.height};
-  margin-left: ${({ marginLeft }) => marginLeft && marginLeft};
-  margin-right: ${({ marginRight }) => marginRight && marginRight};
+  margin-left: ${({ marginLeft }) => marginLeft};
+  margin-right: ${({ marginRight }) => marginRight};
 
   ${(props) =>
     props.color &&

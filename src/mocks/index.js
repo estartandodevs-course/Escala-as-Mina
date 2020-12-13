@@ -294,20 +294,6 @@ function getCurrentRound() {
 function getAllRoundsInfo(totalRounds = 10) {
   return allRounds;
 }
-function getPlayers(team) {
-  return [
-    {
-      name: "Roberta Camile Fonseca",
-      number: "01",
-      position: "goleira",
-    },
-    {
-      name: "Eduarda Paixão Santos",
-      number: "02",
-      position: "zagueira",
-    },
-  ];
-}
 function getTeamPlayers(team) {
   return teamPlayers[team];
 }
@@ -321,6 +307,5 @@ export {
   getCurrentRound,
   getAllRoundsInfo,
   user,
-  getPlayers,
   getTeamPlayers,
 };

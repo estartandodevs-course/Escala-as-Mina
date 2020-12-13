@@ -1,4 +1,5 @@
 import { StyledListItem, FlexContainer, PlayerInfo } from "./styledList";
+import * as G from "../";
 import { useTheme } from "styled-components";
 import { Button, InputPlayer, Typography } from "../";
 import declineButton from "../../assets/icons/DeclineBtn.svg";
@@ -12,7 +13,14 @@ function editItem() {
 }
 //id and set are props for type='player' and variation='edit'
 const ListItem = (props) => {
-  const { children, variation, set, id, type = "ranking" } = props;
+  const {
+    children,
+    variation,
+    set,
+    id,
+    onClick,
+    type = "ranking"
+  } = props;
   const theme = useTheme();
 
   if (type === "player" && variation === "edit") {
@@ -20,8 +28,6 @@ const ListItem = (props) => {
       function deleteItem() {
         set((players) => {
           const temp = [...players];
-          console.log(id);
-          console.log(players);
           temp.filter((player) => player.id !== id);
           return temp;
         });
@@ -29,7 +35,6 @@ const ListItem = (props) => {
       return deleteItem;
     }
     const deleteItem = getDeleteItem(set, id);
-    // console.log(deleteItem);
     return (
       <FlexContainer key={id} type={type}>
         <StyledListItem type={type}>
@@ -59,11 +64,21 @@ const ListItem = (props) => {
         </Button>
       </PlayerInfo>
     );
+  } else if (type === "player") {
+    return (
+      <G.FlexContainer type={type} onClick={onClick}>
+        <StyledListItem type={type}>
+          {children.map((item, index) =>
+            handleList(item, index, type, theme, id)
+          )}
+        </StyledListItem>
+      </G.FlexContainer>
+    );
   }
 
-  //this is the default return, ranking
+  //this is the default return, ranking, dashboard or player (no variation)
   return (
-    <FlexContainer type={type}>
+    <FlexContainer type={type} padding="0 5% 0 0">
       <StyledListItem type={type}>
         {children.map((item, index) =>
           handleList(item, index, type, theme, id)
@@ -75,11 +90,11 @@ const ListItem = (props) => {
 
 function handleList(item, index, type, theme, id) {
   if (type === "dashboard") {
-    return dashboard(item, index, theme);
+    return dashboard(item, index, theme, id);
   } else if (type === "player") {
-    return player(item, index, theme);
+    return player(item, index, theme, id);
   } else {
-    return ranking(item, index, theme);
+    return ranking(item, index, theme, id);
   }
 }
 
@@ -88,7 +103,7 @@ function ranking(item, index, theme, id) {
     const elements = item.split("-");
 
     return (
-      <span>
+      <span key={(id, index)}>
         <Typography
           size="24px"
           weight="700"
@@ -117,13 +132,25 @@ function ranking(item, index, theme, id) {
     );
   } else if (index === 1) {
     return (
-      <Typography size="32px" weight="600" color={theme.pallete.gray.firstGray}>
+      <Typography
+        key={(id, index)}
+        size="32px"
+        weight="600"
+        color={theme.pallete.gray.firstGray}
+      >
         {item}
       </Typography>
     );
   } else {
     return (
-      <Typography size="32px" weight="600" font="Poppins" type="span" gradient>
+      <Typography
+        key={(id, index)}
+        size="32px"
+        weight="600"
+        font="Poppins"
+        type="span"
+        gradient
+      >
         {item}
       </Typography>
     );
@@ -131,7 +158,18 @@ function ranking(item, index, theme, id) {
 }
 
 function player(item, index, theme) {
-  if (index < 2) {
+  if (index === 1) {
+    return (
+      <Typography
+        textTransform="uppercase"
+        size="16px"
+        weight="700"
+        color={theme.pallete.secondary.main}
+      >
+        {item}
+      </Typography>
+    );
+  } else if (index < 2) {
     return (
       <Typography size="16px" weight="700" color={theme.pallete.secondary.main}>
         {item}

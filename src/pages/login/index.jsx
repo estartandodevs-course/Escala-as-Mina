@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import LogoLogin from "../../assets/images/LogoLogin.png";
 import "fontsource-roboto";
 import * as S from "./styledPage";
-import firebase from "firebase/app";
-import "firebase/auth";
 import { Head } from "../../components";
+import { login } from "../../service/auth.service";
 
 export const LoginLayout = () => {
   const [user, setUser] = useState({
@@ -14,9 +13,7 @@ export const LoginLayout = () => {
 
   const handleChange = (event) => {
     const { type, value } = event.target;
-
     const copyUser = { ...user };
-
     copyUser[type] = value;
 
     setUser(copyUser);
@@ -25,7 +22,7 @@ export const LoginLayout = () => {
     if (event.keyCode === 13) handleSubmit();
   };
   const handleSubmit = async () => {
-    firebase.auth().signInWithEmailAndPassword(user.email, user.password);
+    login(user.email, user.password);
   };
 
   return (

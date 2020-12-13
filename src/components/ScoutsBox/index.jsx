@@ -1,24 +1,37 @@
-import * as C from "..";
+import * as C from "../";
 import { useTheme } from "styled-components";
-import { useState } from "react";
 
 export const ScoutsBox = (props) => {
-  const { activePlayer, setActivePlayer, forms, setForms } = props;
+  const { activePlayer, setActivePlayer, setForms } = props;
+  const { scouts } = activePlayer;
   const theme = useTheme();
-  const scouts = [...activePlayer.scouts];
 
-  const [localScouts, setLocalScouts] = useState(...scouts);
-  const indexPlayer = forms.players.indexOf(activePlayer);
-
+  const setScout = (key) => {
+    function set(newScout) {
+      const modifiedPlayer = {
+        ...activePlayer,
+        scouts: activePlayer.scouts.map((_scout) =>
+          _scout.key === key ? newScout : _scout
+        ),
+        pointsAttributed: true,
+      };
+      setActivePlayer(modifiedPlayer);
+    }
+    return set;
+  };
   const submit = () => {
-    console.log(forms);
+    const modifiedPlayer = { ...activePlayer, pointsAttributed: true };
     setForms((current) => {
-      const temp = { ...current };
-      temp.players[indexPlayer].scouts = localScouts;
-      return temp;
+      const modifiedForms = {
+        ...current,
+        players: current.players.map((player) =>
+          player.number === modifiedPlayer.number ? modifiedPlayer : player
+        ),
+      };
+
+      return modifiedForms;
     });
     setActivePlayer(false);
-    console.log(forms);
   };
   return (
     <C.FlexContainer
@@ -26,9 +39,8 @@ export const ScoutsBox = (props) => {
       justify="flex-start"
       align="flex-start"
       border="30px"
-      padding="24px 20px"
-      minWidth="296px"
-      maxWidth="300px"
+      padding="16px 8px 16px 8px"
+      width="296px"
       height="626px"
       backgroundColor={theme.pallete.primary.main}
     >
@@ -54,24 +66,21 @@ export const ScoutsBox = (props) => {
           {activePlayer.score} pontos
         </C.Typography>
       </C.Div>
-      <C.Div overflowY="scroll" height="60%" margin="0 0 3% 0">
-        {activePlayer["scouts"].map((scout, index) => {
+      <C.Div overflowY="scroll" height="70%" padding="0 3% 0  0">
+        {scouts.map((scout, index) => {
           return (
             <C.FlexContainer key={index}>
-              <C.Scout
-                scout={scout}
-                set={setLocalScouts}
-                index={index}
-              ></C.Scout>
+              <C.Scout scout={scout} set={setScout(scout.key)}></C.Scout>
             </C.FlexContainer>
           );
         })}
       </C.Div>
-      <C.FlexContainer justify="space-between" align="center">
+      <C.FlexContainer justify="space-between" align="center" marginTop="auto">
         <C.Button
           type="solid"
           variation="disabled"
           size="small"
+          width="45%"
           onClick={() => setActivePlayer(false)}
         >
           <C.Typography size="16px" weight="500" font="Roboto" color="white">
@@ -80,6 +89,7 @@ export const ScoutsBox = (props) => {
         </C.Button>
         <C.Button
           type="solid"
+          width="45%"
           variation="active"
           size="small"
           border="1px solid white"
