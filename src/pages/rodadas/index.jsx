@@ -27,7 +27,7 @@ export const Rodadas = () => {
         scouts: scoutPosition[player.position],
       };
     }),
-    teamScout: [
+    teamScouts: [
       { key: "victory", state: true },
       { key: "noGoal", state: true },
     ],
@@ -106,7 +106,10 @@ export const Rodadas = () => {
                           <C.ListItem
                             type="player"
                             cursor="pointer"
-                            color="green"
+                            backgroundColor={
+                              player.number === activePlayer.number &&
+                              theme.pallete.primary.main
+                            }
                             key={(position, indexInner)}
                             onClick={() => {
                               setActivePlayer(player);

@@ -77,7 +77,8 @@ const FlexContainer = styled.div`
   ${(props) =>
     props.type === "player" &&
     css`
-      background-color: ${props.theme.pallete.gray.black};
+      background-color: ${props.backgroundColor ||
+      props.theme.pallete.gray.black};
       border-radius: 30px;
       box-sizing: border-box;
       margin-bottom: 8px;
