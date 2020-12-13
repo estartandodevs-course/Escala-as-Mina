@@ -53,6 +53,7 @@ const FlexContainer = styled.div`
   padding: ${(props) => props.padding};
   background-color: ${(props) => props.backgroundColor};
   border-radius: ${(props) => props.border};
+  cursor: ${(props) => props.cursor};
   ${(props) =>
     props.overflowY &&
     css`

@@ -13,7 +13,15 @@ function editItem() {
 }
 //id and set are props for type='player' and variation='edit'
 const ListItem = (props) => {
-  const { children, variation, set, id, onClick, type = "ranking" } = props;
+  const {
+    children,
+    variation,
+    set,
+    id,
+    onClick,
+    type = "ranking",
+    ...restProps
+  } = props;
   const theme = useTheme();
 
   if (type === "player" && variation === "edit") {
@@ -59,7 +67,7 @@ const ListItem = (props) => {
     );
   } else if (type === "player") {
     return (
-      <G.FlexContainer type={type} onClick={onClick}>
+      <G.FlexContainer type={type} onClick={onClick} {...restProps}>
         <StyledListItem type={type}>
           {children.map((item, index) =>
             handleList(item, index, type, theme, id)

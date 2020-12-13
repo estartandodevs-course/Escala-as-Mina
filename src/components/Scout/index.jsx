@@ -12,7 +12,6 @@ export const Scout = (props) => {
   const { scout, set } = props;
   const theme = useTheme();
   const { state, value } = scout;
-  // const state = value ;
   const isSwitch = switchScouts.includes(scout["key"]);
 
   const decrement = () => {

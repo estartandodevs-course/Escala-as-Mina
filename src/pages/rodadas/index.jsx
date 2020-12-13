@@ -105,6 +105,7 @@ export const Rodadas = () => {
                         <>
                           <C.ListItem
                             type="player"
+                            cursor="pointer"
                             color="green"
                             key={(position, indexInner)}
                             onClick={() => {
