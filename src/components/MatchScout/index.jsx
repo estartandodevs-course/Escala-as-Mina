@@ -8,10 +8,10 @@ export const MatchScout = (props) => {
   const { forms, set } = props;
   const theme = useTheme();
 
-  const globalNoGoal = forms.teamScout.find((item) => item.key === "noGoal");
-  const indexNoGoal = forms.teamScout.indexOf(globalNoGoal);
-  const globalVictory = forms.teamScout.find((item) => item.key === "victory");
-  const indexVictory = forms.teamScout.indexOf(globalVictory);
+  const globalNoGoal = forms.teamScouts.find((item) => item.key === "noGoal");
+  const indexNoGoal = forms.teamScouts.indexOf(globalNoGoal);
+  const globalVictory = forms.teamScouts.find((item) => item.key === "victory");
+  const indexVictory = forms.teamScouts.indexOf(globalVictory);
 
   const [noGoal, setNoGoal] = useState(globalNoGoal.state);
   const [victory, setVictory] = useState(globalVictory.state);
@@ -19,8 +19,8 @@ export const MatchScout = (props) => {
   useEffect(() => {
     set((forms) => {
       const temp = { ...forms };
-      temp.teamScout[indexNoGoal].state = noGoal;
-      temp.teamScout[indexVictory].state = victory;
+      temp.teamScouts[indexNoGoal].state = noGoal;
+      temp.teamScouts[indexVictory].state = victory;
       return temp;
     });
   }, [noGoal, victory, set, indexNoGoal, indexVictory]);

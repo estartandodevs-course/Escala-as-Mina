@@ -19,7 +19,8 @@ const ListItem = (props) => {
     set,
     id,
     onClick,
-    type = "ranking"
+    type = "ranking",
+    ...restProps
   } = props;
   const theme = useTheme();
 
@@ -66,7 +67,7 @@ const ListItem = (props) => {
     );
   } else if (type === "player") {
     return (
-      <G.FlexContainer type={type} onClick={onClick}>
+      <G.FlexContainer type={type} onClick={onClick} {...restProps}>
         <StyledListItem type={type}>
           {children.map((item, index) =>
             handleList(item, index, type, theme, id)

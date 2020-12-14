@@ -1,24 +1,43 @@
 import * as C from "../";
 import { useTheme } from "styled-components";
 
+const criteria = {
+  wasPlaying: 0,
+  numberGoal: 7,
+  assistanceGoal: 3,
+  ownGoal: -5,
+  missedPenalty: -5,
+  hasYellowCard: -2,
+  hasRedCard: -5,
+  defendedPenalty: 5,
+  concededGoal: -4,
+};
+
 export const ScoutsBox = (props) => {
-  const { activePlayer, setActivePlayer, setForms } = props;
+  const { activePlayer, setActivePlayer, setForms, forms } = props;
   const { scouts } = activePlayer;
+  const { teamScouts } = forms;
   const theme = useTheme();
 
   const setScout = (key) => {
-    function set(newScout) {
-      const modifiedPlayer = {
+    function set(newScout, attributed = true) {
+      const tempPlayer = {
         ...activePlayer,
         scouts: activePlayer.scouts.map((_scout) =>
           _scout.key === key ? newScout : _scout
         ),
-        pointsAttributed: true,
+        pointsAttributed: attributed,
+      };
+      const modifiedPlayer = {
+        ...tempPlayer,
+        score: calcScore(tempPlayer, teamScouts),
       };
       setActivePlayer(modifiedPlayer);
     }
     return set;
   };
+  console.log(activePlayer);
+
   const submit = () => {
     const modifiedPlayer = { ...activePlayer, pointsAttributed: true };
     setForms((current) => {
@@ -28,7 +47,6 @@ export const ScoutsBox = (props) => {
           player.number === modifiedPlayer.number ? modifiedPlayer : player
         ),
       };
-
       return modifiedForms;
     });
     setActivePlayer(false);
@@ -103,3 +121,35 @@ export const ScoutsBox = (props) => {
     </C.FlexContainer>
   );
 };
+
+function calcScore(player, teamScouts) {
+  const { scouts, position } = player;
+  const wasPlaying = scouts.find((scout) => scout.key === "wasPlaying").state;
+  const isCaptain = scouts.find((scout) => scout.key === "isCaptain").state;
+  const victory = teamScouts.find((scout) => scout.key === "victory").state;
+  const noGoal = teamScouts.find((scout) => scout.key === "noGoal").state;
+
+  const pointsScouts = scouts.filter(
+    (scout) => !["wasPlaying", "isCaptain"].includes(scout.key)
+  );
+  const scores = pointsScouts.map(({ key, value, state }) => {
+    let score = 0;
+    if (value) {
+      score = criteria[key] * value;
+    } else {
+      score = state ? criteria[key] : 0;
+    }
+    return score;
+  });
+  let score = scores.reduce((acc, cur) => acc + cur);
+  if (position === "atacante") {
+    score = victory ? score + 4 : score;
+  } else if (["zagueira", "goleira", "lateral"].includes(position)) {
+    score = noGoal ? score + 5 : score;
+  }
+
+  if (isCaptain) {
+    score = score * 2;
+  }
+  return wasPlaying ? score : 0;
+}

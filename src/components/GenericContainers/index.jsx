@@ -53,6 +53,7 @@ const FlexContainer = styled.div`
   padding: ${(props) => props.padding};
   background-color: ${(props) => props.backgroundColor};
   border-radius: ${(props) => props.border};
+  cursor: ${(props) => props.cursor};
   ${(props) =>
     props.overflowY &&
     css`
@@ -76,7 +77,8 @@ const FlexContainer = styled.div`
   ${(props) =>
     props.type === "player" &&
     css`
-      background-color: ${props.theme.pallete.gray.black};
+      background-color: ${props.backgroundColor ||
+      props.theme.pallete.gray.black};
       border-radius: 30px;
       box-sizing: border-box;
       margin-bottom: 8px;
