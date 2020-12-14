@@ -264,7 +264,7 @@ howManyRounds.forEach((item, index) => {
 });
 
 //This mocks backend response
-function getItems(division, round, numberPerDivision = 8) {
+function getMatches(division, round, numberPerDivision = 8) {
   const sortedList = allMatches[round];
   const totalDivisions = Math.floor(sortedList.length / numberPerDivision);
   const startIndex = numberPerDivision * division;
@@ -272,6 +272,15 @@ function getItems(division, round, numberPerDivision = 8) {
   const matches = sortedList.slice(startIndex, stopIndex);
   return [totalDivisions, matches];
 }
+
+// function getMatches(round) {
+//   const sortedList = allMatches[round];
+//   // const numberOfMatches = Math.floor(sortedList.length / numberPerDivision);
+//   // const startIndex = numberPerDivision * division;
+//   // const stopIndex = numberPerDivision * (division + 1);
+//   const matches = sortedList.slice(startIndex, stopIndex);
+//   return matches;
+// }
 function getMissingMatches(round) {
   return missingMatches[round];
 }
@@ -298,7 +307,7 @@ function getTeamPlayers(team) {
   return teamPlayers[team];
 }
 export {
-  getItems,
+  getMatches,
   getMissingMatches,
   getTotalMatches,
   getAthlete,

@@ -10,7 +10,7 @@ export const Dashboard = () => {
   const [page, setPage] = useState(0);
   const currentRound = M.getCurrentRound();
   const [shownRound, setShownRound] = useState(currentRound);
-  const [totalPages, matches] = M.getItems(page, shownRound);
+  const [totalPages, matches] = M.getMatches(page, shownRound);
   const [data, setData] = useState({
     missingMatches: 0,
     totalMatches: 0,
@@ -49,7 +49,6 @@ export const Dashboard = () => {
     });
   }, [shownRound]);
 
-  const matchesChecked = checkTeamsNameLenght(matches);
   const isntFirstPage = page !== 0;
   const instLastPage = page !== totalPages;
   const theresPagesLeft = page - 1 > 1;
@@ -108,7 +107,7 @@ export const Dashboard = () => {
             </C.Button>
           </S.FlexContainer>
           <ul>
-            {matchesChecked.map((item, index) => (
+            {matches.map((item, index) => (
               <C.ListItem key={`partida-${index}`} type="dashboard">
                 {item}
               </C.ListItem>
@@ -340,16 +339,4 @@ function getButtons(page, totalPages, theme, setPage) {
       </C.Button>
     );
   });
-}
-function checkTeamsNameLenght(listOfTeams) {
-  const checkTeamName = (listOfGame) => {
-    return listOfGame.map((item) => {
-      if (item.length > 15) {
-        return item.slice(0, 18) + "...";
-      } else {
-        return item;
-      }
-    });
-  };
-  return listOfTeams.map((item) => checkTeamName(item));
 }
