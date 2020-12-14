@@ -17,6 +17,10 @@ export const Typography = (props) => {
       </Subtitle>
     );
   } else {
-    return <Paragraph {...restProps}>{children}</Paragraph>;
+    return (
+      <Paragraph type={type} {...restProps}>
+        {children}
+      </Paragraph>
+    );
   }
 };

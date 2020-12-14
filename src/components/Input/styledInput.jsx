@@ -40,8 +40,8 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledDiv = styled.div`
-  width: 1000px;
-  height: 44px;
+  width: 100%;
+  /* height: 44px; */
   background-color: ${(props) => props.theme.pallete.gray.secondGray};
   border: 1px solid ${(props) => props.theme.pallete.gray.firstGray};
   box-sizing: border-box;
@@ -54,6 +54,8 @@ export const StyledDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-right: 24px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 
   ::-webkit-inline-placeholder {
     color: ${(props) => props.theme.pallete.gray.firstGray};

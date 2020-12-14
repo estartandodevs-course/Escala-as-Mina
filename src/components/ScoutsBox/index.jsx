@@ -15,7 +15,7 @@ const criteria = {
 
 export const ScoutsBox = (props) => {
   const { activePlayer, setActivePlayer, setForms, forms } = props;
-  const { scouts, pointsAttributed } = activePlayer;
+  const { scouts } = activePlayer;
   const { teamScouts } = forms;
   const theme = useTheme();
 

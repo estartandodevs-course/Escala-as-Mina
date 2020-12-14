@@ -40,14 +40,8 @@ export const Input = (props) => {
   );
 };
 
-//placeholder function
-function handleClick(e) {
-  e.preventDefault();
-  console.log("O link foi clicado.");
-}
-
 export const InputSearch = (props) => {
-  const { placeholder, onClick = handleClick } = props;
+  const { placeholder, onClick } = props;
   const theme = useTheme();
 
   return (

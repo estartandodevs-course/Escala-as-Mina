@@ -100,8 +100,8 @@ const theme = {
 
     list: {
       ranking: {
-        width: "1048px",
-        height: "64px",
+        width: "100%",
+        height: "56px",
       },
       player: {
         width: "692px",
