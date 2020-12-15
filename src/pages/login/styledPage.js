@@ -23,9 +23,9 @@ const LoginWrapper = styled.div`
 const LoginBox = styled.div`
   position: absolute;
   left: 8.89%;
-  right: 52.22%;
-  top: 9.57%;
-  bottom: 9.57%;
+  right: 60.22%;
+  top: 8.57%;
+  bottom: 5.57%;
   display: flex;
   flex-direction: column;
   max-width: 560px;
@@ -64,6 +64,9 @@ const ContainerInput = styled.div`
   line-height: 28px;
   justify-content: space-between;
   margin-top: 25px;
+  @media(max-width:1500px){
+    text-align: center;
+  }
 
   input {
     display: flex;
@@ -88,6 +91,9 @@ const ContainerInput = styled.div`
       outline: none;
       border: 2px solid ${(props) => props.theme.pallete.secondary.main};
     }
+    @media(max-width:1500px){
+      width: 100%;
+    } 
   }
 `;
 
