@@ -11,8 +11,13 @@ import { Layout } from "./components";
 import { useEffect, useState } from "react";
 import { onAuthStateChange } from "./service/auth.service";
 import "./config/auth.config";
+import * as M from "./mocks";
+import { roundContext } from "./context";
 
 function App() {
+  const currentRound = M.getCurrentRound();
+  const [shownRound, setShownRound] = useState(currentRound);
+
   const [user, setUser] = useState({ loggedIn: false });
   useEffect(() => {
     const unsubscribe = onAuthStateChange(setUser);
@@ -27,31 +32,36 @@ function App() {
         <Switch>
           {user.loggedIn ? (
             <>
-              <Route path="/rodadas">
-                <Layout>
-                  <Rodadas />
-                </Layout>
-              </Route>
+              <roundContext.Provider value={shownRound}>
+                <Route path="/rodadas">
+                  <Layout>
+                    <Rodadas />
+                  </Layout>
+                </Route>
 
-              <Route exact path="/">
-                <Layout>
-                  <Dashboard />
-                </Layout>
-              </Route>
+                <Route exact path="/">
+                  <Layout>
+                    <Dashboard
+                      shownRound={shownRound}
+                      setShownRound={setShownRound}
+                    />
+                  </Layout>
+                </Route>
 
-              <Route path="/times">
-                <Layout>
-                  <Times />
-                </Layout>
-              </Route>
+                <Route path="/times">
+                  <Layout>
+                    <Times />
+                  </Layout>
+                </Route>
 
-              <Route path="/ranking">
-                <Layout>
-                  <Ranking />
-                </Layout>
-              </Route>
+                <Route path="/ranking">
+                  <Layout>
+                    <Ranking />
+                  </Layout>
+                </Route>
 
-              <Redirect to="/"></Redirect>
+                <Redirect to="/"></Redirect>
+              </roundContext.Provider>
             </>
           ) : (
             <>

@@ -1,22 +1,22 @@
 import styled, { useTheme } from "styled-components";
+import { useState, useContext } from "react";
 import * as C from "../../components";
-// import * as S from "../dashboard/styledPage";
+import * as M from "../../mocks";
+import { roundContext } from "../../context";
+
 const StyledUl = styled.ul`
   width: 100%;
   margin-top: 15px;
 `;
-const bla = [
-  ["#1 - Rogerinho - 1 real de big big - RRB", "12/12", "45pts"],
-  ["#1 - Rogerinho - 1 real de big big - RRB", "8/12", "45pts"],
-  ["#1 - Rogerinho - 1 real de big big - RRB", "8/12", "45pts"],
-  ["#1 - Rogerinho - 1 real de big big - RRB", "8/12", "45pts"],
-  ["#1 - Rogerinho - 1 real de big big - RRB", "8/12", "45pts"],
-  ["#1 - Rogerinho - 1 real de big big - RRB", "8/12", "45pts"],
-  ["#1 - Rogerinho - 1 real de big big - RRB", "8/12", "45pts"],
-  ["#1 - Rogerinho - 1 real de big big - RRB", "8/12", "45pts"],
-];
+
 export const Ranking = () => {
+  const [page, setPage] = useState(0);
+  const round = useContext(roundContext);
   const theme = useTheme();
+
+  const dataRanking = M.getRanking(round, page);
+  const ranking = { ...dataRanking, data: handleJson(dataRanking.data) };
+  console.log(dataRanking, "ranking", ranking, "data");
   return (
     <>
       <C.FlexContainer
@@ -36,13 +36,25 @@ export const Ranking = () => {
         </C.Typography>
         <C.InputSearch placeholder="Pesquise clubes pelo seu nome ou sigla" />
         <StyledUl>
-          {bla.map((item, index) => (
+          {ranking.data.map((item, index) => (
             <C.ListItem key={`partida-${index}`} type="ranking">
               {item}
             </C.ListItem>
           ))}
         </StyledUl>
+        <C.Pagination data={ranking} page={page} setPage={setPage} />
       </C.FlexContainer>
     </>
   );
 };
+
+function handleJson(data) {
+  const modifiedData = data.map((item) => {
+    return [
+      `#${item.place} - ${item.playerName} - ${item.squadName} - ${item.squadInitials}`,
+      `${item.athleteAttributed}/11`,
+      `${item.points} pts`,
+    ];
+  });
+  return modifiedData;
+}

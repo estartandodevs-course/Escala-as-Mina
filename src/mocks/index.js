@@ -26,76 +26,56 @@ const teamPlayers = {
   ],
 };
 
-const bestAthletes = {
+const bestAthlete = {
   10: {
-    best: {
-      name: "Ana Paula Cirilo dos Santos",
-      score: "420 pts",
-      team: "Bahia Futebol Clube",
-    },
+    name: "Ana Paula Cirilo dos Santos",
+    score: "420 pts",
+    team: "Bahia Futebol Clube",
   },
   9: {
-    best: {
-      name: "Glória Cordeiro Queiroz",
-      score: "82 pts",
-      team: "Fluminense",
-    },
+    name: "Glória Cordeiro Queiroz",
+    score: "82 pts",
+    team: "Fluminense",
   },
   8: {
-    best: {
-      name: "Alan Luiz Araújo",
-      score: "71 pts",
-      team: "Bahia Futebol Clube",
-    },
+    name: "Alan Luiz Araújo",
+    score: "71 pts",
+    team: "Bahia Futebol Clube",
   },
   7: {
-    best: {
-      name: "Breno Nunes",
-      score: "112 pts",
-      team: "Flamengo",
-    },
+    name: "Breno Nunes",
+    score: "112 pts",
+    team: "Flamengo",
   },
   6: {
-    best: {
-      name: "Gabriely Araújo",
-      score: "1 pts",
-      team: "Bahia Futebol Clube",
-    },
+    name: "Gabriely Araújo",
+    score: "1 pts",
+    team: "Bahia Futebol Clube",
   },
   5: {
-    best: {
-      name: "Frederico Bezerra",
-      score: "315 pts",
-      team: "Bahia Futebol Clube",
-    },
+    name: "Frederico Bezerra",
+    score: "315 pts",
+    team: "Bahia Futebol Clube",
   },
   4: {
-    best: {
-      name: "Adrielle Bittencourt",
-      score: "79 pts",
-      team: "Internacional",
-    },
+    name: "Adrielle Bittencourt",
+    score: "79 pts",
+    team: "Internacional",
   },
   3: {
-    best: {
-      name: "Leila Marcia Queiroz Yamagushi",
-      score: "970 pts",
-      team: "Corinthians",
-    },
+    name: "Leila Marcia Queiroz Yamagushi",
+    score: "970 pts",
+    team: "Corinthians",
   },
   2: {
-    best: {
-      name: "Marcos Lima",
-      score: "999 pts",
-      team: "Goiania",
-    },
+    name: "Marcos Lima",
+    score: "999 pts",
+    team: "Goiania",
   },
   1: {
-    best: {
-      name: "Ana Murdock",
-      score: "256 pts",
-      team: "Bahia Futebol Clube",
-    },
+    name: "Ana Murdock",
+    score: "256 pts",
+    team: "Bahia Futebol Clube",
   },
 };
 const partidas = [
@@ -169,74 +149,54 @@ const partidas = [
 ];
 const player = {
   10: {
-    best: {
-      name: "Breno Natan Teodoro",
-      score: "69 pts",
-      team: "estartando devs",
-    },
+    name: "Breno Natan Teodoro",
+    score: "69 pts",
+    team: "estartando devs",
   },
   9: {
-    best: {
-      name: "Jonatas Altair Lima",
-      score: "210 pts",
-      team: "estartando devs",
-    },
+    name: "Jonatas Altair Lima",
+    score: "210 pts",
+    team: "estartando devs",
   },
   8: {
-    best: {
-      name: "Adriele Cristina Ribeiro",
-      score: "14 pts",
-      team: "estartando devs",
-    },
+    name: "Adriele Cristina Ribeiro",
+    score: "14 pts",
+    team: "estartando devs",
   },
   7: {
-    best: {
-      name: "Adriele Cristina Ribeiro",
-      score: "320 pts",
-      team: "estartando devs",
-    },
+    name: "Adriele Cristina Ribeiro",
+    score: "320 pts",
+    team: "estartando devs",
   },
   6: {
-    best: {
-      name: "Adriele Cristina Ribeiro",
-      score: "69 pts",
-      team: "estartando devs",
-    },
+    name: "Adriele Cristina Ribeiro",
+    score: "69 pts",
+    team: "estartando devs",
   },
   5: {
-    best: {
-      name: "Alan Ribeiro de Souza",
-      score: "114 pts",
-      team: "estartando devs",
-    },
+    name: "Alan Ribeiro de Souza",
+    score: "114 pts",
+    team: "estartando devs",
   },
   4: {
-    best: {
-      name: "Alan Ribeiro de Souza",
-      score: "87 pts",
-      team: "estartando devs",
-    },
+    name: "Alan Ribeiro de Souza",
+    score: "87 pts",
+    team: "estartando devs",
   },
   3: {
-    best: {
-      name: "Alan Ribeiro de Souza",
-      score: "69 pts",
-      team: "estartando devs",
-    },
+    name: "Alan Ribeiro de Souza",
+    score: "69 pts",
+    team: "estartando devs",
   },
   2: {
-    best: {
-      name: "Breno Natan Teodoro",
-      score: "112 pts",
-      team: "estartando devs",
-    },
+    name: "Breno Natan Teodoro",
+    score: "112 pts",
+    team: "estartando devs",
   },
   1: {
-    best: {
-      name: "Breno Natan Teodoro",
-      score: "81 pts",
-      team: "estartando devs",
-    },
+    name: "Breno Natan Teodoro",
+    score: "81 pts",
+    team: "estartando devs",
   },
 };
 const user = {
@@ -263,58 +223,188 @@ howManyRounds.forEach((item, index) => {
   });
 });
 
-//This mocks backend response
-function getMatches(division, round, numberPerDivision = 8) {
+function getMatchesOfRound(round, page) {
+  const perPage = 8;
   const sortedList = allMatches[round];
-  const totalDivisions = Math.floor(sortedList.length / numberPerDivision);
-  const startIndex = numberPerDivision * division;
-  const stopIndex = numberPerDivision * (division + 1);
-  const matches = sortedList.slice(startIndex, stopIndex);
-  return [totalDivisions, matches];
-}
+  const total = sortedList.length;
+  const totalPages = Math.ceil(total / perPage);
 
-// function getMatches(round) {
-//   const sortedList = allMatches[round];
-//   // const numberOfMatches = Math.floor(sortedList.length / numberPerDivision);
-//   // const startIndex = numberPerDivision * division;
-//   // const stopIndex = numberPerDivision * (division + 1);
-//   const matches = sortedList.slice(startIndex, stopIndex);
-//   return matches;
-// }
-function getMissingMatches(round) {
-  return missingMatches[round];
+  const startIndex = perPage * page;
+  const stopIndex = perPage * (page + 1);
+  const matches = sortedList.slice(startIndex, stopIndex);
+
+  return {
+    page,
+    perPage,
+    total,
+    totalPages,
+    round,
+    bestAthlete: bestAthlete[round],
+    bestSquad: player[round],
+    totalSquads: rounds[round],
+    lastTotalSquads: rounds[round - 1 < 0 ? round : round - 1],
+    missingPlayersAttributed: missingMatches[round] * 22,
+    totalPlayers: total * 22 * 2,
+    missingClubsAttributed: missingMatches[round],
+    data: matches,
+  };
 }
-function getTotalMatches(round) {
-  const totalMatches = allMatches[round].length;
-  return totalMatches;
-}
-function getAthlete(round, key) {
-  return bestAthletes[round][key];
-}
-function getSquad(round, key) {
-  return player[round][key];
-}
-function getTotalSquads(round) {
-  return rounds[round];
-}
+const rankings = {
+  10: [
+    {
+      place: 1,
+      playerName: "Rogerinho",
+      squadName: "1 real de big big",
+      squadInitials: "RBB",
+      athleteAttributed: 11,
+      points: 45,
+    },
+    {
+      place: 2,
+      playerName: "Thiaguinho",
+      squadName: "Timão",
+      squadInitials: "TBT",
+      athleteAttributed: 11,
+      points: 13,
+    },
+    {
+      place: 3,
+      playerName: "Gabrielly",
+      squadName: "Suprise",
+      squadInitials: "SUS",
+      athleteAttributed: 8,
+      points: 69,
+    },
+    {
+      place: 4,
+      playerName: "Rogerinho",
+      squadName: "1 real de big big",
+      squadInitials: "RBB",
+      athleteAttributed: 11,
+      points: 45,
+    },
+    {
+      place: 5,
+      playerName: "Thiaguinho",
+      squadName: "Timão",
+      squadInitials: "TBT",
+      athleteAttributed: 11,
+      points: 13,
+    },
+    {
+      place: 6,
+      playerName: "Gabrielly",
+      squadName: "Suprise",
+      squadInitials: "SUS",
+      athleteAttributed: 8,
+      points: 69,
+    },
+    {
+      place: 7,
+      playerName: "Rogerinho",
+      squadName: "1 real de big big",
+      squadInitials: "RBB",
+      athleteAttributed: 11,
+      points: 45,
+    },
+    {
+      place: 8,
+      playerName: "Thiaguinho",
+      squadName: "Timão",
+      squadInitials: "TBT",
+      athleteAttributed: 11,
+      points: 13,
+    },
+    {
+      place: 9,
+      playerName: "Gabrielly",
+      squadName: "Suprise",
+      squadInitials: "SUS",
+      athleteAttributed: 8,
+      points: 69,
+    },
+    {
+      place: 10,
+      playerName: "Rogerinho",
+      squadName: "1 real de big big",
+      squadInitials: "RBB",
+      athleteAttributed: 11,
+      points: 45,
+    },
+    {
+      place: 11,
+      playerName: "Thiaguinho",
+      squadName: "Timão",
+      squadInitials: "TBT",
+      athleteAttributed: 11,
+      points: 13,
+    },
+    {
+      place: 12,
+      playerName: "Gabrielly",
+      squadName: "Suprise",
+      squadInitials: "SUS",
+      athleteAttributed: 8,
+      points: 69,
+    },
+    {
+      place: 13,
+      playerName: "Rogerinho",
+      squadName: "1 real de big big",
+      squadInitials: "RBB",
+      athleteAttributed: 11,
+      points: 45,
+    },
+    {
+      place: 14,
+      playerName: "Thiaguinho",
+      squadName: "Timão",
+      squadInitials: "TBT",
+      athleteAttributed: 11,
+      points: 13,
+    },
+    {
+      place: 15,
+      playerName: "Gabrielly",
+      squadName: "Suprise",
+      squadInitials: "SUS",
+      athleteAttributed: 8,
+      points: 69,
+    },
+  ],
+};
 function getCurrentRound() {
   return 10;
 }
-function getAllRoundsInfo(totalRounds = 10) {
+function getAllRoundsInfo() {
   return allRounds;
 }
-function getTeamPlayers(team) {
+function getPlayersOfTeam(team) {
   return teamPlayers[team];
 }
+function getRanking(round, page) {
+  const perPage = 8;
+  const sortedList = rankings[round];
+  const total = sortedList.length;
+  const totalPages = Math.ceil(total / perPage);
+
+  const startIndex = perPage * page;
+  const stopIndex = perPage * (page + 1);
+  const currentPage = sortedList.slice(startIndex, stopIndex);
+  return {
+    page,
+    perPage,
+    total,
+    totalPages,
+    round,
+    data: currentPage,
+  };
+}
 export {
-  getMatches,
-  getMissingMatches,
-  getTotalMatches,
-  getAthlete,
-  getSquad,
-  getTotalSquads,
+  getRanking,
+  getMatchesOfRound,
   getCurrentRound,
   getAllRoundsInfo,
-  user,
-  getTeamPlayers,
+  getPlayersOfTeam,
+  user, //how do i get it from firebase?
 };

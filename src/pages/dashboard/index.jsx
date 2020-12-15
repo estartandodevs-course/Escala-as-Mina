@@ -2,57 +2,18 @@ import * as C from "../../components";
 import * as M from "../../mocks";
 import { useTheme } from "styled-components";
 import { getV } from "../../styles";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as S from "./styledPage";
 
-export const Dashboard = () => {
+export const Dashboard = (props) => {
+  const { shownRound, setShownRound } = props;
   const theme = useTheme();
   const [page, setPage] = useState(0);
+
   const currentRound = M.getCurrentRound();
-  const [shownRound, setShownRound] = useState(currentRound);
-  const [totalPages, matches] = M.getMatches(page, shownRound);
-  const [data, setData] = useState({
-    missingMatches: 0,
-    totalMatches: 0,
-    bestAthlete: {
-      best: {
-        name: "",
-        score: "",
-        team: "",
-      },
-    },
-    bestSquad: {
-      best: {
-        name: "",
-        score: "",
-        team: "",
-      },
-    },
-    totalTeams: 2563,
-    lastTotalTeams: 10025,
-    allRoundsInfo: [],
-    matchesChecked: [],
-  });
-
-  useEffect(() => {
-    setData({
-      missingMatches: M.getMissingMatches(shownRound),
-      totalMatches: M.getTotalMatches(shownRound),
-      bestAthlete: M.getAthlete(shownRound, "best"),
-      bestSquad: M.getSquad(shownRound, "best"),
-      totalTeams: M.getTotalSquads(shownRound),
-      lastTotalTeams:
-        shownRound === 1
-          ? M.getTotalSquads(shownRound - 1)
-          : M.getTotalSquads(shownRound),
-      allRoundsInfo: M.getAllRoundsInfo(),
-    });
-  }, [shownRound]);
-
-  const isntFirstPage = page !== 0;
-  const instLastPage = page !== totalPages;
-  const theresPagesLeft = page - 1 > 1;
-  const theresPagesRight = page + 1 < totalPages - 1;
+  const roundData = M.getMatchesOfRound(shownRound, page);
+  const allRoundsInfo = M.getAllRoundsInfo();
+  const { data } = roundData;
   const [show, setShow] = useState(false);
 
   return (
@@ -61,7 +22,7 @@ export const Dashboard = () => {
       <C.Modal
         show={show}
         setShow={setShow}
-        roundsInfo={data.allRoundsInfo}
+        allRoundsInfo={allRoundsInfo}
         currentRound={currentRound}
         setShownRound={setShownRound}
       />
@@ -107,47 +68,13 @@ export const Dashboard = () => {
             </C.Button>
           </S.FlexContainer>
           <ul>
-            {matches.map((item, index) => (
+            {data.map((item, index) => (
               <C.ListItem key={`partida-${index}`} type="dashboard">
                 {item}
               </C.ListItem>
             ))}
           </ul>
-          <S.GridColumnWrapper column="2fr 1fr 2fr">
-            <>
-              {/* <> what if there's less elements than 3 pages worth? */}
-              {isntFirstPage && (
-                <S.FlexContainer>
-                  <C.Button type="icon" onClick={() => setPage(page - 1)}>
-                    {"<"}
-                  </C.Button>
-                  <C.Button type="icon" onClick={() => setPage(0)}>
-                    Primeira Página
-                  </C.Button>
-                  {theresPagesLeft && <p>...</p>}
-                </S.FlexContainer>
-              )}
-
-              {!isntFirstPage && !theresPagesLeft && <div></div>}
-            </>
-
-            <S.FlexContainer>
-              {getButtons(page, totalPages, theme, setPage)}
-            </S.FlexContainer>
-            <S.FlexContainer>
-              {theresPagesRight && <p>...</p>}
-              {instLastPage && (
-                <>
-                  <C.Button type="icon" onClick={() => setPage(totalPages)}>
-                    Última Página
-                  </C.Button>
-                  <C.Button type="icon" onClick={() => setPage(page + 1)}>
-                    {">"}
-                  </C.Button>
-                </>
-              )}
-            </S.FlexContainer>
-          </S.GridColumnWrapper>
+          <C.Pagination data={roundData} page={page} setPage={setPage} />
         </C.Card>
 
         <C.Card flex direction="column" justify="flex-start" area="b">
@@ -162,7 +89,8 @@ export const Dashboard = () => {
               weight="700"
               font="poppins"
             >
-              {data.missingMatches}/{data.totalMatches}
+              {roundData.totalPlayers - roundData.missingPlayersAttributed}/
+              {roundData.totalPlayers}
             </C.Typography>
             <C.Typography
               color={theme.pallete.alert.lighter}
@@ -171,7 +99,12 @@ export const Dashboard = () => {
               font="poppins"
               align="center"
             >
-              {((data.missingMatches / data.totalMatches) * 100).toFixed(1)}%
+              {(
+                ((roundData.totalPlayers - roundData.missingPlayersAttributed) /
+                  roundData.totalPlayers) *
+                100
+              ).toFixed(1)}
+              %
             </C.Typography>
           </S.FlexContainer>
         </C.Card>
@@ -188,7 +121,7 @@ export const Dashboard = () => {
               align="center"
               color={theme.pallete.gray.firstGray}
             >
-              {data.missingMatches * 2}
+              {roundData.missingClubsAttributed}
             </C.Typography>
           </S.FlexContainer>
         </C.Card>
@@ -202,7 +135,7 @@ export const Dashboard = () => {
           <C.Typography size="1.5em" weight="700" font="poppins" type="h2">
             Melhor Jogadora da Rodada
           </C.Typography>
-          <S.FlexContainer direction="column" height="100%">
+          <S.FlexContainer direction="column" justify="center" height="100%">
             <C.Typography
               color={theme.pallete.alert.main}
               weight="700"
@@ -210,7 +143,7 @@ export const Dashboard = () => {
               align="center"
               font="poppins"
             >
-              {data.bestAthlete.name}
+              {roundData.bestAthlete.name}
             </C.Typography>
             <C.Typography
               weight="700"
@@ -219,7 +152,7 @@ export const Dashboard = () => {
               font="poppins"
               gradient
             >
-              {data.bestAthlete.score}
+              {roundData.bestAthlete.score}
             </C.Typography>
             <C.Typography
               color={theme.pallete.gray.firstGray}
@@ -228,7 +161,7 @@ export const Dashboard = () => {
               align="center"
               font="poppins"
             >
-              {data.bestAthlete.team}
+              {roundData.bestAthlete.team}
             </C.Typography>
           </S.FlexContainer>
         </C.Card>
@@ -236,7 +169,7 @@ export const Dashboard = () => {
           <C.Typography size="1.5em" weight="700" font="poppins" type="h2">
             Time que mais pontuou na rodada
           </C.Typography>
-          <S.FlexContainer direction="column">
+          <S.FlexContainer direction="column" justify="center" height="100%">
             <C.Typography
               color={theme.pallete.alert.main}
               weight="700"
@@ -244,7 +177,7 @@ export const Dashboard = () => {
               font="poppins"
               align="center"
             >
-              {data.bestSquad.team}
+              {roundData.bestSquad.team}
             </C.Typography>
             <C.Typography
               weight="700"
@@ -253,7 +186,7 @@ export const Dashboard = () => {
               align="center"
               gradient
             >
-              {data.bestSquad.score}
+              {roundData.bestSquad.score}
             </C.Typography>
             <C.Typography
               color={theme.pallete.gray.firstGray}
@@ -262,7 +195,7 @@ export const Dashboard = () => {
               font="poppins"
               align="center"
             >
-              {data.bestSquad.name}
+              {roundData.bestSquad.name}
             </C.Typography>
           </S.FlexContainer>
         </C.Card>
@@ -279,7 +212,8 @@ export const Dashboard = () => {
               gradient
             >
               {(
-                ((data.lastTotalTeams - data.totalTeams) / data.totalTeams) *
+                ((roundData.lastTotalSquads - roundData.totalSquads) /
+                  roundData.totalSquads) *
                 100
               ).toFixed(1)}
               %
@@ -291,7 +225,7 @@ export const Dashboard = () => {
               font="poppins"
               align="center"
             >
-              {data.totalTeams}
+              {roundData.totalSquads}
             </C.Typography>
           </S.FlexContainer>
         </C.Card>
@@ -299,44 +233,3 @@ export const Dashboard = () => {
     </S.GlobalWrapper>
   );
 };
-
-function range(start, stop) {
-  return [...Array(stop - start).keys()].map((i) => i + start);
-}
-function getButtons(page, totalPages, theme, setPage) {
-  const currentPage = page + 1;
-  let start = 0;
-  let stop = 0;
-  if (page === 0) {
-    start = 0;
-    stop = 3;
-  } else if (page === totalPages) {
-    start = -2;
-    stop = 1;
-  } else {
-    start = -1;
-    stop = 2;
-  }
-  const constructorArray = range(start, stop);
-
-  return constructorArray.map((item, index) => {
-    return (
-      <C.Button
-        key={index}
-        size={getV("32px", "h")}
-        type="icon"
-        variation={item === 0 ? "secondary" : "search"}
-        rounded
-        onClick={() => setPage(item + page)}
-      >
-        <C.Typography
-          color={
-            item === 0 ? theme.pallete.gray.black : theme.pallete.secondary.main
-          }
-        >
-          {item + currentPage}
-        </C.Typography>
-      </C.Button>
-    );
-  });
-}

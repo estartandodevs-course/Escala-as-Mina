@@ -8,8 +8,8 @@ import upload from "../../assets/icons/Upload.svg";
 import check from "../../assets/icons/WhiteAcceptBtn.svg";
 
 const Modal = (props) => {
-  const { show, setShow, roundsInfo, currentRound, setShownRound } = props;
-  roundsInfo.sort((a, b) => {
+  const { show, setShow, allRoundsInfo, currentRound, setShownRound } = props;
+  allRoundsInfo.sort((a, b) => {
     if (a.roundNumber > b.roundNumber) return -1;
     else return 1;
   });
@@ -37,7 +37,7 @@ const Modal = (props) => {
           <S.ModalList>
             <S.Form>
               <S.ModalHeader />
-              {roundsInfo.map((item, index) => {
+              {allRoundsInfo.map((item, index) => {
                 return (
                   <S.ModalListItem
                     key={("round", index)}
