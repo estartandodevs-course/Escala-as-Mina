@@ -31,7 +31,7 @@ const navItems = [
     alt: "Icon Dashboard",
   },
   {
-    text: "Times Cadastrados",
+    text: "Times",
     src: TimesCadastrados, //AvaliarJogadoras.svg
     to: "/times",
     alt: "Icon Dashboard",

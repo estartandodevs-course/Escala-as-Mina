@@ -12,7 +12,7 @@ const selectedTeam = "flamengo";
 
 export const Rodadas = () => {
   const theme = useTheme();
-  const players = M.getTeamPlayers(selectedTeam);
+  const players = M.getPlayersOfTeam(selectedTeam);
 
   let positions = players.map((player) => player.position);
   positions = [...new Set(positions)];

@@ -24,3 +24,4 @@ export { MatchScout } from "./MatchScout";
 export { Div, FlexContainer } from "./GenericContainers";
 export { ScoutsBox } from "./ScoutsBox";
 export { Head } from "./Head";
+export { Pagination } from "./Pagination";

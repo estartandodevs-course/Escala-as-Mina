@@ -12,6 +12,7 @@ export const Title = styled.h1`
   line-height: ${(props) => props.lineHeight};
   padding: ${(props) => props.padding};
   height: ${(props) => props.height};
+  margin-bottom: ${(props) => props.marginBottom};
   ${(props) =>
     props.textOverflow &&
     css`
@@ -63,10 +64,11 @@ export const Span = styled.span`
   ${(props) =>
     props.gradient &&
     css`
+      color: transparent;
       background-image: ${props.theme.pallete.gradient.main};
       background-size: 100%;
+      background-clip: text;
       -webkit-background-clip: text;
-      background-repeat: repeat;
       text-fill-color: transparent;
     `};
   text-overflow: ${(props) => props.textOverflow};

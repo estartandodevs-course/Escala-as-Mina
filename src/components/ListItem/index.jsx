@@ -95,7 +95,7 @@ function handleList(item, index, type, theme, id) {
   } else if (type === "player") {
     return player(item, index, theme, id);
   } else {
-    return ranking(item, index, theme, id);
+    return ranking(item, index, theme, id); //i'll have to revisit this
   }
 }
 
@@ -132,12 +132,18 @@ function ranking(item, index, theme, id) {
       </span>
     );
   } else if (index === 1) {
+    const elements = item.split("/");
+    const allPlayersChecked = elements[0] === elements[1];
     return (
       <Typography
         key={(id, index)}
         size="32px"
         weight="600"
-        color={theme.pallete.gray.firstGray}
+        color={
+          allPlayersChecked
+            ? theme.pallete.secondary.main
+            : theme.pallete.gray.firstGray
+        }
       >
         {item}
       </Typography>
