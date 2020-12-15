@@ -16,7 +16,6 @@ export const Ranking = () => {
 
   const dataRanking = M.getRanking(round, page);
   const ranking = { ...dataRanking, data: handleJson(dataRanking.data) };
-  console.log(dataRanking, "ranking", ranking, "data");
   return (
     <>
       <C.FlexContainer
