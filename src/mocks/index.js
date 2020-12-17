@@ -908,7 +908,7 @@ const allMatches = {};
 const rounds = {};
 const allRounds = [];
 const missingMatches = {};
-const totalRounds = getCurrentRound();
+const totalRounds = getCurrentRound().currentRound;
 const howManyRounds = new Array(totalRounds).fill(0);
 howManyRounds.forEach((item, index) => {
   allMatches[index + 1] = partidas.slice(
@@ -926,6 +926,7 @@ howManyRounds.forEach((item, index) => {
 });
 function getMatchesOfRound(round) {
   const matches = allMatches[round];
+  console.log(allMatches);
   return {
     round,
     bestAthlete: bestAthlete[round],
@@ -1063,7 +1064,7 @@ const rankings = {
   ],
 };
 function getCurrentRound() {
-  return 10;
+  return { currentRound: 10 };
 }
 function getAllRoundsInfo() {
   return allRounds;
@@ -1072,20 +1073,9 @@ function getPlayersOfTeam(team) {
   return teamPlayers[team];
 }
 function getRanking(round) {
-  // const perPage = 8;
   const sortedList = rankings[round];
-  // const total = sortedList.length;
-  // const totalPages = Math.ceil(total / perPage);
 
-  // const startIndex = perPage * page;
-  // const stopIndex = perPage * (page + 1);
-  // const currentPage = sortedList.slice(startIndex, stopIndex);
   return {
-    // page,
-    // perPage,
-    // total,
-    // totalPages,
-    // round,
     data: sortedList,
   };
 }
@@ -1095,5 +1085,5 @@ export {
   getCurrentRound,
   getAllRoundsInfo,
   getPlayersOfTeam,
-  user, //how do i get it from firebase?
+  user,
 };

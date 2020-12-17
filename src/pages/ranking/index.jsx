@@ -36,7 +36,7 @@ export const Ranking = () => {
           size="38px"
           marginBottom="20px"
         >
-          Ranking dos usuários - 10ª Rodada {/*AQUI VAI TER A RODADA*/}
+          Ranking dos usuários - {round}ª Rodada
         </C.Typography>
         <C.InputSearch placeholder="Pesquise clubes pelo seu nome ou sigla" />
         <StyledUl>

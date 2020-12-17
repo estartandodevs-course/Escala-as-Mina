@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useTheme } from "styled-components";
 import * as C from "../../components";
 import * as M from "../../mocks";
@@ -7,12 +7,14 @@ import { scoutPosition } from "./dataSctructure";
 import { getV } from "../../styles";
 import { Img } from "../times/styledPage";
 import alert from "../../assets/icons/Alert.svg";
+import { roundContext } from "../../context";
 
 const selectedTeam = "flamengo";
 
 export const Rodadas = () => {
   const theme = useTheme();
   const players = M.getPlayersOfTeam(selectedTeam);
+  const round = useContext(roundContext);
 
   let positions = players.map((player) => player.position);
   positions = [...new Set(positions)];
@@ -62,7 +64,7 @@ export const Rodadas = () => {
             textOverflow="ellipsis"
             size="38px"
           >
-            Adicionar pontuação - 10ª Rodada {/*AQUI VAI TER A RODADA*/}
+            Adicionar pontuação - {round}ª Rodada
           </C.Typography>
           <C.Typography
             type="h1"

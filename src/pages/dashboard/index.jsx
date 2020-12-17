@@ -11,7 +11,7 @@ export const Dashboard = (props) => {
   const perPage = 8;
   const [page, setPage] = useState(0);
 
-  const currentRound = M.getCurrentRound();
+  const { currentRound } = M.getCurrentRound();
   const roundData = M.getMatchesOfRound(shownRound, page);
   const { data } = roundData;
   const allRoundsInfo = M.getAllRoundsInfo();
