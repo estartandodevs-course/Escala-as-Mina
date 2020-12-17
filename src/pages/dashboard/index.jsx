@@ -13,9 +13,8 @@ export const Dashboard = (props) => {
 
   const currentRound = M.getCurrentRound();
   const roundData = M.getMatchesOfRound(shownRound, page);
-  const allRoundsInfo = M.getAllRoundsInfo();
   const { data } = roundData;
-  console.log(data);
+  const allRoundsInfo = M.getAllRoundsInfo();
   const totalPages = handlePagination(data, perPage);
   const shownData = handleShownData(data, page, perPage);
   const [show, setShow] = useState(false);
@@ -238,14 +237,14 @@ export const Dashboard = (props) => {
   );
 };
 
-function handleShownData(data, page, perPage) {
+function handleShownData(data, page, perPage, callback = handleJson) {
   const startIndex = page * perPage;
   const stopIndex = (page + 1) * perPage;
   const shownData = data.slice(startIndex, stopIndex);
-  const modifiedData = formatData(shownData);
+  const modifiedData = callback(shownData);
   return modifiedData;
 }
-function formatData(data) {
+function handleJson(data) {
   const modifiedData = data.map((match) => {
     const homeTeam = match.find((team) => team.status === "home");
     const awayTeam = match.find((team) => team.status === "away");
@@ -272,9 +271,10 @@ function formatData(data) {
   return modifiedData;
 }
 
-export function handlePagination(data, perPage) {
+function handlePagination(data, perPage) {
   const total = data.length;
   const totalPages = Math.ceil(total / perPage);
 
   return totalPages;
 }
+export { handlePagination, handleShownData };

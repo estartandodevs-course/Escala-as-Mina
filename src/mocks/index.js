@@ -79,7 +79,6 @@ const bestAthlete = {
   },
 };
 const partidas = [
-  //56 items
   [
     {
       teamName: "Marilia",
@@ -146,16 +145,16 @@ const partidas = [
   ],
   [
     {
-      teamName: "Marilia",
-      numberGoals: 4,
+      teamName: "Osasco",
+      numberGoals: 1,
       playersAttributed: 18,
       totalPlayers: 20,
       status: "home",
     },
     {
-      teamName: "Flamengo",
-      numberGoals: 5,
-      playersAttributed: 6,
+      teamName: "Diadema",
+      numberGoals: 0,
+      playersAttributed: 12,
       totalPlayers: 21,
       status: "away",
     },
@@ -178,16 +177,16 @@ const partidas = [
   ],
   [
     {
-      teamName: "Marilia",
-      numberGoals: 4,
-      playersAttributed: 18,
+      teamName: "Pedra de Guaratiba",
+      numberGoals: 7,
+      playersAttributed: 20,
       totalPlayers: 20,
       status: "home",
     },
     {
-      teamName: "Flamengo",
-      numberGoals: 5,
-      playersAttributed: 6,
+      teamName: "Leblon",
+      numberGoals: 1,
+      playersAttributed: 0,
       totalPlayers: 21,
       status: "away",
     },
@@ -849,34 +848,6 @@ const partidas = [
     },
   ],
 ];
-//  "Osasco união de futebol feminino",
-//   "100%",
-// ],
-// ["0%", "Marilia", "1 x 3", "Diadema FC", "61%"],
-// ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-// ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-// ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
-// ["12%", "Santos", "4 x 5", "Flamengo", "33%"],
-// ["90%", "Palmeiras", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-// ["90%", "Inter", "4 x 5", "Flamengo", "33%"],
-// ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-// ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-// ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
-// ["12%", "Santos", "4 x 5", "Flamengo", "33%"],
-// ["90%", "Palmeiras", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-// ["90%", "Inter", "4 x 5", "Flamengo", "33%"],
-// [
-//   "55%",
-//   "Corinthians futebol clube",
-//   "0 x 6",
-//   "Osasco união de futebol feminino",
-//   "100%",
-// ],
-// ["0%", "Marilia", "1 x 3", "Diadema FC", "61%"],
-// ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-// ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-// ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-// ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
 
 const player = {
   10: {
@@ -955,11 +926,6 @@ howManyRounds.forEach((item, index) => {
 });
 function getMatchesOfRound(round) {
   const matches = allMatches[round];
-  // const totalDivisions = Math.floor(sortedList.length / numberPerDivision);
-
-  // const startIndex = numberPerDivision * page;
-  // const stopIndex = numberPerDivision * (page + 1);
-  // const matches = sortedList.slice(startIndex, stopIndex);
   return {
     round,
     bestAthlete: bestAthlete[round],
@@ -972,32 +938,6 @@ function getMatchesOfRound(round) {
     data: matches,
   };
 }
-// function getMatchesOfRound(round, page) {
-//   const perPage = 8;
-//   const sortedList = allMatches[round];
-//   const total = sortedList.length;
-//   const totalPages = Math.ceil(total / perPage);
-
-//   const startIndex = perPage * page;
-//   const stopIndex = perPage * (page + 1);
-//   const matches = sortedList.slice(startIndex, stopIndex);
-
-//   return {
-//     page,
-//     perPage,
-//     total,
-//     totalPages,
-//     round,
-//     bestAthlete: bestAthlete[round],
-//     bestSquad: player[round],
-//     totalSquads: rounds[round],
-//     lastTotalSquads: rounds[round - 1 < 0 ? round : round - 1],
-//     missingPlayersAttributed: missingMatches[round] * 22,
-//     totalPlayers: total * 22 * 2,
-//     missingClubsAttributed: missingMatches[round],
-//     data: matches,
-//   };
-// }
 const rankings = {
   10: [
     {
@@ -1131,22 +1071,22 @@ function getAllRoundsInfo() {
 function getPlayersOfTeam(team) {
   return teamPlayers[team];
 }
-function getRanking(round, page) {
-  const perPage = 8;
+function getRanking(round) {
+  // const perPage = 8;
   const sortedList = rankings[round];
-  const total = sortedList.length;
-  const totalPages = Math.ceil(total / perPage);
+  // const total = sortedList.length;
+  // const totalPages = Math.ceil(total / perPage);
 
-  const startIndex = perPage * page;
-  const stopIndex = perPage * (page + 1);
-  const currentPage = sortedList.slice(startIndex, stopIndex);
+  // const startIndex = perPage * page;
+  // const stopIndex = perPage * (page + 1);
+  // const currentPage = sortedList.slice(startIndex, stopIndex);
   return {
-    page,
-    perPage,
-    total,
-    totalPages,
-    round,
-    data: currentPage,
+    // page,
+    // perPage,
+    // total,
+    // totalPages,
+    // round,
+    data: sortedList,
   };
 }
 export {

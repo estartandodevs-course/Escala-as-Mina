@@ -1,7 +1,6 @@
 import * as C from "../";
 import * as S from "../../pages/dashboard/styledPage";
 import { PaginationButtons } from "./components/PaginationButton";
-// import { useState } from "react";
 
 export const Pagination = (props) => {
   const { setPage, page, totalPages } = props;
