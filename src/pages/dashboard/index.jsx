@@ -8,12 +8,16 @@ import * as S from "./styledPage";
 export const Dashboard = (props) => {
   const { shownRound, setShownRound } = props;
   const theme = useTheme();
+  const perPage = 8;
   const [page, setPage] = useState(0);
 
   const currentRound = M.getCurrentRound();
   const roundData = M.getMatchesOfRound(shownRound, page);
   const allRoundsInfo = M.getAllRoundsInfo();
   const { data } = roundData;
+  console.log(data);
+  const totalPages = handlePagination(data, perPage);
+  const shownData = handleShownData(data, page, perPage);
   const [show, setShow] = useState(false);
 
   return (
@@ -68,13 +72,13 @@ export const Dashboard = (props) => {
             </C.Button>
           </S.FlexContainer>
           <ul>
-            {data.map((item, index) => (
+            {shownData.map((item, index) => (
               <C.ListItem key={`partida-${index}`} type="dashboard">
                 {item}
               </C.ListItem>
             ))}
           </ul>
-          <C.Pagination data={roundData} page={page} setPage={setPage} />
+          <C.Pagination totalPages={totalPages} page={page} setPage={setPage} />
         </C.Card>
 
         <C.Card flex direction="column" justify="flex-start" area="b">
@@ -233,3 +237,44 @@ export const Dashboard = (props) => {
     </S.GlobalWrapper>
   );
 };
+
+function handleShownData(data, page, perPage) {
+  const startIndex = page * perPage;
+  const stopIndex = (page + 1) * perPage;
+  const shownData = data.slice(startIndex, stopIndex);
+  const modifiedData = formatData(shownData);
+  return modifiedData;
+}
+function formatData(data) {
+  const modifiedData = data.map((match) => {
+    const homeTeam = match.find((team) => team.status === "home");
+    const awayTeam = match.find((team) => team.status === "away");
+
+    const percentageHomePlayers = `${(
+      (homeTeam.playersAttributed / homeTeam.totalPlayers) *
+      100
+    ).toFixed()}%`;
+    const percentageAwayPlayers = `${(
+      (awayTeam.playersAttributed / awayTeam.totalPlayers) *
+      100
+    ).toFixed()}%`;
+
+    const score = `${homeTeam.numberGoals} x ${awayTeam.numberGoals}`;
+
+    return [
+      percentageHomePlayers,
+      homeTeam.teamName,
+      score,
+      awayTeam.teamName,
+      percentageAwayPlayers,
+    ];
+  });
+  return modifiedData;
+}
+
+export function handlePagination(data, perPage) {
+  const total = data.length;
+  const totalPages = Math.ceil(total / perPage);
+
+  return totalPages;
+}

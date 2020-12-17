@@ -1,15 +1,32 @@
 import * as C from "../";
 import * as S from "../../pages/dashboard/styledPage";
 import { PaginationButtons } from "./components/PaginationButton";
+// import { useState } from "react";
 
 export const Pagination = (props) => {
-  const { totalPages } = props.data;
-  const { setPage, page } = props;
+  const { setPage, page, totalPages } = props;
+
+  let start = 0;
+  let stop = 0;
+
+  if (page === 0) {
+    start = 0;
+    stop = totalPages <= 3 ? totalPages : 3;
+  } else if (page + 1 === totalPages) {
+    start = totalPages === 2 ? -1 : -2;
+    stop = 1;
+  } else {
+    start = -1;
+    stop = 2;
+  }
+
+  const firstPage = page + start;
+  const lastPage = page + stop;
 
   const isntFirstPage = page !== 0;
   const instLastPage = page + 1 !== totalPages;
-  const theresPagesLeft = page - 1 > 1;
-  const theresPagesRight = page + 1 < totalPages;
+  const theresPagesLeft = firstPage > 1;
+  const theresPagesRight = lastPage < totalPages;
 
   return (
     <S.GridColumnWrapper column="2fr 1fr 2fr">
@@ -32,8 +49,9 @@ export const Pagination = (props) => {
       <C.FlexContainer>
         <PaginationButtons
           page={page}
-          totalPages={totalPages}
           setPage={setPage}
+          start={start}
+          stop={stop}
         />
       </C.FlexContainer>
       <C.FlexContainer>
