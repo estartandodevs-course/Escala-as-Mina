@@ -73,7 +73,11 @@ export const Times = () => {
           align="flex-start"
         >
           <C.FlexContainer marginBottom="40px">
-            <C.Typography type="h1" align="left">
+            <C.Typography
+              type="h1"
+              align="left"
+              color={theme.pallete.gray.black}
+            >
               Vamos começar com algumas informações do time.
             </C.Typography>
           </C.FlexContainer>
@@ -103,7 +107,7 @@ export const Times = () => {
             direction="column"
           >
             {alertTeamName && (
-              <C.FlexContainer justify="flex-start">
+              <C.FlexContainer justify="flex-start" padding="4px 6px">
                 <Img src={alert} alt="alert" />
                 <C.Typography
                   size={getV("24px", "h")}
@@ -115,7 +119,7 @@ export const Times = () => {
               </C.FlexContainer>
             )}
             {alertTeamInitials && (
-              <C.FlexContainer justify="flex-start">
+              <C.FlexContainer justify="flex-start" padding="4px 6px">
                 <Img src={alert} alt="alert" />
                 <C.Typography
                   size={getV("24px", "h")}
@@ -127,7 +131,7 @@ export const Times = () => {
               </C.FlexContainer>
             )}
             {alertTeamState && (
-              <C.FlexContainer justify="flex-start">
+              <C.FlexContainer justify="flex-start" padding="4px 6px">
                 <Img src={alert} alt="alert" />
                 <C.Typography
                   size={getV("24px", "h")}
@@ -139,7 +143,7 @@ export const Times = () => {
               </C.FlexContainer>
             )}
             {alertTeamColors && (
-              <C.FlexContainer justify="flex-start">
+              <C.FlexContainer justify="flex-start" padding="4px 6px">
                 <Img src={alert} alt="alert" />
                 <C.Typography
                   size={getV("24px", "h")}

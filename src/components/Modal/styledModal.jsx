@@ -119,11 +119,8 @@ const FlexContainer = styled.div`
 
   margin-left: ${(props) => props.marginLeft && "auto"};
   margin-right: ${(props) => props.marginRight && "auto"};
-  margin-bottom: ${(props) =>
-    props.marginBottom && typeof props.marginBottom === Boolean
-      ? getV(props.marginBottom, "h")
-      : "auto"};
-
+  margin-bottom: ${(props) => props.marginBottom && "auto"};
+  margin-bottom: ${(props) => props.marginBottomPx};
   padding: ${(props) => props.padding};
   background-color: ${(props) => props.backgroundColor};
   border-radius: ${(props) => props.border};

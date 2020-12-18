@@ -6,6 +6,7 @@ const NavLink = styled(NavLinkRouter)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 15px;
   text-decoration: none;
 

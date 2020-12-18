@@ -7,7 +7,7 @@ import { handlePagination, handleShownData } from "../dashboard";
 
 const StyledUl = styled.ul`
   width: 100%;
-  margin-top: 15px;
+  margin-top: 32px;
 `;
 
 export const Ranking = () => {
@@ -34,7 +34,7 @@ export const Ranking = () => {
           color={theme.pallete.gray.black}
           textOverflow="ellipsis"
           size="38px"
-          marginBottom="20px"
+          marginBottom="40px"
         >
           Ranking dos usuários - {round}ª Rodada
         </C.Typography>
@@ -46,7 +46,9 @@ export const Ranking = () => {
             </C.ListItem>
           ))}
         </StyledUl>
-        <C.Pagination totalPages={totalPages} page={page} setPage={setPage} />
+        <C.FlexContainer marginTop="30px">
+          <C.Pagination totalPages={totalPages} page={page} setPage={setPage} />
+        </C.FlexContainer>
       </C.FlexContainer>
     </>
   );
