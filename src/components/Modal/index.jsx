@@ -77,7 +77,7 @@ const Modal = (props) => {
                         ? "Rodada atual"
                         : "Rodada finalizada"}
                     </S.ModalTag>
-                    <S.FlexContainer justify="center">
+                    <S.FlexContainer justify="center" width="80px">
                       <Button type="icon">
                         <img src={upload} alt="upload" />
                       </Button>
