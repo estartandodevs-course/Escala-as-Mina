@@ -1,8 +1,8 @@
-import { Sidebar, Button } from "../";
+import { Sidebar, Button, Typography } from "../";
 import imgLogo from "../../assets/images/Logo.png";
 import Dashboard from "../../assets/icons/DashboardItem.svg";
 import AdicionarRodada from "../../assets/icons/AdicionarSumula.svg";
-// import AvaliarTimesUsuarios from "../../assets/icons/AvaliarTimesUsuarios.svg";
+import { useTheme } from "styled-components";
 import TimesCadastrados from "../../assets/icons/AvaliarJogadoras.svg";
 import RankingIcon from "../../assets/icons/Group.svg";
 import ExitIcon from "../../assets/icons/Exit.svg";
@@ -55,6 +55,7 @@ export const Layout = (props) => {
     if (index === array.length - 1) firebase.auth().signOut();
   };
   const { children } = props;
+  const theme = useTheme();
   return (
     <ContainerLayout>
       <Sidebar variation="left">
@@ -63,12 +64,18 @@ export const Layout = (props) => {
         </ContainerLogo>
         <ContainerNav>
           {navItems.map((item, index, array) => {
+            const isLast = index === array.length - 1;
             return (
               <NavLink key={index} exact to={item.to} activeClassName="actived">
                 <img src={item.src} alt={item.alt} />
                 <Button
                   type="oulined"
-                  variation={index === array.length - 1 ? "alert" : "secondary"}
+                  variation={isLast ? "alert" : "secondary"}
+                  color={
+                    isLast
+                      ? theme.pallete.alert.main
+                      : theme.pallete.secondary.main
+                  }
                   size="small"
                   onClick={() => handleClick(index, array)}
                 >

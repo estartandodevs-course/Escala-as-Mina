@@ -30,7 +30,13 @@ export const Dashboard = (props) => {
         setShownRound={setShownRound}
       />
       <S.Header>
-        <C.Typography type="h1" align="left" color={theme.pallete.gray.black}>
+        <C.Typography
+          size="40px"
+          weight="700"
+          type="h1"
+          align="left"
+          color={theme.pallete.gray.sixthGray}
+        >
           Dashboard
         </C.Typography>
         <C.Notification user={M.user} />
