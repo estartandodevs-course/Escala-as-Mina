@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import * as C from "../../components";
 import * as M from "../../mocks";
 import { roundContext } from "../../context";
+import { handlePagination, handleShownData } from "../dashboard";
 
 const StyledUl = styled.ul`
   width: 100%;
@@ -13,9 +14,13 @@ export const Ranking = () => {
   const [page, setPage] = useState(0);
   const round = useContext(roundContext);
   const theme = useTheme();
+  const perPage = 8;
 
-  const dataRanking = M.getRanking(round, page);
-  const ranking = { ...dataRanking, data: handleJson(dataRanking.data) };
+  const dataRanking = M.getRanking(round);
+  const { data } = dataRanking;
+  const totalPages = handlePagination(data, perPage);
+  const ranking = handleShownData(data, page, perPage, handleJsonRanking);
+
   return (
     <>
       <C.FlexContainer
@@ -31,23 +36,23 @@ export const Ranking = () => {
           size="38px"
           marginBottom="20px"
         >
-          Ranking dos usuários - 10ª Rodada {/*AQUI VAI TER A RODADA*/}
+          Ranking dos usuários - {round}ª Rodada
         </C.Typography>
         <C.InputSearch placeholder="Pesquise clubes pelo seu nome ou sigla" />
         <StyledUl>
-          {ranking.data.map((item, index) => (
+          {ranking.map((item, index) => (
             <C.ListItem key={`partida-${index}`} type="ranking">
               {item}
             </C.ListItem>
           ))}
         </StyledUl>
-        <C.Pagination data={ranking} page={page} setPage={setPage} />
+        <C.Pagination totalPages={totalPages} page={page} setPage={setPage} />
       </C.FlexContainer>
     </>
   );
 };
 
-function handleJson(data) {
+function handleJsonRanking(data) {
   const modifiedData = data.map((item) => {
     return [
       `#${item.place} - ${item.playerName} - ${item.squadName} - ${item.squadInitials}`,

@@ -34,6 +34,7 @@ const theme = {
       secondGray: "#E2E8F0",
       thirdGray: "#5C5C5C",
       fourthGray: "#F1F5F9",
+      fifthGray: "#828282",
       white: "#FFFFFF",
     },
     alert: {

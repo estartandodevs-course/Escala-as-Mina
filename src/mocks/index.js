@@ -79,74 +79,776 @@ const bestAthlete = {
   },
 };
 const partidas = [
-  //56 items
-  ["90%", "Marilia", "4 x 5", "Flamengo", "33%"],
   [
-    "55%",
-    "Corinthians futebol clube",
-    "0 x 6",
-    "Osasco união de futebol feminino",
-    "100%",
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
   ],
-  ["0%", "Marilia", "1 x 3", "Diadema FC", "61%"],
-  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
-  ["12%", "Santos", "4 x 5", "Flamengo", "33%"],
-  ["90%", "Palmeiras", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-  ["90%", "Inter", "4 x 5", "Flamengo", "33%"],
-  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
-  ["12%", "Santos", "4 x 5", "Flamengo", "33%"],
-  ["90%", "Palmeiras", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-  ["90%", "Inter", "4 x 5", "Flamengo", "33%"],
   [
-    "55%",
-    "Corinthians futebol clube",
-    "0 x 6",
-    "Osasco união de futebol feminino",
-    "100%",
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
   ],
-  ["0%", "Marilia", "1 x 3", "Diadema FC", "61%"],
-  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
-  ["90%", "Marilia", "4 x 5", "Flamengo", "33%"],
   [
-    "55%",
-    "Corinthians futebol clube",
-    "0 x 6",
-    "Osasco união de futebol feminino",
-    "100%",
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
   ],
-  ["0%", "Marilia", "1 x 3", "Diadema FC", "61%"],
-  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
-  ["12%", "Santos", "4 x 5", "Flamengo", "33%"],
-  ["90%", "Palmeiras", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-  ["90%", "Inter", "4 x 5", "Flamengo", "33%"],
-  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
-  ["12%", "Santos", "4 x 5", "Flamengo", "33%"],
-  ["90%", "Palmeiras", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-  ["90%", "Inter", "4 x 5", "Flamengo", "33%"],
   [
-    "55%",
-    "Corinthians futebol clube",
-    "0 x 6",
-    "Osasco união de futebol feminino",
-    "100%",
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
   ],
-  ["0%", "Marilia", "1 x 3", "Diadema FC", "61%"],
-  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-  ["12%", "Belo Horizonte", "4 x 5", "Flamengo", "33%"],
-  ["90%", "Brasilia", "4 x 5", "Gabyzinha ajuda nois", "33%"],
-  ["0%", "Macaé", "1 x 3", "Diadema FC", "61%"],
+  [
+    {
+      teamName: "Osasco",
+      numberGoals: 1,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Diadema",
+      numberGoals: 0,
+      playersAttributed: 12,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Pedra de Guaratiba",
+      numberGoals: 7,
+      playersAttributed: 20,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Leblon",
+      numberGoals: 1,
+      playersAttributed: 0,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Recife",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Marilia",
+      numberGoals: 4,
+      playersAttributed: 18,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Flamengo",
+      numberGoals: 5,
+      playersAttributed: 6,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
+  [
+    {
+      teamName: "Corinthians",
+      numberGoals: 6,
+      playersAttributed: 13,
+      totalPlayers: 20,
+      status: "home",
+    },
+    {
+      teamName: "Palmeiras",
+      numberGoals: 2,
+      playersAttributed: 20,
+      totalPlayers: 21,
+      status: "away",
+    },
+  ],
 ];
+
 const player = {
   10: {
     name: "Breno Natan Teodoro",
@@ -206,7 +908,7 @@ const allMatches = {};
 const rounds = {};
 const allRounds = [];
 const missingMatches = {};
-const totalRounds = getCurrentRound();
+const totalRounds = getCurrentRound().currentRound;
 const howManyRounds = new Array(totalRounds).fill(0);
 howManyRounds.forEach((item, index) => {
   allMatches[index + 1] = partidas.slice(
@@ -222,29 +924,17 @@ howManyRounds.forEach((item, index) => {
     squadsTotal: Math.round(Math.random() * 10000),
   });
 });
-
-function getMatchesOfRound(round, page) {
-  const perPage = 8;
-  const sortedList = allMatches[round];
-  const total = sortedList.length;
-  const totalPages = Math.ceil(total / perPage);
-
-  const startIndex = perPage * page;
-  const stopIndex = perPage * (page + 1);
-  const matches = sortedList.slice(startIndex, stopIndex);
-
+function getMatchesOfRound(round) {
+  const matches = allMatches[round];
+  console.log(allMatches);
   return {
-    page,
-    perPage,
-    total,
-    totalPages,
     round,
     bestAthlete: bestAthlete[round],
     bestSquad: player[round],
     totalSquads: rounds[round],
     lastTotalSquads: rounds[round - 1 < 0 ? round : round - 1],
     missingPlayersAttributed: missingMatches[round] * 22,
-    totalPlayers: total * 22 * 2,
+    totalPlayers: matches.length * 22 * 2,
     missingClubsAttributed: missingMatches[round],
     data: matches,
   };
@@ -374,7 +1064,7 @@ const rankings = {
   ],
 };
 function getCurrentRound() {
-  return 10;
+  return { currentRound: 10 };
 }
 function getAllRoundsInfo() {
   return allRounds;
@@ -382,22 +1072,11 @@ function getAllRoundsInfo() {
 function getPlayersOfTeam(team) {
   return teamPlayers[team];
 }
-function getRanking(round, page) {
-  const perPage = 8;
+function getRanking(round) {
   const sortedList = rankings[round];
-  const total = sortedList.length;
-  const totalPages = Math.ceil(total / perPage);
 
-  const startIndex = perPage * page;
-  const stopIndex = perPage * (page + 1);
-  const currentPage = sortedList.slice(startIndex, stopIndex);
   return {
-    page,
-    perPage,
-    total,
-    totalPages,
-    round,
-    data: currentPage,
+    data: sortedList,
   };
 }
 export {
@@ -406,5 +1085,5 @@ export {
   getCurrentRound,
   getAllRoundsInfo,
   getPlayersOfTeam,
-  user, //how do i get it from firebase?
+  user,
 };

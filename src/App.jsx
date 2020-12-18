@@ -15,7 +15,7 @@ import * as M from "./mocks";
 import { roundContext } from "./context";
 
 function App() {
-  const currentRound = M.getCurrentRound();
+  const { currentRound } = M.getCurrentRound();
   const [shownRound, setShownRound] = useState(currentRound);
 
   const [user, setUser] = useState({ loggedIn: false });
