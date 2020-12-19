@@ -32,7 +32,6 @@ export const MatchScout = (props) => {
       align="flex-start"
       justify="flex-start"
       backgroundColor={theme.pallete.primary.main}
-      height={getV("150px", "h")}
       width="296px"
       padding="8px 8px 8px 16px"
       border="30px"
