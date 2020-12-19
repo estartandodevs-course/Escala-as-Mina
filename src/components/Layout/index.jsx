@@ -1,4 +1,4 @@
-import { Sidebar, Button, Typography } from "../";
+import { Sidebar, Button } from "../";
 import imgLogo from "../../assets/images/Logo.png";
 import Dashboard from "../../assets/icons/DashboardItem.svg";
 import AdicionarRodada from "../../assets/icons/AdicionarSumula.svg";
