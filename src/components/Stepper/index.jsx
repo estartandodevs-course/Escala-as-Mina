@@ -21,9 +21,8 @@ export const Stepper = (props) => {
         const isActive = index === active;
         return (
           <FlexContainer
+            marginBottomPx="28px"
             justify="flex-end"
-            marginBottom="40px"
-            marginBottomPx
             position="relative"
             key={index}
           >

@@ -35,6 +35,7 @@ const theme = {
       thirdGray: "#5C5C5C",
       fourthGray: "#F1F5F9",
       fifthGray: "#828282",
+      sixthGray: "#8E8E8E",
       white: "#FFFFFF",
     },
     alert: {
@@ -127,7 +128,7 @@ const variationStyle = {
     hoverBackground: theme.pallete.secondary.main,
   },
   disabled: {
-    background: theme.pallete.gray.firstGray,
+    background: theme.pallete.gray.sixthGray,
     hoverBackground: theme.pallete.gray.secondGray,
   },
   search: {

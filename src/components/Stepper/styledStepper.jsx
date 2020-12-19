@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { getV } from "../../styles";
 
 const Ball = styled.div`
-  width: ${getV("64px", "h")};
-  height: ${getV("64px", "h")};
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   opacity: ${(props) => props.opacity};
   background-image: ${(props) => props.theme.pallete.gradient.main};
@@ -12,7 +12,7 @@ const Ball = styled.div`
 const VerticalBar = styled.div`
   position: absolute;
   top: 100%;
-  right: ${getV("28px", "h")};
+  right: 18px;
   width: 2px;
   height: ${getV("40px", "h")};
   background-image: ${(props) => props.theme.pallete.gradient.main};

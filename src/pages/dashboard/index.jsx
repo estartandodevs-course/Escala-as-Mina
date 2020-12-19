@@ -8,7 +8,7 @@ import * as S from "./styledPage";
 export const Dashboard = (props) => {
   const { shownRound, setShownRound } = props;
   const theme = useTheme();
-  const perPage = 8;
+  const perPage = 7;
   const [page, setPage] = useState(0);
 
   const { currentRound } = M.getCurrentRound();
@@ -30,7 +30,13 @@ export const Dashboard = (props) => {
         setShownRound={setShownRound}
       />
       <S.Header>
-        <C.Typography type="h1" align="left" color={theme.pallete.gray.black}>
+        <C.Typography
+          size="40px"
+          weight="700"
+          type="h1"
+          align="left"
+          color={theme.pallete.gray.sixthGray}
+        >
           Dashboard
         </C.Typography>
         <C.Notification user={M.user} />
@@ -48,7 +54,13 @@ export const Dashboard = (props) => {
             marginBottom="32px"
             justify="space-between"
           >
-            <C.Typography size="38px" weight="700" type="h2" align="left">
+            <C.Typography
+              size="38px"
+              weight="700"
+              font="poppins"
+              type="h2"
+              align="left"
+            >
               {shownRound}ª Rodada
             </C.Typography>
             <C.Button
@@ -77,14 +89,20 @@ export const Dashboard = (props) => {
               </C.ListItem>
             ))}
           </ul>
-          <C.Pagination totalPages={totalPages} page={page} setPage={setPage} />
+          <C.FlexContainer justify="center" direction="column" height="100%">
+            <C.Pagination
+              totalPages={totalPages}
+              page={page}
+              setPage={setPage}
+            />
+          </C.FlexContainer>
         </C.Card>
 
         <C.Card flex direction="column" justify="flex-start" area="b">
           <C.Typography size={getV("24px", "w")} type="h2">
             Jogadoras Avaliadas
           </C.Typography>
-          <S.FlexContainer direction="column">
+          <S.FlexContainer direction="column" justify="center" height="100%">
             <C.Typography
               align="center"
               color={theme.pallete.alert.main}
@@ -124,7 +142,7 @@ export const Dashboard = (props) => {
               align="center"
               color={theme.pallete.gray.firstGray}
             >
-              {roundData.missingClubsAttributed}
+              {roundData.missingClubsAttributed} Clubes
             </C.Typography>
           </S.FlexContainer>
         </C.Card>
@@ -228,7 +246,7 @@ export const Dashboard = (props) => {
               font="poppins"
               align="center"
             >
-              {roundData.totalSquads}
+              {roundData.totalSquads} Usuários
             </C.Typography>
           </S.FlexContainer>
         </C.Card>

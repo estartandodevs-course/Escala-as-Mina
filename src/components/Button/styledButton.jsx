@@ -16,7 +16,6 @@ const BaseButton = styled.button`
   height: ${({ styling }) => styling.height};
   margin-left: ${({ marginLeft }) => marginLeft};
   margin-right: ${({ marginRight }) => marginRight};
-
   ${(props) =>
     props.color &&
     css`
@@ -46,6 +45,11 @@ const RectangularButton = styled(BaseButton)`
       : css`
           background-color: transparent;
           border: 1px solid ${props.styling.background};
+          color: ${props.styling.variation === "alert"
+            ? props.theme.pallete.alert.main
+            : props.theme.pallete.secondary.main};
+          font-weight: 900;
+          font-size: 12px;
           &:hover {
             ${props.styling.variation === "alert"
               ? "background-image"
@@ -67,6 +71,7 @@ const ScoutButton = styled(BaseButton)`
   height: ${(props) => props.height};
   background-color: ${(props) => props.theme.pallete.gray.secondGray};
   margin-right: ${getV("15px", "w")};
+
   ${(props) =>
     props.info === "yes" &&
     props.state === true &&
@@ -89,6 +94,7 @@ const IconButton = styled(BaseButton)`
           ${props.styling.variation !== "active"
             ? "background-color"
             : "background-image"}: ${props.styling.background};
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         `
       : css`
           background-color: transparent;
