@@ -902,7 +902,7 @@ const player = {
   },
 };
 const user = {
-  name: "Luize Abreu",
+  name: "Ana Vitória Cunha",
 };
 const allMatches = {};
 const rounds = {};
@@ -947,7 +947,7 @@ const rankings = {
       squadName: "1 real de big big",
       squadInitials: "RBB",
       athleteAttributed: 11,
-      points: 45,
+      points: 72,
     },
     {
       place: 2,
@@ -955,7 +955,7 @@ const rankings = {
       squadName: "Timão",
       squadInitials: "TBT",
       athleteAttributed: 11,
-      points: 13,
+      points: 46,
     },
     {
       place: 3,
@@ -963,7 +963,7 @@ const rankings = {
       squadName: "Suprise",
       squadInitials: "SUS",
       athleteAttributed: 8,
-      points: 69,
+      points: 38,
     },
     {
       place: 4,
@@ -971,7 +971,7 @@ const rankings = {
       squadName: "1 real de big big",
       squadInitials: "RBB",
       athleteAttributed: 11,
-      points: 45,
+      points: 36,
     },
     {
       place: 5,
@@ -979,7 +979,7 @@ const rankings = {
       squadName: "Timão",
       squadInitials: "TBT",
       athleteAttributed: 11,
-      points: 13,
+      points: 30,
     },
     {
       place: 6,
@@ -987,7 +987,7 @@ const rankings = {
       squadName: "Suprise",
       squadInitials: "SUS",
       athleteAttributed: 8,
-      points: 69,
+      points: 30,
     },
     {
       place: 7,
@@ -995,7 +995,7 @@ const rankings = {
       squadName: "1 real de big big",
       squadInitials: "RBB",
       athleteAttributed: 11,
-      points: 45,
+      points: 28,
     },
     {
       place: 8,
@@ -1003,7 +1003,7 @@ const rankings = {
       squadName: "Timão",
       squadInitials: "TBT",
       athleteAttributed: 11,
-      points: 13,
+      points: 26,
     },
     {
       place: 9,
@@ -1011,7 +1011,7 @@ const rankings = {
       squadName: "Suprise",
       squadInitials: "SUS",
       athleteAttributed: 8,
-      points: 69,
+      points: 25,
     },
     {
       place: 10,
@@ -1019,7 +1019,7 @@ const rankings = {
       squadName: "1 real de big big",
       squadInitials: "RBB",
       athleteAttributed: 11,
-      points: 45,
+      points: 24,
     },
     {
       place: 11,
@@ -1027,7 +1027,7 @@ const rankings = {
       squadName: "Timão",
       squadInitials: "TBT",
       athleteAttributed: 11,
-      points: 13,
+      points: 22,
     },
     {
       place: 12,
@@ -1035,7 +1035,7 @@ const rankings = {
       squadName: "Suprise",
       squadInitials: "SUS",
       athleteAttributed: 8,
-      points: 69,
+      points: 21,
     },
     {
       place: 13,
@@ -1043,7 +1043,7 @@ const rankings = {
       squadName: "1 real de big big",
       squadInitials: "RBB",
       athleteAttributed: 11,
-      points: 45,
+      points: 20,
     },
     {
       place: 14,
@@ -1051,7 +1051,7 @@ const rankings = {
       squadName: "Timão",
       squadInitials: "TBT",
       athleteAttributed: 11,
-      points: 13,
+      points: 15,
     },
     {
       place: 15,
@@ -1059,7 +1059,7 @@ const rankings = {
       squadName: "Suprise",
       squadInitials: "SUS",
       athleteAttributed: 8,
-      points: 69,
+      points: 10,
     },
   ],
 };
