@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import * as C from "../../components";
 import alert from "../../assets/icons/Alert.svg";
 import { getV } from "../../styles";
@@ -10,13 +10,12 @@ export const CriandoUmClube = ({ step, setStep }) => {
   const [teamName, setTeamName] = useState("");
   const [teamInitials, setTeamInitials] = useState("");
   const [teamState, setTeamState] = useState("");
-  const [teamColors, setTeamColors] = useState(new Array(3));
+  const [teamColors, setTeamColors] = useState(new Array(3).fill(null));
   const [alertTeamName, setAlertTeamName] = useState(isTeamNameBad(teamName));
   const [alertTeamInitials, setAlertTeamInitials] = useState(true);
   const [alertTeamState, setAlertTeamState] = useState(true);
   const [alertTeamColors, setAlertTeamColors] = useState(true);
-  const handleNewColor = getHandleColor(setTeamColors);
-  const colorConstructor = new Array(3).fill(0);
+  const colorConstructor = new Array(3).fill(null);
   useEffect(() => {
     setAlertTeamName(isTeamNameBad(teamName));
   }, [teamName]);
@@ -36,6 +35,15 @@ export const CriandoUmClube = ({ step, setStep }) => {
     teamState,
     teamColors,
   };
+
+  const refColor = useRef(colorConstructor);
+
+  const getHandleColor = useCallback(() => {
+    setTeamColors([...refColor.current]);
+  }, []);
+
+  console.log(teamObject);
+
   return (
     <>
       <C.FlexContainer
@@ -63,9 +71,10 @@ export const CriandoUmClube = ({ step, setStep }) => {
         <C.FlexContainer justify="flex-start" marginBottom="32px">
           {colorConstructor.map((item, index) => (
             <C.InputColor
+              ref={refColor}
               key={index}
               position={index}
-              onChange={handleNewColor}
+              onChange={getHandleColor}
             />
           ))}
         </C.FlexContainer>
@@ -154,15 +163,5 @@ function isTeamInitialsBad(teamName) {
   return teamName.length !== 3;
 }
 function isTeamColorsBad(teamColors) {
-  return teamColors.includes(undefined);
-}
-function getHandleColor(set) {
-  function handleNewColor(position, color) {
-    set((prevState) => {
-      let current = [...prevState];
-      current[position] = color;
-      return current;
-    });
-  }
-  return handleNewColor;
+  return teamColors.includes(null);
 }
