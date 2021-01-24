@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import * as C from "../../components";
-import alert from "../../assets/icons/Alert.svg";
+import alertIcon from "../../assets/icons/Alert.svg";
 import { getV } from "../../styles";
 import { Img, Div } from "./styledPage";
 import { useTheme } from "styled-components";
@@ -11,30 +11,15 @@ export const CriandoUmClube = ({ step, setStep }) => {
   const [teamInitials, setTeamInitials] = useState("");
   const [teamState, setTeamState] = useState("");
   const [teamColors, setTeamColors] = useState(new Array(3).fill(null));
-  const [alertTeamName, setAlertTeamName] = useState(isTeamNameBad(teamName));
-  const [alertTeamInitials, setAlertTeamInitials] = useState(true);
-  const [alertTeamState, setAlertTeamState] = useState(true);
-  const [alertTeamColors, setAlertTeamColors] = useState(true);
   const colorConstructor = new Array(3).fill(null);
-  useEffect(() => {
-    setAlertTeamName(isTeamNameBad(teamName));
-  }, [teamName]);
-  useEffect(() => {
-    setAlertTeamInitials(isTeamInitialsBad(teamInitials));
-  }, [teamInitials]);
-  useEffect(() => {
-    setAlertTeamState(isTeamStateBad(teamState));
-  }, [teamState]);
-  useEffect(() => {
-    setAlertTeamColors(isTeamColorsBad(teamColors));
-  }, [teamColors]);
-
   const teamObject = {
     teamName,
     teamInitials,
     teamState,
     teamColors,
   };
+
+  const alert = useAlertTeam(teamObject);
 
   const refColor = useRef(colorConstructor);
 
@@ -83,9 +68,9 @@ export const CriandoUmClube = ({ step, setStep }) => {
           align="flex-start"
           direction="column"
         >
-          {alertTeamName && (
+          {alert.alertTeamName && (
             <C.FlexContainer justify="flex-start" padding="4px 6px">
-              <Img src={alert} alt="alert" />
+              <Img src={alertIcon} alt="alert" />
               <C.Typography
                 size={getV("24px", "h")}
                 color={theme.pallete.gray.thirdGray}
@@ -95,9 +80,9 @@ export const CriandoUmClube = ({ step, setStep }) => {
               </C.Typography>
             </C.FlexContainer>
           )}
-          {alertTeamInitials && (
+          {alert.alertTeamInitials && (
             <C.FlexContainer justify="flex-start" padding="4px 6px">
-              <Img src={alert} alt="alert" />
+              <Img src={alertIcon} alt="alert" />
               <C.Typography
                 size={getV("24px", "h")}
                 color={theme.pallete.gray.thirdGray}
@@ -107,9 +92,9 @@ export const CriandoUmClube = ({ step, setStep }) => {
               </C.Typography>
             </C.FlexContainer>
           )}
-          {alertTeamState && (
+          {alert.alertTeamState && (
             <C.FlexContainer justify="flex-start" padding="4px 6px">
-              <Img src={alert} alt="alert" />
+              <Img src={alertIcon} alt="alert" />
               <C.Typography
                 size={getV("24px", "h")}
                 color={theme.pallete.gray.thirdGray}
@@ -119,9 +104,9 @@ export const CriandoUmClube = ({ step, setStep }) => {
               </C.Typography>
             </C.FlexContainer>
           )}
-          {alertTeamColors && (
+          {alert.alertTeamColors && (
             <C.FlexContainer justify="flex-start" padding="4px 6px">
-              <Img src={alert} alt="alert" />
+              <Img src={alertIcon} alt="alert" />
               <C.Typography
                 size={getV("24px", "h")}
                 color={theme.pallete.gray.thirdGray}
@@ -152,6 +137,32 @@ export const CriandoUmClube = ({ step, setStep }) => {
     </>
   );
 };
+
+function useAlertTeam({ teamName, teamInitials, teamState, teamColors }) {
+  const [alertTeamName, setAlertTeamName] = useState(isTeamNameBad(teamName));
+  const [alertTeamInitials, setAlertTeamInitials] = useState(true);
+  const [alertTeamState, setAlertTeamState] = useState(true);
+  const [alertTeamColors, setAlertTeamColors] = useState(true);
+  useEffect(() => {
+    setAlertTeamName(isTeamNameBad(teamName));
+  }, [teamName]);
+  useEffect(() => {
+    setAlertTeamInitials(isTeamInitialsBad(teamInitials));
+  }, [teamInitials]);
+  useEffect(() => {
+    setAlertTeamState(isTeamStateBad(teamState));
+  }, [teamState]);
+  useEffect(() => {
+    setAlertTeamColors(isTeamColorsBad(teamColors));
+  }, [teamColors]);
+  const alertStates = {
+    alertTeamColors,
+    alertTeamState,
+    alertTeamInitials,
+    alertTeamName,
+  };
+  return alertStates;
+}
 
 function isTeamNameBad(teamName) {
   return teamName.length < 5;
