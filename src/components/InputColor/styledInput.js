@@ -1,8 +1,11 @@
 import styled, { css } from "styled-components";
 
 export const StyledInput = styled.input`
-  visibility: hidden;
-  width: 0px;
+  position: absolute;
+  inset: 0px;
+  z-index: ${(prop) => (prop.isClicked ? 2 : -1)};
+  width: 90px;
+  height: 50px;
 `;
 export const Box = styled.div`
   width: 80px;
@@ -12,14 +15,10 @@ export const Box = styled.div`
   justify-content: center;
   font-size: 18px;
   background: white;
-  ${(props) =>
-    props.color &&
-    css`
-      display: none;
-    `}
 `;
 
 export const GradientLabel = styled.label`
+  position: relative;
   width: 90px;
   height: 50px;
   background-image: ${(props) => props.theme.pallete.gradient.main};
@@ -28,9 +27,8 @@ export const GradientLabel = styled.label`
   justify-content: center;
   margin: 0 10px 0 0;
   ${(props) =>
-    props.color &&
+    props.isClicked &&
     css`
       background-image: none;
-      background-color: ${props.color};
     `}
 `;
