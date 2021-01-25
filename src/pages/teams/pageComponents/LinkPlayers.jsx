@@ -1,7 +1,7 @@
-import * as C from "../../components";
+import * as C from "../../../components";
 import { useState } from "react";
 
-export const VincularJogadoras = () => {
+export const LinkPlayers = () => {
   const positionSection = "GOL";
   const [players, setPlayers] = useState([
     {

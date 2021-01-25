@@ -2,10 +2,10 @@ import { useState, forwardRef, useRef } from "react";
 import { StyledInput, Box, GradientLabel } from "./styledInput";
 
 export const InputColor = forwardRef((props, ref) => {
+  const { onChange, position } = props;
+
   const [color, setColor] = useState("");
   const refFromInput = useRef();
-
-  const { onChange, position } = props;
 
   const handleChange = () => {
     const colorFromInput = refFromInput.current.value;

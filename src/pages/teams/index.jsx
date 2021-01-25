@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { CriandoUmClube } from "./CriandoUmClube";
-import { VincularJogadoras } from "./VincularJogadoras";
+import * as PC from "./pageComponents";
 import * as C from "../../components";
 
-export const Times = () => {
-  // const [addTeam, setAddTeam] = useState(false);
+export const Teams = () => {
   const [step, setStep] = useState(0);
-  // const positionSection = "GOL";
 
   const addTeamPages = [
-    <CriandoUmClube step={step} setStep={setStep} />,
-    <VincularJogadoras />,
+    <PC.CreateTeam step={step} setStep={setStep} />,
+    <PC.LinkPlayers />,
   ];
   return (
     <>

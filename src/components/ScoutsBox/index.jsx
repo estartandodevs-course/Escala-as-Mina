@@ -36,7 +36,6 @@ export const ScoutsBox = (props) => {
     }
     return set;
   };
-  console.log(activePlayer);
 
   const submit = () => {
     const modifiedPlayer = { ...activePlayer, pointsAttributed: true };

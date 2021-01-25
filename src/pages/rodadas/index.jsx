@@ -5,7 +5,7 @@ import * as M from "../../mocks";
 import * as S from "./styledRounds";
 import { scoutPosition } from "./dataSctructure";
 import { getV } from "../../styles";
-import { Img } from "../times/styledPage";
+import { Img } from "../teams/styledPage";
 import alert from "../../assets/icons/Alert.svg";
 import { roundContext } from "../../context";
 
