@@ -13,7 +13,7 @@ export const InputColor = forwardRef((props, ref) => {
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = () => {
     const colorFromInput = refFromInput.current.value;
     ref.current[position] = colorFromInput;
   };

@@ -60,7 +60,6 @@ export const CreateTeam = ({ step, setStep }) => {
         </C.Typography>
         <C.FlexContainer justify="flex-start" marginBottom="32px">
           {colorConstructor.map((item, index) => {
-            console.log(colorConstructor);
             return (
               <C.InputColor
                 ref={refColor}
