@@ -6,7 +6,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { LoginLayout, Dashboard, Rodadas, Times, Ranking } from "./pages";
+import * as P from "./pages";
 import { Layout } from "./components";
 import { useEffect, useState } from "react";
 import { onAuthStateChange } from "./service/auth.service";
@@ -35,13 +35,13 @@ function App() {
               <roundContext.Provider value={shownRound}>
                 <Route path="/rodadas">
                   <Layout>
-                    <Rodadas />
+                    <P.Rodadas />
                   </Layout>
                 </Route>
 
                 <Route exact path="/">
                   <Layout>
-                    <Dashboard
+                    <P.Dashboard
                       shownRound={shownRound}
                       setShownRound={setShownRound}
                     />
@@ -50,13 +50,13 @@ function App() {
 
                 <Route path="/times">
                   <Layout>
-                    <Times />
+                    <P.Teams />
                   </Layout>
                 </Route>
 
                 <Route path="/ranking">
                   <Layout>
-                    <Ranking />
+                    <P.Ranking />
                   </Layout>
                 </Route>
 
@@ -64,13 +64,13 @@ function App() {
               </roundContext.Provider>
             </>
           ) : (
-              <>
-                <Route path="/login">
-                  <LoginLayout />
-                </Route>
-                <Redirect to="/login"></Redirect>
-              </>
-            )}
+            <>
+              <Route path="/login">
+                <P.LoginLayout />
+              </Route>
+              <Redirect to="/login"></Redirect>
+            </>
+          )}
         </Switch>
       </Router>
     </ThemeProvider>

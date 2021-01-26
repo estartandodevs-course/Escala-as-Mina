@@ -926,7 +926,6 @@ howManyRounds.forEach((item, index) => {
 });
 function getMatchesOfRound(round) {
   const matches = allMatches[round];
-  console.log(allMatches);
   return {
     round,
     bestAthlete: bestAthlete[round],
