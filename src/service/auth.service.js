@@ -3,6 +3,9 @@ import "firebase/auth";
 
 export async function login(email, password) {
   try {
+    await firebase
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION);
     const user = await firebase
       .auth()
       .signInWithEmailAndPassword(email, password);
