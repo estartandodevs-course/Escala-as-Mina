@@ -1,7 +1,9 @@
-import * as C from "../../../components";
 import { useReducer } from "react";
+import { useTheme } from "styled-components";
+import * as C from "../../../components";
 
 export const LinkPlayers = () => {
+  const theme = useTheme();
   const reducer = (state, action) => {
     switch (action.type) {
       case "deletePlayer":
@@ -50,9 +52,28 @@ export const LinkPlayers = () => {
                 dispath={dispatch}
                 id={player.id}
               >
-                <>{player.number}</>
-                <>{player.positionSection}</>
-                <>{player.name}</>
+                <C.Typography
+                  size="16px"
+                  weight="700"
+                  color={theme.pallete.gray.white}
+                >
+                  {player.number}
+                </C.Typography>
+                <C.Typography
+                  textTransform="uppercase"
+                  size="16px"
+                  weight="700"
+                  color={theme.pallete.secondary.main}
+                >
+                  {player.positionSection}
+                </C.Typography>
+                <C.Typography
+                  size="16px"
+                  weight="700"
+                  color={theme.pallete.secondary.main}
+                >
+                  {player.name}
+                </C.Typography>
               </C.ListItem>
             )}
           </>

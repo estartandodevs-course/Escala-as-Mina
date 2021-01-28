@@ -24,53 +24,49 @@ const ListItem = (props) => {
     ...restProps
   } = props;
   const theme = useTheme();
+  const listComponents = {
+    player: {
+      edit: (
+        <FlexContainer key={id} type={type}>
+          <StyledListItem type={type}>
+            {children}
+            <Button type="icon" onClick={editItem}>
+              <img src={editButton} alt="edit" width="20px" height="24px" />
+            </Button>
+            <Button
+              type="icon"
+              onClick={() => {
+                dispatch({ type: "deletePlayer", payload: id });
+              }}
+            >
+              <img src={deleteButton} alt="delete" width="20px" height="24px" />
+            </Button>
+          </StyledListItem>
+        </FlexContainer>
+      ),
+      add: (
+        <PlayerInfo>
+          <InputPlayer type="number" />
+          <InputPlayer type="name" />
+          <Button type="icon">
+            <img src={acceptButton} alt="Aceitar" />
+          </Button>
+          <Button type="icon">
+            <img src={declineButton} alt="Deletar" />
+          </Button>
+        </PlayerInfo>
+      ),
+      show: (
+        <G.FlexContainer type={type} onClick={onClick} {...restProps}>
+          <StyledListItem type={type}>{children}</StyledListItem>
+        </G.FlexContainer>
+      ),
+    },
+  };
 
-  if (type === "player" && variation === "edit") {
-    return (
-      <FlexContainer key={id} type={type}>
-        <StyledListItem type={type}>
-          {children.map((item, index) =>
-            handleList(item, index, type, theme, id)
-          )}
-          <Button type="icon" onClick={editItem}>
-            <img src={editButton} alt="edit" width="20px" height="24px" />
-          </Button>
-          <Button
-            type="icon"
-            onClick={() => {
-              dispatch({ type: "deletePlayer", payload: id });
-            }}
-          >
-            <img src={deleteButton} alt="delete" width="20px" height="24px" />
-          </Button>
-        </StyledListItem>
-      </FlexContainer>
-    );
-  } else if (type === "player" && variation === "add") {
-    return (
-      <PlayerInfo>
-        <InputPlayer type="number" />
-        <InputPlayer type="name" />
-        <Button type="icon">
-          <img src={acceptButton} alt="Aceitar" />
-        </Button>
-        <Button type="icon">
-          <img src={declineButton} alt="Deletar" />
-        </Button>
-      </PlayerInfo>
-    );
-  } else if (type === "player") {
-    return (
-      <G.FlexContainer type={type} onClick={onClick} {...restProps}>
-        <StyledListItem type={type}>
-          {children.map((item, index) =>
-            handleList(item, index, type, theme, id)
-          )}
-        </StyledListItem>
-      </G.FlexContainer>
-    );
+  if (type === "player") {
+    return listComponents[type][variation];
   }
-
   //this is the default return, ranking, dashboard or player (no variation)
   return (
     <FlexContainer type={type} padding="0 5% 0 0">

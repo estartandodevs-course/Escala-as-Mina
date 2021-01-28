@@ -21,14 +21,12 @@ export const Rodadas = () => {
 
   const [activePlayer, setActivePlayer] = useState(false);
   const [formsTeam, setFormsTeam] = useState({
-    players: players.map((player) => {
-      return {
-        ...player,
-        pointsAttributed: false,
-        score: 0,
-        scouts: scoutPosition[player.position],
-      };
-    }),
+    players: players.map((player) => ({
+      ...player,
+      pointsAttributed: false,
+      score: 0,
+      scouts: scoutPosition[player.position],
+    })),
     teamScouts: [
       { key: "victory", state: true },
       { key: "noGoal", state: true },
@@ -108,6 +106,7 @@ export const Rodadas = () => {
                           <C.ListItem
                             type="player"
                             cursor="pointer"
+                            variation="show"
                             backgroundColor={
                               player.number === activePlayer.number &&
                               theme.pallete.primary.main
@@ -117,9 +116,28 @@ export const Rodadas = () => {
                               setActivePlayer(player);
                             }}
                           >
-                            <>{player.number}</>
-                            <>{player.position.slice(0, 3)}</>
-                            <>{player.name}</>
+                            <C.Typography
+                              size="16px"
+                              weight="700"
+                              color={theme.pallete.gray.white}
+                            >
+                              {player.number}
+                            </C.Typography>
+                            <C.Typography
+                              textTransform="uppercase"
+                              size="16px"
+                              weight="700"
+                              color={theme.pallete.secondary.main}
+                            >
+                              {player.position.slice(0, 3)}
+                            </C.Typography>
+                            <C.Typography
+                              size="16px"
+                              weight="700"
+                              color={theme.pallete.secondary.main}
+                            >
+                              {player.name}
+                            </C.Typography>
                           </C.ListItem>
                         </>
                       );
