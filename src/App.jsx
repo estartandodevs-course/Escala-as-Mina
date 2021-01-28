@@ -14,11 +14,17 @@ import "./config/auth.config";
 import * as M from "./mocks";
 import { roundContext } from "./context";
 
+const lazyInitialize = () => {
+  const key = `firebase:authUser:${process.env.REACT_APP_API_KEY}:[DEFAULT]`;
+  const userData = JSON.parse(window.sessionStorage.getItem(key));
+  if (userData) return { loggedIn: true };
+  return { loggedIn: false };
+};
 function App() {
   const { currentRound } = M.getCurrentRound();
   const [shownRound, setShownRound] = useState(currentRound);
 
-  const [user, setUser] = useState({ loggedIn: false });
+  const [user, setUser] = useState(lazyInitialize);
   useEffect(() => {
     const unsubscribe = onAuthStateChange(setUser);
 
