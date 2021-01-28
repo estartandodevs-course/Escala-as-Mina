@@ -11,6 +11,7 @@ export const LinkPlayers = () => {
       default:
     }
   };
+
   const [players, dispatch] = useReducer(reducer, [
     //eventually this will be a firebase request
     {
@@ -18,41 +19,44 @@ export const LinkPlayers = () => {
       name: "Camile Perreira",
       id: 1,
       show: true,
+      positionSection: "gol",
     },
     {
       number: "02",
       name: "Eduarda Jasmim",
       id: 2,
       show: true,
+      positionSection: "gol",
     },
     {
       number: "03",
       name: "Cristina Santos",
       id: 3,
       show: false,
+      positionSection: "gol",
     },
   ]);
 
   return (
     <C.FlexContainer align="flex-start" justify="flex-start" direction="column">
       {players.map((player, index) => {
-        if (player.show) {
-          return (
-            <C.ListItem
-              key={index}
-              variation="edit"
-              type="player"
-              dispath={dispatch}
-              id={player.id}
-            >
-              <>{player.number}</>
-              <>{player.positionSection}</>
-              <>{player.name}</>
-            </C.ListItem>
-          );
-        } else {
-          return "";
-        }
+        return (
+          <>
+            {player.show && (
+              <C.ListItem
+                key={index}
+                variation="edit"
+                type="player"
+                dispath={dispatch}
+                id={player.id}
+              >
+                <>{player.number}</>
+                <>{player.positionSection}</>
+                <>{player.name}</>
+              </C.ListItem>
+            )}
+          </>
+        );
       })}
 
       <C.CreatePlayer />
