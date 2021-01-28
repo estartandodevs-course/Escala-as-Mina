@@ -20,22 +20,12 @@ const ListItem = (props) => {
     id,
     onClick,
     type = "ranking",
+    dispatch = () => {},
     ...restProps
   } = props;
   const theme = useTheme();
 
   if (type === "player" && variation === "edit") {
-    function getDeleteItem(set, id) {
-      function deleteItem() {
-        set((players) => {
-          const temp = [...players];
-          temp.filter((player) => player.id !== id);
-          return temp;
-        });
-      }
-      return deleteItem;
-    }
-    const deleteItem = getDeleteItem(set, id);
     return (
       <FlexContainer key={id} type={type}>
         <StyledListItem type={type}>
@@ -45,14 +35,18 @@ const ListItem = (props) => {
           <Button type="icon" onClick={editItem}>
             <img src={editButton} alt="edit" width="20px" height="24px" />
           </Button>
-          <Button type="icon" onClick={deleteItem}>
+          <Button
+            type="icon"
+            onClick={() => {
+              dispatch({ type: "deletePlayer", payload: id });
+            }}
+          >
             <img src={deleteButton} alt="delete" width="20px" height="24px" />
           </Button>
         </StyledListItem>
       </FlexContainer>
     );
   } else if (type === "player" && variation === "add") {
-    //ideally we redo this input so we call input 2 times here
     return (
       <PlayerInfo>
         <InputPlayer type="number" />

@@ -1,9 +1,18 @@
 import * as C from "../../../components";
-import { useState } from "react";
+import { useReducer } from "react";
 
 export const LinkPlayers = () => {
-  const positionSection = "GOL";
-  const [players, setPlayers] = useState([
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "deletePlayer":
+        const id = action.payload;
+        const newState = [...state].filter((player) => player.id !== id);
+        return newState;
+      default:
+    }
+  };
+  const [players, dispatch] = useReducer(reducer, [
+    //eventually this will be a firebase request
     {
       number: "01",
       name: "Camile Perreira",
@@ -33,11 +42,11 @@ export const LinkPlayers = () => {
               key={index}
               variation="edit"
               type="player"
-              set={setPlayers}
+              dispath={dispatch}
               id={player.id}
             >
               <>{player.number}</>
-              <>{positionSection}</>
+              <>{player.positionSection}</>
               <>{player.name}</>
             </C.ListItem>
           );
