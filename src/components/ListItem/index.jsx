@@ -1,3 +1,4 @@
+import { useTheme } from "styled-components";
 import { StyledListItem, FlexContainer, PlayerInfo } from "./styledList";
 import * as G from "../";
 import { Button, InputPlayer } from "../";
@@ -18,13 +19,14 @@ const ListItem = (props) => {
     ...restProps
   } = props;
   const styles = { type, variation };
+  const theme = useTheme();
 
   const listComponents = {
     player: {
       edit: (
         <FlexContainer key={id} type={type}>
           <StyledListItem type={type}>
-            {formatText(data, styles)}
+            {formatText(data, styles, theme)}
             <Button type="icon" onClick={() => {}}>
               <img src={editButton} alt="edit" width="20px" height="24px" />
             </Button>
@@ -54,7 +56,7 @@ const ListItem = (props) => {
       show: (
         <G.FlexContainer type={type} onClick={dispatch} {...restProps}>
           <StyledListItem type={type}>
-            {formatText(data, styles)}
+            {formatText(data, styles, theme)}
           </StyledListItem>
         </G.FlexContainer>
       ),
@@ -64,7 +66,7 @@ const ListItem = (props) => {
       default: (
         <FlexContainer type={type} padding="0 5% 0 0">
           <StyledListItem type={type}>
-            {formatText(data, styles)}
+            {formatText(data, styles, theme)}
           </StyledListItem>
         </FlexContainer>
       ),
@@ -74,7 +76,7 @@ const ListItem = (props) => {
       default: (
         <FlexContainer type={type} padding="0 5% 0 0">
           <StyledListItem type={type}>
-            {formatText(data, styles)}
+            {formatText(data, styles, theme)}
           </StyledListItem>
         </FlexContainer>
       ),

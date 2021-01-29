@@ -49,32 +49,10 @@ export const LinkPlayers = () => {
                 key={index}
                 variation="edit"
                 type="player"
+                data={player}
                 dispath={dispatch}
                 id={player.id}
-              >
-                <C.Typography
-                  size="16px"
-                  weight="700"
-                  color={theme.pallete.gray.white}
-                >
-                  {player.number}
-                </C.Typography>
-                <C.Typography
-                  textTransform="uppercase"
-                  size="16px"
-                  weight="700"
-                  color={theme.pallete.secondary.main}
-                >
-                  {player.positionSection}
-                </C.Typography>
-                <C.Typography
-                  size="16px"
-                  weight="700"
-                  color={theme.pallete.secondary.main}
-                >
-                  {player.name}
-                </C.Typography>
-              </C.ListItem>
+              />
             )}
           </>
         );

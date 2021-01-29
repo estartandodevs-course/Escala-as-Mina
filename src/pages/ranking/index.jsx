@@ -4,6 +4,7 @@ import * as C from "../../components";
 import * as M from "../../mocks";
 import { roundContext } from "../../context";
 import { handlePagination } from "../dashboard";
+import { totalAthletes } from "../../config/constants";
 
 const StyledUl = styled.ul`
   width: 100%;
@@ -19,8 +20,7 @@ export const Ranking = () => {
   const dataRanking = M.getRanking(round);
   const { data } = dataRanking;
   const totalPages = handlePagination(data, perPage);
-  const ranking = data.slice(perPage);
-  // const ranking = handleShownData(data, page, perPage, handleJsonRanking);
+  const ranking = handleJsonRanking(data.slice(perPage));
 
   return (
     <>
@@ -43,9 +43,7 @@ export const Ranking = () => {
         <StyledUl>
           {ranking.map((item, index) => {
             return (
-              <C.ListItem key={`partida-${index}`} type="ranking">
-                {item}
-              </C.ListItem>
+              <C.ListItem data={item} key={`partida-${index}`} type="ranking" />
             );
           })}
         </StyledUl>
@@ -57,13 +55,16 @@ export const Ranking = () => {
   );
 };
 
-// function handleJsonRanking(data) {
-//   const modifiedData = data.map((item) => {
-//     return [
-//       `#${item.place} - ${item.playerName} - ${item.squadName} - ${item.squadInitials}`,
-//       `${item.athleteAttributed}/11`,
-//       `${item.points} pts`,
-//     ];
-//   });
-//   return modifiedData;
-// }
+function handleJsonRanking(data) {
+  const modifiedData = data.map((item) => {
+    return {
+      rank: `#${item.place}`,
+      playerName: `- ${item.playerName} -`,
+      squadName: `${item.squadName} - ${item.squadInitials}`,
+      athleteAttributed: `${item.athleteAttributed}/${totalAthletes}`,
+      points: `${item.points} pts`,
+      allPlayersChecked: item.athleteAttributed === totalAthletes,
+    };
+  });
+  return modifiedData;
+}
