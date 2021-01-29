@@ -8,16 +8,15 @@ import acceptButton from "../../assets/icons/AcceptBtn.svg";
 import deleteButton from "../../assets/icons/Deletar.svg";
 import editButton from "../../assets/icons/Editar.svg";
 
-const ListItem = (props) => {
-  const {
-    data,
-    id,
-    onClick,
-    type = "ranking",
-    variation = "default",
-    dispatch = () => {},
-    ...restProps
-  } = props;
+const ListItem = ({
+  data,
+  id,
+  type = "ranking",
+  variation = "default",
+  onClick,
+  dispatch = () => {},
+  ...restProps
+}) => {
   const styles = { type, variation };
   const theme = useTheme();
 
@@ -54,7 +53,7 @@ const ListItem = (props) => {
         </PlayerInfo>
       ),
       show: (
-        <G.FlexContainer type={type} onClick={dispatch} {...restProps}>
+        <G.FlexContainer type={type} onClick={onClick} {...restProps}>
           <StyledListItem type={type}>
             {formatText(data, styles, theme)}
           </StyledListItem>

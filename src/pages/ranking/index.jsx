@@ -20,7 +20,9 @@ export const Ranking = () => {
   const dataRanking = M.getRanking(round);
   const { data } = dataRanking;
   const totalPages = handlePagination(data, perPage);
-  const ranking = handleJsonRanking(data.slice(perPage));
+  const ranking = handleJsonRanking(
+    data.slice(perPage * page, perPage * (page + 1))
+  );
 
   return (
     <>

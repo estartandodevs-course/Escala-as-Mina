@@ -11,7 +11,7 @@ export const CreatePlayer = () => {
   return (
     <>
       {showInput ? (
-        <ListItem type="player" variation="add" />
+        <ListItem data={{}} type="player" variation="add" />
       ) : (
         <Button
           size="large"

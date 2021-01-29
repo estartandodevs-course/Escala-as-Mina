@@ -1,9 +1,7 @@
 import { useReducer } from "react";
-import { useTheme } from "styled-components";
 import * as C from "../../../components";
 
 export const LinkPlayers = () => {
-  const theme = useTheme();
   const reducer = (state, action) => {
     switch (action.type) {
       case "deletePlayer":

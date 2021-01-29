@@ -83,9 +83,12 @@ export const Rodadas = () => {
           >
             {positions.map((position, indexOuter) => {
               return (
-                <>
+                <C.FlexContainer
+                  direction="column"
+                  align="flex-start"
+                  key={`${position}-${indexOuter}`}
+                >
                   <C.Typography
-                    key={(position, indexOuter)}
                     color={theme.pallete.gray.black}
                     size="30px"
                     weight="600"
@@ -106,25 +109,23 @@ export const Rodadas = () => {
                         position: player.position.slice(0, 3),
                       };
                       return (
-                        <>
-                          <C.ListItem
-                            key={(position, indexInner)}
-                            type="player"
-                            cursor="pointer"
-                            variation="show"
-                            backgroundColor={
-                              player.number === activePlayer.number &&
-                              theme.pallete.primary.main
-                            }
-                            data={modifiedPlayer}
-                            dispatch={() => {
-                              setActivePlayer(player);
-                            }}
-                          />
-                        </>
+                        <C.ListItem
+                          key={`${position}_${indexInner}`}
+                          type="player"
+                          variation="show"
+                          cursor="pointer"
+                          backgroundColor={
+                            player.number === activePlayer.number &&
+                            theme.pallete.primary.main
+                          }
+                          data={modifiedPlayer}
+                          onClick={() => {
+                            setActivePlayer(player);
+                          }}
+                        />
                       );
                     })}
-                </>
+                </C.FlexContainer>
               );
             })}
           </C.FlexContainer>
