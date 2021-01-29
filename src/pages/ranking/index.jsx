@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import * as C from "../../components";
 import * as M from "../../mocks";
 import { roundContext } from "../../context";
-import { handlePagination, handleShownData } from "../dashboard";
+import { handlePagination } from "../dashboard";
 
 const StyledUl = styled.ul`
   width: 100%;
@@ -19,7 +19,8 @@ export const Ranking = () => {
   const dataRanking = M.getRanking(round);
   const { data } = dataRanking;
   const totalPages = handlePagination(data, perPage);
-  const ranking = handleShownData(data, page, perPage, handleJsonRanking);
+  const ranking = data.slice(perPage);
+  // const ranking = handleShownData(data, page, perPage, handleJsonRanking);
 
   return (
     <>
@@ -40,11 +41,13 @@ export const Ranking = () => {
         </C.Typography>
         <C.InputSearch placeholder="Pesquise clubes pelo seu nome ou sigla" />
         <StyledUl>
-          {ranking.map((item, index) => (
-            <C.ListItem key={`partida-${index}`} type="ranking">
-              {item}
-            </C.ListItem>
-          ))}
+          {ranking.map((item, index) => {
+            return (
+              <C.ListItem key={`partida-${index}`} type="ranking">
+                {item}
+              </C.ListItem>
+            );
+          })}
         </StyledUl>
         <C.FlexContainer marginTop="30px">
           <C.Pagination totalPages={totalPages} page={page} setPage={setPage} />
@@ -54,13 +57,13 @@ export const Ranking = () => {
   );
 };
 
-function handleJsonRanking(data) {
-  const modifiedData = data.map((item) => {
-    return [
-      `#${item.place} - ${item.playerName} - ${item.squadName} - ${item.squadInitials}`,
-      `${item.athleteAttributed}/11`,
-      `${item.points} pts`,
-    ];
-  });
-  return modifiedData;
-}
+// function handleJsonRanking(data) {
+//   const modifiedData = data.map((item) => {
+//     return [
+//       `#${item.place} - ${item.playerName} - ${item.squadName} - ${item.squadInitials}`,
+//       `${item.athleteAttributed}/11`,
+//       `${item.points} pts`,
+//     ];
+//   });
+//   return modifiedData;
+// }

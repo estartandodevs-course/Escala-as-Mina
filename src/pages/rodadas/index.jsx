@@ -112,7 +112,7 @@ export const Rodadas = () => {
                               theme.pallete.primary.main
                             }
                             key={(position, indexInner)}
-                            onClick={() => {
+                            dispatch={() => {
                               setActivePlayer(player);
                             }}
                           >
