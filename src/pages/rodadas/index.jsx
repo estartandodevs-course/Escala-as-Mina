@@ -101,9 +101,14 @@ export const Rodadas = () => {
                       return a.number > b.number;
                     })
                     .map((player, indexInner) => {
+                      const modifiedPlayer = {
+                        ...player,
+                        position: player.position.slice(0, 3),
+                      };
                       return (
                         <>
                           <C.ListItem
+                            key={(position, indexInner)}
                             type="player"
                             cursor="pointer"
                             variation="show"
@@ -111,34 +116,11 @@ export const Rodadas = () => {
                               player.number === activePlayer.number &&
                               theme.pallete.primary.main
                             }
-                            key={(position, indexInner)}
+                            data={modifiedPlayer}
                             dispatch={() => {
                               setActivePlayer(player);
                             }}
-                          >
-                            <C.Typography
-                              size="16px"
-                              weight="700"
-                              color={theme.pallete.gray.white}
-                            >
-                              {player.number}
-                            </C.Typography>
-                            <C.Typography
-                              textTransform="uppercase"
-                              size="16px"
-                              weight="700"
-                              color={theme.pallete.secondary.main}
-                            >
-                              {player.position.slice(0, 3)}
-                            </C.Typography>
-                            <C.Typography
-                              size="16px"
-                              weight="700"
-                              color={theme.pallete.secondary.main}
-                            >
-                              {player.name}
-                            </C.Typography>
-                          </C.ListItem>
+                          />
                         </>
                       );
                     })}
