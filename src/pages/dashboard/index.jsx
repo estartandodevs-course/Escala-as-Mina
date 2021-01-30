@@ -84,9 +84,11 @@ export const Dashboard = (props) => {
           </S.FlexContainer>
           <ul>
             {shownData.map((item, index) => (
-              <C.ListItem key={`partida-${index}`} type="dashboard">
-                {item}
-              </C.ListItem>
+              <C.ListItem
+                key={`partida-${index}`}
+                type="dashboard"
+                data={item}
+              />
             ))}
           </ul>
           <C.FlexContainer justify="center" direction="column" height="100%">
@@ -278,13 +280,13 @@ function handleJson(data) {
 
     const score = `${homeTeam.numberGoals} x ${awayTeam.numberGoals}`;
 
-    return [
+    return {
       percentageHomePlayers,
-      homeTeam.teamName,
+      homeTeamName: homeTeam.teamName,
       score,
-      awayTeam.teamName,
+      awayTeamName: awayTeam.teamName,
       percentageAwayPlayers,
-    ];
+    };
   });
   return modifiedData;
 }

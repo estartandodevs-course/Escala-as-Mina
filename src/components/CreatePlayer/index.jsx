@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Button, ListItem } from '../';
+import { useState } from "react";
+import { Button, ListItem } from "../";
 
 export const CreatePlayer = () => {
   const [showInput, setShowInput] = useState(false);
-  const [showBtn, setShowBtn] = useState(true);
 
   function handleClick() {
-    setShowBtn(false);
-    setShowInput(true);
+    setShowInput((state) => !state);
   }
 
   return (
     <>
-      {showBtn && (
+      {showInput ? (
+        <ListItem data={{}} type="player" variation="add" />
+      ) : (
         <Button
           size="large"
           variation="secondary"
@@ -22,9 +22,6 @@ export const CreatePlayer = () => {
           Adicionar Jogadora
         </Button>
       )}
-
-
-      {showInput && <ListItem type="player" variation="add" />}
     </>
   );
 };

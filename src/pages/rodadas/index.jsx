@@ -21,14 +21,12 @@ export const Rodadas = () => {
 
   const [activePlayer, setActivePlayer] = useState(false);
   const [formsTeam, setFormsTeam] = useState({
-    players: players.map((player) => {
-      return {
-        ...player,
-        pointsAttributed: false,
-        score: 0,
-        scouts: scoutPosition[player.position],
-      };
-    }),
+    players: players.map((player) => ({
+      ...player,
+      pointsAttributed: false,
+      score: 0,
+      scouts: scoutPosition[player.position],
+    })),
     teamScouts: [
       { key: "victory", state: true },
       { key: "noGoal", state: true },
@@ -85,9 +83,12 @@ export const Rodadas = () => {
           >
             {positions.map((position, indexOuter) => {
               return (
-                <>
+                <C.FlexContainer
+                  direction="column"
+                  align="flex-start"
+                  key={`${position}-${indexOuter}`}
+                >
                   <C.Typography
-                    key={(position, indexOuter)}
                     color={theme.pallete.gray.black}
                     size="30px"
                     weight="600"
@@ -103,28 +104,28 @@ export const Rodadas = () => {
                       return a.number > b.number;
                     })
                     .map((player, indexInner) => {
+                      const modifiedPlayer = {
+                        ...player,
+                        position: player.position.slice(0, 3),
+                      };
                       return (
-                        <>
-                          <C.ListItem
-                            type="player"
-                            cursor="pointer"
-                            backgroundColor={
-                              player.number === activePlayer.number &&
-                              theme.pallete.primary.main
-                            }
-                            key={(position, indexInner)}
-                            onClick={() => {
-                              setActivePlayer(player);
-                            }}
-                          >
-                            <>{player.number}</>
-                            <>{player.position.slice(0, 3)}</>
-                            <>{player.name}</>
-                          </C.ListItem>
-                        </>
+                        <C.ListItem
+                          key={`${position}_${indexInner}`}
+                          type="player"
+                          variation="show"
+                          cursor="pointer"
+                          backgroundColor={
+                            player.number === activePlayer.number &&
+                            theme.pallete.primary.main
+                          }
+                          data={modifiedPlayer}
+                          onClick={() => {
+                            setActivePlayer(player);
+                          }}
+                        />
                       );
                     })}
-                </>
+                </C.FlexContainer>
               );
             })}
           </C.FlexContainer>
