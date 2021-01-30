@@ -7,7 +7,6 @@ export const LinkPlayers = () => {
     switch (action.type) {
       case "addPlayer": {
         action.payload.id = uuidv4();
-        console.log(action.payload.id);
         const newState = [...state, action.payload];
         return newState;
       }
