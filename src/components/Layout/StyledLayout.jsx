@@ -1,6 +1,5 @@
 import { NavLink as NavLinkRouter } from "react-router-dom";
 import styled from "styled-components";
-import { getV } from "../../styles";
 
 const NavLink = styled(NavLinkRouter)`
   display: flex;
