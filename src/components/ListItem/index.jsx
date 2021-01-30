@@ -31,7 +31,6 @@ const ListItem = ({
   const handleChange = (setState) => (event) => {
     const textValue = event.target.value;
     setState(textValue);
-    console.log(textValue);
   };
   const handleSubmit = () => {
     if (!numberInput && !nameInput) return;
