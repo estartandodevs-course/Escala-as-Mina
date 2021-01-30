@@ -1,6 +1,5 @@
 import { NavLink as NavLinkRouter } from "react-router-dom";
 import styled from "styled-components";
-import { getV } from "../../styles";
 
 const NavLink = styled(NavLinkRouter)`
   display: flex;
@@ -149,7 +148,7 @@ const PageContents = styled.main`
   display: flex;
   height: 100%;
   width: 100%;
-  padding: ${getV("60px", "h")} ${getV("60px", "w")};
+  padding: 32px;
 `;
 // esse styled contém todos os conteúdos da página.
 

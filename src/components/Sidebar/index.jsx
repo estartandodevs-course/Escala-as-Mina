@@ -1,7 +1,6 @@
 import { Wrapper } from "./styledWrapper";
 import { useTheme } from "styled-components";
 
-
 export const Sidebar = (props) => {
   const { variation = "left" } = props; //variation says which sidebar is
   const themeContext = useTheme();
@@ -17,6 +16,7 @@ export const Sidebar = (props) => {
       borderRadius: "30px 0 0 30px",
       backgroundColor: `${themeContext.pallete.primary.main}`,
       width: "25vw", //25% of 1440px ~ 356px
+      margin: "-32px -32px 0px auto",
     },
   };
 
