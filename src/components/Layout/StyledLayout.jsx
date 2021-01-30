@@ -149,7 +149,7 @@ const PageContents = styled.main`
   display: flex;
   height: 100%;
   width: 100%;
-  padding: ${getV("60px", "h")} ${getV("60px", "w")};
+  padding: 32px;
 `;
 // esse styled contém todos os conteúdos da página.
 
