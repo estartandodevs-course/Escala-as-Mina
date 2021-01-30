@@ -4,14 +4,18 @@ import * as C from "../../../components";
 export const LinkPlayers = () => {
   const reducer = (state, action) => {
     switch (action.type) {
-      case "deletePlayer":
+      case "addPlayer": {
+        const newState = [...state].push(action.payload);
+        return newState;
+      }
+      case "deletePlayer": {
         const id = action.payload;
         const newState = [...state].filter((player) => player.id !== id);
         return newState;
+      }
       default:
     }
   };
-
   const [players, dispatch] = useReducer(reducer, [
     //eventually this will be a firebase request
     {

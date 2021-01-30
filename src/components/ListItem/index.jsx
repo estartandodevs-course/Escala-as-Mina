@@ -7,6 +7,7 @@ import declineButton from "../../assets/icons/DeclineBtn.svg";
 import acceptButton from "../../assets/icons/AcceptBtn.svg";
 import deleteButton from "../../assets/icons/Deletar.svg";
 import editButton from "../../assets/icons/Editar.svg";
+import { useState } from "react";
 
 const ListItem = ({
   data,
@@ -19,6 +20,24 @@ const ListItem = ({
 }) => {
   const styles = { type, variation };
   const theme = useTheme();
+
+  const [numberInput, setNumberInput] = useState("");
+  const [nameInput, setNameInput] = useState("");
+
+  const handleChange = (setState) => (event) => {
+    const textValue = event.target.value;
+    setState(textValue);
+    console.log(textValue);
+  };
+  const handleSubmit = () => {
+    if (!numberInput && !nameInput) return;
+    const payload = {
+      name: nameInput,
+      number: numberInput,
+      show: true,
+    };
+    dispatch({ type: "addPlayer", payload });
+  };
 
   const listComponents = {
     player: {
@@ -42,9 +61,17 @@ const ListItem = ({
       ),
       add: (
         <PlayerInfo>
-          <InputPlayer type="number" />
-          <InputPlayer type="name" />
-          <Button type="icon">
+          <InputPlayer
+            type="number"
+            onChange={handleChange(setNumberInput)}
+            value={numberInput}
+          />
+          <InputPlayer
+            type="name"
+            onChange={handleChange(setNameInput)}
+            value={nameInput}
+          />
+          <Button type="icon" onClick={handleSubmit}>
             <img src={acceptButton} alt="Aceitar" />
           </Button>
           <Button type="icon">
