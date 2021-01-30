@@ -68,9 +68,13 @@ const playerObject = {
   },
 };
 export const InputPlayer = (props) => {
-  const { type, placeholder } = props;
+  const { type, placeholder, ...rest } = props;
 
   return (
-    <StyledInputPlayer placeholder={placeholder} {...playerObject[type]} />
+    <StyledInputPlayer
+      placeholder={placeholder}
+      {...rest}
+      {...playerObject[type]}
+    />
   );
 };

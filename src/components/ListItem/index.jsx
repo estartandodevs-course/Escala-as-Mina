@@ -7,6 +7,7 @@ import declineButton from "../../assets/icons/DeclineBtn.svg";
 import acceptButton from "../../assets/icons/AcceptBtn.svg";
 import deleteButton from "../../assets/icons/Deletar.svg";
 import editButton from "../../assets/icons/Editar.svg";
+import { useState } from "react";
 
 const ListItem = ({
   data,
@@ -20,13 +21,34 @@ const ListItem = ({
   const styles = { type, variation };
   const theme = useTheme();
 
+  const [numberInput, setNumberInput] = useState(data.number);
+  const [nameInput, setNameInput] = useState(data.name);
+  const [variationState, setVariationState] = useState(variation);
+
+  const changeVariationTo = (variationKey) => {
+    setVariationState(variationKey);
+  };
+  const handleChange = (setState) => (event) => {
+    const textValue = event.target.value;
+    setState(textValue);
+  };
+  const handleSubmit = () => {
+    if (!numberInput && !nameInput) return;
+    const payload = {
+      name: nameInput,
+      number: numberInput,
+      show: true,
+    };
+    dispatch({ type: "addPlayer", payload });
+  };
+
   const listComponents = {
     player: {
       edit: (
         <FlexContainer key={id} type={type}>
           <StyledListItem type={type}>
             {formatText(data, styles, theme)}
-            <Button type="icon" onClick={() => {}}>
+            <Button type="icon" onClick={() => changeVariationTo("add")}>
               <img src={editButton} alt="edit" width="20px" height="24px" />
             </Button>
             <Button
@@ -42,12 +64,22 @@ const ListItem = ({
       ),
       add: (
         <PlayerInfo>
-          <InputPlayer type="number" />
-          <InputPlayer type="name" />
-          <Button type="icon">
+          <InputPlayer
+            defaultValue={data.number}
+            type="number"
+            onChange={handleChange(setNumberInput)}
+            value={numberInput}
+          />
+          <InputPlayer
+            defaultValue={data.name}
+            type="name"
+            onChange={handleChange(setNameInput)}
+            value={nameInput}
+          />
+          <Button type="icon" onClick={handleSubmit}>
             <img src={acceptButton} alt="Aceitar" />
           </Button>
-          <Button type="icon">
+          <Button type="icon" onClick={() => changeVariationTo("edit")}>
             <img src={declineButton} alt="Deletar" />
           </Button>
         </PlayerInfo>
@@ -82,7 +114,7 @@ const ListItem = ({
     },
   };
 
-  return listComponents[type][variation];
+  return listComponents[type][variationState];
 };
 
 export { ListItem };

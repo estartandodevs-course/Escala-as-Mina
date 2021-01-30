@@ -1,17 +1,23 @@
 import { useReducer } from "react";
 import * as C from "../../../components";
+import { v4 as uuidv4 } from "uuid";
 
 export const LinkPlayers = () => {
   const reducer = (state, action) => {
     switch (action.type) {
-      case "deletePlayer":
+      case "addPlayer": {
+        action.payload.id = uuidv4();
+        const newState = [...state, action.payload];
+        return newState;
+      }
+      case "deletePlayer": {
         const id = action.payload;
         const newState = [...state].filter((player) => player.id !== id);
         return newState;
+      }
       default:
     }
   };
-
   const [players, dispatch] = useReducer(reducer, [
     //eventually this will be a firebase request
     {
@@ -48,7 +54,7 @@ export const LinkPlayers = () => {
                 variation="edit"
                 type="player"
                 data={player}
-                dispath={dispatch}
+                dispatch={dispatch}
                 id={player.id}
               />
             )}
@@ -56,7 +62,7 @@ export const LinkPlayers = () => {
         );
       })}
 
-      <C.CreatePlayer />
+      <C.CreatePlayer dispatch={dispatch} />
     </C.FlexContainer>
   );
 };
