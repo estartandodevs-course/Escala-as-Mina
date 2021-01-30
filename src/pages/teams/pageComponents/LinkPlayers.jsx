@@ -48,7 +48,7 @@ export const LinkPlayers = () => {
                 variation="edit"
                 type="player"
                 data={player}
-                dispath={dispatch}
+                dispatch={dispatch}
                 id={player.id}
               />
             )}
