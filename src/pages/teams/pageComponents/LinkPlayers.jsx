@@ -1,12 +1,13 @@
 import { useReducer } from "react";
 import * as C from "../../../components";
+import { v4 as uuidv4 } from "uuid";
 
 export const LinkPlayers = () => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "addPlayer": {
-        const idBasedOnLengthArray = state?.length;
-        action.payload.id = idBasedOnLengthArray;
+        action.payload.id = uuidv4();
+        console.log(action.payload.id);
         const newState = [...state, action.payload];
         return newState;
       }
