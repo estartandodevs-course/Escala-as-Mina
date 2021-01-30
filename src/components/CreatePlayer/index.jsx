@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, ListItem } from "../";
 
-export const CreatePlayer = () => {
+export const CreatePlayer = ({ dispatch }) => {
   const [showInput, setShowInput] = useState(false);
 
   function handleClick() {
@@ -11,7 +11,7 @@ export const CreatePlayer = () => {
   return (
     <>
       {showInput ? (
-        <ListItem data={{}} type="player" variation="add" />
+        <ListItem data={{}} type="player" dispatch={dispatch} variation="add" />
       ) : (
         <Button
           size="large"

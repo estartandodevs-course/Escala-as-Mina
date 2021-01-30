@@ -5,7 +5,9 @@ export const LinkPlayers = () => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "addPlayer": {
-        const newState = [...state].push(action.payload);
+        const idBasedOnLengthArray = state?.length;
+        action.payload.id = idBasedOnLengthArray;
+        const newState = [...state, action.payload];
         return newState;
       }
       case "deletePlayer": {
@@ -60,7 +62,7 @@ export const LinkPlayers = () => {
         );
       })}
 
-      <C.CreatePlayer />
+      <C.CreatePlayer dispatch={dispatch} />
     </C.FlexContainer>
   );
 };
