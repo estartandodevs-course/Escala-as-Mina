@@ -21,9 +21,13 @@ const ListItem = ({
   const styles = { type, variation };
   const theme = useTheme();
 
-  const [numberInput, setNumberInput] = useState("");
-  const [nameInput, setNameInput] = useState("");
+  const [numberInput, setNumberInput] = useState(data.number);
+  const [nameInput, setNameInput] = useState(data.name);
+  const [variationState, setVariationState] = useState(variation);
 
+  const changeVariationTo = (variationKey) => {
+    setVariationState(variationKey);
+  };
   const handleChange = (setState) => (event) => {
     const textValue = event.target.value;
     setState(textValue);
@@ -45,7 +49,7 @@ const ListItem = ({
         <FlexContainer key={id} type={type}>
           <StyledListItem type={type}>
             {formatText(data, styles, theme)}
-            <Button type="icon" onClick={() => {}}>
+            <Button type="icon" onClick={() => changeVariationTo("add")}>
               <img src={editButton} alt="edit" width="20px" height="24px" />
             </Button>
             <Button
@@ -62,11 +66,13 @@ const ListItem = ({
       add: (
         <PlayerInfo>
           <InputPlayer
+            defaultValue={data.number}
             type="number"
             onChange={handleChange(setNumberInput)}
             value={numberInput}
           />
           <InputPlayer
+            defaultValue={data.name}
             type="name"
             onChange={handleChange(setNameInput)}
             value={nameInput}
@@ -74,7 +80,7 @@ const ListItem = ({
           <Button type="icon" onClick={handleSubmit}>
             <img src={acceptButton} alt="Aceitar" />
           </Button>
-          <Button type="icon">
+          <Button type="icon" onClick={() => changeVariationTo("edit")}>
             <img src={declineButton} alt="Deletar" />
           </Button>
         </PlayerInfo>
@@ -109,7 +115,7 @@ const ListItem = ({
     },
   };
 
-  return listComponents[type][variation];
+  return listComponents[type][variationState];
 };
 
 export { ListItem };
