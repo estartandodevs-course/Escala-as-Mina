@@ -16,6 +16,7 @@ const ListItem = ({
   variation = "default",
   onClick,
   dispatch = () => {},
+  customCloseInput,
   ...restProps
 }) => {
   const styles = { type, variation };
@@ -79,7 +80,15 @@ const ListItem = ({
           <Button type="icon" onClick={handleSubmit}>
             <img src={acceptButton} alt="Aceitar" />
           </Button>
-          <Button type="icon" onClick={() => changeVariationTo("edit")}>
+          <Button
+            type="icon"
+            onClick={() => {
+              console.log(customCloseInput);
+              return customCloseInput
+                ? customCloseInput()
+                : changeVariationTo("edit");
+            }}
+          >
             <img src={declineButton} alt="Deletar" />
           </Button>
         </PlayerInfo>

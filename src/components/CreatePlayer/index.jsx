@@ -11,7 +11,13 @@ export const CreatePlayer = ({ dispatch }) => {
   return (
     <>
       {showInput ? (
-        <ListItem data={{}} type="player" dispatch={dispatch} variation="add" />
+        <ListItem
+          customCloseInput={handleClick}
+          data={{}}
+          type="player"
+          dispatch={dispatch}
+          variation="add"
+        />
       ) : (
         <Button
           size="large"
