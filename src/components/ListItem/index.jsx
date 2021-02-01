@@ -40,6 +40,8 @@ const ListItem = ({
       number: numberInput,
       show: true,
     };
+    setNameInput("");
+    setNumberInput("");
     dispatch({ type: "addPlayer", payload });
   };
 
