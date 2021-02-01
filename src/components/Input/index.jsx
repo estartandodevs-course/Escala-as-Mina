@@ -68,13 +68,13 @@ const playerObject = {
   },
 };
 export const InputPlayer = (props) => {
-  const { type, placeholder, ...rest } = props;
+  const { variation, placeholder, ...rest } = props;
 
   return (
     <StyledInputPlayer
       placeholder={placeholder}
       {...rest}
-      {...playerObject[type]}
+      {...playerObject[variation]}
     />
   );
 };

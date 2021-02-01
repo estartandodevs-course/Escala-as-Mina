@@ -69,13 +69,15 @@ const ListItem = ({
         <PlayerInfo>
           <InputPlayer
             defaultValue={data.number}
+            variation="number"
             type="number"
             onChange={handleChange(setNumberInput)}
             value={numberInput}
           />
           <InputPlayer
             defaultValue={data.name}
-            type="name"
+            variation="name"
+            type="text"
             onChange={handleChange(setNameInput)}
             value={nameInput}
           />
