@@ -4,7 +4,29 @@ import { Button } from "../components/Button";
 
 const Template = (args) => <Button {...args}>Button</Button>;
 
-export default {
+// primary, secondary, disabled, search, active, alert
+export const Primary = Template.bind({});
+Primary.args = {
+  size: "large",
+  variation: "primary",
+  type: "solid",
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  size: "large",
+  variation: "secondary",
+  type: "solid",
+};
+
+export const Alert = Template.bind({});
+Alert.args = {
+  size: "large",
+  variation: "alert",
+  type: "solid",
+};
+
+const MetaData = {
   title: "Button",
   component: Button,
   argTypes: {
@@ -36,24 +58,4 @@ export default {
   },
 };
 
-// primary, secondary, disabled, search, active, alert
-export const Primary = Template.bind({});
-Primary.args = {
-  size: "large",
-  variation: "primary",
-  type: "solid",
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  size: "large",
-  variation: "secondary",
-  type: "solid",
-};
-
-export const Alert = Template.bind({});
-Alert.args = {
-  size: "large",
-  variation: "alert",
-  type: "solid",
-};
+export default MetaData;
